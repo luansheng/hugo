@@ -387,7 +387,7 @@ summary(shrimp.lm.8) #加载lmerTest包后，lmer的返回结果，每个固定�
 ## Residuals  4233  78124      18                       
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p><a id="9">模型9</a>考虑家系结构，<a href="Pop:Family为随机效应，Pop、Sex和Tank为固定效应，Sex:M1BW为协变量" class="uri">Pop:Family为随机效应，Pop、Sex和Tank为固定效应，Sex:M1BW为协变量</a>。</p>
+<p><a id="9">模型9</a>考虑家系结构，Pop:Family为随机效应，Pop、Sex和Tank为固定效应，Sex:M1BW为协变量。</p>
 <p><span class="math display">\[M2BW = Pop + Sex + Tank + Sex:M1BW + Pop:Family\]</span></p>
 <p>在模型中加入随机效应，需要使用lme4包中的lmer函数。下边代码中的(1|PopID:FamilyID)，表示针对不同的家系，单独估计其随机截距（random intercept）。</p>
 <p>分析结果如下：</p>
@@ -473,14 +473,15 @@ Figure 3: 四个对虾群体体重的预测值
 <p>关于emmeans包，请参考日志<a href="http://luansheng.netlify.com/post/least-squares-means-note-1/">最小二乘均值的估计模型</a>。尽管该日志介绍的是lsmeans包，但用法跟emmeans包都是一样的。而且根据作者介绍，在不久的将来，emmeans包要替代lsmeans包。</p>
 <p>注意，安装emmeans还需要pbkrtest包，这个包没有自动安装，需要手动安装。</p>
 <pre class="r"><code>require(emmeans)</code></pre>
-<pre><code>## 载入需要的程辑包：emmeans</code></pre>
+<pre><code>## Loading required package: emmeans</code></pre>
+<pre><code>## Warning: package &#39;emmeans&#39; was built under R version 3.4.3</code></pre>
 <pre><code>## 
-## 载入程辑包：&#39;emmeans&#39;</code></pre>
+## Attaching package: &#39;emmeans&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:lmerTest&#39;:
 ## 
 ##     lsmeans</code></pre>
 <pre class="r"><code>shrimp.lm9.rgl &lt;- ref_grid(shrimp.lm.9)</code></pre>
-<pre><code>## 载入需要的名字空间：pbkrtest</code></pre>
+<pre><code>## Loading required namespace: pbkrtest</code></pre>
 <pre><code>## Note: D.f. calculations have been disabled because the number of observations exceeds 3000.
 ## To enable adjustments, set emm_options(pbkrtest.limit = 4241) or larger,
 ## but be warned that this may result in large computation time and memory use.</code></pre>
