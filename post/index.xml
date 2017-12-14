@@ -364,7 +364,7 @@ Figure 3: 四个对虾群体体重的预测值
       
       <guid>/post/lmm-tutorial-1/</guid>
       <description>&lt;p&gt;学习线性混合效应模型（Linear Mixed Effects Model，LMM）最好的方法，是一边学习理论，一边动手实践，这样印象最为深刻。 本文参考了Bodo Winter博士的教程Linear models and linear mixed effects models in R&lt;a href=&#34;http://www.bodowinter.com/tutorial/bw_LME_tutorial1.pdf&#34;&gt;教程1&lt;/a&gt;&lt;a href=&#34;http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf&#34;&gt;教程2&lt;/a&gt;的结构。&lt;/p&gt;
-&lt;p&gt;本文中，为了便于理解，使用的数据集是来自csv文件&lt;a href=&#34;https://luansheng.netlify.com/data/shrimp.csv&#34;&gt;shrimp&lt;/a&gt;中的对虾育种数据（对原始数据已经进行了变换）。&lt;/p&gt;
+&lt;p&gt;本文中，为了便于理解，使用的数据集是来自csv文件&lt;a href=&#34;https://luansheng.netlify.com/post/shrimp.csv&#34;&gt;shrimp&lt;/a&gt;中的对虾育种数据（对原始数据已经进行了变换）。&lt;/p&gt;
 &lt;p&gt;推荐使用&lt;a href=&#34;https://www.rstudio.com/products/RStudio/&#34;&gt;Rstudio&lt;/a&gt;来运行&lt;a href=&#34;https://www.r-project.org/&#34;&gt;R&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;本文代码使用了四个包，请提前加载。&lt;/p&gt;
 &lt;ul&gt;
