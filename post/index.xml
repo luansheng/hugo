@@ -368,7 +368,7 @@ Figure 3: 四个对虾群体体重的预测值
 &lt;p&gt;推荐使用&lt;a href=&#34;https://www.rstudio.com/products/RStudio/&#34;&gt;Rstudio&lt;/a&gt;来运行&lt;a href=&#34;https://www.r-project.org/&#34;&gt;R&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;本文代码使用了四个包，请提前加载。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;data.table&lt;/li&gt;
+&lt;li&gt;data.table1&lt;/li&gt;
 &lt;li&gt;ggplot2&lt;/li&gt;
 &lt;li&gt;lme4&lt;/li&gt;
 &lt;li&gt;sjPlot&lt;/li&gt;
@@ -536,16 +536,16 @@ shrimp.lm.sex.tank.sum&lt;/code&gt;&lt;/pre&gt;
 ## 2: Female     T1 35.87844
 ## 3:   Male     T2 26.70756
 ## 4: Female     T2 32.86907&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;我们发现，模型实际上是把Female.T1这个组合均值设置为截距（群体均值）。Male到Female.T1的斜率为NA，T2到Female.T1的斜率为NA；同理，Female到Female.T1的斜率为0，T1到Female.T1的斜率也为0。&lt;/p&gt;
+&lt;p&gt;我们发现，模型实际上是把Female.T1这个组合均值设置为截距（群体均值）。Male到Female.T1的斜率为-6.2081881，T2到Female.T1的斜率为-2.9644499；同理，Female到Female.T1的斜率为0，T1到Female.T1的斜率也为0。&lt;/p&gt;
 &lt;p&gt;那么，根据&lt;a href=&#34;#2&#34;&gt;模型2&lt;/a&gt;,可以预测雌雄虾体重：&lt;/p&gt;
 &lt;p&gt;如果随机从T1池捞取一尾雄虾，它的预测体重为：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(BW = 群体均值 + 雄虾的固定效应 + T1池固定效应\)&lt;/span&gt; = 35.856019327243 + NA*1 + 0*1 = NA&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(BW = 群体均值 + 雄虾的固定效应 + T1池固定效应\)&lt;/span&gt; = 35.856019327243 + -6.2081881124781*1 + 0*1 = 29.6478312&lt;/p&gt;
 &lt;p&gt;这个数值跟Male.T1的均值非常接近。&lt;/p&gt;
 &lt;p&gt;如果随机从T2池捞取一尾雄虾，它的预测体重为&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(BW = 群体均值 + 雄虾的固定效应 + T2池固定效应\)&lt;/span&gt; = 35.856019327243 + NA*1 + NA*1 = NA&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(BW = 群体均值 + 雄虾的固定效应 + T2池固定效应\)&lt;/span&gt; = 35.856019327243 + -6.2081881124781*1 + -2.96444990544144*1 = 26.6833813&lt;/p&gt;
 &lt;p&gt;这个数值跟Male.T2的均值非常接近。&lt;/p&gt;
 &lt;p&gt;如果随机从T2池捞取一尾雌虾，它的预测体重为&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(BW = 群体均值 + 雌虾的固定效应 + T2池固定效应\)&lt;/span&gt; = 35.856019327243 + 0*1 + NA*1 = NA&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(BW = 群体均值 + 雌虾的固定效应 + T2池固定效应\)&lt;/span&gt; = 35.856019327243 + 0*1 + -2.96444990544144*1 = 32.8915694&lt;/p&gt;
 &lt;p&gt;这个数值跟Female.T2的均值非常接近。&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
@@ -603,7 +603,7 @@ summary(shrimp.lm.m1bw)&lt;/code&gt;&lt;/pre&gt;
 ## Multiple R-squared:  0.04876,    Adjusted R-squared:  0.04854 
 ## F-statistic: 217.3 on 1 and 4239 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;上边实际上是简单的回归分析，系数表中Intercept为24.4789861，表示当M1BW为0时，混养体重M2BW为24.4789861g。实际上初始体重不可能为0。因此这个截距没有实际意义。&lt;/p&gt;
-&lt;p&gt;M1BW的系数估计值为NA，表示初始体重每增加1g，混养体重会增加NAg。&lt;/p&gt;
+&lt;p&gt;M1BW的系数估计值为0.9484804，表示初始体重每增加1g，混养体重会增加0.9484804g。&lt;/p&gt;
 &lt;p&gt;&lt;a id=&#34;5&#34;&gt;模型5&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[M2BW = Sex + Sex:M1BW + \varepsilon\]&lt;/span&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm.sex.m1bw &amp;lt;- lm(M2BW~SexID+SexID:M1BW,shrimp)
@@ -638,11 +638,8 @@ summary(shrimp.lm.sex.m1bw)&lt;/code&gt;&lt;/pre&gt;
 Figure 5: 雌雄虾混养前家系初始体重和混养后体重的散点图
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;我们根据&lt;a href=&#34;#5&#34;&gt;模型5&lt;/a&gt;来预测一尾雄虾的体重,假定它的混养前体重为5g，那么它的混养后体重为25.87g。&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-M2BW = 27.82 + -6.05 + 0.82*5 \\
-=25.87g
-\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;我们根据&lt;a href=&#34;#5&#34;&gt;模型5&lt;/a&gt;来预测一尾雄虾的体重,假定它的混养前体重为5g，那么它的混养后体重为26.0340769g。&lt;/p&gt;
+&lt;p&gt;M2BW = 27.2862423952692 + -5.91782358698496 + 0.933131628220428*5 = 26.0340769g&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
 &lt;h3&gt;4.3 包括交互效应的线性模型&lt;/h3&gt;
@@ -650,61 +647,15 @@ M2BW = 27.82 + -6.05 + 0.82*5 \\
 &lt;p&gt;&lt;a id=&#34;6&#34;&gt;模型6&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[M2BW = Sex + Tank + Sex:M1BW\]&lt;/span&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm.sex.tank.m1bw &amp;lt;- lm(M2BW ~ SexID + TankID + SexID:M1BW,shrimp)
-summary(shrimp.lm.sex.tank.m1bw)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = M2BW ~ SexID + TankID + SexID:M1BW, data = shrimp)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -22.2635  -2.9218  -0.1317   2.7273  19.9333 
-## 
-## Coefficients:
-##                  Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)      28.59445    0.52621  54.340  &amp;lt; 2e-16 ***
-## SexIDMale        -5.43136    0.77289  -7.027 2.44e-12 ***
-## TankIDT2         -2.95103    0.14467 -20.399  &amp;lt; 2e-16 ***
-## SexIDFemale:M1BW  0.99876    0.07049  14.168  &amp;lt; 2e-16 ***
-## SexIDMale:M1BW    0.88930    0.07689  11.566  &amp;lt; 2e-16 ***
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 4.708 on 4236 degrees of freedom
-##   (41 observations deleted due to missingness)
-## Multiple R-squared:  0.3805, Adjusted R-squared:  0.3799 
-## F-statistic: 650.4 on 4 and 4236 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;从Adjusted R-squared参数（0.42 vs 0.31可以看出，模型6 对数据的解释能力，相比模型1，已经大幅度提高了。也就是说根据模型6预测体重，准确性比模型1要高。&lt;/p&gt;
+shrimp.lm.sex.tank.m1bw.sum &amp;lt;- summary(shrimp.lm.sex.tank.m1bw)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从Adjusted R-squared参数（0.3798813 vs 0.2701994可以看出，模型6 对数据的解释能力，相比模型1，已经提高了。也就是说根据模型6预测体重，准确性比模型1要高。&lt;/p&gt;
 &lt;p&gt;什么是交互效应？Interaction effects represent the combined effects of factors on the dependent measure. When an interaction effect is present, the impact of one factor depends on the level of the other factor。两个效应间相互影响，促进或者制约的关系。&lt;/p&gt;
 &lt;p&gt;譬如，我们数据中有Sex和Tank两个固定效应，那么我们可能会想 雌虾会不会在特别偏爱某种环境，譬如在T1池中长得比T2池中大，但是雄虾可能会在T2池中长的比T1池大？因此我们可以在模型中试着加入交互效应。&lt;/p&gt;
 &lt;p&gt;&lt;a id=&#34;7&#34;&gt;模型7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[M2BW = Sex + Tank + Sex:Tank + Sex:M1BW\]&lt;/span&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm.sex.tank.m1bw.interaction &amp;lt;- lm(M2BW ~ SexID + TankID + SexID:TankID + SexID:M1BW,shrimp)
-summary(shrimp.lm.sex.tank.m1bw.interaction)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = M2BW ~ SexID + TankID + SexID:TankID + SexID:M1BW, 
-##     data = shrimp)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -22.2039  -2.8961  -0.1335   2.7157  19.9954 
-## 
-## Coefficients:
-##                    Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)        28.64805    0.52985  54.068  &amp;lt; 2e-16 ***
-## SexIDMale          -5.56393    0.78792  -7.062 1.92e-12 ***
-## TankIDT2           -3.07193    0.20104 -15.280  &amp;lt; 2e-16 ***
-## SexIDMale:TankIDT2  0.25075    0.28953   0.866    0.387    
-## SexIDFemale:M1BW    0.99972    0.07050  14.180  &amp;lt; 2e-16 ***
-## SexIDMale:M1BW      0.89123    0.07692  11.586  &amp;lt; 2e-16 ***
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 4.708 on 4235 degrees of freedom
-##   (41 observations deleted due to missingness)
-## Multiple R-squared:  0.3806, Adjusted R-squared:  0.3798 
-## F-statistic: 520.4 on 5 and 4235 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;从系数表中，可以看出，相比两个主效应（SexIDMale：-5.66、TankIDT2：-3.05），Sex和Tank的交互效应非常小（0.19），p=0.461 &amp;gt; 0.05，统计检验与0相比，达不到显著水平。Adjusted R-squared: 0.4242也表明，相比&lt;a href=&#34;#6&#34;&gt;模型6&lt;/a&gt;，&lt;a href=&#34;#7&#34;&gt;模型7&lt;/a&gt;的解释能力并没有提高。&lt;/p&gt;
+shrimp.lm.sex.tank.m1bw.interaction.sum &amp;lt;- summary(shrimp.lm.sex.tank.m1bw.interaction)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从系数表中，可以看出，相比两个主效应（SexIDMale：-5.563925、TankIDT2：-3.0719274），Sex和Tank的交互效应非常小（0.2507485），p &amp;gt; 0.05，统计检验与0相比，达不到显著水平。Adjusted R-squared: 0.3798447也表明，相比&lt;a href=&#34;#6&#34;&gt;模型6&lt;/a&gt;，&lt;a href=&#34;#7&#34;&gt;模型7&lt;/a&gt;的解释能力并没有提高。&lt;/p&gt;
 &lt;p&gt;我们图形展示一下模型7固定效应：&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_model(shrimp.lm.sex.tank.m1bw.interaction,show.values = TRUE)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:lm4plot&#34;&gt;&lt;/span&gt;

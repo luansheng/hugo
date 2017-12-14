@@ -211,7 +211,7 @@ MathJax.Hub.Config({
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    13 min read
+    12 min read
   </span>
   
 
@@ -285,7 +285,7 @@ MathJax.Hub.Config({
 <p>推荐使用<a href="https://www.rstudio.com/products/RStudio/">Rstudio</a>来运行<a href="https://www.r-project.org/">R</a>。</p>
 <p>本文代码使用了四个包，请提前加载。</p>
 <ul>
-<li>data.table</li>
+<li>data.table1</li>
 <li>ggplot2</li>
 <li>lme4</li>
 <li>sjPlot</li>
@@ -453,16 +453,16 @@ shrimp.lm.sex.tank.sum</code></pre>
 ## 2: Female     T1 35.87844
 ## 3:   Male     T2 26.70756
 ## 4: Female     T2 32.86907</code></pre>
-<p>我们发现，模型实际上是把Female.T1这个组合均值设置为截距（群体均值）。Male到Female.T1的斜率为NA，T2到Female.T1的斜率为NA；同理，Female到Female.T1的斜率为0，T1到Female.T1的斜率也为0。</p>
+<p>我们发现，模型实际上是把Female.T1这个组合均值设置为截距（群体均值）。Male到Female.T1的斜率为-6.2081881，T2到Female.T1的斜率为-2.9644499；同理，Female到Female.T1的斜率为0，T1到Female.T1的斜率也为0。</p>
 <p>那么，根据<a href="#2">模型2</a>,可以预测雌雄虾体重：</p>
 <p>如果随机从T1池捞取一尾雄虾，它的预测体重为：</p>
-<p><span class="math inline">\(BW = 群体均值 + 雄虾的固定效应 + T1池固定效应\)</span> = 35.856019327243 + NA*1 + 0*1 = NA</p>
+<p><span class="math inline">\(BW = 群体均值 + 雄虾的固定效应 + T1池固定效应\)</span> = 35.856019327243 + -6.2081881124781*1 + 0*1 = 29.6478312</p>
 <p>这个数值跟Male.T1的均值非常接近。</p>
 <p>如果随机从T2池捞取一尾雄虾，它的预测体重为</p>
-<p><span class="math inline">\(BW = 群体均值 + 雄虾的固定效应 + T2池固定效应\)</span> = 35.856019327243 + NA*1 + NA*1 = NA</p>
+<p><span class="math inline">\(BW = 群体均值 + 雄虾的固定效应 + T2池固定效应\)</span> = 35.856019327243 + -6.2081881124781*1 + -2.96444990544144*1 = 26.6833813</p>
 <p>这个数值跟Male.T2的均值非常接近。</p>
 <p>如果随机从T2池捞取一尾雌虾，它的预测体重为</p>
-<p><span class="math inline">\(BW = 群体均值 + 雌虾的固定效应 + T2池固定效应\)</span> = 35.856019327243 + 0*1 + NA*1 = NA</p>
+<p><span class="math inline">\(BW = 群体均值 + 雌虾的固定效应 + T2池固定效应\)</span> = 35.856019327243 + 0*1 + -2.96444990544144*1 = 32.8915694</p>
 <p>这个数值跟Female.T2的均值非常接近。</p>
 </div>
 <div class="section level3">
@@ -520,7 +520,7 @@ summary(shrimp.lm.m1bw)</code></pre>
 ## Multiple R-squared:  0.04876,    Adjusted R-squared:  0.04854 
 ## F-statistic: 217.3 on 1 and 4239 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>上边实际上是简单的回归分析，系数表中Intercept为24.4789861，表示当M1BW为0时，混养体重M2BW为24.4789861g。实际上初始体重不可能为0。因此这个截距没有实际意义。</p>
-<p>M1BW的系数估计值为NA，表示初始体重每增加1g，混养体重会增加NAg。</p>
+<p>M1BW的系数估计值为0.9484804，表示初始体重每增加1g，混养体重会增加0.9484804g。</p>
 <p><a id="5">模型5</a></p>
 <p><span class="math display">\[M2BW = Sex + Sex:M1BW + \varepsilon\]</span></p>
 <pre class="r"><code>shrimp.lm.sex.m1bw &lt;- lm(M2BW~SexID+SexID:M1BW,shrimp)
@@ -555,11 +555,8 @@ summary(shrimp.lm.sex.m1bw)</code></pre>
 Figure 5: 雌雄虾混养前家系初始体重和混养后体重的散点图
 </p>
 </div>
-<p>我们根据<a href="#5">模型5</a>来预测一尾雄虾的体重,假定它的混养前体重为5g，那么它的混养后体重为25.87g。</p>
-<p><span class="math display">\[
-M2BW = 27.82 + -6.05 + 0.82*5 \\
-=25.87g
-\]</span></p>
+<p>我们根据<a href="#5">模型5</a>来预测一尾雄虾的体重,假定它的混养前体重为5g，那么它的混养后体重为26.0340769g。</p>
+<p>M2BW = 27.2862423952692 + -5.91782358698496 + 0.933131628220428*5 = 26.0340769g</p>
 </div>
 <div class="section level3">
 <h3>4.3 包括交互效应的线性模型</h3>
@@ -567,61 +564,15 @@ M2BW = 27.82 + -6.05 + 0.82*5 \\
 <p><a id="6">模型6</a></p>
 <p><span class="math display">\[M2BW = Sex + Tank + Sex:M1BW\]</span></p>
 <pre class="r"><code>shrimp.lm.sex.tank.m1bw &lt;- lm(M2BW ~ SexID + TankID + SexID:M1BW,shrimp)
-summary(shrimp.lm.sex.tank.m1bw)</code></pre>
-<pre><code>## 
-## Call:
-## lm(formula = M2BW ~ SexID + TankID + SexID:M1BW, data = shrimp)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -22.2635  -2.9218  -0.1317   2.7273  19.9333 
-## 
-## Coefficients:
-##                  Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)      28.59445    0.52621  54.340  &lt; 2e-16 ***
-## SexIDMale        -5.43136    0.77289  -7.027 2.44e-12 ***
-## TankIDT2         -2.95103    0.14467 -20.399  &lt; 2e-16 ***
-## SexIDFemale:M1BW  0.99876    0.07049  14.168  &lt; 2e-16 ***
-## SexIDMale:M1BW    0.88930    0.07689  11.566  &lt; 2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 4.708 on 4236 degrees of freedom
-##   (41 observations deleted due to missingness)
-## Multiple R-squared:  0.3805, Adjusted R-squared:  0.3799 
-## F-statistic: 650.4 on 4 and 4236 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>从Adjusted R-squared参数（0.42 vs 0.31可以看出，模型6 对数据的解释能力，相比模型1，已经大幅度提高了。也就是说根据模型6预测体重，准确性比模型1要高。</p>
+shrimp.lm.sex.tank.m1bw.sum &lt;- summary(shrimp.lm.sex.tank.m1bw)</code></pre>
+<p>从Adjusted R-squared参数（0.3798813 vs 0.2701994可以看出，模型6 对数据的解释能力，相比模型1，已经提高了。也就是说根据模型6预测体重，准确性比模型1要高。</p>
 <p>什么是交互效应？Interaction effects represent the combined effects of factors on the dependent measure. When an interaction effect is present, the impact of one factor depends on the level of the other factor。两个效应间相互影响，促进或者制约的关系。</p>
 <p>譬如，我们数据中有Sex和Tank两个固定效应，那么我们可能会想 雌虾会不会在特别偏爱某种环境，譬如在T1池中长得比T2池中大，但是雄虾可能会在T2池中长的比T1池大？因此我们可以在模型中试着加入交互效应。</p>
 <p><a id="7">模型7</a></p>
 <p><span class="math display">\[M2BW = Sex + Tank + Sex:Tank + Sex:M1BW\]</span></p>
 <pre class="r"><code>shrimp.lm.sex.tank.m1bw.interaction &lt;- lm(M2BW ~ SexID + TankID + SexID:TankID + SexID:M1BW,shrimp)
-summary(shrimp.lm.sex.tank.m1bw.interaction)</code></pre>
-<pre><code>## 
-## Call:
-## lm(formula = M2BW ~ SexID + TankID + SexID:TankID + SexID:M1BW, 
-##     data = shrimp)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -22.2039  -2.8961  -0.1335   2.7157  19.9954 
-## 
-## Coefficients:
-##                    Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)        28.64805    0.52985  54.068  &lt; 2e-16 ***
-## SexIDMale          -5.56393    0.78792  -7.062 1.92e-12 ***
-## TankIDT2           -3.07193    0.20104 -15.280  &lt; 2e-16 ***
-## SexIDMale:TankIDT2  0.25075    0.28953   0.866    0.387    
-## SexIDFemale:M1BW    0.99972    0.07050  14.180  &lt; 2e-16 ***
-## SexIDMale:M1BW      0.89123    0.07692  11.586  &lt; 2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 4.708 on 4235 degrees of freedom
-##   (41 observations deleted due to missingness)
-## Multiple R-squared:  0.3806, Adjusted R-squared:  0.3798 
-## F-statistic: 520.4 on 5 and 4235 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>从系数表中，可以看出，相比两个主效应（SexIDMale：-5.66、TankIDT2：-3.05），Sex和Tank的交互效应非常小（0.19），p=0.461 &gt; 0.05，统计检验与0相比，达不到显著水平。Adjusted R-squared: 0.4242也表明，相比<a href="#6">模型6</a>，<a href="#7">模型7</a>的解释能力并没有提高。</p>
+shrimp.lm.sex.tank.m1bw.interaction.sum &lt;- summary(shrimp.lm.sex.tank.m1bw.interaction)</code></pre>
+<p>从系数表中，可以看出，相比两个主效应（SexIDMale：-5.563925、TankIDT2：-3.0719274），Sex和Tank的交互效应非常小（0.2507485），p &gt; 0.05，统计检验与0相比，达不到显著水平。Adjusted R-squared: 0.3798447也表明，相比<a href="#6">模型6</a>，<a href="#7">模型7</a>的解释能力并没有提高。</p>
 <p>我们图形展示一下模型7固定效应：</p>
 <pre class="r"><code>plot_model(shrimp.lm.sex.tank.m1bw.interaction,show.values = TRUE)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:lm4plot"></span>
