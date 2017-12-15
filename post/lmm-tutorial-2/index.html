@@ -291,7 +291,7 @@ MathJax.Hub.Config({
 </ul>
 <div class="section level3">
 <h3>4.4 包括随机效应的线性混合效应模型</h3>
-<p>请加载一个新的数据集<a href="https://luansheng.netlify.com/data/shrimpex.csv">shrimpex.csv</a>，其中有一个PopID字段，包括Pop1到Pop4共计4个水平，表示shrimp数据由四个群体组成。现在考虑这样一个问题：四个群体间收获体重是否存在差异。</p>
+<p>请加载一个新的数据集<a href="https://luansheng.netlify.com/post/shrimpex.csv">shrimpex.csv</a>，其中有一个PopID字段，包括Pop1到Pop4共计4个水平，表示shrimp数据由四个群体组成。现在考虑这样一个问题：四个群体间收获体重是否存在差异。</p>
 <p>首先加载数据文件。画出四个群体收获体重的箱形图，加上jitter点。</p>
 <pre class="r"><code>shrimp &lt;- fread(input = &quot;shrimpex.csv&quot;,sep = &quot;,&quot;,header = TRUE,stringsAsFactors = TRUE)
 str(shrimp)</code></pre>

@@ -149,7 +149,7 @@ S_{T} = \sum_{i=1}^{r}\sum_{j=1}^{n}(y_{ij}-\bar{y_{i\cdot}})^2+\sum_{i=1}^{r}\s
 &lt;/ul&gt;
 &lt;div class=&#34;section level3&#34;&gt;
 &lt;h3&gt;4.4 包括随机效应的线性混合效应模型&lt;/h3&gt;
-&lt;p&gt;请加载一个新的数据集&lt;a href=&#34;https://luansheng.netlify.com/data/shrimpex.csv&#34;&gt;shrimpex.csv&lt;/a&gt;，其中有一个PopID字段，包括Pop1到Pop4共计4个水平，表示shrimp数据由四个群体组成。现在考虑这样一个问题：四个群体间收获体重是否存在差异。&lt;/p&gt;
+&lt;p&gt;请加载一个新的数据集&lt;a href=&#34;https://luansheng.netlify.com/post/shrimpex.csv&#34;&gt;shrimpex.csv&lt;/a&gt;，其中有一个PopID字段，包括Pop1到Pop4共计4个水平，表示shrimp数据由四个群体组成。现在考虑这样一个问题：四个群体间收获体重是否存在差异。&lt;/p&gt;
 &lt;p&gt;首先加载数据文件。画出四个群体收获体重的箱形图，加上jitter点。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp &amp;lt;- fread(input = &amp;quot;shrimpex.csv&amp;quot;,sep = &amp;quot;,&amp;quot;,header = TRUE,stringsAsFactors = TRUE)
 str(shrimp)&lt;/code&gt;&lt;/pre&gt;
