@@ -648,14 +648,62 @@ Figure 5: 雌雄虾混养前家系初始体重和混养后体重的散点图
 &lt;p&gt;&lt;a id=&#34;6&#34;&gt;模型6&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[M2BW = Sex + Tank + Sex:M1BW\]&lt;/span&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm.sex.tank.m1bw &amp;lt;- lm(M2BW ~ SexID + TankID + SexID:M1BW,shrimp)
-shrimp.lm.sex.tank.m1bw.sum &amp;lt;- summary(shrimp.lm.sex.tank.m1bw)&lt;/code&gt;&lt;/pre&gt;
+shrimp.lm.sex.tank.m1bw.sum &amp;lt;- summary(shrimp.lm.sex.tank.m1bw)
+print(shrimp.lm.sex.tank.m1bw.sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = M2BW ~ SexID + TankID + SexID:M1BW, data = shrimp)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -22.2635  -2.9218  -0.1317   2.7273  19.9333 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)      28.59445    0.52621  54.340  &amp;lt; 2e-16 ***
+## SexIDMale        -5.43136    0.77289  -7.027 2.44e-12 ***
+## TankIDT2         -2.95103    0.14467 -20.399  &amp;lt; 2e-16 ***
+## SexIDFemale:M1BW  0.99876    0.07049  14.168  &amp;lt; 2e-16 ***
+## SexIDMale:M1BW    0.88930    0.07689  11.566  &amp;lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 4.708 on 4236 degrees of freedom
+##   (41 observations deleted due to missingness)
+## Multiple R-squared:  0.3805, Adjusted R-squared:  0.3799 
+## F-statistic: 650.4 on 4 and 4236 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;从Adjusted R-squared参数（0.3798813 vs 0.2701994可以看出，模型6 对数据的解释能力，相比模型1，已经提高了。也就是说根据模型6预测体重，准确性比模型1要高。&lt;/p&gt;
 &lt;p&gt;什么是交互效应？Interaction effects represent the combined effects of factors on the dependent measure. When an interaction effect is present, the impact of one factor depends on the level of the other factor。两个效应间相互影响，促进或者制约的关系。&lt;/p&gt;
 &lt;p&gt;譬如，我们数据中有Sex和Tank两个固定效应，那么我们可能会想 雌虾会不会在特别偏爱某种环境，譬如在T1池中长得比T2池中大，但是雄虾可能会在T2池中长的比T1池大？因此我们可以在模型中试着加入交互效应。&lt;/p&gt;
 &lt;p&gt;&lt;a id=&#34;7&#34;&gt;模型7&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[M2BW = Sex + Tank + Sex:Tank + Sex:M1BW\]&lt;/span&gt;&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm.sex.tank.m1bw.interaction &amp;lt;- lm(M2BW ~ SexID + TankID + SexID:TankID + SexID:M1BW,shrimp)
-shrimp.lm.sex.tank.m1bw.interaction.sum &amp;lt;- summary(shrimp.lm.sex.tank.m1bw.interaction)&lt;/code&gt;&lt;/pre&gt;
+shrimp.lm.sex.tank.m1bw.interaction.sum &amp;lt;- summary(shrimp.lm.sex.tank.m1bw.interaction)
+print(shrimp.lm.sex.tank.m1bw.interaction.sum)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = M2BW ~ SexID + TankID + SexID:TankID + SexID:M1BW, 
+##     data = shrimp)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -22.2039  -2.8961  -0.1335   2.7157  19.9954 
+## 
+## Coefficients:
+##                    Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)        28.64805    0.52985  54.068  &amp;lt; 2e-16 ***
+## SexIDMale          -5.56393    0.78792  -7.062 1.92e-12 ***
+## TankIDT2           -3.07193    0.20104 -15.280  &amp;lt; 2e-16 ***
+## SexIDMale:TankIDT2  0.25075    0.28953   0.866    0.387    
+## SexIDFemale:M1BW    0.99972    0.07050  14.180  &amp;lt; 2e-16 ***
+## SexIDMale:M1BW      0.89123    0.07692  11.586  &amp;lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 4.708 on 4235 degrees of freedom
+##   (41 observations deleted due to missingness)
+## Multiple R-squared:  0.3806, Adjusted R-squared:  0.3798 
+## F-statistic: 520.4 on 5 and 4235 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;从系数表中，可以看出，相比两个主效应（SexIDMale：-5.563925、TankIDT2：-3.0719274），Sex和Tank的交互效应非常小（0.2507485），p &amp;gt; 0.05，统计检验与0相比，达不到显著水平。Adjusted R-squared: 0.3798447也表明，相比&lt;a href=&#34;#6&#34;&gt;模型6&lt;/a&gt;，&lt;a href=&#34;#7&#34;&gt;模型7&lt;/a&gt;的解释能力并没有提高。&lt;/p&gt;
 &lt;p&gt;我们图形展示一下模型7固定效应：&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_model(shrimp.lm.sex.tank.m1bw.interaction,show.values = TRUE)&lt;/code&gt;&lt;/pre&gt;
