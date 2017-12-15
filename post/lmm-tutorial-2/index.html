@@ -444,7 +444,7 @@ summary(shrimp.lm.9)</code></pre>
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>把<a href="#8">模型8</a>的Residual standard error的平方，与<a href="#9">模型9</a> Random Effects部分对比，你会发现，如果不考虑家系结构，残差方差明显被高估,估计值为18.4559804 。考虑家系结构后，残差方差为12.5267428, 明显变小， 从残差中分离出了大部分的家系方差。</p>
-<p>从anova方差分析的角度看，加入家系随机效应后，群体固定效应（PopID）尽管仍然也达到了显著水平，但是均方和F值明显变小。这表明存在这样一种风险，<strong>如果考虑群体内的家系结构，本来两个群体的差异可能达不到显著水平，但是如果忽视了这种家系结构，两个群体间的差异统计上会表现为显著水平</strong>，从而误判群体间的实际性能差别。</p>
+<p>从anova方差分析(如果对基础概念不了解，可参考这篇blog：<a href="https://luansheng.netlify.com/post/df-and-anova/">自由度和方差分析</a>)的角度看，加入家系随机效应后，群体固定效应（PopID）尽管仍然也达到了显著水平，但是均方和F值明显变小。这表明存在这样一种风险，<strong>如果考虑群体内的家系结构，本来两个群体的差异可能达不到显著水平，但是如果忽视了这种家系结构，两个群体间的差异统计上会表现为显著水平</strong>，从而误判群体间的实际性能差别。</p>
 <p>我们看一下，基于模型9（不包括家系的随机效应），预测四个群体家系的性能，如下图所示：你会发现，每个群体中特别大的家系效应，已经被剔除掉了。</p>
 <p>ps：拟合值反应的是包括所有固定和随机效应的结果，lmer中通过fitted()函数获得该值。预测值，是可以设定不包括随机效应的，lmer中通过predict()函数获得该值。</p>
 <pre class="r"><code>shrimp.lm.9.predict &lt;- predict(shrimp.lm.9,re.form=NA) #拟合值
@@ -473,15 +473,14 @@ Figure 3: 四个对虾群体体重的预测值
 <p>关于emmeans包，请参考日志<a href="http://luansheng.netlify.com/post/least-squares-means-note-1/">最小二乘均值的估计模型</a>。尽管该日志介绍的是lsmeans包，但用法跟emmeans包都是一样的。而且根据作者介绍，在不久的将来，emmeans包要替代lsmeans包。</p>
 <p>注意，安装emmeans还需要pbkrtest包，这个包没有自动安装，需要手动安装。</p>
 <pre class="r"><code>require(emmeans)</code></pre>
-<pre><code>## Loading required package: emmeans</code></pre>
-<pre><code>## Warning: package &#39;emmeans&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## 载入需要的程辑包：emmeans</code></pre>
 <pre><code>## 
-## Attaching package: &#39;emmeans&#39;</code></pre>
+## 载入程辑包：&#39;emmeans&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:lmerTest&#39;:
 ## 
 ##     lsmeans</code></pre>
 <pre class="r"><code>shrimp.lm9.rgl &lt;- ref_grid(shrimp.lm.9)</code></pre>
-<pre><code>## Loading required namespace: pbkrtest</code></pre>
+<pre><code>## 载入需要的名字空间：pbkrtest</code></pre>
 <pre><code>## Note: D.f. calculations have been disabled because the number of observations exceeds 3000.
 ## To enable adjustments, set emm_options(pbkrtest.limit = 4241) or larger,
 ## but be warned that this may result in large computation time and memory use.</code></pre>

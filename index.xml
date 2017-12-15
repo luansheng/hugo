@@ -302,7 +302,7 @@ summary(shrimp.lm.9)&lt;/code&gt;&lt;/pre&gt;
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;把&lt;a href=&#34;#8&#34;&gt;模型8&lt;/a&gt;的Residual standard error的平方，与&lt;a href=&#34;#9&#34;&gt;模型9&lt;/a&gt; Random Effects部分对比，你会发现，如果不考虑家系结构，残差方差明显被高估,估计值为18.4559804 。考虑家系结构后，残差方差为12.5267428, 明显变小， 从残差中分离出了大部分的家系方差。&lt;/p&gt;
-&lt;p&gt;从anova方差分析的角度看，加入家系随机效应后，群体固定效应（PopID）尽管仍然也达到了显著水平，但是均方和F值明显变小。这表明存在这样一种风险，&lt;strong&gt;如果考虑群体内的家系结构，本来两个群体的差异可能达不到显著水平，但是如果忽视了这种家系结构，两个群体间的差异统计上会表现为显著水平&lt;/strong&gt;，从而误判群体间的实际性能差别。&lt;/p&gt;
+&lt;p&gt;从anova方差分析(如果对基础概念不了解，可参考这篇blog：&lt;a href=&#34;https://luansheng.netlify.com/post/df-and-anova/&#34;&gt;自由度和方差分析&lt;/a&gt;)的角度看，加入家系随机效应后，群体固定效应（PopID）尽管仍然也达到了显著水平，但是均方和F值明显变小。这表明存在这样一种风险，&lt;strong&gt;如果考虑群体内的家系结构，本来两个群体的差异可能达不到显著水平，但是如果忽视了这种家系结构，两个群体间的差异统计上会表现为显著水平&lt;/strong&gt;，从而误判群体间的实际性能差别。&lt;/p&gt;
 &lt;p&gt;我们看一下，基于模型9（不包括家系的随机效应），预测四个群体家系的性能，如下图所示：你会发现，每个群体中特别大的家系效应，已经被剔除掉了。&lt;/p&gt;
 &lt;p&gt;ps：拟合值反应的是包括所有固定和随机效应的结果，lmer中通过fitted()函数获得该值。预测值，是可以设定不包括随机效应的，lmer中通过predict()函数获得该值。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm.9.predict &amp;lt;- predict(shrimp.lm.9,re.form=NA) #拟合值
@@ -331,15 +331,14 @@ Figure 3: 四个对虾群体体重的预测值
 &lt;p&gt;关于emmeans包，请参考日志&lt;a href=&#34;http://luansheng.netlify.com/post/least-squares-means-note-1/&#34;&gt;最小二乘均值的估计模型&lt;/a&gt;。尽管该日志介绍的是lsmeans包，但用法跟emmeans包都是一样的。而且根据作者介绍，在不久的将来，emmeans包要替代lsmeans包。&lt;/p&gt;
 &lt;p&gt;注意，安装emmeans还需要pbkrtest包，这个包没有自动安装，需要手动安装。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(emmeans)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: emmeans&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;emmeans&amp;#39; was built under R version 3.4.3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：emmeans&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
-## Attaching package: &amp;#39;emmeans&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+## 载入程辑包：&amp;#39;emmeans&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:lmerTest&amp;#39;:
 ## 
 ##     lsmeans&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm9.rgl &amp;lt;- ref_grid(shrimp.lm.9)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required namespace: pbkrtest&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 载入需要的名字空间：pbkrtest&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Note: D.f. calculations have been disabled because the number of observations exceeds 3000.
 ## To enable adjustments, set emm_options(pbkrtest.limit = 4241) or larger,
 ## but be warned that this may result in large computation time and memory use.&lt;/code&gt;&lt;/pre&gt;
