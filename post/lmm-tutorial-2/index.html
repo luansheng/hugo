@@ -482,6 +482,7 @@ Figure 3: 四个对虾群体体重的预测值
 <p>LRT检验的公式为<span class="math inline">\(LR = 2*(lnL1 - lnL2)\)</span>，其中L1为复杂模型的最大似然值，L2为简单模型的最大似然值。对L1和L2分别取log转换，计算LR值。然后通过卡方检验，确定p值。自由度为复杂模型和简单模型包括的随机效应数之差。</p>
 <p><a href="#9">模型9</a>的最大似然值log转换后为：<span class="math inline">\(-1.153518\times 10^{4}\)</span>；</p>
 <p>不包括PopID:Family随机效应的<a href="#8">模型8</a>的logLikelihood值为<span class="math inline">\(-1.21958\times 10^{4}\)</span>。</p>
+<p>lmer函数返回的最大似然值log转换通过lme4包的logLik()函数实现。对于lm函数返回的最大似然值，stats包也有对应的logLik()函数处理。</p>
 <p>似然比率为：LR = 2*(-11535.178901292 - -12195.7957678913) = 1321.23。自由度为1。</p>
 <p>跟直接利用rand()函数获得的卡方值相比略有出入。</p>
 </div>
