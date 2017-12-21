@@ -11,6 +11,98 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Take me to  your heart</title>
+      <link>/post/take-me-to-your-heart/</link>
+      <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/take-me-to-your-heart/</guid>
+      <description>&lt;p&gt;Hiding from the rain and snow&lt;/p&gt;
+
+&lt;p&gt;Trying to forget but I won&amp;rsquo;t let go&lt;/p&gt;
+
+&lt;p&gt;Looking at a crowded street&lt;/p&gt;
+
+&lt;p&gt;Listening to my own heart beat&lt;/p&gt;
+
+&lt;p&gt;So many people all around the world&lt;/p&gt;
+
+&lt;p&gt;Tell me where do I find someone like you girl&lt;/p&gt;
+
+&lt;p&gt;(Chorus)&lt;/p&gt;
+
+&lt;p&gt;Take me to your heart take me to your soul&lt;/p&gt;
+
+&lt;p&gt;Give me your hand before I&amp;rsquo;m old&lt;/p&gt;
+
+&lt;p&gt;Show me what love is - haven&amp;rsquo;t got a clue&lt;/p&gt;
+
+&lt;p&gt;Show me that wonders can be true&lt;/p&gt;
+
+&lt;p&gt;They say nothing lasts forever&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;re only here today&lt;/p&gt;
+
+&lt;p&gt;Love is now or never&lt;/p&gt;
+
+&lt;p&gt;Bring me far away&lt;/p&gt;
+
+&lt;p&gt;Take me to your heart take me to your soul&lt;/p&gt;
+
+&lt;p&gt;Give me your hand and hold me&lt;/p&gt;
+
+&lt;p&gt;Show me what love is - be my guiding star&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s easy take me to your heart&lt;/p&gt;
+
+&lt;p&gt;Standing on a mountain high&lt;/p&gt;
+
+&lt;p&gt;Looking at the moon through a clear blue sky&lt;/p&gt;
+
+&lt;p&gt;I should go and see some friends&lt;/p&gt;
+
+&lt;p&gt;But they don&amp;rsquo;t really comprehend&lt;/p&gt;
+
+&lt;p&gt;Don&amp;rsquo;t need too much talking without saying anything&lt;/p&gt;
+
+&lt;p&gt;All I need is someone who makes me wanna sing&lt;/p&gt;
+
+&lt;p&gt;Take me to your heart take me to your soul&lt;/p&gt;
+
+&lt;p&gt;Give me your hand before I&amp;rsquo;m old&lt;/p&gt;
+
+&lt;p&gt;Show me what love is - haven&amp;rsquo;t got a clue&lt;/p&gt;
+
+&lt;p&gt;Show me that wonders can be true&lt;/p&gt;
+
+&lt;p&gt;They say nothing lasts forever&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;re only here today&lt;/p&gt;
+
+&lt;p&gt;Love is now or never&lt;/p&gt;
+
+&lt;p&gt;Bring me far away&lt;/p&gt;
+
+&lt;p&gt;Take me to your heart take me to your soul&lt;/p&gt;
+
+&lt;p&gt;Give me your hand and hold me&lt;/p&gt;
+
+&lt;p&gt;Show me what love is - be my guiding star&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s easy take me to your heart&lt;/p&gt;
+
+&lt;p&gt;Take me to your heart take me to your soul&lt;/p&gt;
+
+&lt;p&gt;Give me your hand and hold me&lt;/p&gt;
+
+&lt;p&gt;Show me what love is - be my guiding star&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s easy take me to your heart&lt;/p&gt;
+
+&lt;p&gt;(Chorus)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>自由度和方差分析</title>
       <link>/post/df-and-anova/</link>
       <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
@@ -247,7 +339,7 @@ summary(shrimp.lm.8) #加载lmerTest包后，lmer的返回结果，每个固定�
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;a id=&#34;9&#34;&gt;模型9&lt;/a&gt;考虑家系结构，Pop:Family为随机效应，Pop、Sex和Tank为固定效应，Sex:M1BW为协变量。&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[M2BW = Pop + Sex + Tank + Sex:M1BW + Pop:Family\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;在模型中加入随机效应，需要使用lme4包中的lmer函数。下边代码中的(1|PopID:FamilyID)，表示针对不同的家系，单独估计其随机截距（random intercept）。&lt;/p&gt;
+&lt;p&gt;在模型中加入随机效应，需要使用lme4包中的lmer函数。下边代码中的(1|PopID:FamilyID)，表示针对不同的家系，单独估计其随机截距（random intercept）。其中1表示随机截距。&lt;/p&gt;
 &lt;p&gt;分析结果如下：&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm.9 &amp;lt;- lmer(M2BW ~ 1 + PopID + SexID + TankID + SexID:M1BW  + (1|PopID:FamilyID),shrimp)
 summary(shrimp.lm.9)&lt;/code&gt;&lt;/pre&gt;
@@ -301,7 +393,7 @@ summary(shrimp.lm.9)&lt;/code&gt;&lt;/pre&gt;
 ## SexID:M1BW  122.4    61.2     2 1414.2    4.88  0.007695 ** 
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;把&lt;a href=&#34;#8&#34;&gt;模型8&lt;/a&gt;的Residual standard error的平方，与&lt;a href=&#34;#9&#34;&gt;模型9&lt;/a&gt; Random Effects部分对比，你会发现，如果不考虑家系结构，残差方差明显被高估,估计值为18.4559804 。考虑家系结构后，残差方差为12.5267428, 明显变小， 从残差中分离出了大部分的家系方差。&lt;/p&gt;
+&lt;p&gt;把&lt;a href=&#34;#8&#34;&gt;模型8&lt;/a&gt;的Residual standard error的平方，与&lt;a href=&#34;#9&#34;&gt;模型9&lt;/a&gt; Random Effects部分对比，你会发现，如果不考虑家系结构，残差方差明显被高估,估计值为18.4559804 。考虑家系结构后，残差方差为12.5267428, 明显变小， 从残差中分离出了大部分的家系方差。由家系随机效应产生的方差，估计值为5.9328256，占表型方差的32%。&lt;/p&gt;
 &lt;p&gt;从anova方差分析(如果对基础概念不了解，可参考这篇blog：&lt;a href=&#34;https://luansheng.netlify.com/post/df-and-anova/&#34;&gt;自由度和方差分析&lt;/a&gt;)的角度看，加入家系随机效应后，群体固定效应（PopID）尽管仍然也达到了显著水平，但是均方和F值明显变小。这表明存在这样一种风险，&lt;strong&gt;如果考虑群体内的家系结构，本来两个群体的差异可能达不到显著水平，但是如果忽视了这种家系结构，两个群体间的差异统计上会表现为显著水平&lt;/strong&gt;，从而误判群体间的实际性能差别。&lt;/p&gt;
 &lt;p&gt;我们看一下，基于模型9（不包括家系的随机效应），预测四个群体家系的性能，如下图所示：你会发现，每个群体中特别大的家系效应，已经被剔除掉了。&lt;/p&gt;
 &lt;p&gt;ps：拟合值反应的是包括所有固定和随机效应的结果，lmer中通过fitted()函数获得该值。预测值，是可以设定不包括随机效应的，lmer中通过predict()函数获得该值。&lt;/p&gt;
@@ -326,19 +418,38 @@ Figure 3: 四个对虾群体体重的预测值
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
+&lt;h3&gt;4.5 随机效应的显著性检验&lt;/h3&gt;
+&lt;p&gt;模型中加入随机效应后，如何检验其显著性？&lt;/p&gt;
+&lt;p&gt;一般是通过似然比率检验（Likelihood ratio test, LRT)来实现。lmerTest包中的rand()函数提供该功能。&lt;/p&gt;
+&lt;p&gt;首先我们来看一下似然比率检验的结果：&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rand(shrimp.lm.9)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Analysis of Random effects Table:
+##                Chi.sq Chi.DF p.value    
+## PopID:FamilyID   1341      1  &amp;lt;2e-16 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;卡方检验表明，&lt;em&gt;p&lt;/em&gt;&amp;lt;0.01，模型中加入PopID:Family随机效应后，对样本数据拟合得更好。&lt;/p&gt;
+&lt;p&gt;LRT检验的公式为&lt;span class=&#34;math inline&#34;&gt;\(LR = 2*(lnL1 - lnL2)\)&lt;/span&gt;，其中L1为复杂模型的最大似然值，L2为简单模型的最大似然值。对L1和L2分别取log转换，计算LR值。然后通过卡方检验，确定p值。自由度为复杂模型和简单模型包括的随机效应数之差。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;#9&#34;&gt;模型9&lt;/a&gt;的最大似然值log转换后为：&lt;span class=&#34;math inline&#34;&gt;\(-1.153518\times 10^{4}\)&lt;/span&gt;；&lt;/p&gt;
+&lt;p&gt;不包括PopID:Family随机效应的&lt;a href=&#34;#8&#34;&gt;模型8&lt;/a&gt;的logLikelihood值为&lt;span class=&#34;math inline&#34;&gt;\(-1.21958\times 10^{4}\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;似然比率为：LR = 2*(-11535.178901292 - -12195.7957678913) = 1321.23。自由度为1。&lt;/p&gt;
+&lt;p&gt;跟直接利用rand()函数获得的卡方值相比略有出入。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level3&#34;&gt;
 &lt;h3&gt;4.5 获得每个群体的性能&lt;/h3&gt;
 &lt;p&gt;调用emmeans包中的函数，计算四个群体的估计边际均值(estimated marginal means)，或者说最小二乘均值(least-squares means)。根据边际均值，我们可以对群体的性能进行排序和比较。&lt;/p&gt;
 &lt;p&gt;关于emmeans包，请参考日志&lt;a href=&#34;http://luansheng.netlify.com/post/least-squares-means-note-1/&#34;&gt;最小二乘均值的估计模型&lt;/a&gt;。尽管该日志介绍的是lsmeans包，但用法跟emmeans包都是一样的。而且根据作者介绍，在不久的将来，emmeans包要替代lsmeans包。&lt;/p&gt;
 &lt;p&gt;注意，安装emmeans还需要pbkrtest包，这个包没有自动安装，需要手动安装。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(emmeans)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：emmeans&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: emmeans&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;emmeans&amp;#39; was built under R version 3.4.3&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
-## 载入程辑包：&amp;#39;emmeans&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+## Attaching package: &amp;#39;emmeans&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:lmerTest&amp;#39;:
 ## 
 ##     lsmeans&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm9.rgl &amp;lt;- ref_grid(shrimp.lm.9)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 载入需要的名字空间：pbkrtest&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required namespace: pbkrtest&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Note: D.f. calculations have been disabled because the number of observations exceeds 3000.
 ## To enable adjustments, set emm_options(pbkrtest.limit = 4241) or larger,
 ## but be warned that this may result in large computation time and memory use.&lt;/code&gt;&lt;/pre&gt;
@@ -3451,407 +3562,6 @@ HarvestBW ~ mu  FamilyClass Sex TankID Sex.TankID Sex.TankID.StockingMeanBW !r F
 
 &lt;p&gt;&lt;a id=&#34;Searle&#34;&gt;Searle&lt;/a&gt; SR, Speed FM, Milliken GA (1980). Population marginal means in the linear model: A
 alternative to least squares means. The American Statistician, 34(4), 216-221.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Rcpp读书笔记1</title>
-      <link>/post/rcpp-note-1/</link>
-      <pubDate>Wed, 07 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rcpp-note-1/</guid>
-      <description>
-
-&lt;h2 id=&#34;1-1-背景-从r到c&#34;&gt;1.1 背景：从R到C++&lt;/h2&gt;
-
-&lt;p&gt;R语言是从S语言进化来的，R和S语言近三十年来一直在进化。举例说明，R语言通过S3和S4类系统实现面向对象特性，也包括新的参考类(reference class)。这种进化，有时候让新手看起来更加复杂（perplexing），也会让中高级开发者感觉语言特性的不连续。巧合的是（Coincidentally），C++也存在同样的问题。&lt;/p&gt;
-
-&lt;p&gt;这些争论听起来有些道理，但实际上不是那么回事。人们更加关心语言的可用性。一个语言的关键特性是，可以&lt;strong&gt;再现&lt;/strong&gt;整个数据分析过程。&lt;/p&gt;
-
-&lt;p&gt;下边是一个例子,数据来自美国黄石公园老忠实喷泉（Old Faithful Geyser）的喷发和等待时间。喷发时间的密度函数曲线见下图。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;xx &amp;lt;- faithful$eruptions
-fit &amp;lt;- density(xx)
-plot(fit)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;/post/images/simpleR-1.png&#34; alt=&#34;图1 老忠实泉喷发时间密度曲线&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;语言完美的展示了R的面向对象特性，利用plot函数，可以直接对函数density的返回结果&lt;strong&gt;fit&lt;/strong&gt;进行图形绘制。&lt;/p&gt;
-
-&lt;p&gt;接下来展示的代码，说实话没怎么看懂。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;xx &amp;lt;- faithful$eruptions
-fit1 &amp;lt;- density(xx)
-fit2 &amp;lt;- replicate(10000,
-                  {
-                    x &amp;lt;- sample(xx, replace = TRUE)
-                    density(x, from = min(fit1$x), to = max(fit1$x))$y
-                  })
-fit3 &amp;lt;- apply(fit2, 1, quantile, c(0.025, 0.975))
-plot(fit1, ylim = range(fit3))
-polygon(c(fit1$x, rev(fit1$x)),
-        c(fit3[1, ], rev(fit3[2, ])),
-        col = &#39;grey&#39;,
-        border = F)
-lines(fit1)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;/post/images/bootstrap-1.png&#34; alt=&#34;图2 Bootstrap 置信区间&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;3-6行执行一个最小型的bootstrap抽样。replicate函数对第二个参数重复了10000次。 第二个参数是一个代码段，包含了2个命令。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;x &amp;lt;- sample(xx,replace=TRUE);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;第一个命令，主要是进行重复抽样，构建一个新的数据集，主要是次序不一样。 第二个命令密度函数。其他就看不下去了，应该要看一下bootstrap的原理才会明白。&lt;/p&gt;
-
-&lt;p&gt;R内部执行的关键是它的核心解释器，扩展机制通过C语言执行。C语言的关键特性是可扩展性，通过外部库和外部模块完成。Rcpp的主要优势是，可以替代C，快速的写R的扩展。&lt;/p&gt;
-
-&lt;h2 id=&#34;1-2-第一个例子&#34;&gt;1.2 第一个例子&lt;/h2&gt;
-
-&lt;p&gt;斐波那契（Fibonacci）数列，就是一个递归序列，从第三个数开始，是前两个数的和。公式为：&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$$F_{n} = F_{n-1} + F_{n-2}$$&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;1-2-1-fibonacci的r版本&#34;&gt;1.2.1 Fibonacci的R版本&lt;/h3&gt;
-
-&lt;p&gt;计算函数可以定义为：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;fibR &amp;lt;- function(n) {
-  if(n==0) return(0)
-  if(n==1) return(1)
-  return(fibR(n-1)+fibR(n-2))
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上述函数并没有进行优化，没有对输入值进行判断，也不是特别有效率。譬如输入5，那么会计算fibR(4)和fibR(3)，但是等到fibR(4)的时候，会计算fibR(3)和fibR(2),fibR(3)被计算了2次。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-2-3-fibonacci的c-版本&#34;&gt;1.2.3 Fibonacci的C++版本&lt;/h3&gt;
-
-&lt;p&gt;令人惊喜的是，可以在Rmd中直接编译、链接和执行C++代码。通过在chunk头中定义&lt;code&gt;engine=&amp;quot;Rcpp&amp;quot;&lt;/code&gt;或者直接用&lt;code&gt;{Rcpp}&lt;/code&gt;表示。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;Rcpp.h&amp;gt;
-using namespace Rcpp;
-
-// [[Rcpp::export]]
-int fibC(const int x) {
-    if (x == 0 || x == 1) return(x);
-    return (fibC(x - 1) + fibC(x - 2));
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上述代码是在R中调用C++代码的一种形式。&lt;br /&gt;
-对比一下这两个函数的性能，主要是通过&lt;strong&gt;microbenchmark&lt;/strong&gt;包来进行。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(microbenchmark)
-microbenchmark(
-  fibR(20),
-  fibC(20)
-)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;## Unit: microseconds
-##      expr      min       lq       mean    median       uq       max neval
-##  fibR(20) 7976.576 8708.070 9308.24655 9045.4980 9653.349 15248.549   100
-##  fibC(20)   19.231   21.033   35.49196   25.2405   32.752   809.167   100
-##  cld
-##    b
-##   a
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;从输出结果来看，fibR消耗的时间是fibC的1349 倍。利用Rcpp的性能提升非常大。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-2-4-fibonacii的原始调用c-版本&#34;&gt;1.2.4 Fibonacii的原始调用C++版本&lt;/h3&gt;
-
-&lt;p&gt;这是调用C++的原始写法，用到了Rcpp的两个关键函数*as*和*wrap*。其中as的作用是把SEXP类型的xs变量转换为 C++需要的int类型。SEXP是S expression type的缩写，int是integer的缩写。相反，wrap的作用是把int类型的fib变量转换为R需要的SEXP类型。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int fibonacci(const int x) {
-  if (x == 0) return(0);
-  if (x == 1) return(1);
-  return (fibonacci(x - 1) + fibonacci(x - 2));
-}
-
-extern &amp;quot;C&amp;quot; SEXP fibWrapper(SEXP xs) {
-  int x = Rcpp::as&amp;lt;int&amp;gt;(xs);
-  int fib = fibonacci(x);
-  return (Rcpp::wrap(fib));
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;接下来的工作，是要把这两个函数进行编译、链接成一个共享库（shared library)，然后在R中载入共享库。这三步，事实上每一步都非常复杂，而且耗时费力。
-具体如何做，在第二章中&lt;a href=&#34;https://luansheng.github.io/2017/06/14/Rcpp-Chapter2-Notes/&#34; target=&#34;_blank&#34;&gt;Rcpp的首次编译&lt;/a&gt;部分进行了详细阐述，参见链接。
-为了简化上述工作，引入&lt;strong&gt;inline&lt;/strong&gt;包，。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-2-5-fibonacii的可理解和可执行版本&#34;&gt;1.2.5 Fibonacii的可理解和可执行版本&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;incltxt &amp;lt;- &#39;
-int fibonacci(const int x) {
-  if (x==0) return(0);
-  if (x==1) return(1);
-  return fibonacci(x-1)+fibonacci(x-2);
-}&#39;
-
-fibRcpp &amp;lt;- inline::cxxfunction(signature(XS=&amp;quot;int&amp;quot;),
-                       plugin = &amp;quot;Rcpp&amp;quot;,
-                       incl=incltxt,
-                       body=&#39;
-int x=Rcpp::as&amp;lt;int&amp;gt;(XS);
-return Rcpp::wrap(fibonacci(x));
-&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上面的代码，事实上主要是提供了两个参数：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;第一个参数&lt;strong&gt;incltxt&lt;/strong&gt;包括纯C++代码；&lt;/li&gt;
-&lt;li&gt;第二个参数是包括在函数cxxfunction内的body内容，主要是对接口的定义；&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;cxxfunction的主要目的，是对C++函数进行包装，定义为可以在R内运行；&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;XS定义为在R中运行时的输入参数,通过函数signature进一步定义和包装;&lt;/li&gt;
-&lt;li&gt;plugin 选择Rcpp来进行接口转换?不确定;&lt;/li&gt;
-&lt;li&gt;incl是C++函数体;&lt;/li&gt;
-&lt;li&gt;body定义如何转换;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;一旦完成上述定义，我们来比较一下三种函数的运行速度,fibR,fibC,fibRcpp。从下边的结果来看，fibC和fibRcpp优势非常明显。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;microbenchmark(fibR(20),
-               fibC(20),
-               fibRcpp(20))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;## Unit: microseconds
-##         expr      min       lq       mean    median       uq       max
-##     fibR(20) 8214.248 8578.267 9191.31867 8795.3565 9564.258 15052.943
-##     fibC(20)   19.230   21.033   28.11543   28.9955   33.653    49.278
-##  fibRcpp(20)   30.648   32.451   37.19267   36.9580   39.362    94.648
-##  neval cld
-##    100   b
-##    100  a 
-##    100  a
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;1-2-6-fibonacii第二种解法&#34;&gt;1.2.6 fibonacii第二种解法&lt;/h3&gt;
-
-&lt;p&gt;这种写法，用到local函数,实际上是local中的代码进行评估，但是local提供一种环境，这些代码中变量仅在这个环境中有效。 计算fibonacii时，对每个数字的fibonacii值存储，下次用的时候直接调用。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;mfibR &amp;lt;- local({
-  memo &amp;lt;- c(1,1,rep(NA,1000))
-  f &amp;lt;- function(x){
-    if (x == 0) return(0)
-    if (x&amp;lt;0) return(NA)
-    if (x &amp;gt; length(memo))
-      stop(&amp;quot;x too big for implementation&amp;quot;)
-    if (!is.na(memo[x])) return(memo[x])
-    ans &amp;lt;- f(x-1) + f(x-2)
-    memo[x] &amp;lt;- ans
-    ans
-  }
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;1-2-7-fibonacii第二种写法c-版本&#34;&gt;1.2.7 fibonacii第二种写法C++版本&lt;/h3&gt;
-
-&lt;p&gt;通过1.2.5 的方法，定义如下:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;mincltxt &amp;lt;- &#39;
-#include &amp;lt;algorithm&amp;gt; //具体的用途？
-#include &amp;lt;vector&amp;gt;
-#include &amp;lt;stdexcept&amp;gt;
-#include &amp;lt;cmath&amp;gt;
-#include &amp;lt;iostream&amp;gt;
-
-class Fib {
-public:
-  Fib(unsigned int n = 1000){
-    memo.resize(n);  //设置数组为1000个元素
-    std::fill(memo.begin(),memo.end(),NAN); //设置数组memo为空值
-    memo[0] = 0.0;
-    memo[1] = 1.0;
-  }
-  double fibonacci (int x) {
-    if (x &amp;lt; 0)
-      return((double) NAN);
-    if (x &amp;gt;= (int) memo.size())
-      throw std::range_error(\&amp;quot;x too large for implementation\&amp;quot;);
-    if (! std::isnan(memo[x]))
-      return(memo[x]);
-    memo[x] = fibonacci(x-2) + fibonacci(x-1);
-    return(memo[x]);
-  }
-private:
-  std::vector &amp;lt;double&amp;gt; memo;
-};
-&#39;
-
-
-mfibRcpp &amp;lt;- inline::cxxfunction(signature(xs=&amp;quot;int&amp;quot;),
-                                plugin = &amp;quot;Rcpp&amp;quot;,
-                                includes = mincltxt,
-                                body = &#39;
-int x = Rcpp::as&amp;lt;int&amp;gt;(xs);
-Fib f;
-return Rcpp::wrap(f.fibonacci(x-1));
-&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;第一次接触C++&lt;strong&gt;类的概念&lt;/strong&gt;，类Fib包括三个元素&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;constructor 构建器或称构建函数，初始化前调用，主要用途是对数组memo进行赋值&lt;/li&gt;
-&lt;li&gt;一个公开的成员函数，用来实现Fibonacci计算&lt;/li&gt;
-&lt;li&gt;一个私有向量memo&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;貌似必须遵循先公开有私有的顺序？一些特别需要注意的地方：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;类的定义最后一个大括号后边要加;&lt;/li&gt;
-&lt;li&gt;私有向量，类型的定义，类型要用&amp;lt;&amp;gt;表示。&lt;/li&gt;
-&lt;li&gt;而在代码中，(int) memo.size() 又是用括号表示？&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;对定义的c++类，在R中进行包装和输出。&lt;/p&gt;
-
-&lt;p&gt;比较一下mfibR和mfibRcpp两种方法的效率。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;microbenchmark(mfibR(20),mfibRcpp(20))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;## Unit: nanoseconds
-##          expr      min       lq        mean   median       uq       max
-##     mfibR(20) 42344928 45421139 50029789.07 47745725 52049957 162207493
-##  mfibRcpp(20)      902     1203     7890.83     2104    13522     47775
-##  neval cld
-##    100   b
-##    100  a
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;从结果看，采用了新的算法，性能进一步提升，R程序的时间大约降低了50%，而C++程序的时间直接下降了一个数量级。注意运行时间，第一种算法单位是microseconds，百万分一秒，而第二种算法是nanoseconds，十亿分之一秒。前者是后者的1万倍。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-2-8-第三种方法-迭代法&#34;&gt;1.2.8 第三种方法（迭代法)&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;fibRiter &amp;lt;- function(n) {
-  first = 0
-  second = 1
-  third = 0
-  for (i in seq_len(n)) {
-    third = first + second
-    first = second
-    second = third
-  }
-  return(first)
-}
-fibRcppiter &amp;lt;- inline::cxxfunction(signature(xs=&#39;init&#39;),
-                                   plugin = &amp;quot;Rcpp&amp;quot;,
-                                   body = &#39;
-int n = Rcpp::as&amp;lt;int&amp;gt;(xs);
-double first = 0;
-double second = 1;
-double third = 0;
-for (int i=0; i&amp;lt;n; i++) {
-    third = first + second;
-    first = second;
-    second = third;
-}
-return Rcpp::wrap(first);
-&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;三种方法运行时间的比较：C++代码，迭代法运行时间一次降低。令人惊奇的是，对于R代码，第二种方法的运行时间最长。可能与local函数有关系，第一种方法加载后，第二次不用重新运行？&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;microbenchmark(fibR(20),
-               fibC(20),
-               mfibR(20),
-               mfibRcpp(20),
-               fibRiter(20),
-               fibRcppiter(20)
-)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;## Unit: nanoseconds
-##             expr      min         lq        mean     median         uq
-##         fibR(20)  7814923  8241440.0  9322281.53  8801816.5 10059133.0
-##         fibC(20)    18629    22085.5    29771.03    30348.0    34104.0
-##        mfibR(20) 42768891 46989442.0 50810596.23 49409727.5 53836851.0
-##     mfibRcpp(20)      902     2704.5     9642.48    10667.0    13371.5
-##     fibRiter(20)     1202     2104.0    40455.69     6611.0     8413.5
-##  fibRcppiter(20)        0      601.0     4552.61     3906.5     6911.0
-##       max neval cld
-##  15597095   100  b 
-##     55888   100 a  
-##  69434396   100   c
-##     19530   100 a  
-##   3460513   100 a  
-##     44470   100 a
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;1-3-第二个例子&#34;&gt;1.3 第二个例子&lt;/h2&gt;
-
-&lt;p&gt;关于两个变量1阶自回归(autogressive process of order one for two variables)的描述,公式符号为$VAR(1)$，表述为：&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$$X_{t}=AX_{t-1}+u_{t}$$&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;现在考虑更为一般的形式，p阶$VAR(p)$表述为:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$$X_{t}=A_{1}X_{t-1}+A_{2}X_{t-2}+...+A_{p}X_{t-p}+u_{t}$$&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;1-3-1-r代码&#34;&gt;1.3.1 R代码&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#定义系数矩阵A和残差矩阵u
-a &amp;lt;- matrix(c(0.5,0.1,0.1,0.5),nrow = 2)
-u &amp;lt;- matrix(rnorm(10000),ncol=2)
-rSim &amp;lt;- function(coeff,errors){
-  simdata &amp;lt;- matrix(0,nrow(errors),ncol(errors))
-  for (row in 2:nrow(errors)) {
-    simdata[row,] = coeff %*% simdata[(row-1),]+errors[row,]
-  }
-  return(simdata)
-}
-rData &amp;lt;- rSim(a,u)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;上述代码中，需要说明的是&lt;code&gt;coeff&lt;/code&gt;是2×2矩阵，而&lt;code&gt;sima[(row-1),]&lt;/code&gt;为包括2个元素的向量，二者相乘的结果相当于&lt;code&gt;2×2 %*% 2×1&lt;/code&gt;，结果为&lt;code&gt;2×1&lt;/code&gt;矩阵。errors[row,]为包括2个元素的向量，跟前边结果相加，相当于&lt;code&gt;2×1 + 2×1&lt;/code&gt;。结果是一个&lt;code&gt;2×1&lt;/code&gt;矩阵，但是竟然可以作为一个向量赋值给simdata[row,]。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-3-2-c-代码&#34;&gt;1.3.2 C++代码&lt;/h3&gt;
-
-&lt;p&gt;本次C++代码用到了另外一个包RcppArmadillo,这个包主要是一个基础的线性代数运算包，包括稠密和稀疏矩阵的四则运算，求逆矩阵等。在本次代码中，主要是用来定义矩阵，以及相关的运算。C++中，矩阵读取的下标是()而不是[]。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;suppressMessages(require(inline))
-code &amp;lt;- &#39;
-  arma::mat coeff = Rcpp::as&amp;lt;arma::mat&amp;gt;(a); 
-  arma::mat errors = Rcpp::as&amp;lt;arma::mat&amp;gt;(u);
-  int m = errors.n_rows;
-  int n = errors.n_cols;
-  arma::mat simdata(m,n);
-  simdata.row(0) = arma::zeros&amp;lt;arma::mat&amp;gt;(1,n);
-  for (int row=1; row&amp;lt;m; row++) {
-    simdata.row(row) = simdata.row(row-1)*trans(coeff)+errors.row(row);
-    
-  }
-  return Rcpp::wrap(simdata);
-&#39;
-
-##创建编译函数
-rcppSim &amp;lt;- cxxfunction(signature(a=&amp;quot;numeric&amp;quot;,u=&amp;quot;numeric&amp;quot;),
-                       body=code,
-                       plugin=&amp;quot;RcppArmadillo&amp;quot;)
-rcppData &amp;lt;- rcppSim(a,u)
-stopifnot(all.equal(rData, rcppData))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;对于&lt;code&gt;simdata.row(0) = arma::zeros&amp;lt;arma::mat&amp;gt;(1,n)&lt;/code&gt;不是很理解。&lt;/p&gt;
-
-&lt;h3 id=&#34;1-3-3-性能比较&#34;&gt;1.3.3 性能比较&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;boxplot(microbenchmark::microbenchmark(rSim(a,u),rcppSim(a,u)))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;/post/images/unnamed-chunk-15-1.png&#34; alt=&#34;boxplot&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
