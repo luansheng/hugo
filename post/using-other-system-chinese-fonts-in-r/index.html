@@ -211,7 +211,7 @@ MathJax.Hub.Config({
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    4 min read
   </span>
   
 
@@ -498,7 +498,7 @@ font_add(family = &quot;kaiti&quot;,regular = &quot;simkai.ttf&quot;)</code></pr
 <p>然后我们在画图中使用黑体，借用showtext包作者邱逸轩的这篇文章<a href="https://cosx.org/2014/01/showtext-interesting-fonts-and-graphs">showtext：字体，好玩的字体和好玩的图形</a>中的r示例代码：</p>
 <p>需要注意，<strong>rstudio自带的Plots面板中绘出的图形不显示自定义字体</strong>，这也是以前总是觉得设置自定义字体不成功的原因。在运行下面的代码前，调用windows()函数打开一个新的图形接收窗口，下边代码绘制的图形会显示其中。</p>
 <p>如果你打算在Rmd文档中使用showtext包，请在chunk头参数中设置fig.showtext=TRUE。</p>
-<pre class="r"><code>showtext::showtext_auto() #这样代码非常重要
+<pre class="r"><code>showtext_auto() #这样代码非常重要
 set.seed(123)
 plot(1, xlim = c(-3, 3), ylim = c(-3, 3), type = &quot;n&quot;)
 text(runif(100, -3, 3), runif(100, -3, 3),
@@ -507,6 +507,22 @@ text(runif(100, -3, 3), runif(100, -3, 3),
      cex = 2, family = &quot;heiti&quot;)   # 指定heiti字体
 title(&quot;随机汉字&quot;, family = &quot;kaiti&quot;)   # 指定kaiti字体</code></pre>
 <p><img src="/post/2017-12-31-using-other-system-chinese-fonts-in-r_files/figure-html/fontexample-1.png" width="672" /></p>
+<p>试一下ggplot2作图。</p>
+<pre class="r"><code>require(ggplot2)</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre class="r"><code>xy &lt;- data.frame(x=rnorm(100),y=rnorm(100))
+showtext_auto()
+scatter.plot &lt;- ggplot(data = xy,aes(x=x,y=y))+
+  geom_point(shape=21)+
+  labs(x=&quot;均值为0，标准差为1的随机正态分布&quot;,y=&quot;均值为0，标准差为1的随机正态分布&quot;)+
+  theme_grey(base_size = 30,base_family = &quot;heiti&quot;)
+print(scatter.plot)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:ggplot2example"></span>
+<img src="/post/2017-12-31-using-other-system-chinese-fonts-in-r_files/figure-html/ggplot2example-1.png" alt="基于0,1正态分布的散点图" width="576" />
+<p class="caption">
+Figure 1: 基于0,1正态分布的散点图
+</p>
+</div>
 <p>Ok!大功告成！</p>
 
       </div>

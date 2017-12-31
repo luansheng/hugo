@@ -234,7 +234,7 @@ font_add(family = &amp;quot;kaiti&amp;quot;,regular = &amp;quot;simkai.ttf&amp;q
 &lt;p&gt;然后我们在画图中使用黑体，借用showtext包作者邱逸轩的这篇文章&lt;a href=&#34;https://cosx.org/2014/01/showtext-interesting-fonts-and-graphs&#34;&gt;showtext：字体，好玩的字体和好玩的图形&lt;/a&gt;中的r示例代码：&lt;/p&gt;
 &lt;p&gt;需要注意，&lt;strong&gt;rstudio自带的Plots面板中绘出的图形不显示自定义字体&lt;/strong&gt;，这也是以前总是觉得设置自定义字体不成功的原因。在运行下面的代码前，调用windows()函数打开一个新的图形接收窗口，下边代码绘制的图形会显示其中。&lt;/p&gt;
 &lt;p&gt;如果你打算在Rmd文档中使用showtext包，请在chunk头参数中设置fig.showtext=TRUE。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;showtext::showtext_auto() #这样代码非常重要
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;showtext_auto() #这样代码非常重要
 set.seed(123)
 plot(1, xlim = c(-3, 3), ylim = c(-3, 3), type = &amp;quot;n&amp;quot;)
 text(runif(100, -3, 3), runif(100, -3, 3),
@@ -243,6 +243,22 @@ text(runif(100, -3, 3), runif(100, -3, 3),
      cex = 2, family = &amp;quot;heiti&amp;quot;)   # 指定heiti字体
 title(&amp;quot;随机汉字&amp;quot;, family = &amp;quot;kaiti&amp;quot;)   # 指定kaiti字体&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2017-12-31-using-other-system-chinese-fonts-in-r_files/figure-html/fontexample-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;试一下ggplot2作图。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(ggplot2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: ggplot2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;xy &amp;lt;- data.frame(x=rnorm(100),y=rnorm(100))
+showtext_auto()
+scatter.plot &amp;lt;- ggplot(data = xy,aes(x=x,y=y))+
+  geom_point(shape=21)+
+  labs(x=&amp;quot;均值为0，标准差为1的随机正态分布&amp;quot;,y=&amp;quot;均值为0，标准差为1的随机正态分布&amp;quot;)+
+  theme_grey(base_size = 30,base_family = &amp;quot;heiti&amp;quot;)
+print(scatter.plot)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:ggplot2example&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;/post/2017-12-31-using-other-system-chinese-fonts-in-r_files/figure-html/ggplot2example-1.png&#34; alt=&#34;基于0,1正态分布的散点图&#34; width=&#34;576&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: 基于0,1正态分布的散点图
+&lt;/p&gt;
+&lt;/div&gt;
 &lt;p&gt;Ok!大功告成！&lt;/p&gt;
 </description>
     </item>
