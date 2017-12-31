@@ -497,6 +497,7 @@ font_add(family = &quot;kaiti&quot;,regular = &quot;simkai.ttf&quot;)</code></pr
 ## [5] &quot;heiti&quot;        &quot;kaiti&quot;</code></pre>
 <p>然后我们在画图中使用黑体，借用showtext包作者邱逸轩的这篇文章<a href="https://cosx.org/2014/01/showtext-interesting-fonts-and-graphs">showtext：字体，好玩的字体和好玩的图形</a>中的r示例代码：</p>
 <p>需要注意，<strong>rstudio自带的Plots面板中绘出的图形不显示自定义字体</strong>，这也是以前总是觉得设置自定义字体不成功的原因。在运行下面的代码前，调用windows()函数打开一个新的图形接收窗口，下边代码绘制的图形会显示其中。</p>
+<p>如果你打算在Rmd文档中使用showtext包，请在chunk头参数中设置fig.showtext=TRUE。</p>
 <pre class="r"><code>showtext::showtext_auto() #这样代码非常重要
 set.seed(123)
 plot(1, xlim = c(-3, 3), ylim = c(-3, 3), type = &quot;n&quot;)
