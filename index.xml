@@ -11,6 +11,95 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>测试</title>
+      <link>/post/%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Fri, 05 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E6%B5%8B%E8%AF%95/</guid>
+      <description>&lt;div id=&#34;r-markdown&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;R Markdown&lt;/h2&gt;
+&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;When you click the &lt;strong&gt;Knit&lt;/strong&gt; button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;including-plots&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Including Plots&lt;/h2&gt;
+&lt;p&gt;You can also embed plots, for example:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2018-01-05-测试_files/figure-html/pressure-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>try od package</title>
+      <link>/post/try-od-package/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/try-od-package/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://asreml.org/optimal-design/&#34;&gt;od&lt;/a&gt;包是一个可以给出数量遗传学&lt;strong&gt;优化试验设计&lt;/strong&gt;的包。试着通过实例来理解背后的设计原理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://asreml.org/resources/od/od_0.75.zip&#34;&gt;windows&lt;/a&gt;包没有自带数据，从&lt;a href=&#34;https://asreml.org/resources/od/od_0.75_R_linux-intel64.tar.gz&#34;&gt;linux&lt;/a&gt;包中把数据提出来。&lt;/p&gt;
+&lt;p&gt;关于od包背后的设计原理，参考作者的博士论文：On The Optimal Design of Experiments Under the Linear Mixed Model。&lt;/p&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. 加载数据文件&lt;/h2&gt;
+&lt;p&gt;genex是一个作物遗传改良的实验数据，包括213个品种。实验设计为部分重复设计，包括2个Block,每个block内有48行×3列。部分品种有2次实验记录。 genex.Ainv 包括了213个品种间的加性遗传相关矩阵。注意od包要求genex.Ainv数据框包括一个属性rowNames,存储row列中整数对应的品种名。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(data.table)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：data.table&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;genex &amp;lt;- fread(file=&amp;quot;genex.csv&amp;quot;,stringsAsFactors = TRUE)
+genex[,&amp;quot;:=&amp;quot;(Row=as.factor(Row),Block=as.factor(Block),Column=as.factor(Column))]
+genex.Ainv &amp;lt;- fread(file=&amp;quot;genex.Ainv.csv&amp;quot;,stringsAsFactors = TRUE)
+genex.Ainv.rowNames &amp;lt;- fread(file=&amp;quot;genex.Ainv.rowNames.csv&amp;quot;,sep=&amp;quot;,&amp;quot;,stringsAsFactors = FALSE,header = FALSE)
+attr(genex.Ainv,which = &amp;quot;rowNames&amp;quot;) &amp;lt;- genex.Ainv.rowNames$V1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(od)
+genex.G &amp;lt;- od.init(`ped(Entry)` = 1, `ide(Entry)` = 0.1, Block = 0.1,Column = 0.4, Row = 0.2)
+genex.R &amp;lt;- od.init(`Column:Row|Column` = 0.2, `Column:Row|Row` = 0.5)
+genex.od &amp;lt;- od(random = ~ped(Entry) + ide(Entry) + Block + Column + Row, 
+               rcov = ~ar1(Column):ar1(Row), 
+               permute = ~ped(Entry) |ide(Entry),
+               swap = ~Block, Gstart = genex.G, 
+               Rstart = genex.R,
+               ginv = list(Entry = genex.Ainv), 
+               geneticEffects = &amp;quot;total&amp;quot;,
+               search = &amp;quot;tabu&amp;quot;, 
+               maxit = 5, 
+               data = genex)
+save.image()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;genex.od$design&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>我的第一个python程序</title>
+      <link>/post/my-first-python-program/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-first-python-program/</guid>
+      <description>&lt;p&gt;参考&lt;a href=&#34;http://pandas.pydata.org/&#34;&gt;pandas官网&lt;/a&gt;，&lt;a href=&#34;http://pandas.pydata.org/pandas-docs/stable/10min.html&#34;&gt;十分钟教程&lt;/a&gt;&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+s = pd.Series([1,3,5,np.nan,6,8])
+print(s)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 0    1.0
+## 1    3.0
+## 2    5.0
+## 3    NaN
+## 4    6.0
+## 5    8.0
+## dtype: float64&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>在R中使用windows系统自带的中文字体</title>
       <link>/post/using-other-system-chinese-fonts-in-r/</link>
       <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
@@ -2660,655 +2749,6 @@ head(flights)&lt;/code&gt;&lt;/pre&gt;
 ## 6:            618           973           996&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;另外一种形式&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights[,c(&amp;quot;max_dep_delay&amp;quot;, &amp;quot;max_arr_delay&amp;quot;) := lapply(.SD, max),.SDcols = c(&amp;quot;dep_delay&amp;quot;, &amp;quot;arr_delay&amp;quot;)]&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>data.table学习笔记1</title>
-      <link>/post/data-table-note-1/</link>
-      <pubDate>Mon, 03 Jul 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/data-table-note-1/</guid>
-      <description>&lt;p&gt;data.table的特点：&lt;strong&gt;减小计算复杂度&lt;/strong&gt;，降低&lt;strong&gt;计算时间&lt;/strong&gt;。&lt;/p&gt;
-&lt;div class=&#34;section level1&#34;&gt;
-&lt;h1&gt;1.数据&lt;/h1&gt;
-&lt;p&gt;教程中，使用&lt;a href=&#34;https://raw.githubusercontent.com/wiki/arunsrinivasan/%20flights/NYCflights14/flights14.csv&#34;&gt;NYC-flights14数据集&lt;/a&gt;，纽约机场2014年出发的所有航班信息，时间是2014.01-10月份。下载到本地目录，与Rmd代码在同一目录 data.table中提供了fread()函数，用于快速读取大数据。&lt;br /&gt;
-执行代码前，首先运行&lt;code&gt;setwd()&lt;/code&gt;或者通过rstudio软件&lt;code&gt;Session&lt;/code&gt; -&amp;gt; &lt;code&gt;Set Working Directory&lt;/code&gt; -&amp;gt; &lt;code&gt;To Source File Location&lt;/code&gt;，将工作目录切换到代码文件和数据文件所在路径。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(data.table)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：data.table&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights &amp;lt;- fread(&amp;quot;flights14.csv&amp;quot;)
-flights&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##         year month day dep_time dep_delay arr_time arr_delay cancelled
-##      1: 2014     1   1      914        14     1238        13         0
-##      2: 2014     1   1     1157        -3     1523        13         0
-##      3: 2014     1   1     1902         2     2224         9         0
-##      4: 2014     1   1      722        -8     1014       -26         0
-##      5: 2014     1   1     1347         2     1706         1         0
-##     ---                                                               
-## 253312: 2014    10  31     1459         1     1747       -30         0
-## 253313: 2014    10  31      854        -5     1147       -14         0
-## 253314: 2014    10  31     1102        -8     1311        16         0
-## 253315: 2014    10  31     1106        -4     1325        15         0
-## 253316: 2014    10  31      824        -5     1045         1         0
-##         carrier tailnum flight origin dest air_time distance hour min
-##      1:      AA  N338AA      1    JFK  LAX      359     2475    9  14
-##      2:      AA  N335AA      3    JFK  LAX      363     2475   11  57
-##      3:      AA  N327AA     21    JFK  LAX      351     2475   19   2
-##      4:      AA  N3EHAA     29    LGA  PBI      157     1035    7  22
-##      5:      AA  N319AA    117    JFK  LAX      350     2475   13  47
-##     ---                                                              
-## 253312:      UA  N23708   1744    LGA  IAH      201     1416   14  59
-## 253313:      UA  N33132   1758    EWR  IAH      189     1400    8  54
-## 253314:      MQ  N827MQ   3591    LGA  RDU       83      431   11   2
-## 253315:      MQ  N511MQ   3592    LGA  DTW       75      502   11   6
-## 253316:      MQ  N813MQ   3599    LGA  SDF      110      659    8  24&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;class(flights)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;data.table&amp;quot; &amp;quot;data.frame&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level1&#34;&gt;
-&lt;h1&gt;2.基础&lt;/h1&gt;
-&lt;p&gt;flights的类型显示为data.table和data.frame。也可以通过&lt;code&gt;as.data.table()&lt;/code&gt;将对象转化为data.table类型。&lt;br /&gt;
-读取形式 语法如下所示：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;DT[i, j, by]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;其中i表示行过滤（实际上按照行选择数据集），j表示对列进行选择，by表示根据什么条件进行分组。&lt;/p&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2.1行过滤&lt;/h2&gt;
-&lt;p&gt;首先来看一下，如何对行进行过滤。譬如要获得6月份从JFK机场起飞，途径纽约或者终点是纽约的航班信息。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.JFK &amp;lt;-  flights[origin==&amp;quot;JFK&amp;quot; &amp;amp; month == 6L]
-head(flights.JFK)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    year month day dep_time dep_delay arr_time arr_delay cancelled carrier
-## 1: 2014     6   1      851        -9     1205        -5         0      AA
-## 2: 2014     6   1     1220       -10     1522       -13         0      AA
-## 3: 2014     6   1      718        18     1014        -1         0      AA
-## 4: 2014     6   1     1024        -6     1314       -16         0      AA
-## 5: 2014     6   1     1841        -4     2125       -45         0      AA
-## 6: 2014     6   1     1454        -6     1757       -23         0      AA
-##    tailnum flight origin dest air_time distance hour min
-## 1:  N787AA      1    JFK  LAX      324     2475    8  51
-## 2:  N795AA      3    JFK  LAX      329     2475   12  20
-## 3:  N784AA      9    JFK  LAX      326     2475    7  18
-## 4:  N791AA     19    JFK  LAX      320     2475   10  24
-## 5:  N790AA     21    JFK  LAX      326     2475   18  41
-## 6:  N785AA    117    JFK  LAX      329     2475   14  54&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;data.table的语法跟dplyr类似，不需要加上数据框名（&lt;code&gt;flights$origin&lt;/code&gt;）,大幅度简化。&lt;br /&gt;
-另外一种写法&lt;code&gt;flights.JFK &amp;lt;-  flights[origin==&amp;quot;JFK&amp;quot; &amp;amp; month == 6L,,]&lt;/code&gt;也是可以的。这种写法，在data frame是不行的。&lt;br /&gt;
-## 行排序 可以利用&lt;code&gt;order()&lt;/code&gt;函数来完成。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.sort &amp;lt;- flights[order(origin,-dest),]
-head(flights.sort)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    year month day dep_time dep_delay arr_time arr_delay cancelled carrier
-## 1: 2014     1   5      836         6     1151        49         0      EV
-## 2: 2014     1   6      833         7     1111        13         0      EV
-## 3: 2014     1   7      811        -6     1035       -13         0      EV
-## 4: 2014     1   8      810        -7     1036       -12         0      EV
-## 5: 2014     1   9      833        16     1055         7         0      EV
-## 6: 2014     1  13      923        66     1154        66         0      EV
-##    tailnum flight origin dest air_time distance hour min
-## 1:  N12175   4419    EWR  XNA      195     1131    8  36
-## 2:  N24128   4419    EWR  XNA      190     1131    8  33
-## 3:  N12142   4419    EWR  XNA      179     1131    8  11
-## 4:  N11193   4419    EWR  XNA      184     1131    8  10
-## 5:  N14198   4419    EWR  XNA      181     1131    8  33
-## 6:  N12157   4419    EWR  XNA      188     1131    9  23&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;order()&lt;/code&gt;实际上调用了data.table的快速基数排序函数&lt;code&gt;forder()&lt;/code&gt;。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2.2选择列&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.arr_delay &amp;lt;- flights[,arr_delay]
-head(flights.arr_delay)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1]  13  13   9 -26   1   0&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;请注意，返回值是向量。&lt;br /&gt;
-如果想返回值是data.table，需要在列名称前加一个list&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.arr_delay.dt &amp;lt;- flights[,list(arr_delay)]
-head(flights.arr_delay.dt)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    arr_delay
-## 1:        13
-## 2:        13
-## 3:         9
-## 4:       -26
-## 5:         1
-## 6:         0&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;list()&lt;/code&gt;也可以用&lt;code&gt;.()&lt;/code&gt;代替，提高写作效率。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.arr_delay.dt.2 &amp;lt;- flights[,.(arr_delay)]
-head(flights.arr_delay.dt.2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    arr_delay
-## 1:        13
-## 2:        13
-## 3:         9
-## 4:       -26
-## 5:         1
-## 6:         0&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;继续选取两列,列变量名称用&lt;code&gt;.()&lt;/code&gt;包括，返回data.table类型。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.arr_delay.dep_delay &amp;lt;- flights[,.(arr_delay,dep_delay)]
-head(flights.arr_delay.dep_delay)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    arr_delay dep_delay
-## 1:        13        14
-## 2:        13        -3
-## 3:         9         2
-## 4:       -26        -8
-## 5:         1         2
-## 6:         0         4&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;另外一种形式：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.arr_delay.dep_delay &amp;lt;- flights[,c(&amp;quot;arr_delay&amp;quot;,&amp;quot;dep_delay&amp;quot;),with=FALSE]
-head(flights.arr_delay.dep_delay)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    arr_delay dep_delay
-## 1:        13        14
-## 2:        13        -3
-## 3:         9         2
-## 4:       -26        -8
-## 5:         1         2
-## 6:         0         4&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;class(flights.arr_delay.dep_delay)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;data.table&amp;quot; &amp;quot;data.frame&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;直接对列变量重新命名&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.new &amp;lt;- flights[,.(delay_arr = arr_delay, delay_dep = dep_delay)]&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2.3列运算&lt;/h2&gt;
-&lt;p&gt;这是个新概念，理解起来有些困难。先看例子,计算有多少个航班没有延误。&lt;br /&gt;
-具体的计算逻辑是这样的：到达和出发延迟时间均为负值，那么&lt;code&gt;(arr_delay+dep_delay)&amp;lt;0&lt;/code&gt;如果为真，表示该航班延误了，那么这个表达式的值是TRUE，同时也等于1，再进行sum()求和，实际上获得了延误航班的总数。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.nodelay.num &amp;lt;- flights[,sum((arr_delay+dep_delay)&amp;lt;0)]
-flights.nodelay.num&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 141814&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;从上式中，可以看出,&lt;code&gt;sum((arr_delay+dep_delay)&amp;lt;0)&lt;/code&gt;实际上是针对数据集的一个操作，只是在&lt;code&gt;[]&lt;/code&gt;内完成而已。&lt;/p&gt;
-&lt;p&gt;进一步看下一个例子：计算6月份从JFK机场起飞的航班中，起飞和延误的平均时间:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.JFK.stats &amp;lt;- flights[origin == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L,
-                             .(m_arr=mean(arr_delay),m_dep=mean(dep_delay))]
-flights.JFK.stats&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##       m_arr    m_dep
-## 1: 5.839349 9.807884&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;class(flights.JFK.stats)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;data.table&amp;quot; &amp;quot;data.frame&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这种操作跟dplyr中的summarise函数的功能是类似的。虽然网上说dplyr更加容易操作和理解，但是就我本人而言，data.table这种操作方式更加简洁，好用。&lt;br /&gt;
-来自 &lt;a href=&#34;http://blog.csdn.net/smart_xiao_xiong/article/details/51658262&#34; class=&#34;uri&#34;&gt;http://blog.csdn.net/smart_xiao_xiong/article/details/51658262&lt;/a&gt; 的解释（性能更好的原因，同时提取符合条件的列和行，而不是分步，先行后列）：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;我们首先在i参数里，找到所有符合 origin (机场)是“JFK”，并且 month (月份)是 6 这样条件的行。此时，我们还没有subset整个data.table。&lt;/li&gt;
-&lt;li&gt;现在，我们看看参数j，它只使用了两列。我们需要分别计算这两列的平均值 mean()。这个时候，我们才subset那些符合i参数里条件的列，然后计算它们的平均值。 因为这三个参数（i，j和by）都被指定在同一个方括号中，data.table能同时接受这三个参数，并在计算之前，选取最优的计算方法，而不是分步骤计算。所以，我们可以避免对整个data.table计算，同时，在计算速度和内存使用量这两方面，取得最优的效果。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;如果我们想看一下，从JFK机场起飞的航班一共有多少架次。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.JFK.num &amp;lt;- flights[origin == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L,length(dest)]
-flights.JFK.num&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 8422&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;其实，我只是需要知道符合条件的行数，&lt;code&gt;length()&lt;/code&gt;中的参数理论上可以是任何一列。data.table中定义了一个内建的变量&lt;code&gt;.N&lt;/code&gt;，表示当前的分组中对象的数目。因此上边的代码，可以写的更加简洁和可理解。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.JFK.num &amp;lt;- flights[origin == &amp;quot;JFK&amp;quot; &amp;amp; month == 6L, .N]
-flights.JFK.num&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 8422&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level1&#34;&gt;
-&lt;h1&gt;3.聚合&lt;/h1&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3.1 分组&lt;/h2&gt;
-&lt;p&gt;获得每个机场起飞航班数&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.dep.num.per.airport &amp;lt;- flights[,.(.N),by=.(origin)]
-flights.dep.num.per.airport&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    origin     N
-## 1:    JFK 81483
-## 2:    LGA 84433
-## 3:    EWR 87400&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;当参数j和by，也就是第2个和第3个参数只有1列时，可以不用&lt;code&gt;.()&lt;/code&gt;。上述代码可以简化为：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.dep.num.per.airport &amp;lt;- flights[,.N,by=origin]
-flights.dep.num.per.airport&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    origin     N
-## 1:    JFK 81483
-## 2:    LGA 84433
-## 3:    EWR 87400&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;获取一个制定航空公司在每个机场的起飞航班数，譬如美航（AA）。 在&lt;code&gt;i&lt;/code&gt;参数中设置条件过滤需要的行。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.AA.dep.num.per.airport &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;,.(.N),by=.(origin)]
-flights.AA.dep.num.per.airport&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    origin     N
-## 1:    JFK 11923
-## 2:    LGA 11730
-## 3:    EWR  2649&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;获取AA航空公司在所有机场起飞和降落的航班数&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.AA.dep.dest.num.per.airport &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;,.(.N),by=.(origin,dest)]
-flights.AA.dep.dest.num.per.airport&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##     origin dest    N
-##  1:    JFK  LAX 3387
-##  2:    LGA  PBI  245
-##  3:    EWR  LAX   62
-##  4:    JFK  MIA 1876
-##  5:    JFK  SEA  298
-##  6:    EWR  MIA  848
-##  7:    JFK  SFO 1312
-##  8:    JFK  BOS 1173
-##  9:    JFK  ORD  432
-## 10:    JFK  IAH    7
-## 11:    JFK  AUS  297
-## 12:    EWR  DFW 1618
-## 13:    LGA  ORD 4366
-## 14:    JFK  STT  229
-## 15:    JFK  SJU  690
-## 16:    LGA  MIA 3334
-## 17:    LGA  DFW 3785
-## 18:    JFK  LAS  595
-## 19:    JFK  MCO  597
-## 20:    JFK  EGE   85
-## 21:    JFK  DFW  474
-## 22:    JFK  SAN  299
-## 23:    JFK  DCA  172
-## 24:    EWR  PHX  121
-##     origin dest    N&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;想进一步分析在所有机场，每个月起降的平均延误时间。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.AA.dep.dest.stats.per.airport &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;,.(.N,MeanArrDelay=mean(arr_delay),MeanDepDelay=mean(dep_delay)),by=.(origin,dest,month)]
-flights.AA.dep.dest.stats.per.airport&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      origin dest month   N MeanArrDelay MeanDepDelay
-##   1:    JFK  LAX     1 249     6.590361   14.2289157
-##   2:    LGA  PBI     1  58    -7.758621    0.3103448
-##   3:    EWR  LAX     1  30     1.366667    7.5000000
-##   4:    JFK  MIA     1 179    15.720670   18.7430168
-##   5:    JFK  SEA     1  28    14.357143   30.7500000
-##  ---                                                
-## 196:    LGA  MIA    10 278    -6.251799   -1.4208633
-## 197:    JFK  MIA    10 217    -1.880184    6.6774194
-## 198:    EWR  PHX    10  31    -3.032258   -4.2903226
-## 199:    JFK  MCO    10  62   -10.048387   -1.6129032
-## 200:    JFK  DCA    10  31    16.483871   15.5161290&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;分组结果如何按照升降序排列。需要keyby参数代替by。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.AA.dep.dest.stats.per.airport &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;,.(.N,MeanArrDelay=mean(arr_delay),MeanDepDelay=mean(dep_delay)),keyby=.(origin,dest,month)]
-flights.AA.dep.dest.stats.per.airport&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      origin dest month   N MeanArrDelay MeanDepDelay
-##   1:    EWR  DFW     1 159     6.427673   10.0125786
-##   2:    EWR  DFW     2 136    10.536765   11.3455882
-##   3:    EWR  DFW     3 163    12.865031    8.0797546
-##   4:    EWR  DFW     4 164    17.792683   12.9207317
-##   5:    EWR  DFW     5 164    18.487805   18.6829268
-##  ---                                                
-## 196:    LGA  PBI     1  58    -7.758621    0.3103448
-## 197:    LGA  PBI     2  52    -7.865385    2.4038462
-## 198:    LGA  PBI     3  61    -5.754098    3.0327869
-## 199:    LGA  PBI     4  60   -13.966667   -4.7333333
-## 200:    LGA  PBI     5  14   -10.357143   -6.8571429&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;-chaining&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3.2 管道符 chaining&lt;/h2&gt;
-&lt;p&gt;类似于 %&amp;gt;% ，实现连续操作，避免中间变量的生成。这个是非常强大的操作。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ans &amp;lt;- flights[carrier == &amp;quot;AA&amp;quot;, .N, by=.(origin, dest)][order(origin, -dest)]
-head(ans,10)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##     origin dest    N
-##  1:    EWR  PHX  121
-##  2:    EWR  MIA  848
-##  3:    EWR  LAX   62
-##  4:    EWR  DFW 1618
-##  5:    JFK  STT  229
-##  6:    JFK  SJU  690
-##  7:    JFK  SFO 1312
-##  8:    JFK  SEA  298
-##  9:    JFK  SAN  299
-## 10:    JFK  ORD  432&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;可以多个表达式链接&lt;code&gt;DT[...][...][...][...]&lt;/code&gt;，另外一种形式，也是可以接受的：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;DT[...
-][...
-][...
-]&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;by&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3.3 by参数表达式&lt;/h2&gt;
-&lt;p&gt;参数by也可以接受表达式 譬如，想看一下有多少航班起飞延误但却提前／准时到达的，有多少航班起飞和到达都延误了。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ans &amp;lt;- flights[, .N, .(dep_delay&amp;gt;0, arr_delay&amp;gt;0)]
-ans&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    dep_delay arr_delay      N
-## 1:      TRUE      TRUE  72836
-## 2:     FALSE      TRUE  34583
-## 3:     FALSE     FALSE 119304
-## 4:      TRUE     FALSE  26593&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这也是一个比较牛逼的用法。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3.4 对多列同时进行统一运算&lt;/h2&gt;
-&lt;p&gt;譬如有1000列，要对每一列进行均值计算。传统可以通过lapply函数来进行。如果存在分组的情况，该如何操作？data.table提供了&lt;code&gt;.SD&lt;/code&gt;，表示Subset of Data，本身是一个data.table，包括&lt;strong&gt;通过by分组后的每一组&lt;/strong&gt;。 实例来看一下，对于起飞机场的一个分组&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.SD &amp;lt;- flights[,.(origin,dep_time,arr_time,air_time,distance,hour,min)][,.SD,by=origin]
-flights.SD&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##         origin dep_time arr_time air_time distance hour min
-##      1:    JFK      914     1238      359     2475    9  14
-##      2:    JFK     1157     1523      363     2475   11  57
-##      3:    JFK     1902     2224      351     2475   19   2
-##      4:    JFK     1347     1706      350     2475   13  47
-##      5:    JFK     2133       37      338     2475   21  33
-##     ---                                                    
-## 253312:    EWR     1242     1549      344     2565   12  42
-## 253313:    EWR     2121     2224      100      719   21  21
-## 253314:    EWR     1049     1335      326     2454   10  49
-## 253315:    EWR     1653     1910      291     2227   16  53
-## 253316:    EWR      854     1147      189     1400    8  54&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;每个分组，按照origin整齐排列。 对于除了分组列外的其他列，统一求平均值，并且保留两位小数。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.SD.mean &amp;lt;- flights[,.(origin,dep_time,arr_time,air_time,distance,hour,min)][,lapply(.SD,mean),by=origin][,round(.SD,2),by=origin]
-flights.SD.mean&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    origin dep_time arr_time air_time distance  hour   min
-## 1:    JFK  1359.69  1488.90   195.28  1413.86 13.27 32.34
-## 2:    LGA  1315.07  1500.38   116.46   777.47 12.82 33.20
-## 3:    EWR  1340.62  1493.54   159.68  1117.36 13.10 30.22&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如何进一步获取制定列的均值。答案是通过.SDcols参数。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;flights.SD.mean &amp;lt;- flights[,.(origin,dep_time,arr_time,air_time,distance,hour,min)][,lapply(.SD,mean),.SDcols=c(&amp;quot;dep_time&amp;quot;,&amp;quot;arr_time&amp;quot;),by=origin][,round(.SD,2),by=origin]
-flights.SD.mean&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    origin dep_time arr_time
-## 1:    JFK  1359.69  1488.90
-## 2:    LGA  1315.07  1500.38
-## 3:    EWR  1340.62  1493.54&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;实现类似melt的功能，把多列合并为一列。 首先生成一个数据集&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;DT = data.table(ID = c(&amp;quot;b&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;c&amp;quot;), a = 1:6, b = 7:12, c=13:18)
-DT&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    ID a  b  c
-## 1:  b 1  7 13
-## 2:  b 2  8 14
-## 3:  b 3  9 15
-## 4:  a 4 10 16
-## 5:  a 5 11 17
-## 6:  c 6 12 18&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;然后，把a，b，c三列合并为1列。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;DT.new &amp;lt;- DT[,.(abc=c(a,b,c)),by=ID]
-DT.new&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##     ID abc
-##  1:  b   1
-##  2:  b   2
-##  3:  b   3
-##  4:  b   7
-##  5:  b   8
-##  6:  b   9
-##  7:  b  13
-##  8:  b  14
-##  9:  b  15
-## 10:  a   4
-## 11:  a   5
-## 12:  a  10
-## 13:  a  11
-## 14:  a  16
-## 15:  a  17
-## 16:  c   6
-## 17:  c  12
-## 18:  c  18&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;j参数非常强大，也可以a,b,c三列的结果，作为一个列表返回。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;DT.new.list &amp;lt;- DT[,.(abc=list(c(a,b,c))),by=ID]
-DT.new.list&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    ID               abc
-## 1:  b      1,2,3,7,8,9,
-## 2:  a  4, 5,10,11,16,17
-## 3:  c           6,12,18&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;合并a，b，c三列，作为字符串。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;DT.new.str &amp;lt;- DT[,.(abc=paste(a,b,c,sep = &amp;quot;&amp;quot;)),by=ID]
-DT.new.str&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##    ID   abc
-## 1:  b  1713
-## 2:  b  2814
-## 3:  b  3915
-## 4:  a 41016
-## 5:  a 51117
-## 6:  c 61218&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Rcpp读书笔记2-第二章工具与设置</title>
-      <link>/post/rcpp-note-2/</link>
-      <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rcpp-note-2/</guid>
-      <description>
-
-&lt;h2 id=&#34;2-1-总体设置&#34;&gt;2.1 总体设置&lt;/h2&gt;
-
-&lt;p&gt;Rcpp提供一个C++应用编程接口（API），来扩展R系统。运行Rcpp和R的一些需求：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;开发环境需要一个C++编译器。&lt;/li&gt;
-&lt;li&gt;通过动态链接和嵌入方式，供R调用。&lt;/li&gt;
-&lt;li&gt;在windows下，一般会通过安装Rtools来提供开发环境&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;编译R包所需要的标准环境，通常也是编译Rcpp所需要的。&lt;br /&gt;
-几个附加的R包非常有用：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;inline 对于一些短的C++代码，可以直接通过inline内部编译和调用。&lt;/li&gt;
-&lt;li&gt;rbenchmark 用来对比测试不同代码的性能。microbenchmark包也是一个非常好的选择。&lt;/li&gt;
-&lt;li&gt;RUnit 用作单元测试。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;2-2-编译器&#34;&gt;2.2 编译器&lt;/h2&gt;
-
-&lt;p&gt;windows下，通常使用Rtools自带的g++编译器。&lt;/p&gt;
-
-&lt;h2 id=&#34;2-3-r-api&#34;&gt;2.3 R API&lt;/h2&gt;
-
-&lt;p&gt;R自身提供了API。API在“Writting R Extensions”手册中进行了详细描述，定义了R安装所需要的头文件。R核心开发团队，建议只使用公开的API。其他API可能会修改或者改变，而不会通知开发者。&lt;/p&gt;
-
-&lt;p&gt;有几本书描述了R API函数。可以参考的包括：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Venables WN, Ripley BD (2000) S Programming. Statistics and Computing, pringer-Verlag, New York&lt;/li&gt;
-&lt;li&gt;Gentleman R (2009) R Programming for Bioinformatics. Computer Science and
-Data Analysis, Chapman &amp;amp; Hall/CRC, Boca Raton, FL&lt;/li&gt;
-&lt;li&gt;Chambers JM (2008) Software for Data Analysis: Programming with R. Statistics
-and Computing, Springer, Heidelberg, ISBN 978-0-387-75935-7&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;两个基本的扩展函数：&lt;code&gt;.C()&lt;/code&gt;和&lt;code&gt;.Call()&lt;/code&gt;。其中&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;.C()&lt;/code&gt;c存在于R语言的早期版本，并被严格限制使用。仅仅用于支持基本的C类型的指针。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;.Call()&lt;/code&gt;被广泛应用。该函数主要操作SEXP 对象，代表S expression object的指针。在R内部，本质上任何对象都是SEXP对象。通过在C++和R之间交换对象，实现对R对象的直接操作。Rcpp只使用&lt;code&gt;.Call()&lt;/code&gt;进行内部调用。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Rcpp本质上是建立在R API基础上的一个补充的接口，可以更好的扩展R。利用C++程序，生成更多可供R调用的工具，来提高R编程的效率。&lt;/p&gt;
-
-&lt;h2 id=&#34;2-4-rcpp的首次编译&#34;&gt;2.4 Rcpp的首次编译&lt;/h2&gt;
-
-&lt;p&gt;将下列C++代码存为fibonacii.cpp文件。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include &amp;lt;Rcpp.h&amp;gt;
-int fibonacci(const int x) {
-  if (x == 0) return(0);
-  if (x == 1) return(1);
-  return (fibonacci(x - 1)) + fibonacci(x - 2);
-}
-
-extern &amp;quot;C&amp;quot; SEXP fibWrapper(SEXP xs) {
-  int x = Rcpp::as&amp;lt;int&amp;gt;(xs);
-  int fib = fibonacci(x);
-  return (Rcpp::wrap(fib));
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如何编译上述代码？需要进行以下几项准备工作（本文主要针对windows 10系统下）：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;首先R CMD命令要可以运行。安装最新的&lt;a href=&#34;https://cran.r-project.org/bin/windows/Rtools/&#34; target=&#34;_blank&#34;&gt;Rtools&lt;/a&gt;。安装完成后，设置环境变量，在path中添加R主程序所在的路径，本文中用的是R3.4可执行文件所在的路径，本文所用路径为：&lt;code&gt;C:\Program Files\R\R-3.4.0patched\bin&lt;/code&gt;。添加完成后，Win+R，输入cmd，然后在命令行中输入path，查看是否添加成功。&lt;/li&gt;
-&lt;li&gt;查找Rcpp包所在的路径，本文Rcpp包所在路径为&lt;code&gt;C:/Users/luan_/Documents/R/win-library/3.4/Rcpp/&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;注意windows输出的路径是&amp;rdquo;\&amp;ldquo;需要替换为&amp;rdquo;/&amp;ldquo;。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;完成上述两项工作后，win+R，输入cmd，通过cd命令切换到fibonacci.cpp文件所在的路径，在窗口中输入下边的命令：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;PKG_CXXFLAGS=&amp;quot;-I/C:/Users/luan_/Documents/R/win-library/3.4/Rcpp/include&amp;quot; \
-PKG_LIBS=&amp;quot;-L/C:/Users/luan_/Documents/R/win-library/3.4/Rcpp/libs/x64 -lRcpp&amp;quot; \
-R CMD SHLIB fibonacci.cpp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;命令第一行表示头文件所在的路径；&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;命令第二行表示库文件所在的路径和名称；&lt;/li&gt;
-&lt;li&gt;命令第三行表示编译和链接代码。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;R CMD SHLIB命令执行后，会输出如下信息：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;c:/Rtools/mingw_64/bin/g++  -I&amp;quot;C:/PROGRA~1/R/R-34~1.0PA/include&amp;quot; -DNDEBUG 
-                            -I &amp;quot;d:/Compiler/gcc-4.9.3/local330/include&amp;quot;  
-                            -IC:/Users/luan_/Documents/R/win-library/3.4/Rcpp/include
-                            -O2 -Wall  -mtune=core2 -c fibonacci.cpp -o fibonacci.o
-c:/Rtools/mingw_64/bin/g++ -shared -s -static-libgcc -o fibonacci.dll tmp.def fibonacci.o 
-                            -LC:/Users/luan_/Documents/R/win-library/3.4/Rcpp/libs/x64
-                            -lRcpp -Ld:/Compiler/gcc-4.9.3/local330/lib/x64 
-                            -Ld:/Compiler/gcc-4.9.3/local330/lib 
-                            -LC:/PROGRA~1/R/R-34~1.0PA/bin/x64 -lR
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;命令主要触发两个调用：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;第一条命令将源文件fibonacci.cpp转换为目标文件fibonacci.o;&lt;/li&gt;
-&lt;li&gt;第二条命令将目标文件fibonacci.io链接为一个共享库文件fibonacci.dll。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;接下来的工作是调用生成的共享链接库fibonacci.dll文件。
-在R中加载Rcpp库，通过&lt;code&gt;setwd()&lt;/code&gt;切换到fibonacci.dll所在路径,通过&lt;code&gt;dyn.load()&lt;/code&gt;和&lt;code&gt;.Call()&lt;/code&gt;进行加载和调用。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(Rcpp)
-setwd(&amp;quot;C:/Users/luan_/luansheng/luansheng.github.io/code&amp;quot;)
-dyn.load(&amp;quot;fibonacci.dll&amp;quot;)
-.Call(&amp;quot;fibWrapper&amp;quot;,10)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;输出结果为：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;## [1] 55
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Rcpp提供了2个script，来对最原始的代码进行辅助编译。
-这里需要注意，由于Rcpp是通过Rstudio进行安装的，因此Rcpp并不在R的标准库路径下。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;.Library
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;C:/PROGRA~1/R/R-34~1.0PA/library&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;.libPaths()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;C:/Users/luan_/Documents/R/win-library/3.4&amp;quot;
-## [2] &amp;quot;C:/Program Files/R/R-3.4.0patched/library&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;直接运行下边的代码，显示找不到Rcpp，但是又找不到方法，把缺省的库设置为&lt;code&gt;C:/Users/luan_/Documents/R/win-library/3.4&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;PKG_CXXFLAGS=`Rscript -e &#39;Rcpp:::CxxFlags()&#39;` \
-PKG_LIBS=`Rscript -e &#39;Rcpp:::LdFlags()&#39;` \
-R CMD SHLIB fibonacci.cpp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;2-5-inline-包&#34;&gt;2.5 inline 包&lt;/h2&gt;
-
-&lt;p&gt;现在再理解起来，比第一章要容易的多了。inline包适合快速开发，因为C++代码可以直接在R代码中书写，直接与R代码一起运行，C++代码的编译、链接和载入在后台进行，特别方便。&lt;/p&gt;
-
-&lt;p&gt;inline提供函数&lt;code&gt;cfunction()&lt;/code&gt;和&lt;code&gt;cxxfunction()&lt;/code&gt;，在R会话中直接编译、链接和加载C++函数。
-在&lt;code&gt;cxxfunction()&lt;/code&gt;函数中,可以设置plugin参数，用来指定头文件和库位置，在本文中，一般会指定为Rcpp。因此，为了简化使用，inline提供一个cxx&lt;code&gt;function()&lt;/code&gt;的替代函数&lt;code&gt;rcpp()&lt;/code&gt;,默认plugin为rcpp。&lt;/p&gt;
-
-&lt;p&gt;来看一个示例代码，卷积的计算公式。
-卷积好像是一种预测，对不停的信号输入，可以预测其输出。知乎上有个以复利进行解释的的例子，比较容易的理解。&lt;a href=&#34;https://www.zhihu.com/question/22298352&#34; target=&#34;_blank&#34;&gt;https://www.zhihu.com/question/22298352&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;##定义C++代码
-src &amp;lt;- &#39;
-Rcpp::NumericVector xa(a);
-Rcpp::NumericVector xb(b);
-int n_xa =xa.size(), n_xb = xb.size();
-
-Rcpp::NumericVector xab(n_xa + n_xb-1);
-for (int i=0; i &amp;lt; n_xa; i++)
-  for (int j=0; j &amp;lt; n_xb; j++)
-    xab[i+j] += xa[i] * xb[j];
-return xab;
-&#39;
-
-###定义在R中调用的接口函数
-fun &amp;lt;- cxxfunction(signature(a=&amp;quot;numeric&amp;quot;,b=&amp;quot;numeric&amp;quot;),
-src,plugin=&amp;quot;Rcpp&amp;quot;)
-
-#利用rcpp函数定义接口函数
-funrcpp &amp;lt;-  rcpp(signature(a=&amp;quot;numerci&amp;quot;,b=&amp;quot;numeric&amp;quot;),src)
-
-##记得加载Rcpp和inline两个包，不然会找不到Rcpp调用的类型和函数
-require(Rcpp)
-require(inline)
-fun(1:4,2:5)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;## [1]  2  7 16 30 34 31 20
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;funrcpp(1:4,2:5)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;## [1]  2  7 16 30 34 31 20
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;函数中添加&lt;code&gt;verbose=TRUE&lt;/code&gt;参数可以显示&lt;code&gt;cxxfunction()&lt;/code&gt;生成的临时文件和R CMD SHLIB触发的调用。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;funverbose &amp;lt;- cxxfunction(signature(a=&amp;quot;numeric&amp;quot;,b=&amp;quot;numeric&amp;quot;),
-src,plugin=&amp;quot;Rcpp&amp;quot;,verbose = TRUE)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;##  &amp;gt;&amp;gt; setting environment variables: 
-## PKG_LIBS = 
-## 
-##  &amp;gt;&amp;gt; LinkingTo : Rcpp
-## CLINK_CPPFLAGS =  -I&amp;quot;C:/Users/luan_/Documents/R/win-library/3.4/Rcpp/include&amp;quot; 
-## 
-##  &amp;gt;&amp;gt; Program source :
-## 
-##    1 : 
-##    2 : // includes from the plugin
-##    3 : 
-##    4 : #include &amp;lt;Rcpp.h&amp;gt;
-##    5 : 
-##    6 : 
-##    7 : #ifndef BEGIN_RCPP
-##    8 : #define BEGIN_RCPP
-##    9 : #endif
-##   10 : 
-##   11 : #ifndef END_RCPP
-##   12 : #define END_RCPP
-##   13 : #endif
-##   14 : 
-##   15 : using namespace Rcpp;
-##   16 : 
-##   17 : 
-##   18 : // user includes
-##   19 : 
-##   20 : 
-##   21 : // declarations
-##   22 : extern &amp;quot;C&amp;quot; {
-##   23 : SEXP file9864474b192a( SEXP a, SEXP b) ;
-##   24 : }
-##   25 : 
-##   26 : // definition
-##   27 : 
-##   28 : SEXP file9864474b192a( SEXP a, SEXP b ){
-##   29 : BEGIN_RCPP
-##   30 : 
-##   31 : Rcpp::NumericVector xa(a);
-##   32 : Rcpp::NumericVector xb(b);
-##   33 : int n_xa =xa.size(), n_xb = xb.size();
-##   34 : 
-##   35 : Rcpp::NumericVector xab(n_xa + n_xb-1);
-##   36 : for (int i=0; i &amp;lt; n_xa; i++)
-##   37 :   for (int j=0; j &amp;lt; n_xb; j++)
-##   38 :     xab[i+j] += xa[i] * xb[j];
-##   39 : return xab;
-##   40 : 
-##   41 : END_RCPP
-##   42 : }
-##   43 : 
-##   44 : 
-## Compilation argument:
-##  C:/PROGRA~1/R/R-34~1.0PA/bin/x64/R CMD SHLIB file9864474b192a.cpp 2&amp;gt; file9864474b192a.cpp.err.txt
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>BLUP公式及分解</title>
-      <link>/post/lmm-for-ebv-prediction-blup/</link>
-      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/lmm-for-ebv-prediction-blup/</guid>
-      <description>&lt;div id=&#34;blup&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;1. BLUP公式&lt;/h1&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{bmatrix} X^{&amp;#39;}\hat{R}^{-1}X &amp;amp; X^{&amp;#39;}\hat{R}^{-1}Z \\ Z^{&amp;#39;}\hat{R}^{-1}X &amp;amp; Z^{&amp;#39;}\hat{R}^{-1}Z+\hat{G}^{-1} \end{bmatrix} \begin{bmatrix} \hat{\beta} \\ \hat{u} \end{bmatrix} = \begin{bmatrix} X^{&amp;#39;}\hat{R}^{-1}y \\ Z^{&amp;#39;}\hat{R}^{-1}y \end{bmatrix}
-\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
