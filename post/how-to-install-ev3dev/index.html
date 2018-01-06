@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.31.1" />
+  <meta name="author" content="Sheng Luan">
+  <meta name="description" content="Professor of YSFRI ">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/how-to-install-ev3dev/">
+
+  
+  
+
+
+  
+
+  
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="非淡泊无以明志，非宁静无以致远。">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="非淡泊无以明志，非宁静无以致远。">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/how-to-install-ev3dev/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="非淡泊无以明志，非宁静无以致远。">
+  <meta property="og:url" content="/post/how-to-install-ev3dev/">
+  <meta property="og:title" content="如何在EV3上安装ev3dev系统  | 非淡泊无以明志，非宁静无以致远。">
+  <meta property="og:description" content="">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-01-06T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-01-06T00:00:00&#43;00:00">
+  
+
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<script async type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+  <title>如何在EV3上安装ev3dev系统  | 非淡泊无以明志，非宁静无以致远。</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">非淡泊无以明志，非宁静无以致远。</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#publications_selected">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <div class="article-inner">
+      <h1 itemprop="name">如何在EV3上安装ev3dev系统 </h1>
+
+      
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-01-06 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Jan 6, 2018
+    </time>
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/%e6%9c%ba%e5%99%a8%e4%ba%ba">机器人</a
+    >, 
+    
+    <a href="/categories/%e7%bc%96%e7%a8%8b">编程</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=%e5%a6%82%e4%bd%95%e5%9c%a8EV3%e4%b8%8a%e5%ae%89%e8%a3%85ev3dev%e7%b3%bb%e7%bb%9f%20&amp;url=%2fpost%2fhow-to-install-ev3dev%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fhow-to-install-ev3dev%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fhow-to-install-ev3dev%2f&amp;title=%e5%a6%82%e4%bd%95%e5%9c%a8EV3%e4%b8%8a%e5%ae%89%e8%a3%85ev3dev%e7%b3%bb%e7%bb%9f%20"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fhow-to-install-ev3dev%2f&amp;title=%e5%a6%82%e4%bd%95%e5%9c%a8EV3%e4%b8%8a%e5%ae%89%e8%a3%85ev3dev%e7%b3%bb%e7%bb%9f%20"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=%e5%a6%82%e4%bd%95%e5%9c%a8EV3%e4%b8%8a%e5%ae%89%e8%a3%85ev3dev%e7%b3%bb%e7%bb%9f%20&amp;body=%2fpost%2fhow-to-install-ev3dev%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+      <div class="article-style" itemprop="articleBody">
+        <p>EV3是乐高机器人，除了官方系统，有人进行逆向工程，建立了一个基于Debian的开源linux系统<a href="http://www.ev3dev.org/">EV3DEV</a>。然后就可以利用python等编程语言，控制EV3机器人。本文记录基于Windows 10系统的安装过程。</p>
+<p>详细的过程，可以参考官方网站<a href="http://www.ev3dev.org/docs/getting-started/">Getting Started with ev3dev</a>。</p>
+<div class="section level2">
+<h2>1. 准备的硬件</h2>
+<p>需要一个micro SD卡，我购买的是<a href="https://item.jd.com/343546.html">金士顿（Kingston）16GB Class4 TF(Micro SD)存储卡</a>。看官网介绍，大于32G的卡，EV3读不出来。</p>
+<p>另外需要一个读卡器，同样购买的<a href="https://item.jd.com/343389.html">金士顿（Kingston）USB 2.0 TF（Micro SD）读卡器（FCR-MRG2）</a>。</p>
+<p>还需要一台计算机，最好是笔记本电脑，支持蓝牙或者wifi无线网络。</p>
+</div>
+<div id="ev3dev" class="section level2">
+<h2>2.制作EV3DEV启动盘</h2>
+<div id="ev3dev" class="section level3">
+<h3>2.1 下载EV3DEV镜像文件。</h3>
+<p>目前官网上的下载地址下载不了，通过其<a href="https://github.com/ev3dev">github</a>找到了下载地址，在<a href="https://github.com/ev3dev/ev3dev/releases">这里</a>，目前最新的是2017-09-14发布的镜像文件。</p>
+</div>
+<div id="sd" class="section level3">
+<h3>2.2 把镜像文件烧录到sd卡</h3>
+<p>下载原文中推荐的img镜像烧录软件<a href="https://etcher.io/">etcher</a>，这个软件使用简单，非常好用。</p>
+</div>
+</div>
+<div id="ev3devev3" class="section level2">
+<h2>3. 利用EV3DEV启动EV3</h2>
+<p>把<strong>sd卡正面跟EV3正面一个方向</strong>，插入卡槽中。然后从EV3主机上按启动键，会出现一个带有小企鹅的启动画面，启动需要等一段时间。</p>
+</div>
+<div id="ev3" class="section level2">
+<h2>4. 通过蓝牙连接EV3主机与电脑</h2>
+<p>为了控制EV3，必须要有另外一台电脑，与EV3建立连接，控制EV3。本文推荐蓝牙连接。因为如果想通过wifi连接，还需要再买一个EV3专用的无线网卡。</p>
+<p>具体的连接方法，参考<a href="http://www.ev3dev.org/docs/tutorials/connecting-to-the-internet-via-bluetooth/">这里</a>。请注意，文中给出了连接安卓、苹果和windows三个系统的蓝牙连接设置方法，win10的设置在网页最下边。务必要严格按照网页要求的步骤来设置。</p>
+<p>但是，目前按照这个教程，设置EV3跟电脑蓝牙连接后，EV3并不能通过蓝牙连接电脑的无线网络上网。这是一个当前<strong>还没有解决的问题</strong>。</p>
+</div>
+<div id="sshev3" class="section level2">
+<h2>5. 通过SSH协议登录并控制EV3主机</h2>
+<p>如果是win10系统，下载一个<a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">putty软件</a>，然后填入在EV3主机中显示的IP地址，譬如：169.254.26.0，然后点击open，会弹出一个黑色的命令行窗口，稍微等一会，根据提示输入用户名：<strong>robot</strong>，回车后，根据提示输入密码：<strong>maker</strong>，然后等一会，如果登陆成功，会显示如下画面：</p>
+<div class="figure">
+<img src="/post/images/puttyev3.png" title="putty成功登陆EV3" alt="putty成功登陆EV3" />
+<p class="caption">putty成功登陆EV3</p>
+</div>
+</div>
+<div id="pythonev3" class="section level2">
+<h2>6. 通过python控制EV3</h2>
+<p>可以认为，python是EV3DEV系统支持的官方语言。想学习如何利用pyhton控制EV3，可以参考<a href="http://python-ev3dev.readthedocs.io/en/stable/">这里</a>。</p>
+<div id="ev3" class="section level3">
+<h3>6.1 控制EV3说话</h3>
+<p>“hello,world”是编程学习时的经典输出语句。下边我们试着让EV3直接说出来：</p>
+<p>首先在成功连接EV3的putty窗口中，输入<strong>python3</strong>，启动python环境，成功后是这样：</p>
+<div class="figure">
+<img src="/post/images/puttyev3python.png" title="EV3上启动python3" alt="EV3上启动python3" />
+<p class="caption">EV3上启动python3</p>
+</div>
+<p>然后在python控制台下，输入下列命令：</p>
+<pre class="python"><code>#导入ev3dev.ev3模块
+import ev3dev.ev3 as ev3
+
+#调用ev3的声音模块发出声音
+ev3.Sound.speak(&#39;hello,world&#39;).wait()</code></pre>
+<p>程序运行成功后的putty窗口：</p>
+<div class="figure">
+<img src="/post/images/puttyev3helloworld.png" title="EV3说出hello, world" alt="EV3说出hello, world" />
+<p class="caption">EV3说出hello, world</p>
+</div>
+</div>
+<div class="section level3">
+<h3>6.2 控制马达转动</h3>
+<pre class="python"><code>#控制连接到主机A端口的一个大型马达
+m = ev3.LargeMotor(&#39;outA&#39;)
+
+# speed_sp控制马达转速，这里的用的是ticks per second
+# time_sp控制马达的启动时间，表示的是毫秒
+m.run_timed(time_sp=3000, speed_sp=500)</code></pre>
+</div>
+<div id="todo" class="section level3">
+<h3>todo</h3>
+<p>如何把电脑写好的python程序传输到EV3上并执行？</p>
+<p><a href="http://www.ev3dev.org/docs/tutorials/">EV3DEV教程中心</a></p>
+<p><a href="http://python-ev3dev.readthedocs.io/en/stable/rpyc.html">Working with ev3dev remotely using RPyC</a></p>
+</div>
+</div>
+
+      </div>
+
+      
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/ev3">EV3</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/python">python</a>
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+</article>
+
+
+
+
+
+
+<div class="article-container">
+  
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2017 Sheng Luan &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+
