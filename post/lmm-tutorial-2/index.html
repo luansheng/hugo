@@ -492,15 +492,14 @@ Figure 3: 四个对虾群体体重的预测值
 <p>关于emmeans包，请参考日志<a href="http://luansheng.netlify.com/post/least-squares-means-note-1/">最小二乘均值的估计模型</a>。尽管该日志介绍的是lsmeans包，但用法跟emmeans包都是一样的。而且根据作者介绍，在不久的将来，emmeans包要替代lsmeans包。</p>
 <p>注意，安装emmeans还需要pbkrtest包，这个包没有自动安装，需要手动安装。</p>
 <pre class="r"><code>require(emmeans)</code></pre>
-<pre><code>## Loading required package: emmeans</code></pre>
-<pre><code>## Warning: package &#39;emmeans&#39; was built under R version 3.4.3</code></pre>
+<pre><code>## 载入需要的程辑包：emmeans</code></pre>
 <pre><code>## 
-## Attaching package: &#39;emmeans&#39;</code></pre>
+## 载入程辑包：&#39;emmeans&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:lmerTest&#39;:
 ## 
 ##     lsmeans</code></pre>
 <pre class="r"><code>shrimp.lm9.rgl &lt;- ref_grid(shrimp.lm.9)</code></pre>
-<pre><code>## Loading required namespace: pbkrtest</code></pre>
+<pre><code>## 载入需要的名字空间：pbkrtest</code></pre>
 <pre><code>## Note: D.f. calculations have been disabled because the number of observations exceeds 3000.
 ## To enable adjustments, set emm_options(pbkrtest.limit = 4241) or larger,
 ## but be warned that this may result in large computation time and memory use.</code></pre>
