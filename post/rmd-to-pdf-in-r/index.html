@@ -295,6 +295,7 @@ MathJax.Hub.Config({
 <p>把上述代码单独保存为一个文件，如header.tex，注意与Rmd文件在同一个路径下。其作用貌似是调用xeCJK包，中文字体设置为宋体。如果tinytex检测到系统中没有安装xeCJK包，那么会自动下载安装。</p>
 <p>但是尝试了一下，好像tinytex自动安装xeCJK存在问题，包的名称应该全部是小写。在Rstudio的console中手动安装，<strong>注意xecjk需要全部为小写</strong>。</p>
 <p>tinytex::tlmgr_install(“xecjk”)</p>
+<p>ps: 安装了rmarkdown最新开发版，上述问题就解决了：<code>devtools::install_github(&quot;rstudio/rmarkdown&quot;)</code></p>
 <p>然后，在新建立的Rmd文档中YAML头中，设置包括header.tex文件：</p>
 <pre class="yaml"><code>output: 
   pdf_document: 
