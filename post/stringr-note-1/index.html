@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -13,7 +11,7 @@
   <meta name="description" content="Professor of YSFRI ">
 
   
-  <link rel="alternate" hreflang="en-us" href="/tags/r/">
+  <link rel="alternate" hreflang="en-us" href="/post/stringr-note-1/">
 
   
   
@@ -57,17 +55,19 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/tags/r/">
+  <link rel="canonical" href="/post/stringr-note-1/">
 
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="非淡泊无以明志，非宁静无以致远。">
-  <meta property="og:url" content="/tags/r/">
-  <meta property="og:title" content="R | 非淡泊无以明志，非宁静无以致远。">
-  <meta property="og:description" content="Professor of YSFRI ">
+  <meta property="og:url" content="/post/stringr-note-1/">
+  <meta property="og:title" content="字符串处理包stringr学习笔记-1 | 非淡泊无以明志，非宁静无以致远。">
+  <meta property="og:description" content="">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2018-01-11T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2018-01-11T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-01-11T00:00:00&#43;00:00">
   
 
   <script type="text/x-mathjax-config">
@@ -81,7 +81,7 @@ MathJax.Hub.Config({
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-  <title>R | 非淡泊无以明志，非宁静无以致远。</title>
+  <title>字符串处理包stringr学习笔记-1 | 非淡泊无以明志，非宁静无以致远。</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -188,85 +188,200 @@ MathJax.Hub.Config({
 </nav>
 
 
-
-
-
-<div class="universal-wrapper">
-
-  <h1>R</h1>
+<article class="article" itemscope itemtype="http://schema.org/Article">
 
   
 
+
+  <div class="article-container">
+    <div class="article-inner">
+      <h1 itemprop="name">字符串处理包stringr学习笔记-1</h1>
+
+      
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-01-11 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Jan 11, 2018
+    </time>
+  </span>
+
   
-  
-  <div>
-    <h2><a href="/post/stringr-note-1/">字符串处理包stringr学习笔记-1</a></h2>
-    <div class="article-style">
-      
-      suppressPackageStartupMessages(require(stringr)) R中的字符串处理函数，不但多，而且难记，参数调用方法也不一致。stringr包提供了统一名称的函数调用形式。 1. 计算字符串的长度,只针对单个
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/try-od-package/">try od package</a></h2>
-    <div class="article-style">
-      
-      od包是一个可以给出数量遗传学优化试验设计的包。试着通过实例来理解背后的设计原理。 windows包没有自带数据，从linux包中把数据提出来
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/df-and-anova/">自由度和方差分析</a></h2>
-    <div class="article-style">
-      
-      比较同一处理不同水平的差异，譬如不同养殖密度、不同饲料对生长速度的影响，经常会用到方差分析的方法。而在方差分析中，自由度是一个非常重要的概念
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/data-table-note-5/">data.table学习笔记5</a></h2>
-    <div class="article-style">
-      
-      data.table的特点：减小计算复杂度，降低计算时间。 1. 1建立两个数据集：DF（data.frame）和DT（data.table） DF =
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/data-table-note-4/">data.table学习笔记4</a></h2>
-    <div class="article-style">
-      
-      data.table的特点：减小计算复杂度，降低计算时间。 1.二级索引（Secondary index） 1.1 什么是二级索引 二级索引与主键的区别：
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/data-table-note-3/">data.table学习笔记3</a></h2>
-    <div class="article-style">
-      
-      data.table的特点：减小计算复杂度，降低计算时间。 1.主键 利用主键进行subset，速度会更加快。 设置主键 通过函数setkey()来
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/data-table-note-1/">data.table学习笔记1</a></h2>
-    <div class="article-style">
-      
-      data.table的特点：减小计算复杂度，降低计算时间。 1.数据 教程中，使用NYC-flights14数据集，纽约机场2014年出发的所有
-      
-    </div>
-  </div>
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
   
 
   
+  
 
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/%e6%95%b0%e6%8d%ae%e6%b8%85%e6%b4%97">数据清洗</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%a4%84%e7%90%86%e5%8c%85stringr%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0-1&amp;url=%2fpost%2fstringr-note-1%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2fstringr-note-1%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fstringr-note-1%2f&amp;title=%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%a4%84%e7%90%86%e5%8c%85stringr%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0-1"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fstringr-note-1%2f&amp;title=%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%a4%84%e7%90%86%e5%8c%85stringr%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0-1"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%a4%84%e7%90%86%e5%8c%85stringr%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0-1&amp;body=%2fpost%2fstringr-note-1%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
 
 </div>
+
+
+      <div class="article-style" itemprop="articleBody">
+        <pre class="r"><code>suppressPackageStartupMessages(require(stringr))</code></pre>
+<p>R中的字符串处理函数，不但多，而且难记，参数调用方法也不一致。stringr包提供了统一名称的函数调用形式。</p>
+<div class="section level2">
+<h2>1. 计算字符串的长度,只针对单个字符串</h2>
+<pre class="r"><code>str_length(&quot;abc&quot;)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>str_length(&quot;你好&quot;)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>str_length(NA)</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p><code>str_length</code>等同于R中自带的<code>nchar()</code>函数可以正确的识别中文字的个数，赞一个。</p>
+<div class="section level3">
+<h3>1.2 提取子字符串</h3>
+<p>下述函数可以针对向量操作，提取子字符串</p>
+<pre class="r"><code>x &lt;-  c(&quot;abcdefgh&quot;,&quot;dljwowowjj&quot;)
+str_sub(x,2,4) #从第2个位置到第四个位置</code></pre>
+<pre><code>## [1] &quot;bcd&quot; &quot;ljw&quot;</code></pre>
+<pre class="r"><code>str_sub(x,2,-2) #第二个位置到倒数第二个位置</code></pre>
+<pre><code>## [1] &quot;bcdefg&quot;   &quot;ljwowowj&quot;</code></pre>
+</div>
+<div class="section level3">
+<h3>1.3 修改字符串中指定位置的内容</h3>
+<p>修改字符串中某个位置的字符</p>
+<pre class="r"><code>str_sub(x,3,5) &lt;- &quot;XYZ&quot;
+x</code></pre>
+<pre><code>## [1] &quot;abXYZfgh&quot;   &quot;dlXYZwowjj&quot;</code></pre>
+</div>
+<div class="section level3">
+<h3>1.4 重复字符串的内容</h3>
+<pre class="r"><code>str_dup(x,3) #表示每个字符串重复两次</code></pre>
+<pre><code>## [1] &quot;abXYZfghabXYZfghabXYZfgh&quot;       &quot;dlXYZwowjjdlXYZwowjjdlXYZwowjj&quot;</code></pre>
+<pre class="r"><code>str_dup(x,c(2,3)) #表示第一个字符串重复2次，第二个字符串重复3次</code></pre>
+<pre><code>## [1] &quot;abXYZfghabXYZfgh&quot;               &quot;dlXYZwowjjdlXYZwowjjdlXYZwowjj&quot;</code></pre>
+<p>### 1.5 填补字符串至一定长度</p>
+<pre class="r"><code>str_pad(x,str_length(x[2])) #把第一个字符串用空格补充至跟第二字符串一样长</code></pre>
+<pre><code>## [1] &quot;  abXYZfgh&quot; &quot;dlXYZwowjj&quot;</code></pre>
+<pre class="r"><code>str_pad(string = x,width = str_length(x[2]),side = &quot;right&quot;, pad = &quot;?&quot;) #一个标准写法，用？号补充，在填补在右边</code></pre>
+<pre><code>## [1] &quot;abXYZfgh??&quot; &quot;dlXYZwowjj&quot;</code></pre>
+<p>缩写字符串</p>
+<pre class="r"><code>str_trunc(x,3)</code></pre>
+<pre><code>## [1] &quot;...&quot; &quot;...&quot;</code></pre>
+<p>默认的最小缩写字符串长度就是3（“…”），因此直接显示为“…”。</p>
+<p>如果想缩写为2位，可以这样写：</p>
+<pre class="r"><code>str_trunc(x,2,ellipsis = &quot;.&quot;)</code></pre>
+<pre><code>## [1] &quot;a.&quot; &quot;d.&quot;</code></pre>
+</div>
+<div class="section level3">
+<h3>1.6 剔除字符串中的空格</h3>
+<pre class="r"><code>x &lt;- c(&quot;  a   &quot;, &quot;b   &quot;,  &quot;   c&quot;)
+str_trim(x)</code></pre>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
+</div>
+</div>
+
+      </div>
+
+      
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/r">R</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/stringr">stringr</a>
+  
+</div>
+
+
+
+    </div>
+  </div>
+
+</article>
+
+
+
+<div class="article-container article-widget">
+  <div class="hr-light"></div>
+  <h3>Related</h3>
+  <ul>
+    
+    <li><a href="/post/try-od-package/">try od package</a></li>
+    
+    <li><a href="/post/df-and-anova/">自由度和方差分析</a></li>
+    
+    <li><a href="/post/data-table-note-5/">data.table学习笔记5</a></li>
+    
+    <li><a href="/post/data-table-note-4/">data.table学习笔记4</a></li>
+    
+    <li><a href="/post/data-table-note-3/">data.table学习笔记3</a></li>
+    
+  </ul>
+</div>
+
+
+
+
+<div class="article-container">
+  
+
+</div>
+
 <footer class="site-footer">
   <div class="container">
     <p class="powered-by">
@@ -358,6 +473,4 @@ MathJax.Hub.Config({
 
   </body>
 </html>
-
-
 
