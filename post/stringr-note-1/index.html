@@ -379,11 +379,11 @@ y[str_order(y)]</code></pre>
 <p>字符类型的数字，支持按照数字大小排序</p>
 <pre class="r"><code>x &lt;- as.character(c(sample(1:100,5),1000))
 x</code></pre>
-<pre><code>## [1] &quot;34&quot;   &quot;4&quot;    &quot;55&quot;   &quot;97&quot;   &quot;40&quot;   &quot;1000&quot;</code></pre>
+<pre><code>## [1] &quot;65&quot;   &quot;78&quot;   &quot;26&quot;   &quot;77&quot;   &quot;90&quot;   &quot;1000&quot;</code></pre>
 <pre class="r"><code>str_sort(x)</code></pre>
-<pre><code>## [1] &quot;1000&quot; &quot;34&quot;   &quot;4&quot;    &quot;40&quot;   &quot;55&quot;   &quot;97&quot;</code></pre>
+<pre><code>## [1] &quot;1000&quot; &quot;26&quot;   &quot;65&quot;   &quot;77&quot;   &quot;78&quot;   &quot;90&quot;</code></pre>
 <pre class="r"><code>str_sort(x,numeric =TRUE)</code></pre>
-<pre><code>## [1] &quot;4&quot;    &quot;34&quot;   &quot;40&quot;   &quot;55&quot;   &quot;97&quot;   &quot;1000&quot;</code></pre>
+<pre><code>## [1] &quot;26&quot;   &quot;65&quot;   &quot;77&quot;   &quot;78&quot;   &quot;90&quot;   &quot;1000&quot;</code></pre>
 </div>
 <div class="section level3">
 <h3>1.9 合并字符串</h3>

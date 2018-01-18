@@ -115,11 +115,11 @@ y[str_order(y)]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;字符类型的数字，支持按照数字大小排序&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- as.character(c(sample(1:100,5),1000))
 x&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;34&amp;quot;   &amp;quot;4&amp;quot;    &amp;quot;55&amp;quot;   &amp;quot;97&amp;quot;   &amp;quot;40&amp;quot;   &amp;quot;1000&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;65&amp;quot;   &amp;quot;78&amp;quot;   &amp;quot;26&amp;quot;   &amp;quot;77&amp;quot;   &amp;quot;90&amp;quot;   &amp;quot;1000&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sort(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;1000&amp;quot; &amp;quot;34&amp;quot;   &amp;quot;4&amp;quot;    &amp;quot;40&amp;quot;   &amp;quot;55&amp;quot;   &amp;quot;97&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;1000&amp;quot; &amp;quot;26&amp;quot;   &amp;quot;65&amp;quot;   &amp;quot;77&amp;quot;   &amp;quot;78&amp;quot;   &amp;quot;90&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sort(x,numeric =TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;4&amp;quot;    &amp;quot;34&amp;quot;   &amp;quot;40&amp;quot;   &amp;quot;55&amp;quot;   &amp;quot;97&amp;quot;   &amp;quot;1000&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;26&amp;quot;   &amp;quot;65&amp;quot;   &amp;quot;77&amp;quot;   &amp;quot;78&amp;quot;   &amp;quot;90&amp;quot;   &amp;quot;1000&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
 &lt;h3&gt;1.9 合并字符串&lt;/h3&gt;
