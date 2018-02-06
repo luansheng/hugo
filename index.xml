@@ -76,6 +76,8 @@ while i &amp;lt;= 5:
 ## 3
 ## 4
 ## 5&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(i)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 6&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;4.Python中计算6&lt;em&gt;6&lt;/em&gt;6*6的另一种做法是什么？&lt;/p&gt;
 &lt;p&gt;这是一个很好的问题，通过查询网络，可以通过&lt;code&gt;**&lt;/code&gt;符号实现：&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(6*6*6*6)&lt;/code&gt;&lt;/pre&gt;
