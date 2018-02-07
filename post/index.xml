@@ -19,7 +19,6 @@
       <description>&lt;p&gt;栾佳硕给出的作业，用Pygame显示一个窗口（填充为黑色）:&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# -*- coding: utf-8 -*-
 import pygame as pg
-import pygame as pg
 from pygame.locals import *
 from sys import exit
 #初始化pygame
