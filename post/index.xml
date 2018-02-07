@@ -11,6 +11,37 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>pygame 练习1</title>
+      <link>/post/pygame-exercise-1/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/pygame-exercise-1/</guid>
+      <description>&lt;p&gt;栾佳硕给出的作业，用Pygame显示一个窗口（填充为黑色）:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# -*- coding: utf-8 -*-
+import pygame as pg
+import pygame as pg
+from pygame.locals import *
+from sys import exit
+#初始化pygame
+pg.init()
+#设置屏幕分辨率640*480
+screen = pg.display.set_mode((640,480),0,32)
+#设置窗口的标题
+pg.display.set_caption(&amp;quot;黑色窗口&amp;quot;)
+#设置背景色
+bg_color = (0,0,0)
+while True:
+    for event in pg.event.get():
+        if event.type == QUIT:
+            #接收到退出事件后退出程序
+            exit()
+    screen.fill(bg_color)
+    &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行结果如下图所示：&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>python 定时器</title>
       <link>/post/python-timer/</link>
       <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
@@ -26,11 +57,11 @@ while counter &amp;lt;= 5:
     print(&amp;quot;第%i个两位小数是%.2f&amp;quot; %(counter,random.uniform(0,1)))
     counter += 1
     time.sleep(seconds)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 第1个两位小数是0.04
-## 第2个两位小数是0.45
-## 第3个两位小数是0.53
-## 第4个两位小数是0.23
-## 第5个两位小数是0.47&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 第1个两位小数是0.20
+## 第2个两位小数是0.37
+## 第3个两位小数是0.76
+## 第4个两位小数是0.80
+## 第5个两位小数是0.46&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -1797,25 +1828,6 @@ Figure 6: 模型7固定效应图形展示
 &lt;/div&gt;
 &lt;p&gt;不考虑除残差外的随机效应，目前模型6是最优模型。我们根据&lt;a href=&#34;#6&#34;&gt;模型6&lt;/a&gt;，可以回答最初的问题，雌雄体重间差异显著。接下来，我们会考虑在模型中加入随机效应，进入线性混合效应模型部分。&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>动物育种值预测中的线性模型学习笔记2</title>
-      <link>/post/lmm-for-ebv-prediction-xfa/</link>
-      <pubDate>Sat, 11 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/lmm-for-ebv-prediction-xfa/</guid>
-      <description>&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;6.4.1 因子分析&lt;/h2&gt;
-&lt;p&gt;设定w向量，包括n个变量，w的协方差矩阵为G，w用模型表示为：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-w = \mu + \phi c + s
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;其中&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;是群体均值，c是长度为m的公共因子向量，s是残差效应或特定效应，&lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;是n×m阶因子负荷矩阵。FA最为常见的形式，是&lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;中的任意两列是正交的(orthogonal)，也就是说&lt;span class=&#34;math inline&#34;&gt;\(\phi_{i}\phi_{j}=0\)&lt;/span&gt;，其中i≠j。c中的公共因子不相关，并且方差为1，&lt;span class=&#34;math inline&#34;&gt;\(var(c)=I\)&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;w的协方差矩阵，可以分解为：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[var(w) = G_{FA}=\phi\phi^{&amp;#39;} + S\]&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
