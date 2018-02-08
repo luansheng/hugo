@@ -64,6 +64,31 @@
     </item>
     
     <item>
+      <title>抛硬币测试与温度转换</title>
+      <link>/post/coin-test/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/coin-test/</guid>
+      <description>&lt;p&gt;栾佳硕的作业，计算硬币抛100万次，正面朝上有多少次？&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# -*- coding: utf-8 -*-
+import random
+r = 0
+for i in range(1,1000000):
+    r += random.choice([0,1]) #假定1表示正面
+print(&amp;quot;抛掷硬币1000000次，是正面的次数为%i&amp;quot; % r)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 抛掷硬币1000000次，是正面的次数为499927&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;写一个函数，把摄氏度转为华氏度。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def convertC2F(C):
+    F = 32 + C * 1.8
+    return F
+c1 = 30    
+f1 = convertC2F(c1)    
+print(&amp;quot;摄氏度%.2f等于华氏度%.2f&amp;quot; % (c1,f1))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 摄氏度30.00等于华氏度86.00&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>pygame 练习1</title>
       <link>/post/pygame-exercise-1/</link>
       <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
@@ -1279,250 +1304,6 @@ S_{T} = \sum_{i=1}^{r}\sum_{j=1}^{n}(y_{ij}-\bar{y_{i\cdot}})^2+\sum_{i=1}^{r}\s
 &lt;p&gt;对于&lt;span class=&#34;math inline&#34;&gt;\(S_{E}\)&lt;/span&gt;，查看它的公式，可以推出，对于处理的每个水平，受各自均值的约束，自由度为n-1，因此r个处理的自由度为&lt;span class=&#34;math inline&#34;&gt;\(df_{E} = r(n-1)\)&lt;/span&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;计算自由度的目的是什么？&lt;/strong&gt;有什么用？下边在计算均方时，检验变异的显著性时将会用到。&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>线性混合效应模型教程2</title>
-      <link>/post/lmm-tutorial-2/</link>
-      <pubDate>Wed, 29 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/lmm-tutorial-2/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://luansheng.netlify.com/post/lmm-tutorial-1/&#34;&gt;上接线性混合效应模型教程1&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;本部分可能会用到的R包，请提前安装：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ggplot2 #优秀的作图包&lt;/li&gt;
-&lt;li&gt;data.table #优秀的数据转换处理包&lt;/li&gt;
-&lt;li&gt;lme4 #提供lmer函数，进行lmm分析&lt;/li&gt;
-&lt;li&gt;lmerTest #提供anova函数，对固定效应进行显著性检验&lt;/li&gt;
-&lt;li&gt;sjPlot #lmm结果的可视化展示&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;4.4 包括随机效应的线性混合效应模型&lt;/h3&gt;
-&lt;p&gt;请加载一个新的数据集&lt;a href=&#34;https://luansheng.netlify.com/post/shrimpex.csv&#34;&gt;shrimpex.csv&lt;/a&gt;，其中有一个PopID字段，包括Pop1到Pop4共计4个水平，表示shrimp数据由四个群体组成。现在考虑这样一个问题：四个群体间收获体重是否存在差异。&lt;/p&gt;
-&lt;p&gt;首先加载数据文件。画出四个群体收获体重的箱形图，加上jitter点。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp &amp;lt;- fread(input = &amp;quot;shrimpex.csv&amp;quot;,sep = &amp;quot;,&amp;quot;,header = TRUE,stringsAsFactors = TRUE)
-str(shrimp)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Classes &amp;#39;data.table&amp;#39; and &amp;#39;data.frame&amp;#39;:   4282 obs. of  10 variables:
-##  $ AnimalID: Factor w/ 4282 levels &amp;quot;13G1000001&amp;quot;,&amp;quot;13G1000002&amp;quot;,..: 3308 3307 2215 1303 3601 2184 2194 2175 1585 2176 ...
-##  $ SireID  : Factor w/ 100 levels &amp;quot;12G000K010&amp;quot;,&amp;quot;12G000K065&amp;quot;,..: 81 81 81 81 81 81 81 81 81 81 ...
-##  $ DamID   : Factor w/ 91 levels &amp;quot;12G000K052&amp;quot;,&amp;quot;12G000K097&amp;quot;,..: 81 81 81 81 81 81 81 81 81 81 ...
-##  $ PopID   : Factor w/ 4 levels &amp;quot;Pop1&amp;quot;,&amp;quot;Pop2&amp;quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ FamilyID: Factor w/ 105 levels &amp;quot;13F1306003&amp;quot;,&amp;quot;13F1306004&amp;quot;,..: 6 6 6 6 6 6 6 6 6 6 ...
-##  $ SexID   : Factor w/ 2 levels &amp;quot;Female&amp;quot;,&amp;quot;Male&amp;quot;: 2 2 1 1 1 2 1 2 2 1 ...
-##  $ TankID  : Factor w/ 2 levels &amp;quot;T1&amp;quot;,&amp;quot;T2&amp;quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ M1BW    : num  8.13 8.13 8.13 8.13 8.13 8.55 8.55 8.55 8.55 8.55 ...
-##  $ M2BW    : num  29 30.5 33.3 40.1 43 29.1 30.7 30.7 32.5 35.6 ...
-##  $ M2Age   : int  219 219 219 219 219 219 219 219 219 219 ...
-##  - attr(*, &amp;quot;.internal.selfref&amp;quot;)=&amp;lt;externalptr&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data=shrimp,aes(x=PopID,y=M2BW,color=PopID)) + 
-  geom_boxplot(outlier.size = 0)+
-  geom_jitter(alpha=0.3)+
-  labs(x=&amp;quot;群体&amp;quot;,y=&amp;quot;收获体重&amp;quot;)+
-  theme_gray(base_size = 20)+
-  theme(legend.position = &amp;quot;none&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:popbw&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-12-09-lmm-tutorial-2_files/figure-html/popbw-1.png&#34; alt=&#34;四个对虾群体收获体重的箱形图&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: 四个对虾群体收获体重的箱形图
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;从上图中，大致可以看出，群体间是存在差异的。&lt;/p&gt;
-&lt;p&gt;进一步分析数据，你会发现每个群体由多个家系组成，见下图。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data=shrimp,aes(x=PopID,y=M2BW,fill=FamilyID)) + 
-  geom_boxplot(outlier.size = 0)+
-  labs(x=&amp;quot;群体&amp;quot;,y=&amp;quot;收获体重&amp;quot;)+
-  theme_gray(base_size = 20)+
-  theme(legend.position = &amp;quot;none&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:popfamilybw&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-12-09-lmm-tutorial-2_files/figure-html/popfamilybw-1.png&#34; alt=&#34;四个对虾群体内家系收获体重的箱形图&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 2: 四个对虾群体内家系收获体重的箱形图
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;这里遇到了一个问题，在评价群体间的差异时，是否需要考虑每个群体内的家系结构？&lt;/p&gt;
-&lt;p&gt;理论上，我们从每个群体抽样时，抽样个体是代表该群体的随机样本。但是，一个群体内的个体往往存在亲缘关系，譬如（全同胞、半同胞个体）。因此抽样个体存在两个层次：每个群体包括多个家系，每个家系包括数量不等的个体。&lt;/p&gt;
-&lt;p&gt;从上图中可以看出，每个群体内的不同家系间是存在差异的。&lt;/p&gt;
-&lt;p&gt;每一个家系内的个体，遗传自同一对亲本，相互间相似性更强。不同家系个体的体重均值是不一样的。&lt;/p&gt;
-&lt;p&gt;这实际上&lt;strong&gt;违背了样本观察值的独立性原则&lt;/strong&gt;，同一个家系内的全同胞个体的体重值实际上是由他们亲本所决定。&lt;/p&gt;
-&lt;p&gt;针对这种情况，我们把家系效应作为随机效应加入模型中。这相当于，给每个家系设置一个基线，类似于不同的家系有不同的平均体重，也称作&lt;strong&gt;随机截距（random intercept）&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;在模型中加入家系随机效应，那么观察值的非独立性问题就解决了。&lt;/p&gt;
-&lt;p&gt;为了说明家系结构对分析结果的影响，故意在每个群体中设置了一个均值特别高的家系。在实际测试数据中，这种现象也会经常出现。如果我们分析时不考虑群体内的家系结构，那么家系方差会被累加到残差方差中。&lt;/p&gt;
-&lt;p&gt;如果采取方差分析的方法，你也会发现，忽略家系结构，群体的均方值可能会&lt;strong&gt;非常大，被严重高估&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;根据教程1对于固定效应和随机效应的讨论，由于我们的目的是要分析四个群体间的差异，获得每个群体的性能，因此群体更适合做固定效应。每个群体是由多个家系组成的，这些家系只是大量家系的一个随机抽样，因此更加适合作为随机效应。&lt;/p&gt;
-&lt;p&gt;下边我们通过两个模型实例，来看一下家系结构对分析结果的影响。&lt;/p&gt;
-&lt;p&gt;&lt;a id=&#34;8&#34;&gt;模型8&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[M2BW = Pop + Sex + Tank + Sex:M1BW\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;#8&#34;&gt;模型8&lt;/a&gt;不考虑家系结构，Pop、Sex和Tank为固定效应，Sex:M1BW为协变量。&lt;/p&gt;
-&lt;p&gt;分析结果如下：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm.8 &amp;lt;- lm(M2BW ~ 1 + PopID + SexID + TankID + SexID:M1BW,shrimp)
-summary(shrimp.lm.8) #加载lmerTest包后，lmer的返回结果，每个固定效应系数带有P值&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = M2BW ~ 1 + PopID + SexID + TankID + SexID:M1BW, 
-##     data = shrimp)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -20.7242  -2.5787  -0.2092   2.2353  18.9070 
-## 
-## Coefficients:
-##                  Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)      35.42932    0.53924  65.702  &amp;lt; 2e-16 ***
-## PopIDPop2        -1.61211    0.18406  -8.759  &amp;lt; 2e-16 ***
-## PopIDPop3        -3.61817    0.18086 -20.005  &amp;lt; 2e-16 ***
-## PopIDPop4        -5.76930    0.21237 -27.166  &amp;lt; 2e-16 ***
-## SexIDMale        -5.39346    0.70557  -7.644 2.59e-14 ***
-## TankIDT2         -2.93073    0.13206 -22.192  &amp;lt; 2e-16 ***
-## SexIDFemale:M1BW  0.40396    0.06778   5.960 2.73e-09 ***
-## SexIDMale:M1BW    0.30223    0.07363   4.105 4.13e-05 ***
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 4.296 on 4233 degrees of freedom
-##   (41 observations deleted due to missingness)
-## Multiple R-squared:  0.4845, Adjusted R-squared:  0.4837 
-## F-statistic: 568.4 on 7 and 4233 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;anova(shrimp.lm.8) #lmerTest包提供该函数&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Analysis of Variance Table
-## 
-## Response: M2BW
-##              Df Sum Sq Mean Sq  F value    Pr(&amp;gt;F)    
-## PopID         3  23856    7952  430.856 &amp;lt; 2.2e-16 ***
-## SexID         1  39588   39588 2144.973 &amp;lt; 2.2e-16 ***
-## TankID        1   9106    9106  493.407 &amp;lt; 2.2e-16 ***
-## SexID:M1BW    2    889     445   24.095 3.934e-11 ***
-## Residuals  4233  78124      18                       
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;a id=&#34;9&#34;&gt;模型9&lt;/a&gt;考虑家系结构，Pop:Family为随机效应，Pop、Sex和Tank为固定效应，Sex:M1BW为协变量。&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[M2BW = Pop + Sex + Tank + Sex:M1BW + Pop:Family\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;在模型中加入随机效应，需要使用lme4包中的lmer函数。下边代码中的(1|PopID:FamilyID)，表示针对不同的家系，单独估计其随机截距（random intercept）。其中1表示随机截距。&lt;/p&gt;
-&lt;p&gt;分析结果如下：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm.9 &amp;lt;- lmer(M2BW ~ 1 + PopID + SexID + TankID + SexID:M1BW  + (1|PopID:FamilyID),shrimp)
-summary(shrimp.lm.9)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Linear mixed model fit by REML t-tests use Satterthwaite approximations
-##   to degrees of freedom [lmerMod]
-## Formula: 
-## M2BW ~ 1 + PopID + SexID + TankID + SexID:M1BW + (1 | PopID:FamilyID)
-##    Data: shrimp
-## 
-## REML criterion at convergence: 23070.4
-## 
-## Scaled residuals: 
-##     Min      1Q  Median      3Q     Max 
-## -5.5304 -0.5854  0.0240  0.6388  3.8977 
-## 
-## Random effects:
-##  Groups         Name        Variance Std.Dev.
-##  PopID:FamilyID (Intercept)  5.933   2.436   
-##  Residual                   12.527   3.539   
-## Number of obs: 4241, groups:  PopID:FamilyID, 105
-## 
-## Fixed effects:
-##                   Estimate Std. Error        df t value Pr(&amp;gt;|t|)    
-## (Intercept)        35.7188     1.0605  487.0000  33.683  &amp;lt; 2e-16 ***
-## PopIDPop2          -1.6596     0.6884  101.0000  -2.411  0.01774 *  
-## PopIDPop3          -3.7742     0.6733  102.0000  -5.606 1.78e-07 ***
-## PopIDPop4          -5.8638     0.7359  111.0000  -7.968 1.58e-12 ***
-## SexIDMale          -5.6599     0.5901 4148.0000  -9.591  &amp;lt; 2e-16 ***
-## TankIDT2           -2.9491     0.1097 4140.0000 -26.884  &amp;lt; 2e-16 ***
-## SexIDFemale:M1BW    0.3757     0.1204  993.0000   3.122  0.00185 ** 
-## SexIDMale:M1BW      0.2904     0.1231 1068.0000   2.360  0.01847 *  
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Correlation of Fixed Effects:
-##             (Intr) PpIDP2 PpIDP3 PpIDP4 SxIDMl TnIDT2 SIDF:M
-## PopIDPop2   -0.384                                          
-## PopIDPop3   -0.419  0.506                                   
-## PopIDPop4   -0.519  0.476  0.494                            
-## SexIDMale   -0.248  0.002  0.007 -0.004                     
-## TankIDT2    -0.042 -0.006 -0.004 -0.001 -0.030              
-## SxIDFm:M1BW -0.889  0.077  0.108  0.250  0.291 -0.010       
-## SxIDMl:M1BW -0.711  0.074  0.100  0.246 -0.352  0.010  0.786&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;anova(shrimp.lm.9)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Analysis of Variance Table of type III  with  Satterthwaite 
-## approximation for degrees of freedom
-##            Sum Sq Mean Sq NumDF  DenDF F.value    Pr(&amp;gt;F)    
-## PopID       914.2   304.7     3  103.8   24.33  5.33e-12 ***
-## SexID      1152.4  1152.4     1 4148.3   92.00 &amp;lt; 2.2e-16 ***
-## TankID     9053.7  9053.7     1 4140.1  722.75 &amp;lt; 2.2e-16 ***
-## SexID:M1BW  122.4    61.2     2 1414.2    4.88  0.007695 ** 
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;把&lt;a href=&#34;#8&#34;&gt;模型8&lt;/a&gt;的Residual standard error的平方，与&lt;a href=&#34;#9&#34;&gt;模型9&lt;/a&gt; Random Effects部分对比，你会发现，如果不考虑家系结构，残差方差明显被高估,估计值为18.4559804 。考虑家系结构后，残差方差为12.5267428, 明显变小， 从残差中分离出了大部分的家系方差。由家系随机效应产生的方差，估计值为5.9328256，占表型方差的32%。&lt;/p&gt;
-&lt;p&gt;从anova方差分析(如果对基础概念不了解，可参考这篇blog：&lt;a href=&#34;https://luansheng.netlify.com/post/df-and-anova/&#34;&gt;自由度和方差分析&lt;/a&gt;)的角度看，加入家系随机效应后，群体固定效应（PopID）尽管仍然也达到了显著水平，但是均方和F值明显变小。这表明存在这样一种风险，&lt;strong&gt;如果考虑群体内的家系结构，本来两个群体的差异可能达不到显著水平，但是如果忽视了这种家系结构，两个群体间的差异统计上会表现为显著水平&lt;/strong&gt;，从而误判群体间的实际性能差别。&lt;/p&gt;
-&lt;p&gt;我们看一下，基于模型9（不包括家系的随机效应），预测四个群体家系的性能，如下图所示：你会发现，每个群体中特别大的家系效应，已经被剔除掉了。&lt;/p&gt;
-&lt;p&gt;ps：拟合值反应的是包括所有固定和随机效应的结果，lmer中通过fitted()函数获得该值。预测值，是可以设定不包括随机效应的，lmer中通过predict()函数获得该值。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm.9.predict &amp;lt;- predict(shrimp.lm.9,re.form=NA) #拟合值
-shrimp.lm.9.predict.dt &amp;lt;- data.table(ObsSeq =as.integer(names(shrimp.lm.9.predict)),PredictedValue=shrimp.lm.9.predict)
-shrimp[,&amp;quot;:=&amp;quot;(ObsSeq=seq(nrow(shrimp)))]
-#把拟合值合并到shrimp数据集
-shrimp.predicted.value &amp;lt;- merge(shrimp,shrimp.lm.9.predict.dt,by = c(&amp;quot;ObsSeq&amp;quot;),all.y = TRUE)
-
-
-
-ggplot(data=shrimp.predicted.value,aes(x=PopID,y=PredictedValue,fill=FamilyID)) + 
-  geom_boxplot(outlier.size = 0)+
-  labs(x=&amp;quot;群体&amp;quot;,y=&amp;quot;收获体重预测值&amp;quot;)+
-  theme_gray(base_size = 20)+
-  theme(legend.position = &amp;quot;none&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:lm9fittedvalue&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-12-09-lmm-tutorial-2_files/figure-html/lm9fittedvalue-1.png&#34; alt=&#34;四个对虾群体体重的预测值&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 3: 四个对虾群体体重的预测值
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;4.5 随机效应的显著性检验&lt;/h3&gt;
-&lt;p&gt;模型中加入随机效应后，如何检验其显著性？&lt;/p&gt;
-&lt;p&gt;一般是通过似然比率检验（Likelihood ratio test, LRT)来实现。lmerTest包中的rand()函数提供该功能。&lt;/p&gt;
-&lt;p&gt;首先我们来看一下似然比率检验的结果：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rand(shrimp.lm.9)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Analysis of Random effects Table:
-##                Chi.sq Chi.DF p.value    
-## PopID:FamilyID   1341      1  &amp;lt;2e-16 ***
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;卡方检验表明，&lt;em&gt;p&lt;/em&gt;&amp;lt;0.01，模型中加入PopID:Family随机效应后，对样本数据拟合得更好。&lt;/p&gt;
-&lt;p&gt;LRT检验的公式为&lt;span class=&#34;math inline&#34;&gt;\(LR = 2*(lnL1 - lnL2)\)&lt;/span&gt;，其中L1为复杂模型的最大似然值，L2为简单模型的最大似然值。对L1和L2分别取log转换，计算LR值。然后通过卡方检验，确定p值。自由度为复杂模型和简单模型包括的随机效应数之差。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;#9&#34;&gt;模型9&lt;/a&gt;的最大似然值log转换后为：&lt;span class=&#34;math inline&#34;&gt;\(-1.153518\times 10^{4}\)&lt;/span&gt;；&lt;/p&gt;
-&lt;p&gt;不包括PopID:Family随机效应的&lt;a href=&#34;#8&#34;&gt;模型8&lt;/a&gt;的logLikelihood值为&lt;span class=&#34;math inline&#34;&gt;\(-1.21958\times 10^{4}\)&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;lmer函数返回的最大似然值log转换通过lme4包的logLik()函数实现。对于lm函数返回的最大似然值，stats包也有对应的logLik()函数处理。&lt;/p&gt;
-&lt;p&gt;似然比率为：LR = 2*(-11535.178901292 - -12195.7957678913) = 1321.23。自由度为1。&lt;/p&gt;
-&lt;p&gt;跟直接利用rand()函数获得的卡方值相比略有出入。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;4.5 获得每个群体的性能&lt;/h3&gt;
-&lt;p&gt;调用emmeans包中的函数，计算四个群体的估计边际均值(estimated marginal means)，或者说最小二乘均值(least-squares means)。根据边际均值，我们可以对群体的性能进行排序和比较。&lt;/p&gt;
-&lt;p&gt;关于emmeans包，请参考日志&lt;a href=&#34;http://luansheng.netlify.com/post/least-squares-means-note-1/&#34;&gt;最小二乘均值的估计模型&lt;/a&gt;。尽管该日志介绍的是lsmeans包，但用法跟emmeans包都是一样的。而且根据作者介绍，在不久的将来，emmeans包要替代lsmeans包。&lt;/p&gt;
-&lt;p&gt;注意，安装emmeans还需要pbkrtest包，这个包没有自动安装，需要手动安装。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(emmeans)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：emmeans&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## 载入程辑包：&amp;#39;emmeans&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:lmerTest&amp;#39;:
-## 
-##     lsmeans&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shrimp.lm9.rgl &amp;lt;- ref_grid(shrimp.lm.9)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 载入需要的名字空间：pbkrtest&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Note: D.f. calculations have been disabled because the number of observations exceeds 3000.
-## To enable adjustments, set emm_options(pbkrtest.limit = 4241) or larger,
-## but be warned that this may result in large computation time and memory use.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;emmeans(shrimp.lm9.rgl,&amp;quot;PopID&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##  PopID   emmean        SE  df asymp.LCL asymp.UCL
-##  Pop1  33.83782 0.4853477 Inf  32.88656  34.78909
-##  Pop2  32.17826 0.4903717 Inf  31.21715  33.13937
-##  Pop3  30.06359 0.4659862 Inf  29.15028  30.97691
-##  Pop4  27.97398 0.5373764 Inf  26.92074  29.02722
-## 
-## Results are averaged over the levels of: SexID, TankID 
-## Degrees-of-freedom method: asymptotic 
-## Confidence level used: 0.95&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;从上边结果中查找emmean列，可以看到Pop1群体的边际均值最大，这表明四个群体中该群体性能最好。&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
