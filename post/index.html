@@ -303,7 +303,7 @@ MathJax.Hub.Config({
 
   <div class="article-style" itemprop="articleBody">
     
-    栾佳硕的作业，计算硬币抛100万次，正面朝上有多少次？ # -*- coding: utf-8 -*- import random r = 0 for i in range(1,1000000): r += random.choice([0,1]) #假定1表示正面 print(&quot;抛掷硬币10
+    栾佳硕的作业，计算硬币抛100万次，连续正面朝上10次的有多少次？ # -*- coding: utf-8 -*- import random counter1 = 0 counter2 = 0 for i in range(1000000): coin = random.choice([0,1]) #假定1表示正面 if coin == 1: counter1 += 1 else: counter1
     
   </div>
   <p class="read-more">
