@@ -21,11 +21,10 @@
 &lt;p&gt;Watch the cartoon.&lt;/p&gt;
 &lt;p&gt;go fishing.&lt;/p&gt;
 &lt;p&gt;(不会了话看编程书）&lt;/p&gt;
-&lt;p&gt;2.写入之后，把它读进去，并且用format方法显示出来。&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;f = open(&amp;quot;lsj.txt&amp;quot;,&amp;quot;w&amp;quot;)
 f.writelines(&amp;quot;Watch the  cartoon.\ngo fishing&amp;quot;)
 f.close()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;3.把它读出来，并且用format方法显示出来。&lt;/p&gt;
+&lt;p&gt;2.把它读出来，并且用format方法显示出来。&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;with open(&amp;quot;lsj.txt&amp;quot;,&amp;quot;r&amp;quot;) as f:
     for line in f.readlines():
         print(line.strip())&lt;/code&gt;&lt;/pre&gt;
