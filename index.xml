@@ -11,6 +11,30 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>read a file by python</title>
+      <link>/post/read-a-file-by-python/</link>
+      <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/read-a-file-by-python/</guid>
+      <description>&lt;p&gt;栾佳硕的任务：&lt;/p&gt;
+&lt;p&gt;1.建立一个文件，在文件中写入以下内容：&lt;/p&gt;
+&lt;p&gt;Watch the cartoon.&lt;/p&gt;
+&lt;p&gt;go fishing.&lt;/p&gt;
+&lt;p&gt;(不会了话看编程书）&lt;/p&gt;
+&lt;p&gt;2.写入之后，把它读进去，并且用format方法显示出来。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;f = open(&amp;quot;lsj.txt&amp;quot;,&amp;quot;w&amp;quot;)
+f.writelines(&amp;quot;Watch the  cartoon.\ngo fishing&amp;quot;)
+f.close()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3.把它读出来，并且用format方法显示出来。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;with open(&amp;quot;lsj.txt&amp;quot;,&amp;quot;r&amp;quot;) as f:
+    for line in f.readlines():
+        print(line.strip())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Watch the  cartoon.
+## go fishing&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>学习在python中使用类</title>
       <link>/post/how-to-define-class-in-python/</link>
       <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
@@ -1170,98 +1194,6 @@ Figure 1: 基于0,1正态分布的散点图
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Ok!大功告成！&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Take me to  your heart</title>
-      <link>/post/take-me-to-your-heart/</link>
-      <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/take-me-to-your-heart/</guid>
-      <description>&lt;p&gt;Hiding from the rain and snow&lt;/p&gt;
-
-&lt;p&gt;Trying to forget but I won&amp;rsquo;t let go&lt;/p&gt;
-
-&lt;p&gt;Looking at a crowded street&lt;/p&gt;
-
-&lt;p&gt;Listening to my own heart beat&lt;/p&gt;
-
-&lt;p&gt;So many people all around the world&lt;/p&gt;
-
-&lt;p&gt;Tell me where do I find someone like you girl&lt;/p&gt;
-
-&lt;p&gt;(Chorus)&lt;/p&gt;
-
-&lt;p&gt;Take me to your heart take me to your soul&lt;/p&gt;
-
-&lt;p&gt;Give me your hand before I&amp;rsquo;m old&lt;/p&gt;
-
-&lt;p&gt;Show me what love is - haven&amp;rsquo;t got a clue&lt;/p&gt;
-
-&lt;p&gt;Show me that wonders can be true&lt;/p&gt;
-
-&lt;p&gt;They say nothing lasts forever&lt;/p&gt;
-
-&lt;p&gt;We&amp;rsquo;re only here today&lt;/p&gt;
-
-&lt;p&gt;Love is now or never&lt;/p&gt;
-
-&lt;p&gt;Bring me far away&lt;/p&gt;
-
-&lt;p&gt;Take me to your heart take me to your soul&lt;/p&gt;
-
-&lt;p&gt;Give me your hand and hold me&lt;/p&gt;
-
-&lt;p&gt;Show me what love is - be my guiding star&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s easy take me to your heart&lt;/p&gt;
-
-&lt;p&gt;Standing on a mountain high&lt;/p&gt;
-
-&lt;p&gt;Looking at the moon through a clear blue sky&lt;/p&gt;
-
-&lt;p&gt;I should go and see some friends&lt;/p&gt;
-
-&lt;p&gt;But they don&amp;rsquo;t really comprehend&lt;/p&gt;
-
-&lt;p&gt;Don&amp;rsquo;t need too much talking without saying anything&lt;/p&gt;
-
-&lt;p&gt;All I need is someone who makes me wanna sing&lt;/p&gt;
-
-&lt;p&gt;Take me to your heart take me to your soul&lt;/p&gt;
-
-&lt;p&gt;Give me your hand before I&amp;rsquo;m old&lt;/p&gt;
-
-&lt;p&gt;Show me what love is - haven&amp;rsquo;t got a clue&lt;/p&gt;
-
-&lt;p&gt;Show me that wonders can be true&lt;/p&gt;
-
-&lt;p&gt;They say nothing lasts forever&lt;/p&gt;
-
-&lt;p&gt;We&amp;rsquo;re only here today&lt;/p&gt;
-
-&lt;p&gt;Love is now or never&lt;/p&gt;
-
-&lt;p&gt;Bring me far away&lt;/p&gt;
-
-&lt;p&gt;Take me to your heart take me to your soul&lt;/p&gt;
-
-&lt;p&gt;Give me your hand and hold me&lt;/p&gt;
-
-&lt;p&gt;Show me what love is - be my guiding star&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s easy take me to your heart&lt;/p&gt;
-
-&lt;p&gt;Take me to your heart take me to your soul&lt;/p&gt;
-
-&lt;p&gt;Give me your hand and hold me&lt;/p&gt;
-
-&lt;p&gt;Show me what love is - be my guiding star&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s easy take me to your heart&lt;/p&gt;
-
-&lt;p&gt;(Chorus)&lt;/p&gt;
 </description>
     </item>
     
