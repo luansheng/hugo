@@ -289,7 +289,7 @@ MathJax.Hub.Config({
 <p>教程中，使用<a href="https://raw.githubusercontent.com/wiki/arunsrinivasan/%20flights/NYCflights14/flights14.csv">NYC-flights14数据集</a>，纽约机场2014年出发的所有航班信息，时间是2014.01-10月份。下载到本地目录，与Rmd代码在同一目录 data.table中提供了fread()函数，用于快速读取大数据。<br />
 执行代码前，首先运行<code>setwd()</code>或者通过rstudio软件<code>Session</code> -&gt; <code>Set Working Directory</code> -&gt; <code>To Source File Location</code>，将工作目录切换到代码文件和数据文件所在路径。</p>
 <pre class="r"><code>require(data.table)</code></pre>
-<pre><code>## 载入需要的程辑包：data.table</code></pre>
+<pre><code>## Loading required package: data.table</code></pre>
 <pre class="r"><code>flights &lt;- fread(&quot;flights14.csv&quot;)
 flights</code></pre>
 <pre><code>##         year month day dep_time dep_delay arr_time arr_delay cancelled

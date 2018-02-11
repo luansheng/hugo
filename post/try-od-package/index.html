@@ -292,7 +292,7 @@ MathJax.Hub.Config({
 <h2>1. 加载数据文件</h2>
 <p>genex是一个作物遗传改良的实验数据，包括213个品种。实验设计为部分重复设计，包括2个Block,每个block内有48行×3列。部分品种有2次实验记录。 genex.Ainv 包括了213个品种间的加性遗传相关矩阵。注意od包要求genex.Ainv数据框包括一个属性rowNames,存储row列中整数对应的品种名。</p>
 <pre class="r"><code>require(data.table)</code></pre>
-<pre><code>## 载入需要的程辑包：data.table</code></pre>
+<pre><code>## Loading required package: data.table</code></pre>
 <pre class="r"><code>genex &lt;- fread(file=&quot;genex.csv&quot;,stringsAsFactors = TRUE)
 genex[,&quot;:=&quot;(Row=as.factor(Row),Block=as.factor(Block),Column=as.factor(Column))]
 genex.Ainv &lt;- fread(file=&quot;genex.Ainv.csv&quot;,stringsAsFactors = TRUE)

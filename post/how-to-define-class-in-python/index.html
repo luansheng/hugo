@@ -328,7 +328,7 @@ luan_account.get_balance()</code></pre>
 </div>
 <div id="interestaccount" class="section level2">
 <h2>2. 建立InterestAccount类</h2>
-<p>建立一个类，名为InterestAccount。它可以挣利息。他要继承BankAcccount的属性以及方法（在之前的挑战任务栏）。 在属性栏中增加个利息率，另外还要增加一个方法用来挣利息。</p>
+<p>建立一个类，名为InterestAccount。它可以挣利息。他要继承BankAcccount的属性以及方法（在之前的挑战任务栏）。 在属性栏中增加个利息率，另外还要增加一个方法用来挣利息。 这里，继续需要把父类的所有属性都加上？也太麻烦了！</p>
 <pre class="python"><code>class InterestAccount(BankAccount):
     def __init__(self,user_name,account_number,balance,interest_rate):
         BankAccount.__init__(self,user_name,account_number,balance)
@@ -370,9 +370,9 @@ print(&quot;1万元存10年，利息为0.045，可以多赚%.2f元&quot; % (luan
     
     <li><a href="/post/pygame-exercise-1/">pygame 练习1</a></li>
     
-    <li><a href="/post/input-five-names/">输入5个人的名字，并打印出来</a></li>
-    
     <li><a href="/post/python-timer/">python 定时器</a></li>
+    
+    <li><a href="/post/input-five-names/">输入5个人的名字，并打印出来</a></li>
     
     <li><a href="/post/how-to-install-ev3dev/">如何在EV3上安装ev3dev系统 </a></li>
     

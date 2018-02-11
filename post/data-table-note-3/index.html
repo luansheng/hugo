@@ -314,15 +314,15 @@ head(flights)</code></pre>
 ## 6:  N491AA   1223    EWR  DFW      215     1372    9  49</code></pre>
 <p>origin列设置为主键后，一个明显特征，其中的元素从小到大排序了。主键列中元素并不唯一，可以重复。 列被setkey后，速度提升很快。利用microbenchmark包进行测试。设置为主键后，的确快一些。</p>
 <pre class="r"><code>require(microbenchmark)</code></pre>
-<pre><code>## 载入需要的程辑包：microbenchmark</code></pre>
+<pre><code>## Loading required package: microbenchmark</code></pre>
 <pre class="r"><code>microbenchmark(flights[.(&quot;JFK&quot;)],flights.copy[origin == &quot;JFK&quot;])</code></pre>
 <pre><code>## Unit: milliseconds
-##                           expr      min       lq     mean   median
-##              flights[.(&quot;JFK&quot;)] 5.217057 5.531198 7.715862 6.277565
-##  flights.copy[origin == &quot;JFK&quot;] 6.438767 6.859725 8.767422 7.223443
+##                           expr      min        lq     mean    median
+##              flights[.(&quot;JFK&quot;)] 7.932594  8.631261 12.41985  9.464542
+##  flights.copy[origin == &quot;JFK&quot;] 9.719476 10.418143 13.75618 10.885129
 ##        uq      max neval cld
-##  8.338636 48.49702   100   a
-##  9.947653 50.48583   100   a</code></pre>
+##  15.87820 55.81658   100   a
+##  16.50391 59.99578   100   a</code></pre>
 <ul>
 <li>因为已经将主键设置为 origin列了，所以只要直接指定“JFK”就可以了。这里 .()用来在data.table的主键（也就是flights 的 origin列）里，查找“JFK”。</li>
 <li>首先，满足“JFK”条件的行的索引都被获取到。然后，这些行的哪些信息是必要的呢。既然参数j里没有指定任何表达式，这些行的所有列都被返回了。</li>
@@ -677,11 +677,11 @@ print(object.size(DT),units=&quot;Mb&quot;)</code></pre>
 microbenchmark(DT[x==&quot;a&quot; &amp; y==100L],DT[.(&quot;a&quot;,100L)])</code></pre>
 <pre><code>## Unit: microseconds
 ##                      expr        min          lq        mean      median
-##  DT[x == &quot;a&quot; &amp; y == 100L] 132871.632 152377.9780 171757.6344 164230.0075
-##          DT[.(&quot;a&quot;, 100L)]    436.282    523.4185    613.2172    583.0615
+##  DT[x == &quot;a&quot; &amp; y == 100L] 204528.388 230081.4770 248581.2901 245022.2900
+##          DT[.(&quot;a&quot;, 100L)]    562.775    658.1345    780.1869    734.9345
 ##          uq        max neval cld
-##  185983.266 321135.164   100   b
-##     685.973   1005.072   100  a</code></pre>
+##  260453.769 387483.638   100   b
+##     833.495   1492.909   100  a</code></pre>
 <p>看起来，快了大约200多倍。的确是非常快。 看看给出的解释：中文地址在<a href="https://youngspring1.github.io/post/2016/2016-03-22-datatable3/">这里</a></p>
 <div class="section level2">
 <h2>向量扫描</h2>
