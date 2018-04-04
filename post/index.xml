@@ -11,6 +11,266 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>如何理解遗传组效应</title>
+      <link>/post/how-to-understand-genetic-groups/</link>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-to-understand-genetic-groups/</guid>
+      <description>&lt;p&gt;参考材料来自于&lt;a href=&#34;https://jvanderw.une.edu.au/Chapter14.pdf&#34;&gt;Julius van der Werf的教程&lt;/a&gt;。&lt;/p&gt;
+&lt;div id=&#34;genetic-group&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;什么情况下需要考虑遗传组效应（Genetic group）&lt;/h2&gt;
+&lt;p&gt;当数据集中的个体来源不同时，在遗传评估模型中需要考虑遗传组。当个体的亲本信息未知时，通常会假定亲本来自于同质群体（homogeneous population），具有相同的期望均值，利用混合模型估计育种值。亲本信息未知的个体，通常称为“基础个体”，奠基者个体更为合适？对于这些奠基者个体，如果它们不是来自于一个同质群体，为了区分不同奠基者个体的遗传水平，需要考虑遗传组效应。 需要注意的一点是，对于一个基础群体，亲缘关系矩阵已经考虑了所有由选择产生的遗传差异。举例说明：从一个基础群体开始分别建立高低两个选育系，如果系谱和性能测定数据完成，那么在遗传评估中，我们是不需要考虑遗传组效应的。如果利用系谱和性能测定数据，仍然剖分个体间的遗传差异，那么需要在分析中考虑遗传组效应。如果个体来自于不同的品种，是一个需要考虑的问题。&lt;/p&gt;
+&lt;p&gt;作者给出了两个绵羊品种，Finnsheep和Merinos。其中Finnsheep品种的每窝产仔数均值可以达到3，而Merinos品种的每窝产仔数最多为1。由于每窝产仔数是一个低遗传力性状，如果在遗传评估中忽略品种的效应，那么会使所有个体的EBV趋向于均值（0）。但实际情况不应该是这样的，每窝产仔数的品种效应应该是很强的，而且是可信的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一开始并没有很好的理解上述说法。原来脑海中的印象是，如果不考虑遗传组，难么家系或者个体间的遗传差异会变大，那么遗传参数估计值，如遗传力会偏高。作者举例的意思是说，由于遗传力很低，那么个体的育种值也会很小，但是实际上个体的育种值应该包括品种效应，应该会更大才对。&lt;/strong&gt;那么可以推测，对于高遗传力性状，遗传组对育种值的影响会比较小，但是可能会对遗传力等估计值产生较大的影响。&lt;/p&gt;
+&lt;p&gt;一个比较简单的方法，可以把个体的来源作为&lt;strong&gt;固定效应&lt;/strong&gt;，其关联矩阵X写法&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;个体类型&lt;/th&gt;
+&lt;th&gt;Finnsheep (F)&lt;/th&gt;
+&lt;th&gt;Merinos (M)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Finnsheep (F)&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Merinos (M)&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;F×M&lt;/td&gt;
+&lt;td&gt;0.5&lt;/td&gt;
+&lt;td&gt;0.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;M×(F×M)&lt;/td&gt;
+&lt;td&gt;0.25&lt;/td&gt;
+&lt;td&gt;0.75&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;注意，其中的0.25表示Finnsheep只占&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{4}\)&lt;/span&gt;，0.75表示Merinos占&lt;span class=&#34;math inline&#34;&gt;\(\frac{3}{4}\)&lt;/span&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;带有遗传组的加性遗传模型&lt;/h2&gt;
+&lt;p&gt;当奠基者个体来自不同的群体时，把来源群体作为固定效应是可以的。但是，当来源群体本身是一个杂交群体时（2个或者多个群体杂交），作为固定效应很难分析。Quass（1988）提出了群体内加性遗传相关的基本结构，给出了把遗传组作为随机效应的分析模型。&lt;/p&gt;
+&lt;p&gt;传统模型 &lt;span class=&#34;math display&#34;&gt;\[y=Xb+Zu+e\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;修改后的模型 &lt;span class=&#34;math display&#34;&gt;\[y=Xb+ZQg+Za+e\]&lt;/span&gt; 其中g表示固定的组效应，a表示遗传组内随机个体加性遗传效应。矩阵Q指的是个体与组的关联矩阵，而ZQ实际上把性状测定值与组进行关联。&lt;/p&gt;
+&lt;p&gt;估计的育种值等于：&lt;br /&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\hat{u}=Q\hat{g}+\hat{a}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;实际上在模型中g是一个固定效应，模型方程可以写为：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{bmatrix}
+ X^{&amp;#39;}X &amp;amp; X^{&amp;#39;}ZQ &amp;amp; X^{&amp;#39;}Z \\ 
+ Q^{&amp;#39;}Z^{&amp;#39;}X &amp;amp;  Q^{&amp;#39;}Z^{&amp;#39;}ZQ &amp;amp; Q^{&amp;#39;}Z^{&amp;#39;}Z \\ 
+ Z^{&amp;#39;}X &amp;amp; Z^{&amp;#39;}ZQ  &amp;amp; Z^{&amp;#39;}Z+\alpha A^{-1}
+\end{bmatrix} 
+\begin{bmatrix}
+ b \\
+ g \\
+ a
+\end{bmatrix} 
+= 
+\begin{bmatrix}
+ X^{&amp;#39;}y \\
+ Q^{&amp;#39;}Z^{&amp;#39;}y \\
+ Z^{&amp;#39;}y
+\end{bmatrix}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;上述方程左边部分看似复杂，实际上这样记忆，比较简单：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;X&lt;/th&gt;
+&lt;th&gt;ZQ&lt;/th&gt;
+&lt;th&gt;Z&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}X\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}ZQ\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}Z\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Q^{&amp;#39;}Z^{&amp;#39;}\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Q^{&amp;#39;}Z^{&amp;#39;}X\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Q^{&amp;#39;}Z^{&amp;#39;}ZQ\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Q^{&amp;#39;}Z^{&amp;#39;}Z\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Z^{&amp;#39;}\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Z^{&amp;#39;}X\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Z^{&amp;#39;}ZQ\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Z^{&amp;#39;}Z+\alpha A^{-1}\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;对角线上是自己跟自己，非对角线是互相结合在一起。之所以行是转置矩阵，也是很好理解的。&lt;/p&gt;
+&lt;p&gt;举一个例子，如果有10条测定记录，b如果有3个固定效应，那么b是3×1列向量，那么&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}Xb\)&lt;/span&gt;要想可以相乘，&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}X\)&lt;/span&gt;必须要是3列。而我们知道，设计矩阵X是10×3列，&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}X\)&lt;/span&gt;正好是一个3×10×10×3=3×3列矩阵，反过来是10×10矩阵，是不可以的，其他相同原理。&lt;/p&gt;
+&lt;p&gt;上述方程中，难题可能是在于如何建立Q矩阵？（In practice such equation would cause problems, unless a systematic way is found to create the Q matrix，这句话不是很理解！）&lt;/p&gt;
+&lt;p&gt;Quaas对上述方程进行了变换，从左边统一乘以下述矩阵：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{bmatrix}
+I &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; I &amp;amp; -Q^{&amp;#39;} \\
+0 &amp;amp; 0 &amp;amp; I
+\end{bmatrix}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{bmatrix}
+I &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; I &amp;amp; -Q^{&amp;#39;} \\
+0 &amp;amp; 0 &amp;amp; I
+\end{bmatrix}
+\begin{bmatrix}
+ X^{&amp;#39;}X &amp;amp; X^{&amp;#39;}ZQ &amp;amp; X^{&amp;#39;}Z \\ 
+ Q^{&amp;#39;}Z^{&amp;#39;}X &amp;amp;  Q^{&amp;#39;}Z^{&amp;#39;}ZQ &amp;amp; Q^{&amp;#39;}Z^{&amp;#39;}Z \\ 
+ Z^{&amp;#39;}X &amp;amp; Z^{&amp;#39;}ZQ  &amp;amp; Z^{&amp;#39;}Z+\alpha A^{-1}
+\end{bmatrix}
+\begin{bmatrix}
+b \\
+g \\
+a
+\end{bmatrix}
+=
+\begin{bmatrix}
+I &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; I &amp;amp; -Q^{&amp;#39;} \\
+0 &amp;amp; 0 &amp;amp; I
+\end{bmatrix}
+\begin{bmatrix}
+X^{&amp;#39;}y \\
+Q^{&amp;#39;}Z^{&amp;#39;}y \\
+Z^{&amp;#39;}y
+\end{bmatrix}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;方程会变化为：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{bmatrix}
+ X^{&amp;#39;}X &amp;amp; X^{&amp;#39;}ZQ &amp;amp; X^{&amp;#39;}Z \\ 
+ 0 &amp;amp;  0 &amp;amp; -\alpha Q^{&amp;#39;}A^{-1} \\ 
+ Z^{&amp;#39;}X &amp;amp; Z^{&amp;#39;}ZQ  &amp;amp; Z^{&amp;#39;}Z+\alpha A^{-1}
+\end{bmatrix}
+\begin{bmatrix}
+b \\
+g \\
+a
+\end{bmatrix}
+=
+\begin{bmatrix}
+X^{&amp;#39;}y \\
+0 \\
+Z^{&amp;#39;}y
+\end{bmatrix}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;对上述方程组继续进行变换：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{bmatrix}
+ X^{&amp;#39;}X &amp;amp; X^{&amp;#39;}ZQ &amp;amp; X^{&amp;#39;}Z \\ 
+ 0 &amp;amp;  0 &amp;amp; -\alpha Q^{&amp;#39;}A^{-1} \\ 
+ Z^{&amp;#39;}X &amp;amp; Z^{&amp;#39;}ZQ  &amp;amp; Z^{&amp;#39;}Z+\alpha A^{-1}
+\end{bmatrix}
+\begin{bmatrix}
+I &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; I &amp;amp; 0 \\
+0 &amp;amp; -Q &amp;amp; I
+\end{bmatrix}
+\begin{bmatrix}
+I &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; I &amp;amp; 0 \\
+0 &amp;amp; Q &amp;amp; I
+\end{bmatrix}
+\begin{bmatrix}
+b \\
+g \\
+a
+\end{bmatrix}
+=
+\begin{bmatrix}
+X^{&amp;#39;}y \\
+0 \\
+Z^{&amp;#39;}y
+\end{bmatrix}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;上式中： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{bmatrix}
+I &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; I &amp;amp; 0 \\
+0 &amp;amp; -Q &amp;amp; I
+\end{bmatrix}
+\begin{bmatrix}
+I &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; I &amp;amp; 0 \\
+0 &amp;amp; Q &amp;amp; I
+\end{bmatrix}
+=I
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;互为逆矩阵，乘积为单位矩阵。&lt;/p&gt;
+&lt;p&gt;方程组左手边，前两个矩阵相乘后两个矩阵相乘，得到新的方程组：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{bmatrix}
+ X^{&amp;#39;}X &amp;amp; 0 &amp;amp; X^{&amp;#39;}Z \\ 
+ 0 &amp;amp;  \alpha Q^{&amp;#39;}A^{-1}Q &amp;amp; -\alpha Q^{&amp;#39;}A^{-1} \\ 
+ Z^{&amp;#39;}X &amp;amp; -\alpha A^{-1}Q  &amp;amp; Z^{&amp;#39;}Z+\alpha A^{-1}
+\end{bmatrix}
+\begin{bmatrix}
+b \\
+g \\
+u=Qg+a
+\end{bmatrix}
+=
+\begin{bmatrix}
+X^{&amp;#39;}y \\
+0 \\
+Z^{&amp;#39;}y
+\end{bmatrix}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;关于新的方程组，作者的评价说实话，一点都没看懂。&lt;/p&gt;
+&lt;p&gt;第一个优点，作者讲的是对于固定效应，组的两个非对角线元素（第2,1或者1,2）都是零；而且右手边，组元素（2,1）也是零；意思应该是说计算更加简单。&lt;/p&gt;
+&lt;p&gt;第二个优点：组内个体的解，直接包括的组效应（u=Qg+a）。作者讲，这是在求解混合模型方程时，是一个重要的优势。&lt;/p&gt;
+&lt;p&gt;然而作者认为最重要的是建立了一种定义遗传组的灵活形式。作者认为组方程跟不带有数据的个体方程十分类似。个人理解，组方程指的应该是这样一个方程：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\alpha Q^{&amp;#39;}A^{-1}Qg - \alpha Q^{&amp;#39;}A^{-1}u = 0\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;个体动物方程：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[Z^{&amp;#39;}Xb - \alpha A^{-1}Qg + (Z^{&amp;#39;}Z+\alpha A^{-1})u = Z^{&amp;#39;}y\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;没有看出二者明显的相似性来。作者认为，遗传组就像祖先个体一样，定义个体跟遗传组的亲缘矩阵（Q矩阵）。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;assigning-animals-to-genetic-groups&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;分配个体到遗传组（Assigning animals to genetic groups&lt;/h2&gt;
+&lt;p&gt;可以根据基础个体的品种、出生年份来定义组。需要明确的一个问题，是如何定义组的关联矩阵，个体的观测值如何与组关联。&lt;/p&gt;
+&lt;p&gt;作者举了个例子：&lt;/p&gt;
+&lt;p&gt;个体的祖先可能来自不同的品种，而且在不同年份出生。那么根据系谱可以推算出，各组对个体的遗传贡献，来定义关联矩阵：1998年出生的品种1占0.25、2002年出生的品种2占0.25、2004年出生的品种2占0.5。个体中每个组的贡献，实际上与它的遗传贡献是密切相关的。Quass定义了一种方法，可以根据个体与组的关系，推导出它的后代与这些组的关系。&lt;/p&gt;
+&lt;p&gt;基础个体，原则上我们是不知道他们的系谱的，因此必须要根据起源，把他们分派到不同的遗传组。&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Genetic and non-genetic indirect effects for harvest weight in the GIFT strain of Nile tilapia (Oreochromis niloticus) note</title>
+      <link>/post/genetic-and-non-genetic-indirect-effects-for-harvest-weight-in-the-gift-strain-of-nile-tilapia-oreochromis-niloticus-note/</link>
+      <pubDate>Sun, 11 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/genetic-and-non-genetic-indirect-effects-for-harvest-weight-in-the-gift-strain-of-nile-tilapia-oreochromis-niloticus-note/</guid>
+      <description>
+
+&lt;p&gt;重点关注收获体重IGE与存活的相关性解释。&lt;/p&gt;
+
+&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
+
+&lt;p&gt;关于间接遗传效应的定义，英文标准定义为“The heritable effect of an individual on the trait values of other individuals it interacts with is known as an indirect genetic effect (IGE)”。IGE可能会影响选择反应。鱼类对于高生长速率的持续改良，已经表明，选育出的鱼具有更强的攻击性和竞争性。这可能降低生长速度的选择反应。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;关于这一点，以前是深信不疑的。虾类混合养殖和多家系多分组IGE测试结果表明，混养池生长DGE跟IGE的确是负相关的，这表明传统的选择方案，的确会选到竞争性强的虾。但是虾类更多的是竞争性行为，而不是攻击性行为。他们的后代在一起，只是竞争性强的虾会长的大，弱的吃不到食物，会长的小一些，而不是互相攻击会导致死亡率升高。&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>read a file by python</title>
       <link>/post/read-a-file-by-python/</link>
       <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
@@ -918,281 +1178,6 @@ genex.od &amp;lt;- od(random = ~ped(Entry) + ide(Entry) + Block + Column + Row,
 save.image()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;genex.od$design&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>我的第一个python程序</title>
-      <link>/post/my-first-python-program/</link>
-      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/my-first-python-program/</guid>
-      <description>&lt;p&gt;参考&lt;a href=&#34;http://pandas.pydata.org/&#34;&gt;pandas官网&lt;/a&gt;，&lt;a href=&#34;http://pandas.pydata.org/pandas-docs/stable/10min.html&#34;&gt;十分钟教程&lt;/a&gt;&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-s = pd.Series([1,3,5,np.nan,6,8])
-print(s)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 0    1.0
-## 1    3.0
-## 2    5.0
-## 3    NaN
-## 4    6.0
-## 5    8.0
-## dtype: float64&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>在R中使用windows系统自带的中文字体</title>
-      <link>/post/using-other-system-chinese-fonts-in-r/</link>
-      <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/using-other-system-chinese-fonts-in-r/</guid>
-      <description>&lt;p&gt;R作图时，如何在图片中使用windows系统自带的其他中文字体？以前尝试过好几次，都没有成功。&lt;/p&gt;
-&lt;p&gt;首先安装二个包：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/sysfonts/index.html&#34;&gt;sysfonts&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/showtext/index.html&#34;&gt;showtext&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;R中自带的默认字体家族，可以通过sysfonts::font.families()函数查看：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(sysfonts)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: sysfonts&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(showtext)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: showtext&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: showtextdb&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;font_families()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;sans&amp;quot;         &amp;quot;serif&amp;quot;        &amp;quot;mono&amp;quot;         &amp;quot;wqy-microhei&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;R中自带的三种标准字体家族为：&lt;a href=&#34;https://baike.baidu.com/item/衬线字体/6820704?fr=aladdin&#34;&gt;serif&lt;/a&gt;（衬线）、&lt;a href=&#34;https://baike.baidu.com/item/无衬线体/2374029&#34;&gt;sans&lt;/a&gt;（无衬线）和&lt;a href=&#34;https://baike.baidu.com/item/等宽字体/8434037?fr=aladdin&#34;&gt;mono&lt;/a&gt;（等宽）三类。&lt;/p&gt;
-&lt;p&gt;如果想使用Windows系统中自带的中文字体，首先查看系统中字体存储路径：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;font_paths()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;C:\\Windows\\Fonts&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;进一步查看有哪些可以利用的字体文件：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;font_files()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##   [1] &amp;quot;AGENCYB.TTF&amp;quot;             &amp;quot;AGENCYR.TTF&amp;quot;            
-##   [3] &amp;quot;ALGER.TTF&amp;quot;               &amp;quot;ANTQUAB.TTF&amp;quot;            
-##   [5] &amp;quot;ANTQUABI.TTF&amp;quot;            &amp;quot;ANTQUAI.TTF&amp;quot;            
-##   [7] &amp;quot;arial.ttf&amp;quot;               &amp;quot;arialbd.ttf&amp;quot;            
-##   [9] &amp;quot;arialbi.ttf&amp;quot;             &amp;quot;ariali.ttf&amp;quot;             
-##  [11] &amp;quot;ARIALN.TTF&amp;quot;              &amp;quot;ARIALNB.TTF&amp;quot;            
-##  [13] &amp;quot;ARIALNBI.TTF&amp;quot;            &amp;quot;ARIALNI.TTF&amp;quot;            
-##  [15] &amp;quot;ariblk.ttf&amp;quot;              &amp;quot;ARLRDBD.TTF&amp;quot;            
-##  [17] &amp;quot;bahnschrift.ttf&amp;quot;         &amp;quot;BASKVILL.TTF&amp;quot;           
-##  [19] &amp;quot;BAUHS93.TTF&amp;quot;             &amp;quot;BELL.TTF&amp;quot;               
-##  [21] &amp;quot;BELLB.TTF&amp;quot;               &amp;quot;BELLI.TTF&amp;quot;              
-##  [23] &amp;quot;BERNHC.TTF&amp;quot;              &amp;quot;BKANT.TTF&amp;quot;              
-##  [25] &amp;quot;BOD_B.TTF&amp;quot;               &amp;quot;BOD_BI.TTF&amp;quot;             
-##  [27] &amp;quot;BOD_BLAI.TTF&amp;quot;            &amp;quot;BOD_BLAR.TTF&amp;quot;           
-##  [29] &amp;quot;BOD_CB.TTF&amp;quot;              &amp;quot;BOD_CBI.TTF&amp;quot;            
-##  [31] &amp;quot;BOD_CI.TTF&amp;quot;              &amp;quot;BOD_CR.TTF&amp;quot;             
-##  [33] &amp;quot;BOD_I.TTF&amp;quot;               &amp;quot;BOD_PSTC.TTF&amp;quot;           
-##  [35] &amp;quot;BOD_R.TTF&amp;quot;               &amp;quot;BOOKOS.TTF&amp;quot;             
-##  [37] &amp;quot;BOOKOSB.TTF&amp;quot;             &amp;quot;BOOKOSBI.TTF&amp;quot;           
-##  [39] &amp;quot;BOOKOSI.TTF&amp;quot;             &amp;quot;BRADHITC.TTF&amp;quot;           
-##  [41] &amp;quot;BRITANIC.TTF&amp;quot;            &amp;quot;BRLNSB.TTF&amp;quot;             
-##  [43] &amp;quot;BRLNSDB.TTF&amp;quot;             &amp;quot;BRLNSR.TTF&amp;quot;             
-##  [45] &amp;quot;BROADW.TTF&amp;quot;              &amp;quot;BRUSHSCI.TTF&amp;quot;           
-##  [47] &amp;quot;BSSYM7.TTF&amp;quot;              &amp;quot;calibri.ttf&amp;quot;            
-##  [49] &amp;quot;calibrib.ttf&amp;quot;            &amp;quot;calibrii.ttf&amp;quot;           
-##  [51] &amp;quot;calibril.ttf&amp;quot;            &amp;quot;calibrili.ttf&amp;quot;          
-##  [53] &amp;quot;calibriz.ttf&amp;quot;            &amp;quot;CALIFB.TTF&amp;quot;             
-##  [55] &amp;quot;CALIFI.TTF&amp;quot;              &amp;quot;CALIFR.TTF&amp;quot;             
-##  [57] &amp;quot;CALIST.TTF&amp;quot;              &amp;quot;CALISTB.TTF&amp;quot;            
-##  [59] &amp;quot;CALISTBI.TTF&amp;quot;            &amp;quot;CALISTI.TTF&amp;quot;            
-##  [61] &amp;quot;cambria.ttc&amp;quot;             &amp;quot;cambriab.ttf&amp;quot;           
-##  [63] &amp;quot;cambriai.ttf&amp;quot;            &amp;quot;cambriaz.ttf&amp;quot;           
-##  [65] &amp;quot;Candara.ttf&amp;quot;             &amp;quot;Candarab.ttf&amp;quot;           
-##  [67] &amp;quot;Candarai.ttf&amp;quot;            &amp;quot;Candaraz.ttf&amp;quot;           
-##  [69] &amp;quot;CASTELAR.TTF&amp;quot;            &amp;quot;CENSCBK.TTF&amp;quot;            
-##  [71] &amp;quot;CENTAUR.TTF&amp;quot;             &amp;quot;CENTURY.TTF&amp;quot;            
-##  [73] &amp;quot;CHILLER.TTF&amp;quot;             &amp;quot;COLONNA.TTF&amp;quot;            
-##  [75] &amp;quot;comic.ttf&amp;quot;               &amp;quot;comicbd.ttf&amp;quot;            
-##  [77] &amp;quot;comici.ttf&amp;quot;              &amp;quot;comicz.ttf&amp;quot;             
-##  [79] &amp;quot;consola.ttf&amp;quot;             &amp;quot;consolab.ttf&amp;quot;           
-##  [81] &amp;quot;consolai.ttf&amp;quot;            &amp;quot;consolaz.ttf&amp;quot;           
-##  [83] &amp;quot;constan.ttf&amp;quot;             &amp;quot;constanb.ttf&amp;quot;           
-##  [85] &amp;quot;constani.ttf&amp;quot;            &amp;quot;constanz.ttf&amp;quot;           
-##  [87] &amp;quot;COOPBL.TTF&amp;quot;              &amp;quot;COPRGTB.TTF&amp;quot;            
-##  [89] &amp;quot;COPRGTL.TTF&amp;quot;             &amp;quot;corbel.ttf&amp;quot;             
-##  [91] &amp;quot;corbelb.ttf&amp;quot;             &amp;quot;corbeli.ttf&amp;quot;            
-##  [93] &amp;quot;corbelz.ttf&amp;quot;             &amp;quot;cour.ttf&amp;quot;               
-##  [95] &amp;quot;courbd.ttf&amp;quot;              &amp;quot;courbi.ttf&amp;quot;             
-##  [97] &amp;quot;couri.ttf&amp;quot;               &amp;quot;CURLZ___.TTF&amp;quot;           
-##  [99] &amp;quot;Deng.ttf&amp;quot;                &amp;quot;Dengb.ttf&amp;quot;              
-## [101] &amp;quot;Dengl.ttf&amp;quot;               &amp;quot;ebrima.ttf&amp;quot;             
-## [103] &amp;quot;ebrimabd.ttf&amp;quot;            &amp;quot;ELEPHNT.TTF&amp;quot;            
-## [105] &amp;quot;ELEPHNTI.TTF&amp;quot;            &amp;quot;ENGR.TTF&amp;quot;               
-## [107] &amp;quot;ERASBD.TTF&amp;quot;              &amp;quot;ERASDEMI.TTF&amp;quot;           
-## [109] &amp;quot;ERASLGHT.TTF&amp;quot;            &amp;quot;ERASMD.TTF&amp;quot;             
-## [111] &amp;quot;euclid.ttf&amp;quot;              &amp;quot;euclidb.ttf&amp;quot;            
-## [113] &amp;quot;euclidbi.ttf&amp;quot;            &amp;quot;euclidi.ttf&amp;quot;            
-## [115] &amp;quot;eucsym.ttf&amp;quot;              &amp;quot;eucsymb.ttf&amp;quot;            
-## [117] &amp;quot;eucsymbi.ttf&amp;quot;            &amp;quot;eucsymi.ttf&amp;quot;            
-## [119] &amp;quot;euextra.ttf&amp;quot;             &amp;quot;euextrab.ttf&amp;quot;           
-## [121] &amp;quot;eufrak.ttf&amp;quot;              &amp;quot;eufrakb.ttf&amp;quot;            
-## [123] &amp;quot;eumat1.ttf&amp;quot;              &amp;quot;eumat1b.ttf&amp;quot;            
-## [125] &amp;quot;eumat2.ttf&amp;quot;              &amp;quot;eumat2b.ttf&amp;quot;            
-## [127] &amp;quot;FELIXTI.TTF&amp;quot;             &amp;quot;fences.ttf&amp;quot;             
-## [129] &amp;quot;FORTE.TTF&amp;quot;               &amp;quot;FRABK.TTF&amp;quot;              
-## [131] &amp;quot;FRABKIT.TTF&amp;quot;             &amp;quot;FRADM.TTF&amp;quot;              
-## [133] &amp;quot;FRADMCN.TTF&amp;quot;             &amp;quot;FRADMIT.TTF&amp;quot;            
-## [135] &amp;quot;FRAHV.TTF&amp;quot;               &amp;quot;FRAHVIT.TTF&amp;quot;            
-## [137] &amp;quot;framd.ttf&amp;quot;               &amp;quot;FRAMDCN.TTF&amp;quot;            
-## [139] &amp;quot;framdit.ttf&amp;quot;             &amp;quot;FREESCPT.TTF&amp;quot;           
-## [141] &amp;quot;FRSCRIPT.TTF&amp;quot;            &amp;quot;FTLTLT.TTF&amp;quot;             
-## [143] &amp;quot;FZSTK.TTF&amp;quot;               &amp;quot;FZYTK.TTF&amp;quot;              
-## [145] &amp;quot;Gabriola.ttf&amp;quot;            &amp;quot;gadugi.ttf&amp;quot;             
-## [147] &amp;quot;gadugib.ttf&amp;quot;             &amp;quot;GARA.TTF&amp;quot;               
-## [149] &amp;quot;GARABD.TTF&amp;quot;              &amp;quot;GARAIT.TTF&amp;quot;             
-## [151] &amp;quot;georgia.ttf&amp;quot;             &amp;quot;georgiab.ttf&amp;quot;           
-## [153] &amp;quot;georgiai.ttf&amp;quot;            &amp;quot;georgiaz.ttf&amp;quot;           
-## [155] &amp;quot;GIGI.TTF&amp;quot;                &amp;quot;GIL_____.TTF&amp;quot;           
-## [157] &amp;quot;GILB____.TTF&amp;quot;            &amp;quot;GILBI___.TTF&amp;quot;           
-## [159] &amp;quot;GILC____.TTF&amp;quot;            &amp;quot;GILI____.TTF&amp;quot;           
-## [161] &amp;quot;GILLUBCD.TTF&amp;quot;            &amp;quot;GILSANUB.TTF&amp;quot;           
-## [163] &amp;quot;GLECB.TTF&amp;quot;               &amp;quot;GLSNECB.TTF&amp;quot;            
-## [165] &amp;quot;GOTHIC.TTF&amp;quot;              &amp;quot;GOTHICB.TTF&amp;quot;            
-## [167] &amp;quot;GOTHICBI.TTF&amp;quot;            &amp;quot;GOTHICI.TTF&amp;quot;            
-## [169] &amp;quot;GOUDOS.TTF&amp;quot;              &amp;quot;GOUDOSB.TTF&amp;quot;            
-## [171] &amp;quot;GOUDOSI.TTF&amp;quot;             &amp;quot;GOUDYSTO.TTF&amp;quot;           
-## [173] &amp;quot;HARLOWSI.TTF&amp;quot;            &amp;quot;HARNGTON.TTF&amp;quot;           
-## [175] &amp;quot;HATTEN.TTF&amp;quot;              &amp;quot;himalaya.ttf&amp;quot;           
-## [177] &amp;quot;holomdl2.ttf&amp;quot;            &amp;quot;HTOWERT.TTF&amp;quot;            
-## [179] &amp;quot;HTOWERTI.TTF&amp;quot;            &amp;quot;impact.ttf&amp;quot;             
-## [181] &amp;quot;IMPRISHA.TTF&amp;quot;            &amp;quot;INFROMAN.TTF&amp;quot;           
-## [183] &amp;quot;iqiyi_logov4.ttf&amp;quot;        &amp;quot;ITCBLKAD.TTF&amp;quot;           
-## [185] &amp;quot;ITCEDSCR.TTF&amp;quot;            &amp;quot;ITCKRIST.TTF&amp;quot;           
-## [187] &amp;quot;javatext.ttf&amp;quot;            &amp;quot;JOKERMAN.TTF&amp;quot;           
-## [189] &amp;quot;JUICE___.TTF&amp;quot;            &amp;quot;KUNSTLER.TTF&amp;quot;           
-## [191] &amp;quot;l_10646.ttf&amp;quot;             &amp;quot;LATINWD.TTF&amp;quot;            
-## [193] &amp;quot;LBRITE.TTF&amp;quot;              &amp;quot;LBRITED.TTF&amp;quot;            
-## [195] &amp;quot;LBRITEDI.TTF&amp;quot;            &amp;quot;LBRITEI.TTF&amp;quot;            
-## [197] &amp;quot;LCALLIG.TTF&amp;quot;             &amp;quot;LeelaUIb.ttf&amp;quot;           
-## [199] &amp;quot;LeelawUI.ttf&amp;quot;            &amp;quot;LeelUIsl.ttf&amp;quot;           
-## [201] &amp;quot;LFAX.TTF&amp;quot;                &amp;quot;LFAXD.TTF&amp;quot;              
-## [203] &amp;quot;LFAXDI.TTF&amp;quot;              &amp;quot;LFAXI.TTF&amp;quot;              
-## [205] &amp;quot;LHANDW.TTF&amp;quot;              &amp;quot;LSANS.TTF&amp;quot;              
-## [207] &amp;quot;LSANSD.TTF&amp;quot;              &amp;quot;LSANSDI.TTF&amp;quot;            
-## [209] &amp;quot;LSANSI.TTF&amp;quot;              &amp;quot;LTYPE.TTF&amp;quot;              
-## [211] &amp;quot;LTYPEB.TTF&amp;quot;              &amp;quot;LTYPEBO.TTF&amp;quot;            
-## [213] &amp;quot;LTYPEO.TTF&amp;quot;              &amp;quot;lucon.ttf&amp;quot;              
-## [215] &amp;quot;MAGNETOB.TTF&amp;quot;            &amp;quot;MAIAN.TTF&amp;quot;              
-## [217] &amp;quot;malgun.ttf&amp;quot;              &amp;quot;malgunbd.ttf&amp;quot;           
-## [219] &amp;quot;malgunsl.ttf&amp;quot;            &amp;quot;marlett.ttf&amp;quot;            
-## [221] &amp;quot;MATURASC.TTF&amp;quot;            &amp;quot;micross.ttf&amp;quot;            
-## [223] &amp;quot;mingliub.ttc&amp;quot;            &amp;quot;MISTRAL.TTF&amp;quot;            
-## [225] &amp;quot;mmrtext.ttf&amp;quot;             &amp;quot;mmrtextb.ttf&amp;quot;           
-## [227] &amp;quot;MOD20.TTF&amp;quot;               &amp;quot;monbaiti.ttf&amp;quot;           
-## [229] &amp;quot;msgothic.ttc&amp;quot;            &amp;quot;msjh.ttc&amp;quot;               
-## [231] &amp;quot;msjhbd.ttc&amp;quot;              &amp;quot;msjhl.ttc&amp;quot;              
-## [233] &amp;quot;msyh.ttc&amp;quot;                &amp;quot;msyhbd.ttc&amp;quot;             
-## [235] &amp;quot;msyhl.ttc&amp;quot;               &amp;quot;msyi.ttf&amp;quot;               
-## [237] &amp;quot;Mt Extra Tiger.ttf&amp;quot;      &amp;quot;MTCORSVA.TTF&amp;quot;           
-## [239] &amp;quot;mtextra.ttf&amp;quot;             &amp;quot;mvboli.ttf&amp;quot;             
-## [241] &amp;quot;NIAGENG.TTF&amp;quot;             &amp;quot;NIAGSOL.TTF&amp;quot;            
-## [243] &amp;quot;Nirmala.ttf&amp;quot;             &amp;quot;NirmalaB.ttf&amp;quot;           
-## [245] &amp;quot;NirmalaS.ttf&amp;quot;            &amp;quot;ntailu.ttf&amp;quot;             
-## [247] &amp;quot;ntailub.ttf&amp;quot;             &amp;quot;OCRAEXT.TTF&amp;quot;            
-## [249] &amp;quot;OLDENGL.TTF&amp;quot;             &amp;quot;ONYX.TTF&amp;quot;               
-## [251] &amp;quot;OUTLOOK.TTF&amp;quot;             &amp;quot;pala.ttf&amp;quot;               
-## [253] &amp;quot;palab.ttf&amp;quot;               &amp;quot;palabi.ttf&amp;quot;             
-## [255] &amp;quot;palai.ttf&amp;quot;               &amp;quot;PALSCRI.TTF&amp;quot;            
-## [257] &amp;quot;PAPYRUS.TTF&amp;quot;             &amp;quot;PARCHM.TTF&amp;quot;             
-## [259] &amp;quot;PER_____.TTF&amp;quot;            &amp;quot;PERB____.TTF&amp;quot;           
-## [261] &amp;quot;PERBI___.TTF&amp;quot;            &amp;quot;PERI____.TTF&amp;quot;           
-## [263] &amp;quot;PERTIBD.TTF&amp;quot;             &amp;quot;PERTILI.TTF&amp;quot;            
-## [265] &amp;quot;phagspa.ttf&amp;quot;             &amp;quot;phagspab.ttf&amp;quot;           
-## [267] &amp;quot;PLAYBILL.TTF&amp;quot;            &amp;quot;POORICH.TTF&amp;quot;            
-## [269] &amp;quot;PRISTINA.TTF&amp;quot;            &amp;quot;RAGE.TTF&amp;quot;               
-## [271] &amp;quot;RAVIE.TTF&amp;quot;               &amp;quot;REFSAN.TTF&amp;quot;             
-## [273] &amp;quot;REFSPCL.TTF&amp;quot;             &amp;quot;ROCC____.TTF&amp;quot;           
-## [275] &amp;quot;ROCCB___.TTF&amp;quot;            &amp;quot;ROCK.TTF&amp;quot;               
-## [277] &amp;quot;ROCKB.TTF&amp;quot;               &amp;quot;ROCKBI.TTF&amp;quot;             
-## [279] &amp;quot;ROCKEB.TTF&amp;quot;              &amp;quot;ROCKI.TTF&amp;quot;              
-## [281] &amp;quot;SCHLBKB.TTF&amp;quot;             &amp;quot;SCHLBKBI.TTF&amp;quot;           
-## [283] &amp;quot;SCHLBKI.TTF&amp;quot;             &amp;quot;SCRIPTBL.TTF&amp;quot;           
-## [285] &amp;quot;segmdl2.ttf&amp;quot;             &amp;quot;segoepr.ttf&amp;quot;            
-## [287] &amp;quot;segoeprb.ttf&amp;quot;            &amp;quot;segoesc.ttf&amp;quot;            
-## [289] &amp;quot;segoescb.ttf&amp;quot;            &amp;quot;segoeui.ttf&amp;quot;            
-## [291] &amp;quot;segoeuib.ttf&amp;quot;            &amp;quot;segoeuii.ttf&amp;quot;           
-## [293] &amp;quot;segoeuil.ttf&amp;quot;            &amp;quot;segoeuisl.ttf&amp;quot;          
-## [295] &amp;quot;segoeuiz.ttf&amp;quot;            &amp;quot;seguibl.ttf&amp;quot;            
-## [297] &amp;quot;seguibli.ttf&amp;quot;            &amp;quot;seguiemj.ttf&amp;quot;           
-## [299] &amp;quot;seguihis.ttf&amp;quot;            &amp;quot;seguili.ttf&amp;quot;            
-## [301] &amp;quot;seguisb.ttf&amp;quot;             &amp;quot;seguisbi.ttf&amp;quot;           
-## [303] &amp;quot;seguisli.ttf&amp;quot;            &amp;quot;seguisym.ttf&amp;quot;           
-## [305] &amp;quot;SHOWG.TTF&amp;quot;               &amp;quot;simfang.ttf&amp;quot;            
-## [307] &amp;quot;simhei.ttf&amp;quot;              &amp;quot;simkai.ttf&amp;quot;             
-## [309] &amp;quot;SIMLI.TTF&amp;quot;               &amp;quot;simsun.ttc&amp;quot;             
-## [311] &amp;quot;simsunb.ttf&amp;quot;             &amp;quot;SIMYOU.TTF&amp;quot;             
-## [313] &amp;quot;Sitka.ttc&amp;quot;               &amp;quot;SitkaB.ttc&amp;quot;             
-## [315] &amp;quot;SitkaI.ttc&amp;quot;              &amp;quot;SitkaZ.ttc&amp;quot;             
-## [317] &amp;quot;SNAP____.TTF&amp;quot;            &amp;quot;STCAIYUN.TTF&amp;quot;           
-## [319] &amp;quot;STENCIL.TTF&amp;quot;             &amp;quot;STFANGSO.TTF&amp;quot;           
-## [321] &amp;quot;STHUPO.TTF&amp;quot;              &amp;quot;STKAITI.TTF&amp;quot;            
-## [323] &amp;quot;STLITI.TTF&amp;quot;              &amp;quot;STSONG.TTF&amp;quot;             
-## [325] &amp;quot;STXIHEI.TTF&amp;quot;             &amp;quot;STXINGKA.TTF&amp;quot;           
-## [327] &amp;quot;STXINWEI.TTF&amp;quot;            &amp;quot;STZHONGS.TTF&amp;quot;           
-## [329] &amp;quot;sylfaen.ttf&amp;quot;             &amp;quot;Symbol Tiger Expert.ttf&amp;quot;
-## [331] &amp;quot;Symbol Tiger.ttf&amp;quot;        &amp;quot;symbol.ttf&amp;quot;             
-## [333] &amp;quot;tahoma.ttf&amp;quot;              &amp;quot;tahomabd.ttf&amp;quot;           
-## [335] &amp;quot;taile.ttf&amp;quot;               &amp;quot;taileb.ttf&amp;quot;             
-## [337] &amp;quot;TCB_____.TTF&amp;quot;            &amp;quot;TCBI____.TTF&amp;quot;           
-## [339] &amp;quot;TCCB____.TTF&amp;quot;            &amp;quot;TCCEB.TTF&amp;quot;              
-## [341] &amp;quot;TCCM____.TTF&amp;quot;            &amp;quot;TCM_____.TTF&amp;quot;           
-## [343] &amp;quot;TCMI____.TTF&amp;quot;            &amp;quot;TEMPSITC.TTF&amp;quot;           
-## [345] &amp;quot;Tiger Expert.ttf&amp;quot;        &amp;quot;Tiger.ttf&amp;quot;              
-## [347] &amp;quot;times.ttf&amp;quot;               &amp;quot;timesbd.ttf&amp;quot;            
-## [349] &amp;quot;timesbi.ttf&amp;quot;             &amp;quot;timesi.ttf&amp;quot;             
-## [351] &amp;quot;trebuc.ttf&amp;quot;              &amp;quot;trebucbd.ttf&amp;quot;           
-## [353] &amp;quot;trebucbi.ttf&amp;quot;            &amp;quot;trebucit.ttf&amp;quot;           
-## [355] &amp;quot;verdana.ttf&amp;quot;             &amp;quot;verdanab.ttf&amp;quot;           
-## [357] &amp;quot;verdanai.ttf&amp;quot;            &amp;quot;verdanaz.ttf&amp;quot;           
-## [359] &amp;quot;VINERITC.TTF&amp;quot;            &amp;quot;VIVALDII.TTF&amp;quot;           
-## [361] &amp;quot;VLADIMIR.TTF&amp;quot;            &amp;quot;webdings.ttf&amp;quot;           
-## [363] &amp;quot;wingding.ttf&amp;quot;            &amp;quot;WINGDNG2.TTF&amp;quot;           
-## [365] &amp;quot;WINGDNG3.TTF&amp;quot;            &amp;quot;YuGothB.ttc&amp;quot;            
-## [367] &amp;quot;YuGothL.ttc&amp;quot;             &amp;quot;YuGothM.ttc&amp;quot;            
-## [369] &amp;quot;YuGothR.ttc&amp;quot;             &amp;quot;ZWAdobeF.TTF&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;其中宋体文件是simsun.ttc，黑体文件是：simhei.ttf，楷体文件是simkai.ttf，微软雅黑是msyh.ttf和msyhbd.ttf。&lt;/p&gt;
-&lt;p&gt;尝试在R环境中加入黑体（如果字体是在Windows系统的默认字体库中，regular可以不用指定路径）：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;font_add(family = &amp;quot;heiti&amp;quot;,regular = &amp;quot;simhei.ttf&amp;quot;)
-font_add(family = &amp;quot;kaiti&amp;quot;,regular = &amp;quot;simkai.ttf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;此时查看R中自带字体，你会发现多了“heiti”和“kaiti”。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;font.families()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## &amp;#39;font.families()&amp;#39; is now renamed to &amp;#39;font_families()&amp;#39;
-## The old version still works, but consider using the new function in future code&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;sans&amp;quot;         &amp;quot;serif&amp;quot;        &amp;quot;mono&amp;quot;         &amp;quot;wqy-microhei&amp;quot;
-## [5] &amp;quot;heiti&amp;quot;        &amp;quot;kaiti&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;然后我们在画图中使用黑体，借用showtext包作者邱逸轩的这篇文章&lt;a href=&#34;https://cosx.org/2014/01/showtext-interesting-fonts-and-graphs&#34;&gt;showtext：字体，好玩的字体和好玩的图形&lt;/a&gt;中的r示例代码：&lt;/p&gt;
-&lt;p&gt;需要注意，&lt;strong&gt;rstudio自带的Plots面板中绘出的图形不显示自定义字体&lt;/strong&gt;，这也是以前总是觉得设置自定义字体不成功的原因。在运行下面的代码前，调用windows()函数打开一个新的图形接收窗口，下边代码绘制的图形会显示其中。&lt;/p&gt;
-&lt;p&gt;如果你打算在Rmd文档中使用showtext包，请在chunk头参数中设置fig.showtext=TRUE。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;showtext_auto() #这样代码非常重要
-set.seed(123)
-plot(1, xlim = c(-3, 3), ylim = c(-3, 3), type = &amp;quot;n&amp;quot;)
-text(runif(100, -3, 3), runif(100, -3, 3),
-     intToUtf8(round(runif(100, 19968, 40869)), multiple = TRUE),
-     col = rgb(runif(100), runif(100), runif(100), 0.5 + runif(100)/2),
-     cex = 2, family = &amp;quot;heiti&amp;quot;)   # 指定heiti字体
-title(&amp;quot;随机汉字&amp;quot;, family = &amp;quot;kaiti&amp;quot;)   # 指定kaiti字体&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2017-12-31-using-other-system-chinese-fonts-in-r_files/figure-html/fontexample-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;试一下ggplot2作图。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(ggplot2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: ggplot2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;xy &amp;lt;- data.frame(x=rnorm(100),y=rnorm(100))
-showtext_auto()
-scatter.plot &amp;lt;- ggplot(data = xy,aes(x=x,y=y))+
-  geom_point(shape=21)+
-  labs(x=&amp;quot;均值为0，标准差为1的随机正态分布&amp;quot;,y=&amp;quot;均值为0，标准差为1的随机正态分布&amp;quot;)+
-  theme_grey(base_size = 30,base_family = &amp;quot;heiti&amp;quot;)
-print(scatter.plot)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:ggplot2example&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-12-31-using-other-system-chinese-fonts-in-r_files/figure-html/ggplot2example-1.png&#34; alt=&#34;基于0,1正态分布的散点图&#34; width=&#34;576&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: 基于0,1正态分布的散点图
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;Ok!大功告成！&lt;/p&gt;
 </description>
     </item>
     
