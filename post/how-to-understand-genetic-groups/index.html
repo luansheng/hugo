@@ -211,7 +211,7 @@ MathJax.Hub.Config({
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min read
+    7 min read
   </span>
   
 
@@ -511,7 +511,45 @@ Z^{&#39;}y
 <p>可以根据基础个体的品种、出生年份来定义组。需要明确的一个问题，是如何定义组的关联矩阵，个体的观测值如何与组关联。</p>
 <p>作者举了个例子：</p>
 <p>个体的祖先可能来自不同的品种，而且在不同年份出生。那么根据系谱可以推算出，各组对个体的遗传贡献，来定义关联矩阵：1998年出生的品种1占0.25、2002年出生的品种2占0.25、2004年出生的品种2占0.5。个体中每个组的贡献，实际上与它的遗传贡献是密切相关的。Quass定义了一种方法，可以根据个体与组的关系，推导出它的后代与这些组的关系。</p>
-<p>基础个体，原则上我们是不知道他们的系谱的，因此必须要根据起源，把他们分派到不同的遗传组。</p>
+<p>基础个体，原则上我们是不知道他们的系谱的，因此必须要根据起源，把他们分派到不同的遗传组。根据Quass的方法，不是把基础群体直接分配到组，而是把它们分配给虚拟亲本个体（dummy parents），虚拟个体直接分为不同的组，作者也称这些个体为幽灵个体（phantom parents）。例如，一头普通的奶牛可以分配给一头幽灵公牛。幽灵公牛可以划分为1985-1990年出生的公牛组。幽灵母牛可以分配给1992年母牛组。分配幽灵亲本到一个遗传组，后代通过系谱连接到遗传组。事实上，我们可以处理幽灵亲本作为系谱的正常部分（例如Henderson系数规则）。这创建了一个非常灵活的框架，用来分配个体到遗传组。</p>
+<p>新的育种值估计模型为：</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+u_{b} \\
+u
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 &amp; 0 \\
+P_{b} &amp; P
+\end{bmatrix}
+\begin{bmatrix}
+u_{b} \\
+u
+\end{bmatrix}
++
+\begin{bmatrix}
+u_{b} \\
+w
+\end{bmatrix}
+\]</span></p>
+<p>其中<span class="math inline">\(P_{b}\)</span>指的是个体到幽灵亲本的亲缘矩阵，P指的是个体到非幽灵个体亲缘矩阵，看Quass1988年文章，这里指的是直接到双亲的亲缘关系，每一行只有两个数（0.5）。</p>
+<p>未知幽灵亲本的期望均值公式为：</p>
+<p><span class="math display">\[E(u_{b})=Q_{b}g\]</span></p>
+<p>其中<span class="math inline">\(Q_{b}\)</span>是基础个体到遗传组的关联矩阵，g是遗传组效应。</p>
+<p>已知个体的育种值向量u，根据上述方程，可以表述为：</p>
+<p><span class="math display">\[
+u = P_{b}u_{b}+Pu+w \\
+u-Pu = P_{b}u_{b}+w \\
+(I-P)u =  P_{b}u_{b}+w \\
+(I-P)^{-1}(I-P)u =  (I-P)^{-1}P_{b}u_{b} +  (I-P)^{-1}w \\
+u =  (I-P)^{-1}P_{b}u_{b} +  (I-P)^{-1}w \\
+E(u)= (I-P)^{-1}P_{b}E(u_{b}) + (I-P)^{-1}E(w) \\
+E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
+\]</span></p>
+<p>其中Q是所有已知个体到遗传组的关联矩阵。猜想，这里遗传组应该就是用幽灵个体代替？作者举例如下：</p>
+<p>譬如有个体数量为n，遗传组数量为p的数据集，那么Q矩阵是n×p矩阵。Q中的第<span class="math inline">\((i,j)^{th}\)</span>个元素表示第<span class="math inline">\(i^{th}\)</span>个体基因来自第<span class="math inline">\(j^{th}\)</span>个遗传组的百分比。因此，遗传组与祖先个体非常相似。仅仅直接的遗传联系（亲子？）会被考虑，其他遗传联系会自动被implied？仅仅那些有1个或者2个亲本未知的个体，需要指定其遗传组。丢失的亲本会自动被分组。</p>
+<p>建立组方程的规则总结为： * 为基础个体分配幽灵（虚拟）个体 * 定义幽灵个体属于哪个遗传组 * 利用系谱（包括幽灵个体）建立混合模型方程组。对于第<span class="math inline">\(i^{th}\)</span>个体，对其孟德尔抽样方差求逆：<span class="math inline">\(b_{i} = 4/(2+分配到遗传组的亲本数)；然后把\)</span>b_{i}<span class="math inline">\(增加到\)</span>A<sup>{-1}<span class="math inline">\(，具体方法为：把\)</span>-b_{i}/2<span class="math inline">\(加到\)</span>A</sup>{-1}<span class="math inline">\(矩阵的(i,s), (i,d), (s,i) 和 (d,i)位置元素上，把\)</span>-b_{i}/4<span class="math inline">\(加到\)</span>A^{-1}$矩阵的(s,s), (s,d), (d,s) 和 (d,d)位置元素上。</p>
 </div>
 
       </div>
