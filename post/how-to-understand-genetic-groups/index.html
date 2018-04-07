@@ -549,7 +549,12 @@ E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
 \]</span></p>
 <p>其中Q是所有已知个体到遗传组的关联矩阵。猜想，这里遗传组应该就是用幽灵个体代替？作者举例如下：</p>
 <p>譬如有个体数量为n，遗传组数量为p的数据集，那么Q矩阵是n×p矩阵。Q中的第<span class="math inline">\((i,j)^{th}\)</span>个元素表示第<span class="math inline">\(i^{th}\)</span>个体基因来自第<span class="math inline">\(j^{th}\)</span>个遗传组的百分比。因此，遗传组与祖先个体非常相似。仅仅直接的遗传联系（亲子？）会被考虑，其他遗传联系会自动被implied？仅仅那些有1个或者2个亲本未知的个体，需要指定其遗传组。丢失的亲本会自动被分组。</p>
-<p>建立组方程的规则总结为： * 为基础个体分配幽灵（虚拟）个体 * 定义幽灵个体属于哪个遗传组 * 利用系谱（包括幽灵个体）建立混合模型方程组。对于第<span class="math inline">\(i^{th}\)</span>个体，对其孟德尔抽样方差求逆：<span class="math inline">\(b_{i} = 4/(2+分配到遗传组的亲本数)；然后把\)</span>b_{i}<span class="math inline">\(增加到\)</span>A<sup>{-1}<span class="math inline">\(，具体方法为：把\)</span>-b_{i}/2<span class="math inline">\(加到\)</span>A</sup>{-1}<span class="math inline">\(矩阵的(i,s), (i,d), (s,i) 和 (d,i)位置元素上，把\)</span>-b_{i}/4<span class="math inline">\(加到\)</span>A^{-1}$矩阵的(s,s), (s,d), (d,s) 和 (d,d)位置元素上。</p>
+<p>建立组方程的规则总结为：</p>
+<ul>
+<li>为基础个体分配幽灵（虚拟）个体</li>
+<li>定义幽灵个体属于哪个遗传组</li>
+<li>利用系谱（包括幽灵个体）建立混合模型方程组。对于第<span class="math inline">\(i^{th}\)</span>个体，对其孟德尔抽样方差求逆：<span class="math inline">\(b_{i} = 4/(2+分配到遗传组的亲本数)\)</span>；然后把<span class="math inline">\(b_{i}\)</span>增加到<span class="math inline">\(A^{-1}\)</span>，具体方法为：把<span class="math inline">\(-b_{i}/2\)</span>加到<span class="math inline">\(A^{-1}\)</span>矩阵的(i,s), (i,d), (s,i) 和 (d,i)位置元素上，把<span class="math inline">\(-b_{i}/4\)</span>加到<span class="math inline">\(A^{-1}\)</span>矩阵的(s,s), (s,d), (d,s) 和 (d,d)位置元素上。</li>
+</ul>
 </div>
 
       </div>

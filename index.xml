@@ -285,7 +285,12 @@ E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;其中Q是所有已知个体到遗传组的关联矩阵。猜想，这里遗传组应该就是用幽灵个体代替？作者举例如下：&lt;/p&gt;
 &lt;p&gt;譬如有个体数量为n，遗传组数量为p的数据集，那么Q矩阵是n×p矩阵。Q中的第&lt;span class=&#34;math inline&#34;&gt;\((i,j)^{th}\)&lt;/span&gt;个元素表示第&lt;span class=&#34;math inline&#34;&gt;\(i^{th}\)&lt;/span&gt;个体基因来自第&lt;span class=&#34;math inline&#34;&gt;\(j^{th}\)&lt;/span&gt;个遗传组的百分比。因此，遗传组与祖先个体非常相似。仅仅直接的遗传联系（亲子？）会被考虑，其他遗传联系会自动被implied？仅仅那些有1个或者2个亲本未知的个体，需要指定其遗传组。丢失的亲本会自动被分组。&lt;/p&gt;
-&lt;p&gt;建立组方程的规则总结为： * 为基础个体分配幽灵（虚拟）个体 * 定义幽灵个体属于哪个遗传组 * 利用系谱（包括幽灵个体）建立混合模型方程组。对于第&lt;span class=&#34;math inline&#34;&gt;\(i^{th}\)&lt;/span&gt;个体，对其孟德尔抽样方差求逆：&lt;span class=&#34;math inline&#34;&gt;\(b_{i} = 4/(2+分配到遗传组的亲本数)；然后把\)&lt;/span&gt;b_{i}&lt;span class=&#34;math inline&#34;&gt;\(增加到\)&lt;/span&gt;A&lt;sup&gt;{-1}&lt;span class=&#34;math inline&#34;&gt;\(，具体方法为：把\)&lt;/span&gt;-b_{i}/2&lt;span class=&#34;math inline&#34;&gt;\(加到\)&lt;/span&gt;A&lt;/sup&gt;{-1}&lt;span class=&#34;math inline&#34;&gt;\(矩阵的(i,s), (i,d), (s,i) 和 (d,i)位置元素上，把\)&lt;/span&gt;-b_{i}/4&lt;span class=&#34;math inline&#34;&gt;\(加到\)&lt;/span&gt;A^{-1}$矩阵的(s,s), (s,d), (d,s) 和 (d,d)位置元素上。&lt;/p&gt;
+&lt;p&gt;建立组方程的规则总结为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;为基础个体分配幽灵（虚拟）个体&lt;/li&gt;
+&lt;li&gt;定义幽灵个体属于哪个遗传组&lt;/li&gt;
+&lt;li&gt;利用系谱（包括幽灵个体）建立混合模型方程组。对于第&lt;span class=&#34;math inline&#34;&gt;\(i^{th}\)&lt;/span&gt;个体，对其孟德尔抽样方差求逆：&lt;span class=&#34;math inline&#34;&gt;\(b_{i} = 4/(2+分配到遗传组的亲本数)\)&lt;/span&gt;；然后把&lt;span class=&#34;math inline&#34;&gt;\(b_{i}\)&lt;/span&gt;增加到&lt;span class=&#34;math inline&#34;&gt;\(A^{-1}\)&lt;/span&gt;，具体方法为：把&lt;span class=&#34;math inline&#34;&gt;\(-b_{i}/2\)&lt;/span&gt;加到&lt;span class=&#34;math inline&#34;&gt;\(A^{-1}\)&lt;/span&gt;矩阵的(i,s), (i,d), (s,i) 和 (d,i)位置元素上，把&lt;span class=&#34;math inline&#34;&gt;\(-b_{i}/4\)&lt;/span&gt;加到&lt;span class=&#34;math inline&#34;&gt;\(A^{-1}\)&lt;/span&gt;矩阵的(s,s), (s,d), (d,s) 和 (d,d)位置元素上。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 </description>
     </item>
