@@ -291,6 +291,9 @@ E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
 &lt;li&gt;定义幽灵个体属于哪个遗传组&lt;/li&gt;
 &lt;li&gt;利用系谱（包括幽灵个体）建立混合模型方程组。对于第&lt;span class=&#34;math inline&#34;&gt;\(i^{th}\)&lt;/span&gt;个体，对其孟德尔抽样方差求逆：&lt;span class=&#34;math inline&#34;&gt;\(b_{i} = 4/(2+分配到遗传组的亲本数)\)&lt;/span&gt;；然后把&lt;span class=&#34;math inline&#34;&gt;\(b_{i}\)&lt;/span&gt;增加到&lt;span class=&#34;math inline&#34;&gt;\(A^{-1}\)&lt;/span&gt;，具体方法为：把&lt;span class=&#34;math inline&#34;&gt;\(-b_{i}/2\)&lt;/span&gt;加到&lt;span class=&#34;math inline&#34;&gt;\(A^{-1}\)&lt;/span&gt;矩阵的(i,s), (i,d), (s,i) 和 (d,i)位置元素上，把&lt;span class=&#34;math inline&#34;&gt;\(-b_{i}/4\)&lt;/span&gt;加到&lt;span class=&#34;math inline&#34;&gt;\(A^{-1}\)&lt;/span&gt;矩阵的(s,s), (s,d), (d,s) 和 (d,d)位置元素上。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;当两个亲本已知时，&lt;span class=&#34;math inline&#34;&gt;\(b_{i}=2\)&lt;/span&gt;，表示个体跟遗传组没有联系。因此增加的系数分别是2，-1和1/2，与NRm分子亲缘关系矩阵的逆矩阵系数相一致（2个亲本已知）。如果一个亲本已知，那么&lt;span class=&#34;math inline&#34;&gt;\(b_{i}=4/3\)&lt;/span&gt;，因此增加的系数分别是4/3，-2/3和1/3，与NRm分子亲缘关系矩阵的逆矩阵系数相一致（1个亲本已知）。如果没有亲本是已知的，表示两个亲本都需要分配到组，那么&lt;span class=&#34;math inline&#34;&gt;\(b_{i}=1\)&lt;/span&gt;,因此增加的系数分别是1，-1/2和1/4。&lt;/p&gt;
+&lt;p&gt;逻辑解释：如果双亲已知，那么育种值方差的一半（父母本各一半育种值，从方差角度，就是1/4+1/4=1/2）是可以被解释的，剩余的1/2，转换为倒数，就是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{2}^{-1}=2\)&lt;/span&gt;，加到A矩阵的逆矩阵相应系数上。&lt;/p&gt;
+&lt;p&gt;到此为止，没怎么看明白。&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

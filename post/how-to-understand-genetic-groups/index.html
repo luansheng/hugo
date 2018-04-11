@@ -211,7 +211,7 @@ MathJax.Hub.Config({
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    7 min read
+    8 min read
   </span>
   
 
@@ -555,6 +555,9 @@ E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
 <li>定义幽灵个体属于哪个遗传组</li>
 <li>利用系谱（包括幽灵个体）建立混合模型方程组。对于第<span class="math inline">\(i^{th}\)</span>个体，对其孟德尔抽样方差求逆：<span class="math inline">\(b_{i} = 4/(2+分配到遗传组的亲本数)\)</span>；然后把<span class="math inline">\(b_{i}\)</span>增加到<span class="math inline">\(A^{-1}\)</span>，具体方法为：把<span class="math inline">\(-b_{i}/2\)</span>加到<span class="math inline">\(A^{-1}\)</span>矩阵的(i,s), (i,d), (s,i) 和 (d,i)位置元素上，把<span class="math inline">\(-b_{i}/4\)</span>加到<span class="math inline">\(A^{-1}\)</span>矩阵的(s,s), (s,d), (d,s) 和 (d,d)位置元素上。</li>
 </ul>
+<p>当两个亲本已知时，<span class="math inline">\(b_{i}=2\)</span>，表示个体跟遗传组没有联系。因此增加的系数分别是2，-1和1/2，与NRm分子亲缘关系矩阵的逆矩阵系数相一致（2个亲本已知）。如果一个亲本已知，那么<span class="math inline">\(b_{i}=4/3\)</span>，因此增加的系数分别是4/3，-2/3和1/3，与NRm分子亲缘关系矩阵的逆矩阵系数相一致（1个亲本已知）。如果没有亲本是已知的，表示两个亲本都需要分配到组，那么<span class="math inline">\(b_{i}=1\)</span>,因此增加的系数分别是1，-1/2和1/4。</p>
+<p>逻辑解释：如果双亲已知，那么育种值方差的一半（父母本各一半育种值，从方差角度，就是1/4+1/4=1/2）是可以被解释的，剩余的1/2，转换为倒数，就是<span class="math inline">\(\frac{1}{2}^{-1}=2\)</span>，加到A矩阵的逆矩阵相应系数上。</p>
+<p>到此为止，没怎么看明白。</p>
 </div>
 
       </div>
