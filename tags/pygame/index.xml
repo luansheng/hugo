@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pygame on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/pygame/</link>
+    <description>Recent content in Pygame on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Wed, 07 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/pygame/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>pygame 练习1</title>
+      <link>/post/pygame-exercise-1/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/pygame-exercise-1/</guid>
+      <description>栾佳硕给出的作业，用Pygame显示一个窗口（填充为黑色）: # -*- coding: utf-8 -*- import pygame as pg from pygame.locals import * from sys import exit #初始化pygame pg.init() #设置屏幕分辨率640*</description>
+    </item>
+    
+  </channel>
+</rss>

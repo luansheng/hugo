@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>家系 on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/%E5%AE%B6%E7%B3%BB/</link>
+    <description>Recent content in 家系 on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Tue, 06 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%E5%AE%B6%E7%B3%BB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何可视化家系间的亲缘关系</title>
+      <link>/post/family-relationship-circle/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/family-relationship-circle/</guid>
+      <description>运行前清除掉原来的一些对象变量，然后加载包。 optiSel（处理系谱数据、计算个体间的共亲系数）、dplyr（清洗数据）、data.tabl</description>
+    </item>
+    
+  </channel>
+</rss>

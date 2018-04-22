@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stringr on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/stringr/</link>
+    <description>Recent content in Stringr on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Thu, 11 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/stringr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>字符串处理包stringr学习笔记-1</title>
+      <link>/post/stringr-note-1/</link>
+      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/stringr-note-1/</guid>
+      <description>suppressPackageStartupMessages(require(stringr)) R中的字符串处理函数，不但多，而且难记，参数调用方法也不一致。stringr包提供了统一名称的函数调用形式。 1. 基本处理 1.1 计算字符串的长度 str_length(&amp;quot;abc&amp;quot;)</description>
+    </item>
+    
+  </channel>
+</rss>

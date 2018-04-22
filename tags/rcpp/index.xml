@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rcpp on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/rcpp/</link>
+    <description>Recent content in Rcpp on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Wed, 14 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/rcpp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rcpp读书笔记2-第二章工具与设置</title>
+      <link>/post/rcpp-note-2/</link>
+      <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rcpp-note-2/</guid>
+      <description>2.1 总体设置 Rcpp提供一个C++应用编程接口（API），来扩展R系统。运行Rcpp和R的一些需求： 开发环境需要一个C++编译器。 通过动态链接</description>
+    </item>
+    
+    <item>
+      <title>Rcpp读书笔记1</title>
+      <link>/post/rcpp-note-1/</link>
+      <pubDate>Wed, 07 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rcpp-note-1/</guid>
+      <description>1.1 背景：从R到C++ R语言是从S语言进化来的，R和S语言近三十年来一直在进化。举例说明，R语言通过S3和S4类系统实现面向对象特性，也包括新</description>
+    </item>
+    
+  </channel>
+</rss>

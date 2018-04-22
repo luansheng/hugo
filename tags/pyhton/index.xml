@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pyhton on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/pyhton/</link>
+    <description>Recent content in Pyhton on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Thu, 08 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/pyhton/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>抛硬币测试与温度转换</title>
+      <link>/post/coin-test/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/coin-test/</guid>
+      <description>栾佳硕的作业，计算硬币抛100万次，连续正面朝上10次的有多少次？ # -*- coding: utf-8 -*- import random counter1 = 0 counter2 = 0 for i in range(1000000): coin = random.choice([0,1]) #假定1表示正面 if coin == 1: counter1 += 1 else: counter1</description>
+    </item>
+    
+    <item>
+      <title>我的第一个python程序</title>
+      <link>/post/my-first-python-program/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-first-python-program/</guid>
+      <description>参考pandas官网，十分钟教程 import pandas as pd import numpy as np import matplotlib.pyplot as plt s = pd.Series([1,3,5,np.nan,6,8]) print(s) ## 0 1.0 ## 1 3.0 ## 2 5.0 ## 3 NaN ## 4 6.0 ## 5 8.0 ## dtype: float64</description>
+    </item>
+    
+  </channel>
+</rss>

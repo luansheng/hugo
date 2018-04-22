@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ASReml on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/asreml/</link>
+    <description>Recent content in ASReml on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Fri, 07 Jul 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/asreml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>data.table学习笔记2</title>
+      <link>/post/data-table-note-2/</link>
+      <pubDate>Fri, 07 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-2/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 这一部分笔记主要讲述如何更新数据集，而不产生新的数据拷贝。 主要用到的符号是“:=”</description>
+    </item>
+    
+    <item>
+      <title>最小二乘均值的估计模型</title>
+      <link>/post/least-squares-means-note-1/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/least-squares-means-note-1/</guid>
+      <description>1.最小二乘均值的定义和背景 1.1 最小二乘均值的定义（来自lsmeans包简介） 定义：least-squares means (LS means for short) for a linear model are simply predictions-or averages thereof-over a regular</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>自由度 on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/%E8%87%AA%E7%94%B1%E5%BA%A6/</link>
+    <description>Recent content in 自由度 on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Fri, 08 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%E8%87%AA%E7%94%B1%E5%BA%A6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>自由度和方差分析</title>
+      <link>/post/df-and-anova/</link>
+      <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/df-and-anova/</guid>
+      <description>比较同一处理不同水平的差异，譬如不同养殖密度、不同饲料对生长速度的影响，经常会用到方差分析的方法。而在方差分析中，自由度是一个非常重要的概念</description>
+    </item>
+    
+  </channel>
+</rss>

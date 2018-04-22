@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编程 on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/categories/%E7%BC%96%E7%A8%8B/</link>
+    <description>Recent content in 编程 on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Sun, 11 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>read a file by python</title>
+      <link>/post/read-a-file-by-python/</link>
+      <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/read-a-file-by-python/</guid>
+      <description>栾佳硕的任务： 1.建立一个文件，在文件中写入以下内容： Watch the cartoon. go fishing. (不会了话看编程书） f = open(&amp;quot;lsj.txt&amp;quot;,&amp;quot;w&amp;quot;) f.writelines(&amp;quot;Watch the cartoon.\ngo fishing&amp;quot;) f.close() 2.把它读出来，并且用format方法显</description>
+    </item>
+    
+    <item>
+      <title>学习在python中使用类</title>
+      <link>/post/how-to-define-class-in-python/</link>
+      <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-to-define-class-in-python/</guid>
+      <description>1. 建立BankAccount类 栾佳硕的作业：建立一个对象，名为BankAccount.它应该有一些属性，包括账户名（一个字符串）、账号（一个</description>
+    </item>
+    
+    <item>
+      <title>抛硬币测试与温度转换</title>
+      <link>/post/coin-test/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/coin-test/</guid>
+      <description>栾佳硕的作业，计算硬币抛100万次，连续正面朝上10次的有多少次？ # -*- coding: utf-8 -*- import random counter1 = 0 counter2 = 0 for i in range(1000000): coin = random.choice([0,1]) #假定1表示正面 if coin == 1: counter1 += 1 else: counter1</description>
+    </item>
+    
+    <item>
+      <title>pygame 练习1</title>
+      <link>/post/pygame-exercise-1/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/pygame-exercise-1/</guid>
+      <description>栾佳硕给出的作业，用Pygame显示一个窗口（填充为黑色）: # -*- coding: utf-8 -*- import pygame as pg from pygame.locals import * from sys import exit #初始化pygame pg.init() #设置屏幕分辨率640*</description>
+    </item>
+    
+    <item>
+      <title>python 定时器</title>
+      <link>/post/python-timer/</link>
+      <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/python-timer/</guid>
+      <description>栾佳硕给出的作业，要求三秒钟打印出一个随机小数: # -*- coding: utf-8 -*- import random import time seconds = 3 counter = 1 while counter &amp;lt;= 5: print(&amp;quot;第%i个两位小数是%.2f&amp;q</description>
+    </item>
+    
+    <item>
+      <title>输入5个人的名字，并打印出来</title>
+      <link>/post/input-five-names/</link>
+      <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/input-five-names/</guid>
+      <description>栾佳硕给出的作业，输入5个人的名字，并打印出来: 定义一个元组names，存储输入的用户名字。 # -*- coding: utf-8 -*- names = () counter = 1 while counter &amp;lt;= 5: tuple1 = (input(</description>
+    </item>
+    
+    <item>
+      <title>如何在EV3上安装ev3dev系统 </title>
+      <link>/post/how-to-install-ev3dev/</link>
+      <pubDate>Sat, 06 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-to-install-ev3dev/</guid>
+      <description>EV3是乐高机器人，除了官方系统，有人进行逆向工程，建立了一个基于Debian的开源linux系统EV3DEV。然后就可以利用python等</description>
+    </item>
+    
+  </channel>
+</rss>

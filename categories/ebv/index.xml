@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>EBV on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/categories/ebv/</link>
+    <description>Recent content in EBV on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Sat, 11 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/ebv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>动物育种值预测中的线性模型学习笔记2</title>
+      <link>/post/lmm-for-ebv-prediction-xfa/</link>
+      <pubDate>Sat, 11 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lmm-for-ebv-prediction-xfa/</guid>
+      <description>6.4.1 因子分析 设定w向量，包括n个变量，w的协方差矩阵为G，w用模型表示为： \[ w = \mu + \phi c + s \] 其中\(\mu\)是群体均值，c是长度为m的公共</description>
+    </item>
+    
+    <item>
+      <title>动物育种值预测中的线性模型学习笔记1</title>
+      <link>/post/lmm-for-ebv-prediction-note-1/</link>
+      <pubDate>Thu, 20 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lmm-for-ebv-prediction-note-1/</guid>
+      <description>第一章 基于不同来源记录的遗传评估(Genetic evaluation with different sources of records) 1.1 介绍 育种值预测是大部分为了遗传改良而建立的育种程序不可或缺的一部分。准确地预测</description>
+    </item>
+    
+    <item>
+      <title>BLUP公式及分解</title>
+      <link>/post/lmm-for-ebv-prediction-blup/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lmm-for-ebv-prediction-blup/</guid>
+      <description>1. BLUP公式 \[ \begin{bmatrix} X^{&amp;#39;}\hat{R}^{-1}X &amp;amp; X^{&amp;#39;}\hat{R}^{-1}Z \\ Z^{&amp;#39;}\hat{R}^{-1}X &amp;amp; Z^{&amp;#39;}\hat{R}^{-1}Z+\hat{G}^{-1} \end{bmatrix} \begin{bmatrix} \hat{\beta} \\ \hat{u} \end{bmatrix} = \begin{bmatrix} X^{&amp;#39;}\hat{R}^{-1}y \\ Z^{&amp;#39;}\hat{R}^{-1}y \end{bmatrix} \]</description>
+    </item>
+    
+  </channel>
+</rss>

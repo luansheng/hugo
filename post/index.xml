@@ -8,7 +8,9 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Sheng Luan</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0800</lastBuildDate>
-    <atom:link href="/post/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>如何理解遗传组效应</title>
@@ -16,286 +18,7 @@
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/how-to-understand-genetic-groups/</guid>
-      <description>&lt;p&gt;参考材料来自于&lt;a href=&#34;https://jvanderw.une.edu.au/Chapter14.pdf&#34;&gt;Julius van der Werf的教程&lt;/a&gt;。&lt;/p&gt;
-&lt;div id=&#34;genetic-group&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;什么情况下需要考虑遗传组效应（Genetic group）&lt;/h2&gt;
-&lt;p&gt;当数据集中的个体来源不同时，在遗传评估模型中需要考虑遗传组。当个体的亲本信息未知时，通常会假定亲本来自于同质群体（homogeneous population），具有相同的期望均值，利用混合模型估计育种值。亲本信息未知的个体，通常称为“基础个体”，奠基者个体更为合适？对于这些奠基者个体，如果它们不是来自于一个同质群体，为了区分不同奠基者个体的遗传水平，需要考虑遗传组效应。 需要注意的一点是，对于一个基础群体，亲缘关系矩阵已经考虑了所有由选择产生的遗传差异。举例说明：从一个基础群体开始分别建立高低两个选育系，如果系谱和性能测定数据完成，那么在遗传评估中，我们是不需要考虑遗传组效应的。如果利用系谱和性能测定数据，仍然剖分个体间的遗传差异，那么需要在分析中考虑遗传组效应。如果个体来自于不同的品种，是一个需要考虑的问题。&lt;/p&gt;
-&lt;p&gt;作者给出了两个绵羊品种，Finnsheep和Merinos。其中Finnsheep品种的每窝产仔数均值可以达到3，而Merinos品种的每窝产仔数最多为1。由于每窝产仔数是一个低遗传力性状，如果在遗传评估中忽略品种的效应，那么会使所有个体的EBV趋向于均值（0）。但实际情况不应该是这样的，每窝产仔数的品种效应应该是很强的，而且是可信的。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;一开始并没有很好的理解上述说法。原来脑海中的印象是，如果不考虑遗传组，难么家系或者个体间的遗传差异会变大，那么遗传参数估计值，如遗传力会偏高。作者举例的意思是说，由于遗传力很低，那么个体的育种值也会很小，但是实际上个体的育种值应该包括品种效应，应该会更大才对。&lt;/strong&gt;那么可以推测，对于高遗传力性状，遗传组对育种值的影响会比较小，但是可能会对遗传力等估计值产生较大的影响。&lt;/p&gt;
-&lt;p&gt;一个比较简单的方法，可以把个体的来源作为&lt;strong&gt;固定效应&lt;/strong&gt;，其关联矩阵X写法&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;个体类型&lt;/th&gt;
-&lt;th&gt;Finnsheep (F)&lt;/th&gt;
-&lt;th&gt;Merinos (M)&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Finnsheep (F)&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Merinos (M)&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;F×M&lt;/td&gt;
-&lt;td&gt;0.5&lt;/td&gt;
-&lt;td&gt;0.5&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;M×(F×M)&lt;/td&gt;
-&lt;td&gt;0.25&lt;/td&gt;
-&lt;td&gt;0.75&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;注意，其中的0.25表示Finnsheep只占&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{4}\)&lt;/span&gt;，0.75表示Merinos占&lt;span class=&#34;math inline&#34;&gt;\(\frac{3}{4}\)&lt;/span&gt;。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;带有遗传组的加性遗传模型&lt;/h2&gt;
-&lt;p&gt;当奠基者个体来自不同的群体时，把来源群体作为固定效应是可以的。但是，当来源群体本身是一个杂交群体时（2个或者多个群体杂交），作为固定效应很难分析。Quass（1988）提出了群体内加性遗传相关的基本结构，给出了把遗传组作为随机效应的分析模型。&lt;/p&gt;
-&lt;p&gt;传统模型 &lt;span class=&#34;math display&#34;&gt;\[y=Xb+Zu+e\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;修改后的模型 &lt;span class=&#34;math display&#34;&gt;\[y=Xb+ZQg+Za+e\]&lt;/span&gt; 其中g表示固定的组效应，a表示遗传组内随机个体加性遗传效应。矩阵Q指的是个体与组的关联矩阵，而ZQ实际上把性状测定值与组进行关联。&lt;/p&gt;
-&lt;p&gt;估计的育种值等于：&lt;br /&gt;
-&lt;span class=&#34;math display&#34;&gt;\[\hat{u}=Q\hat{g}+\hat{a}\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;实际上在模型中g是一个固定效应，模型方程可以写为：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{bmatrix}
- X^{&amp;#39;}X &amp;amp; X^{&amp;#39;}ZQ &amp;amp; X^{&amp;#39;}Z \\ 
- Q^{&amp;#39;}Z^{&amp;#39;}X &amp;amp;  Q^{&amp;#39;}Z^{&amp;#39;}ZQ &amp;amp; Q^{&amp;#39;}Z^{&amp;#39;}Z \\ 
- Z^{&amp;#39;}X &amp;amp; Z^{&amp;#39;}ZQ  &amp;amp; Z^{&amp;#39;}Z+\alpha A^{-1}
-\end{bmatrix} 
-\begin{bmatrix}
- b \\
- g \\
- a
-\end{bmatrix} 
-= 
-\begin{bmatrix}
- X^{&amp;#39;}y \\
- Q^{&amp;#39;}Z^{&amp;#39;}y \\
- Z^{&amp;#39;}y
-\end{bmatrix}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;上述方程左边部分看似复杂，实际上这样记忆，比较简单：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th&gt;X&lt;/th&gt;
-&lt;th&gt;ZQ&lt;/th&gt;
-&lt;th&gt;Z&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}\)&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}X\)&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}ZQ\)&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}Z\)&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Q^{&amp;#39;}Z^{&amp;#39;}\)&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Q^{&amp;#39;}Z^{&amp;#39;}X\)&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Q^{&amp;#39;}Z^{&amp;#39;}ZQ\)&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Q^{&amp;#39;}Z^{&amp;#39;}Z\)&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Z^{&amp;#39;}\)&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Z^{&amp;#39;}X\)&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Z^{&amp;#39;}ZQ\)&lt;/span&gt;&lt;/td&gt;
-&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(Z^{&amp;#39;}Z+\alpha A^{-1}\)&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;对角线上是自己跟自己，非对角线是互相结合在一起。之所以行是转置矩阵，也是很好理解的。&lt;/p&gt;
-&lt;p&gt;举一个例子，如果有10条测定记录，b如果有3个固定效应，那么b是3×1列向量，那么&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}Xb\)&lt;/span&gt;要想可以相乘，&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}X\)&lt;/span&gt;必须要是3列。而我们知道，设计矩阵X是10×3列，&lt;span class=&#34;math inline&#34;&gt;\(X^{&amp;#39;}X\)&lt;/span&gt;正好是一个3×10×10×3=3×3列矩阵，反过来是10×10矩阵，是不可以的，其他相同原理。&lt;/p&gt;
-&lt;p&gt;上述方程中，难题可能是在于如何建立Q矩阵？（In practice such equation would cause problems, unless a systematic way is found to create the Q matrix，这句话不是很理解！）&lt;/p&gt;
-&lt;p&gt;Quaas对上述方程进行了变换，从左边统一乘以下述矩阵：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{bmatrix}
-I &amp;amp; 0 &amp;amp; 0 \\
-0 &amp;amp; I &amp;amp; -Q^{&amp;#39;} \\
-0 &amp;amp; 0 &amp;amp; I
-\end{bmatrix}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{bmatrix}
-I &amp;amp; 0 &amp;amp; 0 \\
-0 &amp;amp; I &amp;amp; -Q^{&amp;#39;} \\
-0 &amp;amp; 0 &amp;amp; I
-\end{bmatrix}
-\begin{bmatrix}
- X^{&amp;#39;}X &amp;amp; X^{&amp;#39;}ZQ &amp;amp; X^{&amp;#39;}Z \\ 
- Q^{&amp;#39;}Z^{&amp;#39;}X &amp;amp;  Q^{&amp;#39;}Z^{&amp;#39;}ZQ &amp;amp; Q^{&amp;#39;}Z^{&amp;#39;}Z \\ 
- Z^{&amp;#39;}X &amp;amp; Z^{&amp;#39;}ZQ  &amp;amp; Z^{&amp;#39;}Z+\alpha A^{-1}
-\end{bmatrix}
-\begin{bmatrix}
-b \\
-g \\
-a
-\end{bmatrix}
-=
-\begin{bmatrix}
-I &amp;amp; 0 &amp;amp; 0 \\
-0 &amp;amp; I &amp;amp; -Q^{&amp;#39;} \\
-0 &amp;amp; 0 &amp;amp; I
-\end{bmatrix}
-\begin{bmatrix}
-X^{&amp;#39;}y \\
-Q^{&amp;#39;}Z^{&amp;#39;}y \\
-Z^{&amp;#39;}y
-\end{bmatrix}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;方程会变化为：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{bmatrix}
- X^{&amp;#39;}X &amp;amp; X^{&amp;#39;}ZQ &amp;amp; X^{&amp;#39;}Z \\ 
- 0 &amp;amp;  0 &amp;amp; -\alpha Q^{&amp;#39;}A^{-1} \\ 
- Z^{&amp;#39;}X &amp;amp; Z^{&amp;#39;}ZQ  &amp;amp; Z^{&amp;#39;}Z+\alpha A^{-1}
-\end{bmatrix}
-\begin{bmatrix}
-b \\
-g \\
-a
-\end{bmatrix}
-=
-\begin{bmatrix}
-X^{&amp;#39;}y \\
-0 \\
-Z^{&amp;#39;}y
-\end{bmatrix}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;对上述方程组继续进行变换：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{bmatrix}
- X^{&amp;#39;}X &amp;amp; X^{&amp;#39;}ZQ &amp;amp; X^{&amp;#39;}Z \\ 
- 0 &amp;amp;  0 &amp;amp; -\alpha Q^{&amp;#39;}A^{-1} \\ 
- Z^{&amp;#39;}X &amp;amp; Z^{&amp;#39;}ZQ  &amp;amp; Z^{&amp;#39;}Z+\alpha A^{-1}
-\end{bmatrix}
-\begin{bmatrix}
-I &amp;amp; 0 &amp;amp; 0 \\
-0 &amp;amp; I &amp;amp; 0 \\
-0 &amp;amp; -Q &amp;amp; I
-\end{bmatrix}
-\begin{bmatrix}
-I &amp;amp; 0 &amp;amp; 0 \\
-0 &amp;amp; I &amp;amp; 0 \\
-0 &amp;amp; Q &amp;amp; I
-\end{bmatrix}
-\begin{bmatrix}
-b \\
-g \\
-a
-\end{bmatrix}
-=
-\begin{bmatrix}
-X^{&amp;#39;}y \\
-0 \\
-Z^{&amp;#39;}y
-\end{bmatrix}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;上式中： &lt;span class=&#34;math display&#34;&gt;\[
-\begin{bmatrix}
-I &amp;amp; 0 &amp;amp; 0 \\
-0 &amp;amp; I &amp;amp; 0 \\
-0 &amp;amp; -Q &amp;amp; I
-\end{bmatrix}
-\begin{bmatrix}
-I &amp;amp; 0 &amp;amp; 0 \\
-0 &amp;amp; I &amp;amp; 0 \\
-0 &amp;amp; Q &amp;amp; I
-\end{bmatrix}
-=I
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;互为逆矩阵，乘积为单位矩阵。&lt;/p&gt;
-&lt;p&gt;方程组左手边，前两个矩阵相乘后两个矩阵相乘，得到新的方程组：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{bmatrix}
- X^{&amp;#39;}X &amp;amp; 0 &amp;amp; X^{&amp;#39;}Z \\ 
- 0 &amp;amp;  \alpha Q^{&amp;#39;}A^{-1}Q &amp;amp; -\alpha Q^{&amp;#39;}A^{-1} \\ 
- Z^{&amp;#39;}X &amp;amp; -\alpha A^{-1}Q  &amp;amp; Z^{&amp;#39;}Z+\alpha A^{-1}
-\end{bmatrix}
-\begin{bmatrix}
-b \\
-g \\
-u=Qg+a
-\end{bmatrix}
-=
-\begin{bmatrix}
-X^{&amp;#39;}y \\
-0 \\
-Z^{&amp;#39;}y
-\end{bmatrix}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;关于新的方程组，作者的评价说实话，一点都没看懂。&lt;/p&gt;
-&lt;p&gt;第一个优点，作者讲的是对于固定效应，组的两个非对角线元素（第2,1或者1,2）都是零；而且右手边，组元素（2,1）也是零；意思应该是说计算更加简单。&lt;/p&gt;
-&lt;p&gt;第二个优点：组内个体的解，直接包括的组效应（u=Qg+a）。作者讲，这是在求解混合模型方程时，是一个重要的优势。&lt;/p&gt;
-&lt;p&gt;然而作者认为最重要的是建立了一种定义遗传组的灵活形式。作者认为组方程跟不带有数据的个体方程十分类似。个人理解，组方程指的应该是这样一个方程：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\alpha Q^{&amp;#39;}A^{-1}Qg - \alpha Q^{&amp;#39;}A^{-1}u = 0\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;个体动物方程：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[Z^{&amp;#39;}Xb - \alpha A^{-1}Qg + (Z^{&amp;#39;}Z+\alpha A^{-1})u = Z^{&amp;#39;}y\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;没有看出二者明显的相似性来。作者认为，遗传组就像祖先个体一样，定义个体跟遗传组的亲缘矩阵（Q矩阵）。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;assigning-animals-to-genetic-groups&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;分配个体到遗传组（Assigning animals to genetic groups&lt;/h2&gt;
-&lt;p&gt;可以根据基础个体的品种、出生年份来定义组。需要明确的一个问题，是如何定义组的关联矩阵，个体的观测值如何与组关联。&lt;/p&gt;
-&lt;p&gt;作者举了个例子：&lt;/p&gt;
-&lt;p&gt;个体的祖先可能来自不同的品种，而且在不同年份出生。那么根据系谱可以推算出，各组对个体的遗传贡献，来定义关联矩阵：1998年出生的品种1占0.25、2002年出生的品种2占0.25、2004年出生的品种2占0.5。个体中每个组的贡献，实际上与它的遗传贡献是密切相关的。Quass定义了一种方法，可以根据个体与组的关系，推导出它的后代与这些组的关系。&lt;/p&gt;
-&lt;p&gt;基础个体，原则上我们是不知道他们的系谱的，因此必须要根据起源，把他们分派到不同的遗传组。根据Quass的方法，不是把基础群体直接分配到组，而是把它们分配给虚拟亲本个体（dummy parents），虚拟个体直接分为不同的组，作者也称这些个体为幽灵个体（phantom parents）。例如，一头普通的奶牛可以分配给一头幽灵公牛。幽灵公牛可以划分为1985-1990年出生的公牛组。幽灵母牛可以分配给1992年母牛组。分配幽灵亲本到一个遗传组，后代通过系谱连接到遗传组。事实上，我们可以处理幽灵亲本作为系谱的正常部分（例如Henderson系数规则）。这创建了一个非常灵活的框架，用来分配个体到遗传组。&lt;/p&gt;
-&lt;p&gt;新的育种值估计模型为：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{bmatrix}
-u_{b} \\
-u
-\end{bmatrix}
-=
-\begin{bmatrix}
-0 &amp;amp; 0 \\
-P_{b} &amp;amp; P
-\end{bmatrix}
-\begin{bmatrix}
-u_{b} \\
-u
-\end{bmatrix}
-+
-\begin{bmatrix}
-u_{b} \\
-w
-\end{bmatrix}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;其中&lt;span class=&#34;math inline&#34;&gt;\(P_{b}\)&lt;/span&gt;指的是个体到幽灵亲本的亲缘矩阵，P指的是个体到非幽灵个体亲缘矩阵，看Quass1988年文章，这里指的是直接到双亲的亲缘关系，每一行只有两个数（0.5）。&lt;/p&gt;
-&lt;p&gt;未知幽灵亲本的期望均值公式为：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[E(u_{b})=Q_{b}g\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;其中&lt;span class=&#34;math inline&#34;&gt;\(Q_{b}\)&lt;/span&gt;是基础个体到遗传组的关联矩阵，g是遗传组效应。&lt;/p&gt;
-&lt;p&gt;已知个体的育种值向量u，根据上述方程，可以表述为：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-u = P_{b}u_{b}+Pu+w \\
-u-Pu = P_{b}u_{b}+w \\
-(I-P)u =  P_{b}u_{b}+w \\
-(I-P)^{-1}(I-P)u =  (I-P)^{-1}P_{b}u_{b} +  (I-P)^{-1}w \\
-u =  (I-P)^{-1}P_{b}u_{b} +  (I-P)^{-1}w \\
-E(u)= (I-P)^{-1}P_{b}E(u_{b}) + (I-P)^{-1}E(w) \\
-E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;其中Q是所有已知个体到遗传组的关联矩阵。猜想，这里遗传组应该就是用幽灵个体代替？作者举例如下：&lt;/p&gt;
-&lt;p&gt;譬如有个体数量为n，遗传组数量为p的数据集，那么Q矩阵是n×p矩阵。Q中的第&lt;span class=&#34;math inline&#34;&gt;\((i,j)^{th}\)&lt;/span&gt;个元素表示第&lt;span class=&#34;math inline&#34;&gt;\(i^{th}\)&lt;/span&gt;个体基因来自第&lt;span class=&#34;math inline&#34;&gt;\(j^{th}\)&lt;/span&gt;个遗传组的百分比。因此，遗传组与祖先个体非常相似。仅仅直接的遗传联系（亲子？）会被考虑，其他遗传联系会自动被implied？仅仅那些有1个或者2个亲本未知的个体，需要指定其遗传组。丢失的亲本会自动被分组。&lt;/p&gt;
-&lt;p&gt;建立组方程的规则总结为：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;为基础个体分配幽灵（虚拟）个体&lt;/li&gt;
-&lt;li&gt;定义幽灵个体属于哪个遗传组&lt;/li&gt;
-&lt;li&gt;利用系谱（包括幽灵个体）建立混合模型方程组。对于第&lt;span class=&#34;math inline&#34;&gt;\(i^{th}\)&lt;/span&gt;个体，对其孟德尔抽样方差求逆：&lt;span class=&#34;math inline&#34;&gt;\(b_{i} = 4/(2+分配到遗传组的亲本数)\)&lt;/span&gt;；然后把&lt;span class=&#34;math inline&#34;&gt;\(b_{i}\)&lt;/span&gt;增加到&lt;span class=&#34;math inline&#34;&gt;\(A^{-1}\)&lt;/span&gt;，具体方法为：把&lt;span class=&#34;math inline&#34;&gt;\(-b_{i}/2\)&lt;/span&gt;加到&lt;span class=&#34;math inline&#34;&gt;\(A^{-1}\)&lt;/span&gt;矩阵的(i,s), (i,d), (s,i) 和 (d,i)位置元素上，把&lt;span class=&#34;math inline&#34;&gt;\(-b_{i}/4\)&lt;/span&gt;加到&lt;span class=&#34;math inline&#34;&gt;\(A^{-1}\)&lt;/span&gt;矩阵的(s,s), (s,d), (d,s) 和 (d,d)位置元素上。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;当两个亲本已知时，&lt;span class=&#34;math inline&#34;&gt;\(b_{i}=2\)&lt;/span&gt;，表示个体跟遗传组没有联系。因此增加的系数分别是2，-1和1/2，与NRm分子亲缘关系矩阵的逆矩阵系数相一致（2个亲本已知）。如果一个亲本已知，那么&lt;span class=&#34;math inline&#34;&gt;\(b_{i}=4/3\)&lt;/span&gt;，因此增加的系数分别是4/3，-2/3和1/3，与NRm分子亲缘关系矩阵的逆矩阵系数相一致（1个亲本已知）。如果没有亲本是已知的，表示两个亲本都需要分配到组，那么&lt;span class=&#34;math inline&#34;&gt;\(b_{i}=1\)&lt;/span&gt;,因此增加的系数分别是1，-1/2和1/4。&lt;/p&gt;
-&lt;p&gt;逻辑解释：如果双亲已知，那么育种值方差的一半（父母本各一半育种值，从方差角度，就是1/4+1/4=1/2）是可以被解释的，剩余的1/2，转换为倒数，就是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{2}^{-1}=2\)&lt;/span&gt;，加到A矩阵的逆矩阵相应系数上。&lt;/p&gt;
-&lt;p&gt;到此为止，没怎么看明白。&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <description>参考材料来自于Julius van der Werf的教程。 什么情况下需要考虑遗传组效应（Genetic group） 当数据集中的个体来源不同时，在遗传评估</description>
     </item>
     
     <item>
@@ -304,16 +27,7 @@ E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
       <pubDate>Sun, 11 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/genetic-and-non-genetic-indirect-effects-for-harvest-weight-in-the-gift-strain-of-nile-tilapia-oreochromis-niloticus-note/</guid>
-      <description>
-
-&lt;p&gt;重点关注收获体重IGE与存活的相关性解释。&lt;/p&gt;
-
-&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
-
-&lt;p&gt;关于间接遗传效应的定义，英文标准定义为“The heritable effect of an individual on the trait values of other individuals it interacts with is known as an indirect genetic effect (IGE)”。IGE可能会影响选择反应。鱼类对于高生长速率的持续改良，已经表明，选育出的鱼具有更强的攻击性和竞争性。这可能降低生长速度的选择反应。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;关于这一点，以前是深信不疑的。虾类混合养殖和多家系多分组IGE测试结果表明，混养池生长DGE跟IGE的确是负相关的，这表明传统的选择方案，的确会选到竞争性强的虾。但是虾类更多的是竞争性行为，而不是攻击性行为。他们的后代在一起，只是竞争性强的虾会长的大，弱的吃不到食物，会长的小一些，而不是互相攻击会导致死亡率升高。&lt;/strong&gt;&lt;/p&gt;
-</description>
+      <description>重点关注收获体重IGE与存活的相关性解释。 摘要 关于间接遗传效应的定义，英文标准定义为“The heritable effect of an individual on the trait values of other individuals it interacts with is known as an indirect genetic effect (I</description>
     </item>
     
     <item>
@@ -322,21 +36,7 @@ E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
       <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/read-a-file-by-python/</guid>
-      <description>&lt;p&gt;栾佳硕的任务：&lt;/p&gt;
-&lt;p&gt;1.建立一个文件，在文件中写入以下内容：&lt;/p&gt;
-&lt;p&gt;Watch the cartoon.&lt;/p&gt;
-&lt;p&gt;go fishing.&lt;/p&gt;
-&lt;p&gt;(不会了话看编程书）&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;f = open(&amp;quot;lsj.txt&amp;quot;,&amp;quot;w&amp;quot;)
-f.writelines(&amp;quot;Watch the  cartoon.\ngo fishing&amp;quot;)
-f.close()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;2.把它读出来，并且用format方法显示出来。&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;with open(&amp;quot;lsj.txt&amp;quot;,&amp;quot;r&amp;quot;) as f:
-    for line in f.readlines():
-        print(line.strip())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Watch the  cartoon.
-## go fishing&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>栾佳硕的任务： 1.建立一个文件，在文件中写入以下内容： Watch the cartoon. go fishing. (不会了话看编程书） f = open(&amp;quot;lsj.txt&amp;quot;,&amp;quot;w&amp;quot;) f.writelines(&amp;quot;Watch the cartoon.\ngo fishing&amp;quot;) f.close() 2.把它读出来，并且用format方法显</description>
     </item>
     
     <item>
@@ -345,69 +45,7 @@ f.close()&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/how-to-define-class-in-python/</guid>
-      <description>&lt;div id=&#34;bankaccount&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. 建立BankAccount类&lt;/h2&gt;
-&lt;p&gt;栾佳硕的作业：建立一个对象，名为BankAccount.它应该有一些属性，包括账户名（一个字符串）、账号（一个字符串或整数）和余额（一个浮点数） 另外还要有一些方法显示余额、存钱和取钱。&lt;/p&gt;
-&lt;p&gt;定义类BankAccount，包括三个属性：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;user_name，账户名（一个字符串）&lt;/li&gt;
-&lt;li&gt;account_number，账号（一个字符串或整数）&lt;/li&gt;
-&lt;li&gt;balance，余额（一个浮点数）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;设置三个方法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;get_balance()，展示当前账号余额&lt;/li&gt;
-&lt;li&gt;save_money()，存钱&lt;/li&gt;
-&lt;li&gt;withdraw_money()，取钱&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;class BankAccount:
-    def __init__(self,user_name,account_number,balance):
-      self.user_name = user_name
-      self.account_number = account_number
-      self.balance = balance
-      
-    def get_balance(self):
-        print(&amp;quot;账户%s当前余额为%.2f元。&amp;quot; % (self.account_number,self.balance))
-        return(self.balance)
-        
-    def save_money(self,money):
-        self.balance += money
-        
-    def withdraw_money(self,money):
-        self.balance -= money&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;根据BankAccount，创建一个账户：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;用户名：luansheng&lt;/li&gt;
-&lt;li&gt;账号： 82833299492&lt;/li&gt;
-&lt;li&gt;余额：0元&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;luan_account = BankAccount(&amp;quot;luansheng&amp;quot;,&amp;quot;82833299492&amp;quot;,0.0)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;存入1亿元&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;luan_account.save_money(100000000)
-luan_account.get_balance()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 账户82833299492当前余额为100000000.00元。&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;取款3千万元过春节&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;luan_account.withdraw_money(30000000)
-luan_account.get_balance()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 账户82833299492当前余额为70000000.00元。&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;interestaccount&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2. 建立InterestAccount类&lt;/h2&gt;
-&lt;p&gt;建立一个类，名为InterestAccount。它可以挣利息。他要继承BankAcccount的属性以及方法（在之前的挑战任务栏）。 在属性栏中增加个利息率，另外还要增加一个方法用来挣利息。 这里，继续需要把父类的所有属性都加上？也太麻烦了！&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;class InterestAccount(BankAccount):
-    def __init__(self,user_name,account_number,balance,interest_rate):
-        BankAccount.__init__(self,user_name,account_number,balance)
-        self.interest_rate = interest_rate
-    def save_money(self,money,year):
-        self.balance += money*((1+self.interest_rate) ** year)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;计算存1万元，利息为0.045，存10年，可以赚多少钱？&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;luan_account2 = InterestAccount(&amp;quot;luansheng&amp;quot;,&amp;quot;82833299492&amp;quot;,0.0,0.045)
-luan_account2.save_money(10000,10)
-print(&amp;quot;1万元存10年，利息为0.045，可以多赚%.2f元&amp;quot; % (luan_account2.get_balance() - 10000))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 账户82833299492当前余额为15529.69元。
-## 1万元存10年，利息为0.045，可以多赚5529.69元&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
+      <description>1. 建立BankAccount类 栾佳硕的作业：建立一个对象，名为BankAccount.它应该有一些属性，包括账户名（一个字符串）、账号（一个</description>
     </item>
     
     <item>
@@ -416,51 +54,7 @@ print(&amp;quot;1万元存10年，利息为0.045，可以多赚%.2f元&amp;quot;
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/is-continued-genetic-improvement-of-livestock-sustainable/</guid>
-      <description>&lt;p&gt;Hill William G. Is continued genetic improvement of livestock sustainable? Genetics, 2016, 202:977-881.&lt;/p&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;摘要&lt;/h2&gt;
-&lt;p&gt;作者认为，很少遗传变异已经丢失，连续遗传改良是可持续的，没有问题的。&lt;/p&gt;
-&lt;p&gt;ps：&lt;strong&gt;但是从商业角度看，并不是遗传变异丢失的问题，而是谁家的育种方案优化，遗传变异更丰富，培育出的良种性能更好。只是有遗传变异是远远不够的。&lt;/strong&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;正文&lt;/h2&gt;
-&lt;p&gt;作者主要从事鸡的选育工作。关于动物育种的历史、理论、方法，参见作者本人的下述著作：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Hill, W. G., 1982 Predictions of response to artificial selection from new mutations. Genet. Res. 40:255–278.&lt;/li&gt;
-&lt;li&gt;Hill, W. G., 2010 Understanding and using quantitative genetic variation. Phil. Trans. R. Soc. B 365:73–85.&lt;/li&gt;
-&lt;li&gt;Hill, W. G., 2014 Applications of population genetics to animal breeding, from Wright, Fisher and Lush to genomic prediction. Genetics 196: 1–16.&lt;/li&gt;
-&lt;li&gt;Hill, W. G., A. Wolc, N. P. O’Sullivan, and S. Avendaño, 2016 Breeding for sustainability: maintaining and enhancing multi-trait genetic improvement, chapter 11 in Sustainable Poultry Production in Europe, edited by E. Burton, J. Gatcliffe, H. M. O’Neill, and D. Scholey. CABI, Wallingford, UK (in press).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;已经取得的遗传进展&lt;/h3&gt;
-&lt;p&gt;对于肉鸡，以1957年的一个未经选择的品系作为对照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;1991年统计的生长速度提高了3.47倍，2011年统计的生长速度提高了4.36倍，平均每年在3.4%~3.7%左右。&lt;/li&gt;
-&lt;li&gt;2001年的统计结果中，鸡胸脯肉占体重的比例，也是1957年的2倍；&lt;/li&gt;
-&lt;li&gt;饲料转化效率也达到了3.3%/年（1957-2005）；&lt;/li&gt;
-&lt;li&gt;达到商品规格屠宰的时间，也缩短到35d；&lt;/li&gt;
-&lt;li&gt;从工业界反馈的数据来看，体重每年的增加速度&lt;sub&gt;2%，胸脯肉在&lt;/sub&gt;4% （2006-2013）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;为了增加生产速度，需要增加鸡的食欲，同时要控制食物摄入量，以便于更好的生产。对于生长速度的改良，会带来负面效应。由于体重变大，肉鸡腿和脚的支撑能力不足。&lt;/p&gt;
-&lt;p&gt;肉鸡主要性状的遗传力表现为中高等，但是蛋鸡的生产性状，并不是这样。在60年前，育种学家非常担心选择平台期（selection plateaus)。但实际上，蛋鸡的饲料利用效率（鸡蛋重量/饲料重量）的进展在0.7%/年，仍在不断提高。尽管蛋鸡每天的产蛋量很少超过1个，但是鸡的产蛋年龄提前，并且体重更轻，产蛋周期更长，产的蛋更大。&lt;/p&gt;
-&lt;p&gt;家禽的选育策略，通常是多元杂交方式。分别建立父本和母本选育系，父本选育系侧重生长，母本选育系侧重繁殖力。每个选育系主要是纯种选育，但是也会通过BLUP的方法考虑杂种的性能，因为杂种也就是商品鸡会在不同的养殖环境下养殖，譬如低饲料投喂量、高疾病风险、组饲养等。&lt;/p&gt;
-&lt;p&gt;奶牛的群体结构，与家禽非常不同，要包括很多场，主要是通过后裔测定，选出好的公牛。最近几年，奶牛的选育重点，放在与产奶量性状负相关的牛奶蛋白百分比和母牛繁殖力等方面，并取得了一些进展，扭转了这两个性状下降的趋势。总体来看，荷斯坦奶牛的产奶量的遗传进展：每年0.5%，大约每代3%。随着基因组选择技术的应用，遗传改良速度也在不断提高。&lt;/p&gt;
-&lt;p&gt;与动物相比，植物遗传材料很多，自交、双单倍体、克隆等，育种系统非常灵活。不利的地方时，受区域、天气的影响比较大。&lt;/p&gt;
-&lt;p&gt;ps：&lt;strong&gt;水产动物，特别是南美白对虾，存在多种养殖模式，工厂化的部分，偏向于畜牧，标准化、高度可控的模式；但是开放的系统，如土池和高位池养殖模式，高盐、低盐等，又偏向于植物，需要强调基因型与环境互作。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;对于杂交玉米，产量的提高速度，大约是每年1%以上，如果在好的种植条件下，譬如有充足的的降雨量，大约是2%左右。对于小麦产量，改良速度大约是0.6~0.7%左右。&lt;/p&gt;
-&lt;p&gt;优质种质的扩繁形式，动植物差别很大。植物如小麦，主要是出售近交系，而玉米是近交系的杂交后代。而动物，主要是通过纯种（奶牛）和杂种（家禽）形式扩繁销售。&lt;/p&gt;
-&lt;p&gt;动植物的另外一个较大差别是，植物品种较为稳定，只有当新的品种替换了旧品种，那么改良的效果才会体现。而动物，每年提供的品种，性能都会比上一年要好。&lt;/p&gt;
-&lt;p&gt;ps：在扩繁方面，水产动物与畜牧动物更为一致。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;遗传结构和模型&lt;/h2&gt;
-&lt;p&gt;畜牧动物重要的生产性状都是数量性状，后代分布和选择反应均很好的验证了其符合Fisher的微效多基因模型。 来自人类身高的GWAS分析，也表明该性状是高度多基因决定的本质。 . 有一篇模拟文章，表明少数SNP不会对总遗传方差起主要作用。但是没怎么看懂。&lt;/p&gt;
-&lt;p&gt;Kemper, K. E., C. M. Reich, and P. J. Bowman, C. J. Vander Jagt, A. J. Chamberlain et al., 2015 Improved precision of QTL mapping using a nonlinear Bayesian method in a multi-breed population leads to greater accuracy of across-breed genomic predictions. Genet. Sel. Evol. 47: 29.&lt;/p&gt;
-&lt;p&gt;来自畜禽高密度基因组标记的研究表明：选择反应很难用几个标记解释。譬如最好的10-20个标记，只能解释跨世代总方差的0.5-1%，与实际结果不一致。&lt;/p&gt;
-&lt;p&gt;基因组选择的作用，是通过利用realized relationship through shared genomic regions和marker-associated effects through linkage disequilibrium using information on distantly related individuals来提高选择的准确度。&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <description>Hill William G. Is continued genetic improvement of livestock sustainable? Genetics, 2016, 202:977-881. 摘要 作者认为，很少遗传变异已经丢失，连续遗传改良是可持续的，没有问题的。 ps：但是从商业角度看，并不是遗传变异丢失</description>
     </item>
     
     <item>
@@ -469,32 +63,7 @@ print(&amp;quot;1万元存10年，利息为0.045，可以多赚%.2f元&amp;quot;
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/coin-test/</guid>
-      <description>&lt;p&gt;栾佳硕的作业，计算硬币抛100万次，连续正面朝上10次的有多少次？&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# -*- coding: utf-8 -*-
-import random
-counter1 = 0
-counter2 = 0
-for i in range(1000000):
-    coin = random.choice([0,1]) #假定1表示正面
-    if coin == 1:
-        counter1 += 1
-    else:
-        counter1 = 0
-    if counter1 == 10:
-        counter2 += 1
-        counter1 = 0
-    
-print(&amp;quot;抛掷硬币1000000次，其中连续10次正面朝上的次数为%i&amp;quot; % counter2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 抛掷硬币1000000次，其中连续10次正面朝上的次数为456&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;写一个函数，把摄氏度转为华氏度。&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def convertC2F(C):
-    F = 32 + C * 1.8
-    return F
-c1 = 30    
-f1 = convertC2F(c1)    
-print(&amp;quot;摄氏度%.2f等于华氏度%.2f&amp;quot; % (c1,f1))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 摄氏度30.00等于华氏度86.00&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>栾佳硕的作业，计算硬币抛100万次，连续正面朝上10次的有多少次？ # -*- coding: utf-8 -*- import random counter1 = 0 counter2 = 0 for i in range(1000000): coin = random.choice([0,1]) #假定1表示正面 if coin == 1: counter1 += 1 else: counter1</description>
     </item>
     
     <item>
@@ -503,32 +72,7 @@ print(&amp;quot;摄氏度%.2f等于华氏度%.2f&amp;quot; % (c1,f1))&lt;/code&g
       <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/pygame-exercise-1/</guid>
-      <description>&lt;p&gt;栾佳硕给出的作业，用Pygame显示一个窗口（填充为黑色）:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# -*- coding: utf-8 -*-
-import pygame as pg
-from pygame.locals import *
-from sys import exit
-#初始化pygame
-pg.init()
-#设置屏幕分辨率640*480
-screen = pg.display.set_mode((640,480),0,32)
-#设置窗口的标题
-pg.display.set_caption(&amp;quot;黑色窗口&amp;quot;)
-#设置背景色
-bg_color = (0,0,0)
-while True:
-    for event in pg.event.get():
-        if event.type == QUIT:
-            #接收到退出事件后退出程序
-            exit()
-    screen.fill(bg_color)
-    &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;运行结果如下图所示：&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/post/images/2018-02-07.png&#34; title=&#34;pygame生成的黑色窗口&#34; alt=&#34;pygame生成的黑色窗口&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;pygame生成的黑色窗口&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <description>栾佳硕给出的作业，用Pygame显示一个窗口（填充为黑色）: # -*- coding: utf-8 -*- import pygame as pg from pygame.locals import * from sys import exit #初始化pygame pg.init() #设置屏幕分辨率640*</description>
     </item>
     
     <item>
@@ -537,22 +81,7 @@ while True:
       <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/python-timer/</guid>
-      <description>&lt;p&gt;栾佳硕给出的作业，要求三秒钟打印出一个随机小数:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# -*- coding: utf-8 -*-
-import random
-import time
-seconds = 3
-counter = 1
-while counter &amp;lt;= 5:
-    print(&amp;quot;第%i个两位小数是%.2f&amp;quot; %(counter,random.uniform(0,1)))
-    counter += 1
-    time.sleep(seconds)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 第1个两位小数是0.83
-## 第2个两位小数是0.31
-## 第3个两位小数是0.18
-## 第4个两位小数是0.77
-## 第5个两位小数是0.64&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>栾佳硕给出的作业，要求三秒钟打印出一个随机小数: # -*- coding: utf-8 -*- import random import time seconds = 3 counter = 1 while counter &amp;lt;= 5: print(&amp;quot;第%i个两位小数是%.2f&amp;q</description>
     </item>
     
     <item>
@@ -561,51 +90,7 @@ while counter &amp;lt;= 5:
       <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/input-five-names/</guid>
-      <description>&lt;p&gt;栾佳硕给出的作业，输入5个人的名字，并打印出来:&lt;/p&gt;
-&lt;p&gt;定义一个元组names，存储输入的用户名字。&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# -*- coding: utf-8 -*-
-names = ()
-counter = 1
-while counter &amp;lt;= 5:
-    tuple1 = (input(&amp;quot;请输入您的名字&amp;quot;),)
-    names += tuple1
-    counter += 1
-    
-for i in names:
-    print(i)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;其他不需要编程的问题：&lt;/p&gt;
-&lt;p&gt;1.什么是属性（对象）&lt;/p&gt;
-&lt;p&gt;对象的属性，用来描述对象的特征。譬如一尾虾，它的属性可以包括：重量、长度、年龄等。从本质上讲，类是没有属性的，对象才有属性。&lt;/p&gt;
-&lt;p&gt;2.如何创建模块？&lt;/p&gt;
-&lt;p&gt;Python 模块(Module)，是一个 Python 文件，以 .py 结尾，包含了 Python 对象定义和Python语句。&lt;/p&gt;
-&lt;p&gt;模块让你能够有逻辑地组织你的 Python 代码段。&lt;/p&gt;
-&lt;p&gt;把相关的代码分配到一个模块里能让你的代码更好用，更易懂。&lt;/p&gt;
-&lt;p&gt;模块能定义函数，类和变量，模块里也能包含可执行的代码。&lt;/p&gt;
-&lt;p&gt;通过&lt;code&gt;import&lt;/code&gt;语句导入自定义的模块。譬如自定义了一个名为shrimp.py的模块，可以这样导入：&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import shrimp&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果你只想导入shrimp模块中一个计算体重的&lt;code&gt;get_weight()&lt;/code&gt;函数，可以用&lt;code&gt;from ... import&lt;/code&gt;语句实现：&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;from shrimp import get_weight&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;关于模块的知识，我参考的&lt;a href=&#34;http://www.runoob.com/python/python-modules.html&#34;&gt;这个网址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;3.while循环什么时候结束？&lt;/p&gt;
-&lt;p&gt;设定一个条件，当不满足条件的时候，while循环就结束了。譬如下边的例子：当i等于6时，不满足&lt;code&gt;i&amp;lt;=5&lt;/code&gt;的条件，就会自动结束。&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;i = 1
-while i &amp;lt;= 5:
-    print(i)
-    i += 1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 1
-## 2
-## 3
-## 4
-## 5&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(i)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 6&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;4.Python中计算&lt;code&gt;6*6*6*6&lt;/code&gt;的另一种做法是什么？&lt;/p&gt;
-&lt;p&gt;这是一个很好的问题，通过查询网络，可以通过&lt;code&gt;**&lt;/code&gt;符号实现：&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(6*6*6*6)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 1296&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;print(6**4)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 1296&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>栾佳硕给出的作业，输入5个人的名字，并打印出来: 定义一个元组names，存储输入的用户名字。 # -*- coding: utf-8 -*- names = () counter = 1 while counter &amp;lt;= 5: tuple1 = (input(</description>
     </item>
     
     <item>
@@ -614,146 +99,7 @@ while i &amp;lt;= 5:
       <pubDate>Sat, 27 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/the-sixth-meeting-about-how-to-rearing-shrimp-in-haikou/</guid>
-      <description>&lt;p&gt;1.25-26日，参加了在海口由水产前沿举办的第六届中国养虾高手年会。具体的会议记录，见水产前沿的&lt;a href=&#34;http://www.fishfirst.cn/article-98482-1.html&#34;&gt;详细报道&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;第一次参加非学术组织举办的这种会议，感觉非常新鲜，也非常有活力。整个活动，没有政府部门的领导参加，纯粹是学术界跟企业界的对接，这种形式真的非常好。很多饲料、苗种企业对于真正有用的学术成果非常渴望，从科研工作者的角度来看，学术成果要想转化为生产力，应该多参加这样的会议。也有利于自己学术方向的调整，做真正有用的研究。&lt;/p&gt;
-&lt;p&gt;会议的几点收获：&lt;/p&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1 种业方面&lt;/h2&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.1 种质方面&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;中国南美白对虾的养殖产量下降的非常厉害。SIS郑光发先生的报道，预测2017年南美白对虾国内产量只有58万吨左右。印度和越南的产量在不断增加，大约分别为45万吨和50万吨左右。这个结果与统计年鉴存在较大的出入。&lt;/li&gt;
-&lt;li&gt;国外进口南美白对虾量在不断增加，正大陈丹先生的报告显示，2017年进口量在30万吨左右。&lt;/li&gt;
-&lt;li&gt;中国进口种虾没有充分发挥性能。中国进口25万对，印度和越南进口分别在9万对左右。结果产量现在后两个国家追平。SIS郑光发认为主要原因是进口种虾鱼龙混杂，没有严格把控亲虾来源。事实上在企业的走访中，也表明一些&lt;strong&gt;进口亲虾都携带荧光弧菌&lt;/strong&gt;等问题。&lt;/li&gt;
-&lt;li&gt;国外公司如SIS在抗性测试方面，从报告中表明是对各种细菌和病毒都进行抗性测试。&lt;/li&gt;
-&lt;li&gt;国外公司已经意识到苗种的适应性差问题，譬如SIS提到，专门在国内开始性状测试工作，主要是针对土塘和高位池进行测试。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;正大陈丹先生在报告中提到，正大优质种虾的标准：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;没有以下病毒：WSSV（白斑综合症病毒）、IHHNV（Infectious subcutaneous and hematopoietic tissue necrosis virus，传染性皮下及造血组织坏死病毒）、IMNV(传染性肌肉坏死病毒）、TSV（桃拉病毒）、黄头病毒（YHV）、鳃病毒（GAV）、NHPB（肝胰腺坏死性细菌）、EMS/AHPND（早期死亡综合征/急性肝胰腺坏死症）、EHP；&lt;/li&gt;
-&lt;li&gt;养殖天数超过180d，公虾体重&amp;gt;65g，母虾体重70g；&lt;/li&gt;
-&lt;li&gt;性器官发育完好，肢体发育完全，健康活力好；&lt;/li&gt;
-&lt;li&gt;亲虾产的幼体从2012年的350um，到2017年的480um，大了1/3；&lt;/li&gt;
-&lt;li&gt;苗种的生长速度，以达到30g/尾规格为标准，2012年需要110d，2017年只需要64d，缩短了56d，非常惊人。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.2 生物安保&lt;/h3&gt;
-&lt;p&gt;从一个厂区的角度，一个种虾场或者苗种场应该具备：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;进出车辆消毒&lt;/li&gt;
-&lt;li&gt;生产度单独隔离&lt;/li&gt;
-&lt;li&gt;生产区雾化消毒通道&lt;/li&gt;
-&lt;li&gt;人员淋浴消毒室，进出车间人员雾化消毒&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;黄倢老师的报告： 从他的报告中，可以看出，2013-2017，病毒的检出率是在不断下降的。特别是EHP的检出率，已经由2017年的50%多，下降到现在的不到30%。WSSV的检出率从30%到10%。急性肝胰腺坏死症2016年特别厉害（接近30%），2017在15%左右。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;一种新的病毒病：虾血细胞虹彩病毒病（SHIV）。主要症状：
-&lt;ul&gt;
-&lt;li&gt;肝胰腺颜色变浅&lt;/li&gt;
-&lt;li&gt;额剑基部出现白点，如罗氏沼虾“白头病”&lt;/li&gt;
-&lt;li&gt;整体颜色变浅，体节明显&lt;/li&gt;
-&lt;li&gt;幼虾死亡明显&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;感染24小时内升温至33度可以有效的防止白斑病。&lt;/li&gt;
-&lt;li&gt;不支持多种虾混养，认为会带来疾病的传播。&lt;/li&gt;
-&lt;li&gt;急性肝胰腺坏死症
-&lt;ul&gt;
-&lt;li&gt;机理：Pirvp毒力蛋白对幼虾消化系统急性毒性&lt;/li&gt;
-&lt;li&gt;菌株：副溶血弧菌、坎贝氏弧菌、欧文氏弧菌&lt;/li&gt;
-&lt;li&gt;症状：肝脏白膜减少-白膜消失-颜色变浅-黄白-灰白-透明；虾体尾单附肢发蓝、虾体发蓝、虾肉浑浊、虾体发白；幼虾死亡率高、可以达到&amp;gt;80%；成虾死亡率低&lt;/li&gt;
-&lt;li&gt;消毒：过硫酸氢钾消毒效果差；双氧水、聚六亚甲基胍盐酸盐具有较好的作用。&lt;/li&gt;
-&lt;li&gt;预防：降低盐度至6‰之下，&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;EHP
-&lt;ul&gt;
-&lt;li&gt;机理：EHP感染导致肝脏能量供应途径受阻。&lt;/li&gt;
-&lt;li&gt;因为一直在摄食，肝胰腺和肠道颜色较深，但是生长缓慢，肌肉腹节透明。&lt;/li&gt;
-&lt;li&gt;EHP感染超过10^3拷贝/ng肝胰腺DNA，那么受感染的风险较大。&lt;/li&gt;
-&lt;li&gt;EHP感染会导致体重降低30%。&lt;/li&gt;
-&lt;li&gt;单独感染可能并不致死，与弧菌一起感染，死亡率增加。&lt;/li&gt;
-&lt;li&gt;存在不同的传播模式，单峰或者双峰，可能在不同的发育阶段都可以感染。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;关于病原的检测：&lt;br /&gt;
-* 杭州众测生物科技有限公司，开发了水生动物疾病分子检测系统解决方案。利用重组介导链替换核酸扩增技术RAAD，可以5-15分钟出结果。 * DHelix 广州双螺旋基因技术有限公司，也可以快速检测病毒、细菌等病原。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2 配套技术&lt;/h2&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2.1 饲料&lt;/h3&gt;
-&lt;p&gt;正大1-3号虾料，大虾宝、中虾宝，蛋白含量在40%以上。&lt;/p&gt;
-&lt;p&gt;英伟公司（INVE）推出了两种饲料：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;BREED-S FRESH 普瑞德种虾专用饲料，可以替代70%鲜活料、生物安全性高、提高产卵性能。它的营养成分：60%蛋白、Lipid（油脂）15%、n-3 HUFA 2.8%、Vit A 22500IU/kg、Vit E 500ppm、Vit c 3000ppm。在种虾饲料中添加益生菌（probiotics），产卵和孵化过程中，添加益生菌。&lt;/li&gt;
-&lt;li&gt;FRiPPAK FRESH GOLD 金牌福瑞派系列虾苗专用微胶囊饵料。根据报告，可以替代65%-85%的卤虫。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;天津英创公司推出了育苗宝1号、鱼苗宝2号：主要是桡足类营养强化后，清洗、消毒，零下30度冷冻，真空包装。如果打算替代卤虫，死掉后，虾苗是否爱吃，是个问题。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2.2 水质处理、分析和调节&lt;/h3&gt;
-&lt;p&gt;参观了海兴农翁田场，育苗用水处理模式：抽水到蓄水池、一二级沙滤去除大颗粒杂质、遮光黑暗沉淀池、氯处理杀菌、沙港去除小颗粒杂质、去除有机物（蛋白分离器）、二次遮光沉淀、臭氧杀菌消毒、过滤细小颗粒吸附残余臭氧、过滤细小颗粒、紫外线杀菌、进入车间。&lt;/p&gt;
-&lt;p&gt;正大试剂盒：&lt;strong&gt;余氯、亚硝酸盐、pH值、总碱度、钾盐、溶解氧、氨氮、钙镁离子&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;益生菌：水净宝、速清宝、育水宝、益菌宝、稳水宝、健肠宝&lt;/p&gt;
-&lt;p&gt;矿物质：钙镁晶、钙/镁/钾速补、塘低净、海盐宝（提高盐度）、海蜜（提高总碱度）&lt;/p&gt;
-&lt;p&gt;亚硝酸盐检测和调控是一个重点，可以多措并举：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;高效集排污、菌、藻、交换量&lt;/li&gt;
-&lt;li&gt;从源头控制&lt;/li&gt;
-&lt;li&gt;高溶解氧缓解毒性&lt;/li&gt;
-&lt;li&gt;盐度千分之五的相对安全阈值&lt;/li&gt;
-&lt;li&gt;发挥化能自养菌-硝化细菌的功效&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;多位专家强调：益生菌如芽孢杆菌增值速度慢，大约3个小时，而有害菌如弧菌增值速度在20分钟。因此应该使用高品质的益生菌。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2.3 育苗技术&lt;/h3&gt;
-&lt;p&gt;INVE 专家做了题为“The roadmap to quality shrimp fry”的报告，具体内容后续再行更新。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2.4 养虾模式&lt;/h3&gt;
-&lt;p&gt;3C：Clean shrimp、Clean water、Clean bottom&lt;/p&gt;
-&lt;p&gt;外籍专家 M. Poulain - Project Manager 做了一个报告：Indoor zero water exchange super-intensive shrimp production 高密度零交换水工厂化对虾养殖模式。&lt;/p&gt;
-&lt;p&gt;工厂化模式下的检测参考流程：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;水源检测：初期检测、定期检测&lt;/li&gt;
-&lt;li&gt;其他定期检测项目
-&lt;ul&gt;
-&lt;li&gt;菌相&lt;/li&gt;
-&lt;li&gt;理化因子：氨氮、亚硝酸盐和酸碱度&lt;/li&gt;
-&lt;li&gt;虾体：健康程度、生长速度、匀称度、肥满度&lt;/li&gt;
-&lt;li&gt;饲料及动保产品的定期抽检&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;养虾达人李涛报告中的两种养殖模式：&lt;/p&gt;
-&lt;p&gt;（1）换水量很少，连续3天换水量少于15%，类似于循环水养殖模式。&lt;/p&gt;
-&lt;p&gt;这种模式应该以菌为主，以藻为辅。微生物作为主要的水质处理手段。这种方法通过较高频率的补充微生物，稳定水体菌相、水体理化指标。优点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;料比低。&lt;/li&gt;
-&lt;li&gt;可复制性高。&lt;/li&gt;
-&lt;li&gt;稳定性强。&lt;/li&gt;
-&lt;li&gt;交换量低。&lt;/li&gt;
-&lt;li&gt;超高菌相，压制弧菌。&lt;/li&gt;
-&lt;li&gt;定向搭配藻种，减轻系统负担。&lt;/li&gt;
-&lt;li&gt;充分利用微生物的代谢产物，保健抗病。&lt;/li&gt;
-&lt;li&gt;受季节和光照的影响弱。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;对于这种模式，曝气要均匀，密集；气盘分散型点式布局。&lt;/p&gt;
-&lt;p&gt;轻微搅动水，转水动力不能大，时间也不易过长，否则生成的絮团不沉浮在水中，虾吃不到。换水量也不宜过大，否则影响菌相和总菌量。&lt;/p&gt;
-&lt;p&gt;（2）大换水量模式&lt;/p&gt;
-&lt;p&gt;曝气：集中在外围，中间不宜放置过多的曝气头。否则影响水流动。&lt;/p&gt;
-&lt;p&gt;转水：动水力度大，转水时间长。&lt;/p&gt;
-&lt;p&gt;换水：量要大，保证水质清新。&lt;/p&gt;
-&lt;p&gt;转水排污，由于没有足够的营养物质供细菌附着，使用微生态制剂效果并不显著。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2.4 配套设备&lt;/h3&gt;
-&lt;p&gt;有一家&lt;a href=&#34;http://www.yu2le.com/index.html#&#34;&gt;鱼儿乐&lt;/a&gt;公司,一家物联网平台，实现了养殖水质数据在线监控。有一套手册，有时间再仔细看一下。&lt;/p&gt;
-&lt;p&gt;目前的最新系统是鱼儿乐X5技术：荧光法溶解氧传感器；寿命长，稳定性好，免维护。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
+      <description>1.25-26日，参加了在海口由水产前沿举办的第六届中国养虾高手年会。具体的会议记录，见水产前沿的详细报道。 第一次参加非学术组织举办的这种会</description>
     </item>
     
     <item>
@@ -762,98 +108,7 @@ while i &amp;lt;= 5:
       <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/rgraphviz-note1/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.graphviz.org/&#34;&gt;graphviz&lt;/a&gt; (Graph Visualization Software)是贝尔实验室鼓捣出来的一个用来展示结构化信息的软件。有一个对应的Rgraphviz包，学习一下，这是一个用来画系谱图的好工具。&lt;/p&gt;
-&lt;p&gt;Rgraphviz包现在已经被收录到&lt;a href=&#34;http://www.bioconductor.org/&#34;&gt;Bioconductor&lt;/a&gt;平台，不在cran中，因此正常的安装包的流程无法获取该包。需要根据Bioconductor的&lt;a href=&#34;http://www.bioconductor.org/packages/release/bioc/html/Rgraphviz.html&#34;&gt;安装指令&lt;/a&gt;进行安装：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;source(&amp;quot;https://bioconductor.org/biocLite.R&amp;quot;)
-biocLite(&amp;quot;Rgraphviz&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;graphviz&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. Graphviz的简单说明&lt;/h2&gt;
-&lt;p&gt;这个软件包可以生成各种图像格式的文件，以及SVG文件，可以用于web网络展示；也可以生成PDF文件。&lt;/p&gt;
-&lt;p&gt;graphviz 中国包括了很多布局器：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;dot 默认的布局方式，主要是用于有向图。（画系谱，这应该是一个主要布局方式）&lt;/li&gt;
-&lt;li&gt;neato 基于spring-model（又称force-based）算法&lt;/li&gt;
-&lt;li&gt;twopi 径向布局&lt;/li&gt;
-&lt;li&gt;circo 圆环布局&lt;/li&gt;
-&lt;li&gt;fdp 无向图&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;graphviz默认使用一种dot语言来定义图形元素，然后选择上边的布局算法进行布局，最后生成结果。&lt;/p&gt;
-&lt;p&gt;大体步骤如下： 1. 利用dot脚本，定义一个图，然后向图中，添加节点和边。 2. 定义节点和边各自的属性，比如形状、颜色、填充模式、字体等。 2. 使用布局引擎，调用布局算法，绘制图形。&lt;/p&gt;
-&lt;p&gt;graphviz中三个基本的元素：图（graph）、节点（node）和边（edge） 参考一篇&lt;a href=&#34;http://icodeit.org/2015/11/using-graphviz-drawing/&#34;&gt;blog&lt;/a&gt;，关于graphviz的入门说明。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;graphviz&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2. 初窥Graphviz&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::opts_chunk$set(echo = TRUE,fig.align = &amp;quot;center&amp;quot;)
-suppressPackageStartupMessages(require(Rgraphviz))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
-v &amp;lt;- letters[1:10] #储存节点
-m &amp;lt;- 1:4 #
-g1 &amp;lt;- randomGraph(v,m,0.2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;不同的布局样式，默认是有向图。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(g1)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:dot&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/dot-1.png&#34; alt=&#34;默认的有向图(dot)&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: 默认的有向图(dot)
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;第二种布局：neato&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(g1, &amp;quot;neato&amp;quot; )&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:neato&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/neato-1.png&#34; alt=&#34;第二种布局(neato)&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 2: 第二种布局(neato)
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;第三种布局，twopi：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(g1, &amp;quot;twopi&amp;quot; )&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:twopi&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/twopi-1.png&#34; alt=&#34;第三种布局(twopi)&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 3: 第三种布局(twopi)
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3. 从头开始画一个图&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#定义节点
-nodes &amp;lt;- c(&amp;quot;A&amp;quot;,&amp;quot;B&amp;quot;,&amp;quot;C&amp;quot;,&amp;quot;D&amp;quot;,&amp;quot;E&amp;quot;,&amp;quot;F&amp;quot;,&amp;quot;G&amp;quot;)
-#生成一个简单的系谱图
-rEG &amp;lt;- new(&amp;quot;graphNEL&amp;quot;,nodes=nodes,edgemode=&amp;quot;directed&amp;quot;)
-rEG &amp;lt;- addEdge(from=&amp;quot;A&amp;quot;,to = &amp;quot;B&amp;quot;,graph = rEG,weights = 1)
-rEG &amp;lt;- addEdge(from=&amp;quot;A&amp;quot;,to = &amp;quot;C&amp;quot;,graph = rEG,weights = 2)
-rEG &amp;lt;- addEdge(from=&amp;quot;B&amp;quot;,to = &amp;quot;D&amp;quot;,graph = rEG,weights = 3)
-rEG &amp;lt;- addEdge(from=&amp;quot;B&amp;quot;,to = &amp;quot;E&amp;quot;,graph = rEG,weights = 10)
-rEG &amp;lt;- addEdge(from=&amp;quot;C&amp;quot;,to = &amp;quot;F&amp;quot;,graph = rEG,weights = 3)
-rEG &amp;lt;- addEdge(from=&amp;quot;C&amp;quot;,to = &amp;quot;G&amp;quot;,graph = rEG,weights = 10)
-#从上望下画
-plot(rEG,attrs=list(graph=list(rankdir=&amp;quot;TB&amp;quot;)))  #TB from top to bottom&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:simple&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/simple-1.png&#34; alt=&#34;最简单的图&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 4: 最简单的图
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;从下往上画，更符合系谱图的惯例&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rEG,attrs=list(graph=list(rankdir=&amp;quot;BT&amp;quot;))) #BT from bottom to top&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/draworder-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;4. 调整节点的颜色&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rEG,attrs=list(node=list(color=&amp;quot;deepskyblue4&amp;quot;,fontcolor=&amp;quot;orange&amp;quot;,fillcolor=&amp;quot;deepskyblue4&amp;quot;),graph=list(rankdir=&amp;quot;BT&amp;quot;))) #BT from bottom to top&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/nodecolor-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;5. 调整节点的形状&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rEG,attrs=list(node=list(shape=&amp;quot;ellipse&amp;quot;,color=&amp;quot;deepskyblue4&amp;quot;,fontcolor=&amp;quot;orange&amp;quot;,fillcolor=&amp;quot;deepskyblue4&amp;quot;),graph=list(rankdir=&amp;quot;BT&amp;quot;))) #BT from bottom to top&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/nodeshape-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;6. 调整边的颜色&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rEG,attrs=list(node=list(color=&amp;quot;deepskyblue4&amp;quot;,fontcolor=&amp;quot;orange&amp;quot;,fillcolor=&amp;quot;deepskyblue4&amp;quot;),edge=list(color=&amp;quot;deepskyblue4&amp;quot;),graph=list(rankdir=&amp;quot;BT&amp;quot;))) #BT from bottom to top&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/edge-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <description>graphviz (Graph Visualization Software)是贝尔实验室鼓捣出来的一个用来展示结构化信息的软件。有一个对应的Rgraphviz包，学习一下，这是一个用来画系谱图</description>
     </item>
     
     <item>
@@ -862,206 +117,7 @@ Figure 4: 最简单的图
       <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/stringr-note-1/</guid>
-      <description>&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/rmarkdown-libs/str_view/str_view.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;/rmarkdown-libs/str_view-binding/str_view.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages(require(stringr))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;R中的字符串处理函数，不但多，而且难记，参数调用方法也不一致。stringr包提供了统一名称的函数调用形式。&lt;/p&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. 基本处理&lt;/h2&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.1 计算字符串的长度&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_length(&amp;quot;abc&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 3&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_length(&amp;quot;你好&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_length(NA)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] NA&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_length(c(&amp;quot;abc&amp;quot;,&amp;quot;ad&amp;quot;,&amp;quot;co&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 3 2 2&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;str_length&lt;/code&gt;等同于R中自带的&lt;code&gt;nchar()&lt;/code&gt;函数可以正确的识别中文字的个数，赞一个。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.2 提取子字符串&lt;/h3&gt;
-&lt;p&gt;下述函数可以针对向量操作，提取子字符串&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;-  c(&amp;quot;abcdefgh&amp;quot;,&amp;quot;dljwowowjj&amp;quot;)
-str_sub(x,2,4) #从第2个位置到第四个位置&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;bcd&amp;quot; &amp;quot;ljw&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sub(x,2,-2) #第二个位置到倒数第二个位置&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;bcdefg&amp;quot;   &amp;quot;ljwowowj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.3 修改字符串中指定位置的内容&lt;/h3&gt;
-&lt;p&gt;修改字符串中某个位置的字符&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sub(x,3,5) &amp;lt;- &amp;quot;XYZ&amp;quot;
-x&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;abXYZfgh&amp;quot;   &amp;quot;dlXYZwowjj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.4 重复字符串的内容&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_dup(x,3) #表示每个字符串重复两次&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;abXYZfghabXYZfghabXYZfgh&amp;quot;       &amp;quot;dlXYZwowjjdlXYZwowjjdlXYZwowjj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_dup(x,c(2,3)) #表示第一个字符串重复2次，第二个字符串重复3次&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;abXYZfghabXYZfgh&amp;quot;               &amp;quot;dlXYZwowjjdlXYZwowjjdlXYZwowjj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.5 填补字符串至一定长度&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_pad(x,str_length(x[2])) #把第一个字符串用空格补充至跟第二字符串一样长&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;  abXYZfgh&amp;quot; &amp;quot;dlXYZwowjj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_pad(string = x,width = str_length(x[2]),side = &amp;quot;right&amp;quot;, pad = &amp;quot;?&amp;quot;) #一个标准写法，用？号补充，在填补在右边&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;abXYZfgh??&amp;quot; &amp;quot;dlXYZwowjj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;缩写字符串&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_trunc(x,3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;...&amp;quot; &amp;quot;...&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;默认的最小缩写字符串长度就是3（“…”），因此直接显示为“…”。&lt;/p&gt;
-&lt;p&gt;如果想缩写为2位，可以这样写：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_trunc(x,2,ellipsis = &amp;quot;.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;a.&amp;quot; &amp;quot;d.&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.6 剔除字符串中的空格&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(&amp;quot;  a   &amp;quot;, &amp;quot;b   &amp;quot;,  &amp;quot;   c&amp;quot;)
-str_trim(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;a&amp;quot; &amp;quot;b&amp;quot; &amp;quot;c&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.7 大小写转换+本地语言支持&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- &amp;quot;You are beautiful.&amp;quot;
-str_to_lower(x) #转换为小写&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;you are beautiful.&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_to_upper(x) #转换为大写&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;YOU ARE BEAUTIFUL.&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_to_title(x) #首字母大写&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;You Are Beautiful.&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- &amp;quot;i love you&amp;quot;
-str_to_upper(x,locale = &amp;quot;tr&amp;quot;) #土耳其语,i带点&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;&amp;lt;U+0130&amp;gt; LOVE YOU&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#stringi::stri_locale_list() #语言支持列表&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.8 排名和排序&lt;/h3&gt;
-&lt;p&gt;获得每个元素的排名&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(&amp;quot;a&amp;quot;,&amp;quot;y&amp;quot;,&amp;quot;i&amp;quot;,&amp;quot;o&amp;quot;)
-str_order(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 1 3 4 2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y &amp;lt;- c(&amp;quot;ac&amp;quot;,&amp;quot;oa&amp;quot;,&amp;quot;bp&amp;quot;,&amp;quot;oo&amp;quot;)
-str_order(y)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 1 3 2 4&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;对y中的元素进行排序&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sort(y)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;ac&amp;quot; &amp;quot;bp&amp;quot; &amp;quot;oa&amp;quot; &amp;quot;oo&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#另外一种实现方式
-y[str_order(y)]&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;ac&amp;quot; &amp;quot;bp&amp;quot; &amp;quot;oa&amp;quot; &amp;quot;oo&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;降序排列&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sort(x=y,decreasing = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;oo&amp;quot; &amp;quot;oa&amp;quot; &amp;quot;bp&amp;quot; &amp;quot;ac&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;字符类型的数字，支持按照数字大小排序&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- as.character(c(sample(1:100,5),1000))
-x&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;1&amp;quot;    &amp;quot;32&amp;quot;   &amp;quot;68&amp;quot;   &amp;quot;16&amp;quot;   &amp;quot;15&amp;quot;   &amp;quot;1000&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sort(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;1&amp;quot;    &amp;quot;1000&amp;quot; &amp;quot;15&amp;quot;   &amp;quot;16&amp;quot;   &amp;quot;32&amp;quot;   &amp;quot;68&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sort(x,numeric =TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;1&amp;quot;    &amp;quot;15&amp;quot;   &amp;quot;16&amp;quot;   &amp;quot;32&amp;quot;   &amp;quot;68&amp;quot;   &amp;quot;1000&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.9 合并字符串&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_c(&amp;quot;I&amp;quot;,&amp;quot;love&amp;quot;,&amp;quot;this&amp;quot;,&amp;quot;world!&amp;quot;,sep = &amp;quot; &amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;I love this world!&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_c(c(&amp;quot;2018&amp;quot;,&amp;quot;01&amp;quot;,&amp;quot;18&amp;quot;),collapse = &amp;quot;-&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;2018-01-18&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2 模式匹配&lt;/h2&gt;
-&lt;div id=&#34;-regular-expression&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2.1 正则表达 regular expression&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;str_view()&lt;/code&gt;和&lt;code&gt;str_view_all()&lt;/code&gt;用来展示正则表达式是如何匹配的，是学习正则表达式的好帮手。&lt;/p&gt;
-&lt;div class=&#34;section level4&#34;&gt;
-&lt;h4&gt;2.1.1 基础匹配&lt;/h4&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(&amp;quot;apple&amp;quot;, &amp;quot;banana&amp;quot;, &amp;quot;pear&amp;quot;)
-str_view(x, &amp;quot;an&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;apple&lt;\/li&gt;\n  &lt;li&gt;b&lt;span class=&#39;match&#39;&gt;an&lt;\/span&gt;ana&lt;\/li&gt;\n  &lt;li&gt;pear&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;接下来会稍微复杂一些，加入通配符&lt;code&gt;.&lt;/code&gt;，匹配任何字符：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(x,&amp;quot;.a.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;apple&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;ban&lt;\/span&gt;ana&lt;\/li&gt;\n  &lt;li&gt;p&lt;span class=&#39;match&#39;&gt;ear&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;但是如何匹配字符串中的&lt;code&gt;.&lt;/code&gt;呢？我们需要一个逃脱符，也就是反斜杠&lt;code&gt;\&lt;/code&gt;，英文是blackflash，&lt;code&gt;\.&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;但是这里有一个问题，那就是在普通字符串处理中，R也定义了&lt;code&gt;\&lt;/code&gt;是一个逃脱符，而正则表达式又是通过字符串表达出来的，因此，为了匹配&lt;code&gt;.&lt;/code&gt;，需要写为&lt;code&gt;\\.&lt;/code&gt;。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;writeLines(&amp;quot;\\.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## \.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(&amp;quot;b.a&amp;quot;,&amp;quot;\\.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-3&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-3&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;b&lt;span class=&#39;match&#39;&gt;.&lt;\/span&gt;a&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;那么另外一个问题是，如何匹配文字&lt;code&gt;\&lt;/code&gt;。根据规则，应该是&lt;code&gt;\\&lt;/code&gt;。但是，要想在R中输出&lt;code&gt;\\&lt;/code&gt;字符串（两个反斜杠），我们每个前边都需要再加一个反斜杠，这就变成了四个反斜杠&lt;code&gt;\\\\&lt;/code&gt;。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;writeLines(&amp;quot;\\\\&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## \\&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(&amp;quot;a\\b&amp;quot;,&amp;quot;\\\\&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-4&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-4&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;a&lt;span class=&#39;match&#39;&gt;\\&lt;\/span&gt;b&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level4&#34;&gt;
-&lt;h4&gt;2.1.2 引导符&lt;/h4&gt;
-&lt;p&gt;如何匹配开头或者结尾字符。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;^&lt;/code&gt;用于匹配开头。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$&lt;/code&gt;用于匹配结尾。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(&amp;quot;apple&amp;quot;, &amp;quot;banana&amp;quot;, &amp;quot;pear&amp;quot;)
-str_view(x, &amp;quot;^a&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-5&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-5&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;pple&lt;\/li&gt;\n  &lt;li&gt;banana&lt;\/li&gt;\n  &lt;li&gt;pear&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(x,&amp;quot;a$&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-6&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-6&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;apple&lt;\/li&gt;\n  &lt;li&gt;banan&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;pear&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(x,&amp;quot;^pear$&amp;quot;) #匹配完整字符串&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;div id=&#34;htmlwidget-7&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-7&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;apple&lt;\/li&gt;\n  &lt;li&gt;banana&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;pear&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt; 如何匹配文字&lt;code&gt;$^$&lt;/code&gt;？&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(&amp;quot;$^$&amp;quot;,&amp;quot;\\$\\^\\$&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-8&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-8&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;$^$&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;一个小练习题，从&lt;code&gt;stringr::words&lt;/code&gt;900多个单词中找出首字母是y的所有单词：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;^y&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;div id=&#34;htmlwidget-9&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-9&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;ear&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;es&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;esterday&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;et&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;ou&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;oung&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt; 结尾是x的所有单词：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;x$&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-10&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-10&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;bo&lt;span class=&#39;match&#39;&gt;x&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;se&lt;span class=&#39;match&#39;&gt;x&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;si&lt;span class=&#39;match&#39;&gt;x&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;ta&lt;span class=&#39;match&#39;&gt;x&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;列出长度为11的所有单词：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;^.{11}$&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-11&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-11&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;appropriate&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;environment&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;opportunity&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;responsible&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level4&#34;&gt;
-&lt;h4&gt;2.1.2 匹配不同类型的字符&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;.&lt;/code&gt;匹配任何字符，其他类型的字符包括： * &lt;code&gt;\d&lt;/code&gt;匹配任何数字 * &lt;code&gt;\s&lt;/code&gt;匹配空格、制表符、换行符 * &lt;code&gt;[abc]&lt;/code&gt;匹配abc中的任一个字符 * &lt;code&gt;[^abc]&lt;/code&gt; 匹配除了abc以外的任一个字符&lt;/p&gt;
-&lt;p&gt;小小练习题。&lt;/p&gt;
-&lt;p&gt;查找元音字母打头的单词&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;^[aeiou]&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-12&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-12&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ble&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;bout&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;bsolute&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ccept&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ccount&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;chieve&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;cross&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ct&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ctive&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ctual&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;dd&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ddress&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;dmit&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;dvertise&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ffect&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;fford&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;fter&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;fternoon&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;gain&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;gainst&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ge&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;gent&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;go&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;gree&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ir&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ll&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;llow&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lmost&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;long&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lready&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lright&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lso&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lthough&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lways&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;merica&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;mount&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;nd&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;nother&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;nswer&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ny&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;part&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;pparent&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ppear&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;pply&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ppoint&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;pproach&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ppropriate&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;rea&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;rgue&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;rm&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;round&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;rrange&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;rt&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;s&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;sk&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ssociate&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ssume&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;t&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ttend&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;uthority&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;vailable&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ware&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;way&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;wful&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ach&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;arly&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ast&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;asy&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;at&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;conomy&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ducate&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ffect&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;gg&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ight&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ither&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;lect&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;lectric&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;leven&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;lse&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;mploy&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ncourage&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;nd&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ngine&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;nglish&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;njoy&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;nough&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;nter&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;nvironment&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;qual&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;special&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;urope&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ven&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;vening&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ver&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;very&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;vidence&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xact&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xample&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xcept&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xcuse&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xercise&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xist&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xpect&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xpense&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xperience&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xplain&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xpress&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xtra&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ye&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;dea&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;dentify&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;f&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;magine&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;mportant&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;mprove&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;n&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nclude&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ncome&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ncrease&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ndeed&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ndividual&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ndustry&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nform&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nside&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nstead&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nsure&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nterest&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nto&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ntroduce&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nvest&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nvolve&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ssue&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;t&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;tem&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;bvious&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ccasion&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;dd&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;f&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ff&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ffer&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ffice&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ften&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;kay&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ld&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;n&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;nce&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ne&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;nly&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;pen&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;perate&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;pportunity&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ppose&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;r&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;rder&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;rganize&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;riginal&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ther&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;therwise&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ught&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ut&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ver&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;wn&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nder&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nderstand&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nion&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nit&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nite&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;niversity&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nless&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;ntil&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;p&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;pon&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;se&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;sual&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;那些单词结尾是“ed”但不是“eed”的单词：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;[^e]ed$&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-13&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-13&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;bed&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;hund&lt;span class=&#39;match&#39;&gt;red&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;red&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;筛选出结尾是ing或者ise的单词&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;ing|ise$&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-14&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-14&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;advert&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;br&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;dur&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;even&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;exerc&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;k&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;mean&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;morn&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;otherw&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;pract&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;ra&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;real&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;r&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;r&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;s&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;s&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;le&lt;\/li&gt;\n  &lt;li&gt;surpr&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;th&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;验证字母q后边是否总是跟着字母u，也就是说查找那些q后边不是u的单词：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(words,&amp;quot;q[^u]&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;div id=&#34;htmlwidget-15&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-15&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt; 结果是没找到。&lt;/p&gt;
-&lt;p&gt;验证另外一个字母搭配规则，i在e前或者是在c后边。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(words,&amp;quot;ie|ci&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-16&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-16&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;ach&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;ve&lt;\/li&gt;\n  &lt;li&gt;asso&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;ate&lt;\/li&gt;\n  &lt;li&gt;bel&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;ve&lt;\/li&gt;\n  &lt;li&gt;br&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;f&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;ty&lt;\/li&gt;\n  &lt;li&gt;cl&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;nt&lt;\/li&gt;\n  &lt;li&gt;coun&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;l&lt;\/li&gt;\n  &lt;li&gt;de&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;de&lt;\/li&gt;\n  &lt;li&gt;de&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;sion&lt;\/li&gt;\n  &lt;li&gt;d&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;espe&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;al&lt;\/li&gt;\n  &lt;li&gt;exer&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;se&lt;\/li&gt;\n  &lt;li&gt;exper&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;nce&lt;\/li&gt;\n  &lt;li&gt;f&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;ld&lt;\/li&gt;\n  &lt;li&gt;fr&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;nd&lt;\/li&gt;\n  &lt;li&gt;l&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;p&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;ce&lt;\/li&gt;\n  &lt;li&gt;qu&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;t&lt;\/li&gt;\n  &lt;li&gt;s&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;ence&lt;\/li&gt;\n  &lt;li&gt;so&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;al&lt;\/li&gt;\n  &lt;li&gt;so&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;ety&lt;\/li&gt;\n  &lt;li&gt;spe&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;al&lt;\/li&gt;\n  &lt;li&gt;spe&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;fic&lt;\/li&gt;\n  &lt;li&gt;t&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;v&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;w&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
+      <description>suppressPackageStartupMessages(require(stringr)) R中的字符串处理函数，不但多，而且难记，参数调用方法也不一致。stringr包提供了统一名称的函数调用形式。 1. 基本处理 1.1 计算字符串的长度 str_length(&amp;quot;abc&amp;quot;)</description>
     </item>
     
     <item>
@@ -1070,36 +126,7 @@ str_view(x, &amp;quot;^a&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sun, 07 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/rmd-to-pdf-in-r/</guid>
-      <description>&lt;p&gt;如何将Rmd文档输出为PDF，一直是一个挑战性的工作，我在windows系统上就没有成功过。主要是搞不定巨大的tex安装包。不过最近有个好消息，&lt;a href=&#34;https://yihui.name/&#34;&gt;yihui&lt;/a&gt;开发了&lt;a href=&#34;https://yihui.name/tinytex/&#34;&gt;tinytex&lt;/a&gt;包，自动化了tex包的安装和配置工作。目前，这个包已经挂在cran上，可以通过rstudio安装。&lt;/p&gt;
-&lt;p&gt;安装tinytex后，在Rstudio中有以下2点需要配置：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;点击Tools菜单-&amp;gt; Global Options-&amp;gt; sweave：typeset LaTeX into PDF using: 修改为XeLaTeX。&lt;/li&gt;
-&lt;li&gt;knit Output Options部分，在Advanced中注意同样选择为XeLaTex。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;文件中如果包括中文，有两个方面需要注意：&lt;/p&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. 文本中包括中文&lt;/h2&gt;
-&lt;p&gt;参考这个&lt;a href=&#34;https://www.jianshu.com/p/0bfda49f1a52&#34;&gt;链接&lt;/a&gt;，进行如下设置：&lt;/p&gt;
-&lt;pre class=&#34;tex&#34;&gt;&lt;code&gt;\usepackage{xeCJK}  
-\setCJKmainfont{simsun.ttc}  % 字体可以更换&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;把上述代码单独保存为一个文件，如header.tex，注意与Rmd文件在同一个路径下。其作用貌似是调用xeCJK包，中文字体设置为宋体。如果tinytex检测到系统中没有安装xeCJK包，那么会自动下载安装。&lt;/p&gt;
-&lt;p&gt;但是尝试了一下，好像tinytex自动安装xeCJK存在问题，包的名称应该全部是小写。在Rstudio的console中手动安装，&lt;strong&gt;注意xecjk需要全部为小写&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;tinytex::tlmgr_install(“xecjk”)&lt;/p&gt;
-&lt;p&gt;ps: 安装了rmarkdown最新开发版，上述问题就解决了：&lt;code&gt;devtools::install_github(&amp;quot;rstudio/rmarkdown&amp;quot;)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;然后，在新建立的Rmd文档中YAML头中，设置包括header.tex文件：&lt;/p&gt;
-&lt;pre class=&#34;yaml&#34;&gt;&lt;code&gt;output: 
-  pdf_document: 
-    includes:
-      in_header: header.tex
-    keep_tex: yes
-    latex_engine: xelatex&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2.图片中中文设置&lt;/h2&gt;
-&lt;p&gt;主要是利用showtext包完成，具体参考&lt;a href=&#34;https://luansheng.netlify.com/post/using-other-system-chinese-fonts-in-r/&#34;&gt;此篇blog&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;点击下载&lt;a href=&#34;/post/RmdtoPDF.zip&#34;&gt;Rmd文档和生成的PDF文档&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-</description>
+      <description>如何将Rmd文档输出为PDF，一直是一个挑战性的工作，我在windows系统上就没有成功过。主要是搞不定巨大的tex安装包。不过最近有个好消</description>
     </item>
     
     <item>
@@ -1108,83 +135,7 @@ str_view(x, &amp;quot;^a&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Sat, 06 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/how-to-install-ev3dev/</guid>
-      <description>&lt;p&gt;EV3是乐高机器人，除了官方系统，有人进行逆向工程，建立了一个基于Debian的开源linux系统&lt;a href=&#34;http://www.ev3dev.org/&#34;&gt;EV3DEV&lt;/a&gt;。然后就可以利用python等编程语言，控制EV3机器人。本文记录基于Windows 10系统的安装过程。&lt;/p&gt;
-&lt;p&gt;详细的过程，可以参考官方网站&lt;a href=&#34;http://www.ev3dev.org/docs/getting-started/&#34;&gt;Getting Started with ev3dev&lt;/a&gt;。&lt;/p&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. 准备的硬件&lt;/h2&gt;
-&lt;p&gt;需要一个micro SD卡，我购买的是&lt;a href=&#34;https://item.jd.com/343546.html&#34;&gt;金士顿（Kingston）16GB Class4 TF(Micro SD)存储卡&lt;/a&gt;。看官网介绍，大于32G的卡，EV3读不出来。&lt;/p&gt;
-&lt;p&gt;另外需要一个读卡器，同样购买的&lt;a href=&#34;https://item.jd.com/343389.html&#34;&gt;金士顿（Kingston）USB 2.0 TF（Micro SD）读卡器（FCR-MRG2）&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;还需要一台计算机，最好是笔记本电脑，支持蓝牙或者wifi无线网络。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ev3dev&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2.制作EV3DEV启动盘&lt;/h2&gt;
-&lt;div id=&#34;ev3dev&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2.1 下载EV3DEV镜像文件。&lt;/h3&gt;
-&lt;p&gt;目前官网上的下载地址下载不了，通过其&lt;a href=&#34;https://github.com/ev3dev&#34;&gt;github&lt;/a&gt;找到了下载地址，在&lt;a href=&#34;https://github.com/ev3dev/ev3dev/releases&#34;&gt;这里&lt;/a&gt;，目前最新的是2017-09-14发布的镜像文件。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sd&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2.2 把镜像文件烧录到sd卡&lt;/h3&gt;
-&lt;p&gt;下载原文中推荐的img镜像烧录软件&lt;a href=&#34;https://etcher.io/&#34;&gt;etcher&lt;/a&gt;，这个软件使用简单，非常好用。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ev3devev3&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3. 利用EV3DEV启动EV3&lt;/h2&gt;
-&lt;p&gt;把&lt;strong&gt;sd卡正面跟EV3正面一个方向&lt;/strong&gt;，插入卡槽中。然后从EV3主机上按启动键，会出现一个带有小企鹅的启动画面，启动需要等一段时间。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ev3&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;4. 通过蓝牙连接EV3主机与电脑&lt;/h2&gt;
-&lt;p&gt;为了控制EV3，必须要有另外一台电脑，与EV3建立连接，控制EV3。本文推荐蓝牙连接。因为如果想通过wifi连接，还需要再买一个EV3专用的无线网卡。&lt;/p&gt;
-&lt;p&gt;具体的连接方法，参考&lt;a href=&#34;http://www.ev3dev.org/docs/tutorials/connecting-to-the-internet-via-bluetooth/&#34;&gt;这里&lt;/a&gt;。请注意，文中给出了连接安卓、苹果和windows三个系统的蓝牙连接设置方法，win10的设置在网页最下边。务必要严格按照网页要求的步骤来设置。&lt;/p&gt;
-&lt;p&gt;但是，目前按照这个教程，设置EV3跟电脑蓝牙连接后，EV3并不能通过蓝牙连接电脑的无线网络上网。这是一个当前&lt;strong&gt;还没有解决的问题&lt;/strong&gt;。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sshev3&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;5. 通过SSH协议登录并控制EV3主机&lt;/h2&gt;
-&lt;p&gt;如果是win10系统，下载一个&lt;a href=&#34;https://www.chiark.greenend.org.uk/~sgtatham/putty/&#34;&gt;putty软件&lt;/a&gt;，然后填入在EV3主机中显示的IP地址，譬如：169.254.26.0，然后点击open，会弹出一个黑色的命令行窗口，稍微等一会，根据提示输入用户名：&lt;strong&gt;robot&lt;/strong&gt;，回车后，根据提示输入密码：&lt;strong&gt;maker&lt;/strong&gt;，然后等一会，如果登陆成功，会显示如下画面：&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/post/images/puttyev3.png&#34; title=&#34;putty成功登陆EV3&#34; alt=&#34;putty成功登陆EV3&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;putty成功登陆EV3&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;pythonev3&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;6. 通过python控制EV3&lt;/h2&gt;
-&lt;p&gt;可以认为，python是EV3DEV系统支持的官方语言。想学习如何利用pyhton控制EV3，可以参考&lt;a href=&#34;http://python-ev3dev.readthedocs.io/en/stable/&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
-&lt;div id=&#34;ev3&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;6.1 控制EV3说话&lt;/h3&gt;
-&lt;p&gt;“hello,world”是编程学习时的经典输出语句。下边我们试着让EV3直接说出来：&lt;/p&gt;
-&lt;p&gt;首先在成功连接EV3的putty窗口中，输入&lt;strong&gt;python3&lt;/strong&gt;，启动python环境，成功后是这样：&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/post/images/puttyev3python.png&#34; title=&#34;EV3上启动python3&#34; alt=&#34;EV3上启动python3&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;EV3上启动python3&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;然后在python控制台下，输入下列命令：&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;#导入ev3dev.ev3模块
-import ev3dev.ev3 as ev3
-
-#调用ev3的声音模块发出声音
-ev3.Sound.speak(&amp;#39;hello,world&amp;#39;).wait()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;程序运行成功后的putty窗口：&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/post/images/puttyev3helloworld.png&#34; title=&#34;EV3说出hello, world&#34; alt=&#34;EV3说出hello, world&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;EV3说出hello, world&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;6.2 控制马达转动&lt;/h3&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;#控制连接到主机A端口的一个大型马达
-m = ev3.LargeMotor(&amp;#39;outA&amp;#39;)
-
-# speed_sp控制马达转速，这里的用的是ticks per second
-# time_sp控制马达的启动时间，表示的是毫秒
-m.run_timed(time_sp=3000, speed_sp=500)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;todo&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;todo&lt;/h3&gt;
-&lt;p&gt;如何把电脑写好的python程序传输到EV3上并执行？&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.ev3dev.org/docs/tutorials/&#34;&gt;EV3DEV教程中心&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://python-ev3dev.readthedocs.io/en/stable/rpyc.html&#34;&gt;Working with ev3dev remotely using RPyC&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
+      <description>EV3是乐高机器人，除了官方系统，有人进行逆向工程，建立了一个基于Debian的开源linux系统EV3DEV。然后就可以利用python等</description>
     </item>
     
     <item>
@@ -1193,38 +144,256 @@ m.run_timed(time_sp=3000, speed_sp=500)&lt;/code&gt;&lt;/pre&gt;
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/try-od-package/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://asreml.org/optimal-design/&#34;&gt;od&lt;/a&gt;包是一个可以给出数量遗传学&lt;strong&gt;优化试验设计&lt;/strong&gt;的包。试着通过实例来理解背后的设计原理。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href=&#34;https://asreml.org/resources/od/od_0.75.zip&#34;&gt;windows&lt;/a&gt;包没有自带数据，从&lt;a href=&#34;https://asreml.org/resources/od/od_0.75_R_linux-intel64.tar.gz&#34;&gt;linux&lt;/a&gt;包中把数据提出来。&lt;/p&gt;
-&lt;p&gt;关于od包背后的设计原理，参考作者的博士论文：On The Optimal Design of Experiments Under the Linear Mixed Model。&lt;/p&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. 加载数据文件&lt;/h2&gt;
-&lt;p&gt;genex是一个作物遗传改良的实验数据，包括213个品种。实验设计为部分重复设计，包括2个Block,每个block内有48行×3列。部分品种有2次实验记录。 genex.Ainv 包括了213个品种间的加性遗传相关矩阵。注意od包要求genex.Ainv数据框包括一个属性rowNames,存储row列中整数对应的品种名。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(data.table)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: data.table&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;genex &amp;lt;- fread(file=&amp;quot;genex.csv&amp;quot;,stringsAsFactors = TRUE)
-genex[,&amp;quot;:=&amp;quot;(Row=as.factor(Row),Block=as.factor(Block),Column=as.factor(Column))]
-genex.Ainv &amp;lt;- fread(file=&amp;quot;genex.Ainv.csv&amp;quot;,stringsAsFactors = TRUE)
-genex.Ainv.rowNames &amp;lt;- fread(file=&amp;quot;genex.Ainv.rowNames.csv&amp;quot;,sep=&amp;quot;,&amp;quot;,stringsAsFactors = FALSE,header = FALSE)
-attr(genex.Ainv,which = &amp;quot;rowNames&amp;quot;) &amp;lt;- genex.Ainv.rowNames$V1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(od)
-genex.G &amp;lt;- od.init(`ped(Entry)` = 1, `ide(Entry)` = 0.1, Block = 0.1,Column = 0.4, Row = 0.2)
-genex.R &amp;lt;- od.init(`Column:Row|Column` = 0.2, `Column:Row|Row` = 0.5)
-genex.od &amp;lt;- od(random = ~ped(Entry) + ide(Entry) + Block + Column + Row, 
-               rcov = ~ar1(Column):ar1(Row), 
-               permute = ~ped(Entry) |ide(Entry),
-               swap = ~Block, Gstart = genex.G, 
-               Rstart = genex.R,
-               ginv = list(Entry = genex.Ainv), 
-               geneticEffects = &amp;quot;total&amp;quot;,
-               search = &amp;quot;tabu&amp;quot;, 
-               maxit = 5, 
-               data = genex)
-save.image()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;genex.od$design&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
+      <description>od包是一个可以给出数量遗传学优化试验设计的包。试着通过实例来理解背后的设计原理。 windows包没有自带数据，从linux包中把数据提出来</description>
+    </item>
+    
+    <item>
+      <title>我的第一个python程序</title>
+      <link>/post/my-first-python-program/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-first-python-program/</guid>
+      <description>参考pandas官网，十分钟教程 import pandas as pd import numpy as np import matplotlib.pyplot as plt s = pd.Series([1,3,5,np.nan,6,8]) print(s) ## 0 1.0 ## 1 3.0 ## 2 5.0 ## 3 NaN ## 4 6.0 ## 5 8.0 ## dtype: float64</description>
+    </item>
+    
+    <item>
+      <title>在R中使用windows系统自带的中文字体</title>
+      <link>/post/using-other-system-chinese-fonts-in-r/</link>
+      <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/using-other-system-chinese-fonts-in-r/</guid>
+      <description>R作图时，如何在图片中使用windows系统自带的其他中文字体？以前尝试过好几次，都没有成功。 首先安装二个包： sysfonts showtext R中自带的默认字体家族，可</description>
+    </item>
+    
+    <item>
+      <title>Take me to  your heart</title>
+      <link>/post/take-me-to-your-heart/</link>
+      <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/take-me-to-your-heart/</guid>
+      <description>Hiding from the rain and snow
+Trying to forget but I won&amp;rsquo;t let go
+Looking at a crowded street
+Listening to my own heart beat
+So many people all around the world
+Tell me where do I find someone like you girl
+(Chorus)
+Take me to your heart take me to your soul
+Give me your hand before I&amp;rsquo;m old
+Show me what love is - haven&amp;rsquo;t got a clue</description>
+    </item>
+    
+    <item>
+      <title>自由度和方差分析</title>
+      <link>/post/df-and-anova/</link>
+      <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/df-and-anova/</guid>
+      <description>比较同一处理不同水平的差异，譬如不同养殖密度、不同饲料对生长速度的影响，经常会用到方差分析的方法。而在方差分析中，自由度是一个非常重要的概念</description>
+    </item>
+    
+    <item>
+      <title>线性混合效应模型教程2</title>
+      <link>/post/lmm-tutorial-2/</link>
+      <pubDate>Wed, 29 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lmm-tutorial-2/</guid>
+      <description>上接线性混合效应模型教程1 本部分可能会用到的R包，请提前安装： ggplot2 #优秀的作图包 data.table #优秀的数据转换处理包 lme4 #提供lmer函数，进行lmm分析 lmerTest</description>
+    </item>
+    
+    <item>
+      <title>线性混合效应模型教程1</title>
+      <link>/post/lmm-tutorial-1/</link>
+      <pubDate>Sun, 19 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lmm-tutorial-1/</guid>
+      <description>学习线性混合效应模型（Linear Mixed Effects Model，LMM）最好的方法，是一边学习理论，一边动手实践，这样印象最为深刻。 本文参考了Bodo Wi</description>
+    </item>
+    
+    <item>
+      <title>动物育种值预测中的线性模型学习笔记2</title>
+      <link>/post/lmm-for-ebv-prediction-xfa/</link>
+      <pubDate>Sat, 11 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lmm-for-ebv-prediction-xfa/</guid>
+      <description>6.4.1 因子分析 设定w向量，包括n个变量，w的协方差矩阵为G，w用模型表示为： \[ w = \mu + \phi c + s \] 其中\(\mu\)是群体均值，c是长度为m的公共</description>
+    </item>
+    
+    <item>
+      <title>FA和XFA学习笔记</title>
+      <link>/post/fa-xfa-note/</link>
+      <pubDate>Thu, 09 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fa-xfa-note/</guid>
+      <description>ASReml中有一个XFA方差结构。本文从FA(因子分析)基础入手，做一个有关FA和XFA的学习笔记。目的是，弄清楚在ASReml中如何定义</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记5</title>
+      <link>/post/data-table-note-5/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-5/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1. 1建立两个数据集：DF（data.frame）和DT（data.table） DF =</description>
+    </item>
+    
+    <item>
+      <title>动物育种值预测中的线性模型学习笔记1</title>
+      <link>/post/lmm-for-ebv-prediction-note-1/</link>
+      <pubDate>Thu, 20 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lmm-for-ebv-prediction-note-1/</guid>
+      <description>第一章 基于不同来源记录的遗传评估(Genetic evaluation with different sources of records) 1.1 介绍 育种值预测是大部分为了遗传改良而建立的育种程序不可或缺的一部分。准确地预测</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记4</title>
+      <link>/post/data-table-note-4/</link>
+      <pubDate>Thu, 13 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-4/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1.二级索引（Secondary index） 1.1 什么是二级索引 二级索引与主键的区别：</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记3</title>
+      <link>/post/data-table-note-3/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-3/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1.主键 利用主键进行subset，速度会更加快。 设置主键 通过函数setkey()来</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记2</title>
+      <link>/post/data-table-note-2/</link>
+      <pubDate>Fri, 07 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-2/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 这一部分笔记主要讲述如何更新数据集，而不产生新的数据拷贝。 主要用到的符号是“:=”</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记1</title>
+      <link>/post/data-table-note-1/</link>
+      <pubDate>Mon, 03 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-1/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1.数据 教程中，使用NYC-flights14数据集，纽约机场2014年出发的所有</description>
+    </item>
+    
+    <item>
+      <title>Rcpp读书笔记2-第二章工具与设置</title>
+      <link>/post/rcpp-note-2/</link>
+      <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rcpp-note-2/</guid>
+      <description>2.1 总体设置 Rcpp提供一个C++应用编程接口（API），来扩展R系统。运行Rcpp和R的一些需求： 开发环境需要一个C++编译器。 通过动态链接</description>
+    </item>
+    
+    <item>
+      <title>BLUP公式及分解</title>
+      <link>/post/lmm-for-ebv-prediction-blup/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lmm-for-ebv-prediction-blup/</guid>
+      <description>1. BLUP公式 \[ \begin{bmatrix} X^{&amp;#39;}\hat{R}^{-1}X &amp;amp; X^{&amp;#39;}\hat{R}^{-1}Z \\ Z^{&amp;#39;}\hat{R}^{-1}X &amp;amp; Z^{&amp;#39;}\hat{R}^{-1}Z+\hat{G}^{-1} \end{bmatrix} \begin{bmatrix} \hat{\beta} \\ \hat{u} \end{bmatrix} = \begin{bmatrix} X^{&amp;#39;}\hat{R}^{-1}y \\ Z^{&amp;#39;}\hat{R}^{-1}y \end{bmatrix} \]</description>
+    </item>
+    
+    <item>
+      <title>最小二乘均值的估计模型</title>
+      <link>/post/least-squares-means-note-1/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/least-squares-means-note-1/</guid>
+      <description>1.最小二乘均值的定义和背景 1.1 最小二乘均值的定义（来自lsmeans包简介） 定义：least-squares means (LS means for short) for a linear model are simply predictions-or averages thereof-over a regular</description>
+    </item>
+    
+    <item>
+      <title>Rcpp读书笔记1</title>
+      <link>/post/rcpp-note-1/</link>
+      <pubDate>Wed, 07 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rcpp-note-1/</guid>
+      <description>1.1 背景：从R到C++ R语言是从S语言进化来的，R和S语言近三十年来一直在进化。举例说明，R语言通过S3和S4类系统实现面向对象特性，也包括新</description>
+    </item>
+    
+    <item>
+      <title>my first blog</title>
+      <link>/post/my-first-blog/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-first-blog/</guid>
+      <description>这是我的第一个blog，架构在github上，基于jekyll。 1. 数学公式 hugo支持数学公式，但是对于.md文档，为了正常显示公式。需要首</description>
+    </item>
+    
+    <item>
+      <title>如何可视化家系间的亲缘关系</title>
+      <link>/post/family-relationship-circle/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/family-relationship-circle/</guid>
+      <description>运行前清除掉原来的一些对象变量，然后加载包。 optiSel（处理系谱数据、计算个体间的共亲系数）、dplyr（清洗数据）、data.tabl</description>
+    </item>
+    
+    <item>
+      <title>Getting started with the Academic framework for Hugo</title>
+      <link>/post/getting-started/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0800</pubDate>
+      
+      <guid>/post/getting-started/</guid>
+      <description>The Academic framework enables you to easily create a beautifully simple personal or academic website using the Hugo static site generator.
+Key features:
+ Easily manage your homepage, blog posts, publications, talks, and projects Configurable widgets available for Biography, Publications, Projects, News/Blog, Talks, and Contact Need a different section? Just use the Custom widget! Write in Markdown for easy formatting and code highlighting, with LaTeX for mathematical expressions Social/academic network linking, Google Analytics, and Disqus comments Responsive and mobile friendly Simple and refreshing one page design Multilingual and easy to customize  Table of Contents    Installation Getting Started  Core parameters Introduce yourself Customize the homepage Add your content Remove unused widgets and pages Themes Customization &amp;amp; updating  Advanced customization  Navigation menu Website icon Analytics Third party and local scripts (JS) Language and translation Permalinks Advanced style customization (CSS)  Updating Feedback &amp;amp; Contributing License    Installation  Install Hugo and create a new website by typing the following commands in your Terminal or Command Prompt app:</description>
+    </item>
+    
+    <item>
+      <title>Customizing the homepage with widgets</title>
+      <link>/post/widgets/</link>
+      <pubDate>Tue, 19 Apr 2016 00:00:00 +0800</pubDate>
+      
+      <guid>/post/widgets/</guid>
+      <description>Homepage widgets display as sections on the homepage. They can be enabled/disabled and configured as desired. Academic has the following widgets available to use:
+ About/biography Selected publications Recent publications Recent news/blog posts Projects Selected talks Recent talks Contact Tag cloud Hero (introduction) Custom widget (demonstrated with the teaching example)  The example site that you copied to create your site uses all the different types of widget (except talks), so you can generally just delete the widgets you don&amp;rsquo;t need and customize the parameters of the widgets you wish to keep.</description>
+    </item>
+    
+    <item>
+      <title>Managing content</title>
+      <link>/post/managing-content/</link>
+      <pubDate>Mon, 18 Apr 2016 00:00:00 +0800</pubDate>
+      
+      <guid>/post/managing-content/</guid>
+      <description>&lt;p&gt;This is a brief guide to managing content with the Academic framework. Content can include publications, projects, talks, news/blog articles, and widget pages. After you have read this guide about creating and managing content, you may also be interested to learn about &lt;a href=&#34;/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;writing content with Markdown, LaTeX, and Shortcodes&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Writing content with Markdown, LaTeX, and Shortcodes</title>
+      <link>/post/writing-markdown-latex/</link>
+      <pubDate>Sun, 17 Apr 2016 00:00:00 +0800</pubDate>
+      
+      <guid>/post/writing-markdown-latex/</guid>
+      <description>&lt;p&gt;Content can be written using &lt;a href=&#34;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt;, &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX math&lt;/a&gt;, and &lt;a href=&#34;http://gohugo.io/extras/shortcodes/&#34; target=&#34;_blank&#34;&gt;Hugo Shortcodes&lt;/a&gt;. Additionally, HTML may be used for advanced formatting. This article gives an overview of the most common formatting options.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Frequently Asked Questions (FAQ)</title>
+      <link>/post/faq/</link>
+      <pubDate>Sun, 10 Apr 2016 00:00:00 +0800</pubDate>
+      
+      <guid>/post/faq/</guid>
+      <description>Common questions and answers will be listed here.
+I cloned/downloaded Academic but Hugo produces errors when using it with my existing Hugo site
+Academic is a website framework rather than just a theme. Therefore, you must follow the full installation guide found on the Demo/Documentation website or in the Github Readme. If you still have problems, first try running Hugo on the Academic Example Site found in the themes/academic/exampleSite folder and then compare the configuration parameters in the Example Site&amp;rsquo;s config.</description>
+    </item>
+    
+    <item>
+      <title>Migrate from Jekyll to Hugo</title>
+      <link>/post/migrate-from-jekyll/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0800</pubDate>
+      
+      <guid>/post/migrate-from-jekyll/</guid>
+      <description>Here are a few tips for migrating an existing website from Jekyll to Hugo. These tips can be applied in conjunction with following Hugo Academic&amp;rsquo;s getting started guide.
+Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like</description>
     </item>
     
   </channel>

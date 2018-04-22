@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>EV3 on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/ev3/</link>
+    <description>Recent content in EV3 on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Sat, 06 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/ev3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何在EV3上安装ev3dev系统 </title>
+      <link>/post/how-to-install-ev3dev/</link>
+      <pubDate>Sat, 06 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-to-install-ev3dev/</guid>
+      <description>EV3是乐高机器人，除了官方系统，有人进行逆向工程，建立了一个基于Debian的开源linux系统EV3DEV。然后就可以利用python等</description>
+    </item>
+    
+  </channel>
+</rss>

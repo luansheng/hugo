@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数量遗传学 on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/categories/%E6%95%B0%E9%87%8F%E9%81%97%E4%BC%A0%E5%AD%A6/</link>
+    <description>Recent content in 数量遗传学 on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/%E6%95%B0%E9%87%8F%E9%81%97%E4%BC%A0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何理解遗传组效应</title>
+      <link>/post/how-to-understand-genetic-groups/</link>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-to-understand-genetic-groups/</guid>
+      <description>参考材料来自于Julius van der Werf的教程。 什么情况下需要考虑遗传组效应（Genetic group） 当数据集中的个体来源不同时，在遗传评估</description>
+    </item>
+    
+  </channel>
+</rss>

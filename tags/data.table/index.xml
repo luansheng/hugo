@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data.table on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/data.table/</link>
+    <description>Recent content in Data.table on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Sun, 03 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/data.table/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>data.table学习笔记5</title>
+      <link>/post/data-table-note-5/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-5/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1. 1建立两个数据集：DF（data.frame）和DT（data.table） DF =</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记4</title>
+      <link>/post/data-table-note-4/</link>
+      <pubDate>Thu, 13 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-4/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1.二级索引（Secondary index） 1.1 什么是二级索引 二级索引与主键的区别：</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记3</title>
+      <link>/post/data-table-note-3/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-3/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1.主键 利用主键进行subset，速度会更加快。 设置主键 通过函数setkey()来</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记2</title>
+      <link>/post/data-table-note-2/</link>
+      <pubDate>Fri, 07 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-2/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 这一部分笔记主要讲述如何更新数据集，而不产生新的数据拷贝。 主要用到的符号是“:=”</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记1</title>
+      <link>/post/data-table-note-1/</link>
+      <pubDate>Mon, 03 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-1/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1.数据 教程中，使用NYC-flights14数据集，纽约机场2014年出发的所有</description>
+    </item>
+    
+  </channel>
+</rss>

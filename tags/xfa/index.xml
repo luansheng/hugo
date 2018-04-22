@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>XFA on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/xfa/</link>
+    <description>Recent content in XFA on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Sat, 11 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/xfa/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>动物育种值预测中的线性模型学习笔记2</title>
+      <link>/post/lmm-for-ebv-prediction-xfa/</link>
+      <pubDate>Sat, 11 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lmm-for-ebv-prediction-xfa/</guid>
+      <description>6.4.1 因子分析 设定w向量，包括n个变量，w的协方差矩阵为G，w用模型表示为： \[ w = \mu + \phi c + s \] 其中\(\mu\)是群体均值，c是长度为m的公共</description>
+    </item>
+    
+    <item>
+      <title>FA和XFA学习笔记</title>
+      <link>/post/fa-xfa-note/</link>
+      <pubDate>Thu, 09 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fa-xfa-note/</guid>
+      <description>ASReml中有一个XFA方差结构。本文从FA(因子分析)基础入手，做一个有关FA和XFA的学习笔记。目的是，弄清楚在ASReml中如何定义</description>
+    </item>
+    
+  </channel>
+</rss>

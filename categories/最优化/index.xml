@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>最优化 on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/categories/%E6%9C%80%E4%BC%98%E5%8C%96/</link>
+    <description>Recent content in 最优化 on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Wed, 03 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/%E6%9C%80%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>try od package</title>
+      <link>/post/try-od-package/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/try-od-package/</guid>
+      <description>od包是一个可以给出数量遗传学优化试验设计的包。试着通过实例来理解背后的设计原理。 windows包没有自带数据，从linux包中把数据提出来</description>
+    </item>
+    
+  </channel>
+</rss>

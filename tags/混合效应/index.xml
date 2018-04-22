@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>混合效应 on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/%E6%B7%B7%E5%90%88%E6%95%88%E5%BA%94/</link>
+    <description>Recent content in 混合效应 on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Sun, 19 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/%E6%B7%B7%E5%90%88%E6%95%88%E5%BA%94/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>线性混合效应模型教程1</title>
+      <link>/post/lmm-tutorial-1/</link>
+      <pubDate>Sun, 19 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lmm-tutorial-1/</guid>
+      <description>学习线性混合效应模型（Linear Mixed Effects Model，LMM）最好的方法，是一边学习理论，一边动手实践，这样印象最为深刻。 本文参考了Bodo Wi</description>
+    </item>
+    
+  </channel>
+</rss>

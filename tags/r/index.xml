@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Mon, 22 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rgraphviz 学习笔记</title>
+      <link>/post/rgraphviz-note1/</link>
+      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rgraphviz-note1/</guid>
+      <description>graphviz (Graph Visualization Software)是贝尔实验室鼓捣出来的一个用来展示结构化信息的软件。有一个对应的Rgraphviz包，学习一下，这是一个用来画系谱图</description>
+    </item>
+    
+    <item>
+      <title>字符串处理包stringr学习笔记-1</title>
+      <link>/post/stringr-note-1/</link>
+      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/stringr-note-1/</guid>
+      <description>suppressPackageStartupMessages(require(stringr)) R中的字符串处理函数，不但多，而且难记，参数调用方法也不一致。stringr包提供了统一名称的函数调用形式。 1. 基本处理 1.1 计算字符串的长度 str_length(&amp;quot;abc&amp;quot;)</description>
+    </item>
+    
+    <item>
+      <title>try od package</title>
+      <link>/post/try-od-package/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/try-od-package/</guid>
+      <description>od包是一个可以给出数量遗传学优化试验设计的包。试着通过实例来理解背后的设计原理。 windows包没有自带数据，从linux包中把数据提出来</description>
+    </item>
+    
+    <item>
+      <title>自由度和方差分析</title>
+      <link>/post/df-and-anova/</link>
+      <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/df-and-anova/</guid>
+      <description>比较同一处理不同水平的差异，譬如不同养殖密度、不同饲料对生长速度的影响，经常会用到方差分析的方法。而在方差分析中，自由度是一个非常重要的概念</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记5</title>
+      <link>/post/data-table-note-5/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-5/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1. 1建立两个数据集：DF（data.frame）和DT（data.table） DF =</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记4</title>
+      <link>/post/data-table-note-4/</link>
+      <pubDate>Thu, 13 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-4/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1.二级索引（Secondary index） 1.1 什么是二级索引 二级索引与主键的区别：</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记3</title>
+      <link>/post/data-table-note-3/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-3/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1.主键 利用主键进行subset，速度会更加快。 设置主键 通过函数setkey()来</description>
+    </item>
+    
+    <item>
+      <title>data.table学习笔记1</title>
+      <link>/post/data-table-note-1/</link>
+      <pubDate>Mon, 03 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/data-table-note-1/</guid>
+      <description>data.table的特点：减小计算复杂度，降低计算时间。 1.数据 教程中，使用NYC-flights14数据集，纽约机场2014年出发的所有</description>
+    </item>
+    
+  </channel>
+</rss>

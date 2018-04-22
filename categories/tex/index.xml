@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tex on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/categories/tex/</link>
+    <description>Recent content in Tex on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Sun, 07 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/tex/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>windows系统下转换Rmd文档为PDF文档</title>
+      <link>/post/rmd-to-pdf-in-r/</link>
+      <pubDate>Sun, 07 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rmd-to-pdf-in-r/</guid>
+      <description>如何将Rmd文档输出为PDF，一直是一个挑战性的工作，我在windows系统上就没有成功过。主要是搞不定巨大的tex安装包。不过最近有个好消</description>
+    </item>
+    
+  </channel>
+</rss>

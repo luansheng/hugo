@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Netlify on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/netlify/</link>
+    <description>Recent content in Netlify on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Tue, 06 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/netlify/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>my first blog</title>
+      <link>/post/my-first-blog/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-first-blog/</guid>
+      <description>这是我的第一个blog，架构在github上，基于jekyll。 1. 数学公式 hugo支持数学公式，但是对于.md文档，为了正常显示公式。需要首</description>
+    </item>
+    
+  </channel>
+</rss>

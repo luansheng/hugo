@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Content tagged as &#39;Academic&#39;</title>
+      <link>/tags/academic/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/academic/</guid>
+      <description>Here is a list of all the content that has been tagged as academic.</description>
+    </item>
+    
+    <item>
+      <title>ANOVA</title>
+      <link>/tags/anova/</link>
+      <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/anova/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ASReml</title>
+      <link>/tags/asreml/</link>
+      <pubDate>Fri, 07 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/asreml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Circlize</title>
+      <link>/tags/circlize/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/circlize/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data.table</title>
+      <link>/tags/data.table/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/data.table/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep-learning</title>
+      <link>/tags/deep-learning/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Demo</title>
+      <link>/tags/demo/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/demo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EBV</title>
+      <link>/tags/ebv/</link>
+      <pubDate>Thu, 20 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ebv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EV3</title>
+      <link>/tags/ev3/</link>
+      <pubDate>Sat, 06 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ev3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FA</title>
+      <link>/tags/fa/</link>
+      <pubDate>Sat, 11 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/fa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Font</title>
+      <link>/tags/font/</link>
+      <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/font/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Graphviz</title>
+      <link>/tags/graphviz/</link>
+      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/graphviz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>/tags/hugo/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0800</pubDate>
+      
+      <guid>/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jekyll</title>
+      <link>/tags/jekyll/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0800</pubDate>
+      
+      <guid>/tags/jekyll/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Least-squares means</title>
+      <link>/tags/least-squares-means/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/least-squares-means/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lmm</title>
+      <link>/tags/lmm/</link>
+      <pubDate>Thu, 20 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/lmm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Marginal means</title>
+      <link>/tags/marginal-means/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/marginal-means/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mathjax</title>
+      <link>/tags/mathjax/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/mathjax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Netlify</title>
+      <link>/tags/netlify/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/netlify/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Od</title>
+      <link>/tags/od/</link>
+      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/od/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pandas</title>
+      <link>/tags/pandas/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pdf</title>
+      <link>/tags/pdf/</link>
+      <pubDate>Sun, 07 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pdf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pygame</title>
+      <link>/tags/pygame/</link>
+      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pygame/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pyhton</title>
+      <link>/tags/pyhton/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pyhton/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R Markdown</title>
+      <link>/tags/r-markdown/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r-markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rcpp</title>
+      <link>/tags/rcpp/</link>
+      <pubDate>Wed, 14 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rcpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rmd</title>
+      <link>/tags/rmd/</link>
+      <pubDate>Sun, 07 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rmd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Showtext</title>
+      <link>/tags/showtext/</link>
+      <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/showtext/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shrimp</title>
+      <link>/tags/shrimp/</link>
+      <pubDate>Sat, 27 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/shrimp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stringr</title>
+      <link>/tags/stringr/</link>
+      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/stringr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tex</title>
+      <link>/tags/tex/</link>
+      <pubDate>Sun, 07 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/tex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>XFA</title>
+      <link>/tags/xfa/</link>
+      <pubDate>Sat, 11 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/xfa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>亲缘关系</title>
+      <link>/tags/%E4%BA%B2%E7%BC%98%E5%85%B3%E7%B3%BB/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E4%BA%B2%E7%BC%98%E5%85%B3%E7%B3%BB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>固定效应</title>
+      <link>/tags/%E5%9B%BA%E5%AE%9A%E6%95%88%E5%BA%94/</link>
+      <pubDate>Wed, 29 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%9B%BA%E5%AE%9A%E6%95%88%E5%BA%94/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>家系</title>
+      <link>/tags/%E5%AE%B6%E7%B3%BB/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E5%AE%B6%E7%B3%BB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>混合效应</title>
+      <link>/tags/%E6%B7%B7%E5%90%88%E6%95%88%E5%BA%94/</link>
+      <pubDate>Sun, 19 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E6%B7%B7%E5%90%88%E6%95%88%E5%BA%94/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>线性</title>
+      <link>/tags/%E7%BA%BF%E6%80%A7/</link>
+      <pubDate>Sun, 19 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E7%BA%BF%E6%80%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>自由度</title>
+      <link>/tags/%E8%87%AA%E7%94%B1%E5%BA%A6/</link>
+      <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E8%87%AA%E7%94%B1%E5%BA%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>选择育种</title>
+      <link>/tags/%E9%80%89%E6%8B%A9%E8%82%B2%E7%A7%8D/</link>
+      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E9%80%89%E6%8B%A9%E8%82%B2%E7%A7%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>间接遗传效应</title>
+      <link>/tags/%E9%97%B4%E6%8E%A5%E9%81%97%E4%BC%A0%E6%95%88%E5%BA%94/</link>
+      <pubDate>Sun, 11 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E9%97%B4%E6%8E%A5%E9%81%97%E4%BC%A0%E6%95%88%E5%BA%94/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>随机效应</title>
+      <link>/tags/%E9%9A%8F%E6%9C%BA%E6%95%88%E5%BA%94/</link>
+      <pubDate>Wed, 29 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/%E9%9A%8F%E6%9C%BA%E6%95%88%E5%BA%94/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
