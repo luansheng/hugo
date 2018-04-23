@@ -323,6 +323,36 @@ E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
 &lt;p&gt;本文结果表明，可遗传的竞争交互影响尼罗罗非鱼的收获体重。因此，在一个竞争性的环境下对生长速度进行选择，需要提前设计不同与经典混合养殖测试的育种方案，避免选育多代后，核心育种群体个体的竞争性或者说攻击性变得更强。&lt;/p&gt;
 
 &lt;p&gt;需要进一步评估IGE的作用和重要性以及如何在商业育种系统中利用该效应。&lt;/p&gt;
+
+&lt;h2 id=&#34;1-前言&#34;&gt;1.前言&lt;/h2&gt;
+
+&lt;p&gt;群体内个体的性状值不仅受遗传组成（genetic makeup）的影响，也受&lt;strong&gt;个体发育环境&lt;/strong&gt;以及&lt;strong&gt;同其他个体的社会交互&lt;/strong&gt;的影响。从社会交互的角度来看（with social interaction），个体的基因型可能会影响与之交互的其他个体的性状值。在过去的研究中，动物育种专家没有重视社会交互可能产生的影响。最近二十年，进化生物学家和动物育种专家开始关注IGE，主要是因为IGE可能会影响选择反应的方向，以及进展（direction and magnitude），以及可以利用多少遗传变异，用于选择反应。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;这一段比较重要，是关于竞争性行为与生长和存活的关系&lt;/strong&gt;过去二十年间，水产遗传学家认为生长更快的鱼对于资源，具有更强的侵略性（aggressive）和竞争性（competitive）。Moyle（1969）和Swain and Riddell（1990）等在资源受限的条件下，证实了这种关联性。与之相反，在资源充足的情况，快速生长的鱼很少会表现出侵略性。尼罗罗非鱼的养殖模式比较多，有一些集约化的养殖模式，可能会导致鱼类个体间产生竞争（Tilapia aquaculture production systems encompass a range of environments from the viewpoint of among fish competition, including some where it is intense)。&lt;/p&gt;
+
+&lt;p&gt;本文通过限制饲料投喂量，来建立一个竞争性的环境，评估社会交互或者IGE。（In this paper, we investigate the magnitude of social interaction or IGE in an environment where competition for food is induced by the feeding regime.&lt;/p&gt;
+
+&lt;p&gt;世界水产养殖产量，每年增加8.8%，尼罗罗非鱼在淡水养殖种类中占有重要的地位。世界渔业中心建立的GIFT品系，在马来西亚已经完成12代选育。GIFT品系收获体重的变异系数大约在40到60%，这是非常高的数字，作者认为&lt;strong&gt;inter-individual competition和dominance hierarchy&lt;/strong&gt;是一个重要的原因。&lt;/p&gt;
+
+&lt;h2 id=&#34;2-材料与方法&#34;&gt;2. 材料与方法&lt;/h2&gt;
+
+&lt;h3 id=&#34;2-1-实验材料&#34;&gt;2.1 实验材料&lt;/h3&gt;
+
+&lt;p&gt;实验用到了7-9三个世代（2009-2011）的三批鱼。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-2-实验设计&#34;&gt;2.2 实验设计&lt;/h3&gt;
+
+&lt;p&gt;作者采用block design(区组设计)来测试IGE。每个区组包括11个家系，家系间通过一种不完全双列杂交方式，两个组合在一起，每个区组产生55个组合，每个家系参与10个组合。每个组合（1个网箱）包括16条鱼，每个家系贡献8条。三年共计设计了505个组，收获493个组，使用的家系数量为167个。&lt;/p&gt;
+
+&lt;p&gt;每天的饲料投喂量大约为鱼体重的3-5%。为了能够产生竞争，把饲料放在网箱的一个角落里（In order to allow competition take place among the fish, the feed was administered at a corner of the net-cage, instead of spreading it all over the surface of the netcage。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-3-记录&#34;&gt;2.3 记录&lt;/h3&gt;
+
+&lt;p&gt;罗非鱼在网箱中养殖大约5-8个月，体重达到200-250g时收获。收获需要1-2d时间。记录生长和存活性状。共计获得6330尾鱼的表型信息，利用包括37670尾鱼的系谱信息进行遗传评估。在水产上，这可能是数据量最大的一次实验。&lt;strong&gt;与对虾相比，组的数量多，但是获得的个体数差不多&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;2-4-表型和遗传参数估计&#34;&gt;2.4 表型和遗传参数估计&lt;/h3&gt;
+
+&lt;p&gt;数据分析通过REML方法，利用ASReml软件完成。作者认为，收获体重仅在存活个体中获得，这不是数据集其实是全部个体的一个子集（不包括死亡个体），因此用来估计遗传参数是不准确的。因此需要利用收获体重和存活两性状模型来估计。这样说是很牵强的。因为死亡个体并没有收获体重记录，加入存活性状，并不能改变什么？本文的一个结果是存活DGE跟收获体重DGE之间存在正相关，与收获体重IGE之间存在负相关。作者的意思可能是说，加入存活率，可能估计收获体重的DGE和IGE更加准确？&lt;/p&gt;
 </description>
     </item>
     
