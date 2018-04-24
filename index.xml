@@ -392,9 +392,7 @@ E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
 
 &lt;p&gt;然而，负的DGE-IGE遗传协方差完全抵消掉了IGE方差对总遗传变异的贡献！因为:&lt;/p&gt;
 
-&lt;p&gt;$$\frac{2(n-1)\sigma&lt;em&gt;{A&lt;/em&gt;{SD}}}{\sigma^{2}_{TBV}}×100% = -55%$$&lt;/p&gt;
-
-&lt;p&gt;$$\frac{2}{1}$$&lt;/p&gt;
+&lt;p&gt;$$\frac{2(n-1) \sigma&lt;em&gt;{A&lt;/em&gt;{SD}}}{\sigma^{2}_{TBV}}×100% = -55%$$&lt;/p&gt;
 
 &lt;p&gt;因此，总遗传方差几乎与原来的直接遗传方差相等(As a consequence, the total genetic vairance was nearly identical to the ordinary direct genetic variance) ，那么$T^{2}$与$h^{2}$几乎相等 (approximately equal to) 。&lt;/p&gt;
 
