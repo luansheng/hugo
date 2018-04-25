@@ -11,6 +11,89 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Note for IGE for harvest body weight in Nile tilapia</title>
+      <link>/post/note-for-ige-for-harvest-body-weight-in-nile-tilapia/</link>
+      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/note-for-ige-for-harvest-body-weight-in-nile-tilapia/</guid>
+      <description>&lt;p&gt;重点关注收获体重IGE与存活的相关性解释。&lt;/p&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;摘要&lt;/h2&gt;
+&lt;p&gt;关于间接遗传效应的定义，英文标准定义为“The heritable effect of an individual on the trait values of other individuals it interacts with is known as an indirect genetic effect (IGE)”。IGE可能会影响选择反应。鱼类对于高生长速率的持续改良，已经表明，选育出的鱼具有更强的攻击性和竞争性。这可能降低生长速度的选择反应。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;关于这一点，以前是深信不疑的。虾类混合养殖和多家系多分组IGE测试结果表明，混养池生长DGE跟IGE的确是负相关的，这表明传统的选择方案，的确会选到竞争性强的虾。但是虾类更多的是竞争性行为，而不是攻击性行为。他们的后代在一起，只是竞争性强的虾会长的大，弱的吃不到食物，会长的小一些，而不是互相攻击会导致死亡率升高。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这篇文章的主要目的是量化尼罗罗非鱼GIFT品系收获体重的遗传和非遗传间接遗传效应。共计测量了6330尾鱼的收获体重信息，用于估计遗传genetic和非遗传 (non-genetic) 参数。对收获体重和存活性状进行两性状分析(bivariate analysis) ，拟合不同的线型混合效应模型，调查是否存在IGE和其他非遗传效应。当模型中包括母性共同环境效应时，并不是所有的遗传参数都可以估计出来。由于巢式交配设计的缺陷，一尾雄鱼只跟1-2尾雌鱼交配，导致直接遗传效应跟母性共同环境效应会混淆在一起，无法剖分。在水产动物选择育种程序中，1配2是一个非常普遍的设计。一旦部分1:2交配组失败，半同胞家系数量较少时，这种设计无法剖分出共同环境效应。&lt;/p&gt;
+&lt;p&gt;利用不包括共同环境效应的模型，估计收获体重的遗传参数，在总遗传方差中，48%来自IGE方差，且IGE效应显著。包括母性共同环境效应的模型也表明，IGE效应是显著的。收获体重的DGE-IGE遗传相关是负值 (-0.38±0.19) ，表明如果在一个鱼类个体间为了资源相互竞争的环境下，进行传统选择，多代选择后，个体间的竞争将会加剧。&lt;/p&gt;
+&lt;p&gt;存活性状的DGE与收获体重IGE之间存在一个非常强的负相关 (-0.79±0.30) ，表明携带存活基因的个体，具有更强的竞争性能，研制同伴个体的生长速度。&lt;/p&gt;
+&lt;p&gt;本文结果表明，可遗传的竞争交互影响尼罗罗非鱼的收获体重。因此，在一个竞争性的环境下对生长速度进行选择，需要提前设计不同与经典混合养殖测试的育种方案，避免选育多代后，核心育种群体个体的竞争性或者说攻击性变得更强。&lt;/p&gt;
+&lt;p&gt;需要进一步评估IGE的作用和重要性以及如何在商业育种系统中利用该效应。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1.前言&lt;/h2&gt;
+&lt;p&gt;群体内个体的性状值不仅受遗传组成 (genetic makeup) 的影响，也受&lt;strong&gt;个体发育环境&lt;/strong&gt;以及&lt;strong&gt;同其他个体的社会交互&lt;/strong&gt;的影响。从社会交互的角度来看 (with social interaction) ，个体的基因型可能会影响与之交互的其他个体的性状值。在过去的研究中，动物育种专家没有重视社会交互可能产生的影响。最近二十年，进化生物学家和动物育种专家开始关注IGE，主要是因为IGE可能会影响选择反应的方向，以及进展 (direction and magnitude) ，以及可以利用多少遗传变异，用于选择反应。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这一段比较重要，是关于竞争性行为与生长和存活的关系&lt;/strong&gt;过去二十年间，水产遗传学家认为生长更快的鱼对于资源，具有更强的侵略性 (aggressive) 和竞争性 (competitive) 。Moyle (1969) 和Swain and Riddell (1990) 等在资源受限的条件下，证实了这种关联性。与之相反，在资源充足的情况，快速生长的鱼很少会表现出侵略性。尼罗罗非鱼的养殖模式比较多，有一些集约化的养殖模式，可能会导致鱼类个体间产生竞争 (Tilapia aquaculture production systems encompass a range of environments from the viewpoint of among fish competition, including some where it is intense) 。&lt;/p&gt;
+&lt;p&gt;本文通过限制饲料投喂量，来建立一个竞争性的环境，评估社会交互或者IGE。 (In this paper, we investigate the magnitude of social interaction or IGE in an environment where competition for food is induced by the feeding regime.&lt;/p&gt;
+&lt;p&gt;世界水产养殖产量，每年增加8.8%，尼罗罗非鱼在淡水养殖种类中占有重要的地位。世界渔业中心建立的GIFT品系，在马来西亚已经完成12代选育。GIFT品系收获体重的变异系数大约在40到60%，这是非常高的数字，作者认为&lt;strong&gt;inter-individual competition和dominance hierarchy&lt;/strong&gt;是一个重要的原因。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. 材料与方法&lt;/h2&gt;
+&lt;div class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2.1 实验材料&lt;/h3&gt;
+&lt;p&gt;实验用到了7-9三个世代 (2009-2011) 的三批鱼。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2.2 实验设计&lt;/h3&gt;
+&lt;p&gt;作者采用block design(区组设计) 来测试IGE。每个区组包括11个家系，家系间通过一种不完全双列杂交方式，两个组合在一起，每个区组产生55个组合，每个家系参与10个组合。每个组合 (1个网箱) 包括16条鱼，每个家系贡献8条。三年共计设计了505个组，收获493个组，使用的家系数量为167个。&lt;/p&gt;
+&lt;p&gt;每天的饲料投喂量大约为鱼体重的3-5%。为了能够产生竞争，把饲料放在网箱的一个角落里 (In order to allow competition take place among the fish, the feed was administered at a corner of the net-cage, instead of spreading it all over the surface of the netcage。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2.3 记录&lt;/h3&gt;
+&lt;p&gt;罗非鱼在网箱中养殖大约5-8个月，体重达到200-250g时收获。收获需要1-2d时间。记录生长和存活性状。共计获得6330尾鱼的表型信息，利用包括37670尾鱼的系谱信息进行遗传评估。在水产上，这可能是数据量最大的一次实验。&lt;strong&gt;与对虾相比，组的数量多，但是获得的个体数差不多&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2.4 表型和遗传参数估计&lt;/h3&gt;
+&lt;p&gt;数据分析通过REML方法，利用ASReml软件完成。作者认为，收获体重仅在存活个体中获得，这其实是全部个体的一个子集 (不包括死亡个体) ，因此用来估计遗传参数是不准确的。因此需要利用收获体重和存活两性状模型来估计。这样说是很牵强的。因为死亡个体并没有收获体重记录，加入存活性状，并不能改变什么？本文的一个结果是存活DGE跟收获体重DGE之间存在正相关，与收获体重IGE之间存在负相关。作者的意思可能是说，加入存活率，可能估计收获体重的DGE和IGE更加准确？在本文中，作者对收获体中进行了log转换。&lt;/p&gt;
+&lt;p&gt;作者设计了5种模型，用来分析收获体重的DGE和IGE。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模型1：包括随机组效应，以及组与家系的随机交互效应。随机组效应，也就是网箱效应，指的是个体间非遗传的间接效应；组与家系的随机交互效应，也称作非遗传的亲缘效应 (non-genetic kin effect) ，它的目的是分析鱼类能否识别亲缘个体，如自己的同胞兄妹，它们之间不产生竞争。&lt;/li&gt;
+&lt;li&gt;模型2：模型1+IGE效应，但是不包括非遗传的亲缘效应。&lt;/li&gt;
+&lt;li&gt;模型3：模型1+IGE效应+非遗传的亲缘效应。&lt;/li&gt;
+&lt;li&gt;模型4：在模型3的基础上，进一步加入母性共同环境效应，那么会导致收获体重DGE效应剖分不出来，因此模型4在模型3的基础上，包括的母性共同环境效应，但是去除了DGE和IGE效应。&lt;/li&gt;
+&lt;li&gt;模型5：在模型4的基础上，进一步加入IGE效应。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;就模型4和模型5的比较分析表明，IGE效应显著。&lt;/p&gt;
+&lt;p&gt;固定效应主要是批次 (年份) 、性别、池塘效应。&lt;/p&gt;
+&lt;p&gt;协变量包括日龄，以及同伴的日龄 (social age) 。同伴的日龄也很重要，因为同伴的日龄大，通常意味着会影响该个体的生长。个体规格差异是会造成竞争的一个重要原因。&lt;strong&gt;这个因素在模型中没有考虑，需要斟酌&lt;/strong&gt;，从结果部分来看，影响并不大。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;3. 结果&lt;/h2&gt;
+&lt;div id=&#34;general&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;3.1 General&lt;/h3&gt;
+&lt;p&gt;测试群体的变异系数36%，要小于其他已经发表的文献。存活率为77%，跟大部分已发表的文献类似。群体中部分不能识别家系编号的个体，放弃掉，大约占到6%左右。&lt;/p&gt;
+&lt;p&gt;尽管social age的回归系数达到显著性水平，但是值非常低，对于收获体重的影响非常有限。&lt;/p&gt;
+&lt;p&gt;为了测试估计结果的健壮性，本文剔除了异常值后重新计算估计结果。异常值的标准为：其残差超过残差标准差的3.5倍。结果表明，估计出的参数变化不大 (1%到10%) ，相关系数没有变化。因此本文仍然是使用全部数据的估计结果。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level3&#34;&gt;
+&lt;h3&gt;3.2 表型和遗传参数估计值&lt;/h3&gt;
+&lt;p&gt;从似然值上看，双变量分析要明显由于单变量分析。&lt;/p&gt;
+&lt;p&gt;模型中包括母性共同环境效应，无法有效的估计DGE和IGE相关参数。作者给出了原因“liable to change from positive definite to fixed at a boundary”。还存在的一个估计问题“parameters did not converge;results not shown”。&lt;/p&gt;
+&lt;p&gt;LRT检验表明，模型3相比与模型1，加入IGE后，模型3具有更好的拟合度 (A LRT showed that model 3 had a better goodness of fit than model 1) 。&lt;/p&gt;
+&lt;p&gt;尽管间接遗传方差估计值本身比较小，但是它对总遗传变异的贡献是非常大的 (Although the estimated indirect genetic effect may seem small, its contribution to the total heritable variation was substantial) ，所占比例为48%。&lt;/p&gt;
+&lt;p&gt;然而，负的DGE-IGE遗传协方差完全抵消掉了IGE方差对总遗传变异的贡献！因为:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\frac{2(n-1)\sigma_{A_{SD}}}{ \sigma^{2}_{TBV}}\times100\% = -55\% \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;因此，总遗传方差几乎与原来的直接遗传方差相等(As a consequence, the total genetic vairance was nearly identical to the ordinary direct genetic variance) ，那么&lt;span class=&#34;math inline&#34;&gt;\(T^{2}\)&lt;/span&gt;与&lt;span class=&#34;math inline&#34;&gt;\(h^{2}\)&lt;/span&gt;几乎相等 (approximately equal to) 。&lt;/p&gt;
+&lt;p&gt;总遗传变异小并不意味着IGE对选择反应没有影响。Beware that the lack of impact on &lt;span class=&#34;math inline&#34;&gt;\(\sigma^{2}_{TBV}\)&lt;/span&gt; does not mean that IGE does not affet response to selection.&lt;/p&gt;
+&lt;p&gt;相反，负的DGE-IGE遗传相关将会降低经典群体选择(ordinary mass selection)或BLUP选择的反应。&lt;/p&gt;
+&lt;p&gt;中等的、但是显著的负DGE-IGE遗传相关表明，&lt;strong&gt;测试群体内存在竞争现象&lt;/strong&gt;。存活DGE与收获体重DGE之间的遗传相关很低，而且不显著。但是存活DGE与收获体重IGE之间存在显著的负相关（strongly negative）。这表明，&lt;strong&gt;存活性能强度的个体，同组内其他个体的生长速度慢&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;通过AIC（越小越好）和LogL值（越大越好）对模型3和4进行分析，结果表明母性共同环境效应比DGE和IGE遗传效应更为重要，应该放入模型中。A comparison of likelihoods and AIC of models 3 and 4 shows stronger evidence for maternal common environmental effects than for genetic effects.但是包括母性共同环境效应后，无法有效估计DGE和IGE。&lt;/p&gt;
+&lt;p&gt;只比较model 4和model 5，分析IGE效应的显著性。结果表明，包括IGE的模型5具有更小的AIC值。LRT也表明，IGE效应是显著的。&lt;/p&gt;
+&lt;p&gt;无论模型中是否包括遗传效应，非遗传效应估计值均十分稳定（robust）。The non-genetic random effects were robust to the inclusion or exclusion of genetic effects from the model.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>如何理解遗传组效应</title>
       <link>/post/how-to-understand-genetic-groups/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
@@ -295,118 +378,6 @@ E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
 &lt;p&gt;逻辑解释：如果双亲已知，那么育种值方差的一半（父母本各一半育种值，从方差角度，就是1/4+1/4=1/2）是可以被解释的，剩余的1/2，转换为倒数，就是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{2}^{-1}=2\)&lt;/span&gt;，加到A矩阵的逆矩阵相应系数上。&lt;/p&gt;
 &lt;p&gt;到此为止，没怎么看明白。&lt;/p&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Genetic and non-genetic indirect effects for harvest weight in the GIFT strain of Nile tilapia (Oreochromis niloticus)  note</title>
-      <link>/post/genetic-and-non-genetic-indirect-effects-for-harvest-weight-in-the-gift-strain-of-nile-tilapia-oreochromis-niloticus-note/</link>
-      <pubDate>Sun, 11 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/genetic-and-non-genetic-indirect-effects-for-harvest-weight-in-the-gift-strain-of-nile-tilapia-oreochromis-niloticus-note/</guid>
-      <description>
-
-&lt;p&gt;重点关注收获体重IGE与存活的相关性解释。&lt;/p&gt;
-
-&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
-
-&lt;p&gt;关于间接遗传效应的定义，英文标准定义为“The heritable effect of an individual on the trait values of other individuals it interacts with is known as an indirect genetic effect (IGE) ”。IGE可能会影响选择反应。鱼类对于高生长速率的持续改良，已经表明，选育出的鱼具有更强的攻击性和竞争性。这可能降低生长速度的选择反应。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;关于这一点，以前是深信不疑的。虾类混合养殖和多家系多分组IGE测试结果表明，混养池生长DGE跟IGE的确是负相关的，这表明传统的选择方案，的确会选到竞争性强的虾。但是虾类更多的是竞争性行为，而不是攻击性行为。他们的后代在一起，只是竞争性强的虾会长的大，弱的吃不到食物，会长的小一些，而不是互相攻击会导致死亡率升高。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;这篇文章的主要目的是量化尼罗罗非鱼GIFT品系收获体重的遗传和非遗传间接遗传效应。共计测量了6330尾鱼的收获体重信息，用于估计遗传genetic和非遗传 (non-genetic) 参数。对收获体重和存活性状进行两性状分析(bivariate analysis) ，拟合不同的线型混合效应模型，调查是否存在IGE和其他非遗传效应。当模型中包括母性共同环境效应时，并不是所有的遗传参数都可以估计出来。由于巢式交配设计的缺陷，一尾雄鱼只跟1-2尾雌鱼交配，导致直接遗传效应跟母性共同环境效应会混淆在一起，无法剖分。在水产动物选择育种程序中，1配2是一个非常普遍的设计。一旦部分1:2交配组失败，半同胞家系数量较少时，这种设计无法剖分出共同环境效应。&lt;/p&gt;
-
-&lt;p&gt;利用不包括共同环境效应的模型，估计收获体重的遗传参数，在总遗传方差中，48%来自IGE方差，且IGE效应显著。包括母性共同环境效应的模型也表明，IGE效应是显著的。收获体重的DGE-IGE遗传相关是负值 (-0.38±0.19) ，表明如果在一个鱼类个体间为了资源相互竞争的环境下，进行传统选择，多代选择后，个体间的竞争将会加剧。&lt;/p&gt;
-
-&lt;p&gt;存活性状的DGE与收获体重IGE之间存在一个非常强的负相关 (-0.79±0.30) ，表明携带存活基因的个体，具有更强的竞争性能，研制同伴个体的生长速度。&lt;/p&gt;
-
-&lt;p&gt;本文结果表明，可遗传的竞争交互影响尼罗罗非鱼的收获体重。因此，在一个竞争性的环境下对生长速度进行选择，需要提前设计不同与经典混合养殖测试的育种方案，避免选育多代后，核心育种群体个体的竞争性或者说攻击性变得更强。&lt;/p&gt;
-
-&lt;p&gt;需要进一步评估IGE的作用和重要性以及如何在商业育种系统中利用该效应。&lt;/p&gt;
-
-&lt;h2 id=&#34;1-前言&#34;&gt;1.前言&lt;/h2&gt;
-
-&lt;p&gt;群体内个体的性状值不仅受遗传组成 (genetic makeup) 的影响，也受&lt;strong&gt;个体发育环境&lt;/strong&gt;以及&lt;strong&gt;同其他个体的社会交互&lt;/strong&gt;的影响。从社会交互的角度来看 (with social interaction) ，个体的基因型可能会影响与之交互的其他个体的性状值。在过去的研究中，动物育种专家没有重视社会交互可能产生的影响。最近二十年，进化生物学家和动物育种专家开始关注IGE，主要是因为IGE可能会影响选择反应的方向，以及进展 (direction and magnitude) ，以及可以利用多少遗传变异，用于选择反应。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;这一段比较重要，是关于竞争性行为与生长和存活的关系&lt;/strong&gt;过去二十年间，水产遗传学家认为生长更快的鱼对于资源，具有更强的侵略性 (aggressive) 和竞争性 (competitive) 。Moyle (1969) 和Swain and Riddell (1990) 等在资源受限的条件下，证实了这种关联性。与之相反，在资源充足的情况，快速生长的鱼很少会表现出侵略性。尼罗罗非鱼的养殖模式比较多，有一些集约化的养殖模式，可能会导致鱼类个体间产生竞争 (Tilapia aquaculture production systems encompass a range of environments from the viewpoint of among fish competition, including some where it is intense) 。&lt;/p&gt;
-
-&lt;p&gt;本文通过限制饲料投喂量，来建立一个竞争性的环境，评估社会交互或者IGE。 (In this paper, we investigate the magnitude of social interaction or IGE in an environment where competition for food is induced by the feeding regime.&lt;/p&gt;
-
-&lt;p&gt;世界水产养殖产量，每年增加8.8%，尼罗罗非鱼在淡水养殖种类中占有重要的地位。世界渔业中心建立的GIFT品系，在马来西亚已经完成12代选育。GIFT品系收获体重的变异系数大约在40到60%，这是非常高的数字，作者认为&lt;strong&gt;inter-individual competition和dominance hierarchy&lt;/strong&gt;是一个重要的原因。&lt;/p&gt;
-
-&lt;h2 id=&#34;2-材料与方法&#34;&gt;2. 材料与方法&lt;/h2&gt;
-
-&lt;h3 id=&#34;2-1-实验材料&#34;&gt;2.1 实验材料&lt;/h3&gt;
-
-&lt;p&gt;实验用到了7-9三个世代 (2009-2011) 的三批鱼。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-2-实验设计&#34;&gt;2.2 实验设计&lt;/h3&gt;
-
-&lt;p&gt;作者采用block design(区组设计) 来测试IGE。每个区组包括11个家系，家系间通过一种不完全双列杂交方式，两个组合在一起，每个区组产生55个组合，每个家系参与10个组合。每个组合 (1个网箱) 包括16条鱼，每个家系贡献8条。三年共计设计了505个组，收获493个组，使用的家系数量为167个。&lt;/p&gt;
-
-&lt;p&gt;每天的饲料投喂量大约为鱼体重的3-5%。为了能够产生竞争，把饲料放在网箱的一个角落里 (In order to allow competition take place among the fish, the feed was administered at a corner of the net-cage, instead of spreading it all over the surface of the netcage。&lt;/p&gt;
-
-&lt;h3 id=&#34;2-3-记录&#34;&gt;2.3 记录&lt;/h3&gt;
-
-&lt;p&gt;罗非鱼在网箱中养殖大约5-8个月，体重达到200-250g时收获。收获需要1-2d时间。记录生长和存活性状。共计获得6330尾鱼的表型信息，利用包括37670尾鱼的系谱信息进行遗传评估。在水产上，这可能是数据量最大的一次实验。&lt;strong&gt;与对虾相比，组的数量多，但是获得的个体数差不多&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;2-4-表型和遗传参数估计&#34;&gt;2.4 表型和遗传参数估计&lt;/h3&gt;
-
-&lt;p&gt;数据分析通过REML方法，利用ASReml软件完成。作者认为，收获体重仅在存活个体中获得，这其实是全部个体的一个子集 (不包括死亡个体) ，因此用来估计遗传参数是不准确的。因此需要利用收获体重和存活两性状模型来估计。这样说是很牵强的。因为死亡个体并没有收获体重记录，加入存活性状，并不能改变什么？本文的一个结果是存活DGE跟收获体重DGE之间存在正相关，与收获体重IGE之间存在负相关。作者的意思可能是说，加入存活率，可能估计收获体重的DGE和IGE更加准确？在本文中，作者对收获体中进行了log转换。&lt;/p&gt;
-
-&lt;p&gt;作者设计了5种模型，用来分析收获体重的DGE和IGE。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;模型1：包括随机组效应，以及组与家系的随机交互效应。随机组效应，也就是网箱效应，指的是个体间非遗传的间接效应；组与家系的随机交互效应，也称作非遗传的亲缘效应 (non-genetic kin effect) ，它的目的是分析鱼类能否识别亲缘个体，如自己的同胞兄妹，它们之间不产生竞争。&lt;/li&gt;
-&lt;li&gt;模型2：模型1+IGE效应，但是不包括非遗传的亲缘效应。&lt;/li&gt;
-&lt;li&gt;模型3：模型1+IGE效应+非遗传的亲缘效应。&lt;/li&gt;
-&lt;li&gt;模型4：在模型3的基础上，进一步加入母性共同环境效应，那么会导致收获体重DGE效应剖分不出来，因此模型4在模型3的基础上，包括的母性共同环境效应，但是去除了DGE和IGE效应。&lt;/li&gt;
-&lt;li&gt;模型5：在模型4的基础上，进一步加入IGE效应。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;就模型4和模型5的比较分析表明，IGE效应显著。&lt;/p&gt;
-
-&lt;p&gt;固定效应主要是批次 (年份) 、性别、池塘效应。&lt;/p&gt;
-
-&lt;p&gt;协变量包括日龄，以及同伴的日龄 (social age) 。同伴的日龄也很重要，因为同伴的日龄大，通常意味着会影响该个体的生长。个体规格差异是会造成竞争的一个重要原因。&lt;strong&gt;这个因素在模型中没有考虑，需要斟酌&lt;/strong&gt;，从结果部分来看，影响并不大。&lt;/p&gt;
-
-&lt;h2 id=&#34;3-结果&#34;&gt;3. 结果&lt;/h2&gt;
-
-&lt;h3 id=&#34;3-1-general&#34;&gt;3.1 General&lt;/h3&gt;
-
-&lt;p&gt;测试群体的变异系数36%，要小于其他已经发表的文献。存活率为77%，跟大部分已发表的文献类似。群体中部分不能识别家系编号的个体，放弃掉，大约占到6%左右。&lt;/p&gt;
-
-&lt;p&gt;尽管social age的回归系数达到显著性水平，但是值非常低，对于收获体重的影响非常有限。&lt;/p&gt;
-
-&lt;p&gt;为了测试估计结果的健壮性，本文剔除了异常值后重新计算估计结果。异常值的标准为：其残差超过残差标准差的3.5倍。结果表明，估计出的参数变化不大 (1%到10%) ，相关系数没有变化。因此本文仍然是使用全部数据的估计结果。&lt;/p&gt;
-
-&lt;h3 id=&#34;3-2-表型和遗传参数估计值&#34;&gt;3.2 表型和遗传参数估计值&lt;/h3&gt;
-
-&lt;p&gt;从似然值上看，双变量分析要明显由于单变量分析。&lt;/p&gt;
-
-&lt;p&gt;模型中包括母性共同环境效应，无法有效的估计DGE和IGE相关参数。作者给出了原因“liable to change from positive definite to fixed at a boundary”。还存在的一个估计问题“parameters did not converge;results not shown”。&lt;/p&gt;
-
-&lt;p&gt;LRT检验表明，模型3相比与模型1，加入IGE后，模型3具有更好的拟合度 (A LRT showed that  model 3 had a better goodness of fit than model 1) 。&lt;/p&gt;
-
-&lt;p&gt;尽管间接遗传方差估计值本身比较小，但是它对总遗传变异的贡献是非常大的 (Although the estimated indirect genetic effect may seem small, its contribution to the total heritable variation was substantial) ，所占比例为48%。&lt;/p&gt;
-
-&lt;p&gt;然而，负的DGE-IGE遗传协方差完全抵消掉了IGE方差对总遗传变异的贡献！因为:&lt;/p&gt;
-
-&lt;p&gt;$$\frac{2(n-1)\sigma&lt;em&gt;{A&lt;/em&gt;{SD}}}{\sigma^{2}_{TBV}}×100 = -55$$&lt;/p&gt;
-
-&lt;p&gt;因此，总遗传方差几乎与原来的直接遗传方差相等(As a consequence, the total genetic vairance was nearly identical to the ordinary direct genetic variance) ，那么$T^{2}$与$h^{2}$几乎相等 (approximately equal to) 。&lt;/p&gt;
-
-&lt;p&gt;总遗传变异小并不意味着IGE对选择反应没有影响。Beware that the lack of impact on $\sigma^{2}_{TBV}$ does not mean that IGE does not affet response to selection.&lt;/p&gt;
-
-&lt;p&gt;相反，负的DGE-IGE遗传相关将会降低经典群体选择(ordinary mass selection)或BLUP选择的反应。&lt;/p&gt;
-
-&lt;p&gt;中等的、但是显著的负DGE-IGE遗传相关表明，&lt;strong&gt;测试群体内存在竞争现象&lt;/strong&gt;。存活DGE与收获体重DGE之间的遗传相关很低，而且不显著。但是存活DGE与收获体重IGE之间存在显著的负相关（strongly negative）。这表明，&lt;strong&gt;存活性能强度的个体，同组内其他个体的生长速度慢&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;通过AIC（越小越好）和LogL值（越大越好）对模型3和4进行分析，结果表明母性共同环境效应比DGE和IGE遗传效应更为重要，应该放入模型中。A comparison of likelihoods and AIC of models 3 and 4 shows stronger evidence for maternal common environmental effects than for genetic effects.但是包括母性共同环境效应后，无法有效估计DGE和IGE。&lt;/p&gt;
-
-&lt;p&gt;只比较model 4和model 5，分析IGE效应的显著性。结果表明，包括IGE的模型5具有更小的AIC值。LRT也表明，IGE效应是显著的。&lt;/p&gt;
-
-&lt;p&gt;无论模型中是否包括遗传效应，非遗传效应估计值均十分稳定（robust）。The non-genetic random effects were robust to the inclusion or exclusion of genetic effects from the model.&lt;/p&gt;
 </description>
     </item>
     
