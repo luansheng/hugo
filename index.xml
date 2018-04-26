@@ -88,7 +88,14 @@
 &lt;p&gt;通过AIC（越小越好）和LogL值（越大越好）对模型3和4进行分析，结果表明母性共同环境效应比DGE和IGE遗传效应更为重要，应该放入模型中。A comparison of likelihoods and AIC of models 3 and 4 shows stronger evidence for maternal common environmental effects than for genetic effects.但是包括母性共同环境效应后，无法有效估计DGE和IGE。&lt;/p&gt;
 &lt;p&gt;只比较model 4和model 5，分析IGE效应的显著性。结果表明，包括IGE的模型5具有更小的AIC值。LRT也表明，IGE效应是显著的。&lt;/p&gt;
 &lt;p&gt;无论模型中是否包括遗传效应，非遗传效应估计值均十分稳定（robust）。The non-genetic random effects were robust to the inclusion or exclusion of genetic effects from the model.&lt;/p&gt;
+&lt;p&gt;文章也测试了社会母性共同环境效应，它指的是给的母性环境对组内其他个体生长速度的影响，结果表明是不显著的。因此没有加在模型中。（原理是类似的，把其同伴个体所在家系编号，作为很多列，依次排列）。&lt;/p&gt;
+&lt;p&gt;根据模型3和模型5的计算结果，测试组和非遗传亲缘效应统计性检验显著，在表型方差中所占的比例分别为17%和10%。模型2和模型3的比较结果用来检验非遗传亲缘效应(The comparision of model 2 and model 3 served the purpose of testing the non-genetic kin effect)。LRT检验表明，模型3要优于模型2 (The LRT between model 2 and model 3 indicated that model 3 was statistically much better than model 2. AIC的比较也表明model 5要优于model 2 (The same result was found when comparing model 5 to model 2)。这表明非遗传亲缘效应是非常显著的(Thus non-genetic kin effects were highly significant)。&lt;strong&gt;这个结果表明同一组内改家系个体比不同组内改家系个体，相似度更高。这个结论可能意味着同一家系内个体可能互相认识，识别？&lt;/strong&gt;剔除该效应，除了残差方差，其他方差组分都变大了。因此，如果不在模型中包括该效应，遗传参数估计值会出现偏差。&lt;/p&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;4. 讨论&lt;/h2&gt;
+&lt;p&gt;不考虑母性共同环境效应，IGE存在且显著。没有获得存活性状的IGE，低遗传力可能是一个主要原因？&lt;/p&gt;
+&lt;p&gt;关于为什么加入母性共同环境效应，会导致DGE和IGE遗传参数难以剖分，作者认为不成功的巢式交配设计是主要原因，导致母性共同环境效应与DGE混淆剖分不出来。167个家系中，只有54个半同胞家系，比例只有30%。&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
