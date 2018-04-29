@@ -118,8 +118,11 @@
 &lt;p&gt;在本文中，组效应贡献了16-21%的表型方差。相对于其他遗传和非遗传效应，组效应所占的比例较高(This is hight compared to other genetic and non-genetic effects in the model)。这表明每个测试组内个体具有相似的性状值，可能是因为组内个体共享一个共同社会环境的结果（&lt;strong&gt;这句话的意思是不不同组内个体间的竞争强度也不同？有的组，个体间竞争比较强，有的组个体间竞争比较弱？&lt;/strong&gt;）。不包括测试组效应，获得的DGE和IGE遗传方差估计值偏高，与已有的研究结果也是相一致（**不包括测试组效应，可能就会混到DGE和IGE遗传方差中，由于每个家系只分布在少量组（10个），因此测试组间的差异跟家系间的差异会部分重合）。&lt;/p&gt;
 &lt;p&gt;在本文中，我们拟合测试组与家系的交互随机效应作为非遗传亲缘效应。此效应非常显著，解释了表型方差的9%-11%。这表明同一个测试组内家系个体具有相似的性状值，个体跟它的同胞个体的交互，不同与其他家系的个体，意味着可能亲缘识别kin-recognition。从进化遗传学角度来看(from an evolutionary perspective)，这种亲缘识别的行为会增加个体的广义适应度inclusive fitness（从网上搜了一下，这是进化遗传学上的一个&lt;a href=&#34;http://blog.sciencenet.cn/blog-2460731-1073296.html&#34;&gt;热点&lt;/a&gt;）。&lt;strong&gt;分析了一下虾的数据，占得比重&amp;lt;4%，存在亲缘识别的概率太低。&lt;/strong&gt;在鲑、罗非鱼上已有亲缘识别的报道。亲缘识别行为会增加IGE分析的复杂度。因为具有亲缘关系个体间的IGE效应是不同于非亲缘个体间。此外，不同家系针对不同测试组环境的敏感性差异也会导致非遗传亲缘效应(the non-genetic kin effect may originate from environmental variation between groups together with differential sensitivity of families to such environmental variation)。&lt;strong&gt;换句话说，基因型与环境的交互也会导致非遗传亲缘效应&lt;/strong&gt;。&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;section&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;&lt;/h3&gt;
+&lt;div id=&#34;implication-for-aquaculture-production&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;4.5 在水产养殖中的应用(Implication for aquaculture production)&lt;/h3&gt;
+&lt;p&gt;在养殖场等，很难观察和记录鱼类行为，导致无法评估其影响。但是可以推测鱼类个体间的竞争会随着生产系统和投喂策略变化。通常会在漂浮网箱、水池和循环水养殖系统中高密度养殖鱼类个体，而在土池中进行低密度养殖。在本文中，一个关键问题是，作者所发现的IGE是否有代表性？在商业养殖场，通常是组内个体数量非常多，高密度养殖，是否也会存在较大的IGE组分？(In this study, one of the key questions is whether IGEs found here are representative of IGEs occuring in commercial farms)&lt;/p&gt;
+&lt;p&gt;接下来，作者从饲料和密度两个角度进行了探讨。&lt;/p&gt;
+&lt;p&gt;大部分商业养殖场是充足投喂，因此会降低群体内的竞争。此外，投喂时，本文实验饲料放置在实验一角，而商业养殖场会在整个水面投喂饲料。推测商业养殖环境，竞争会小一些。但是作者提供了另外一个角度，就是变异系数，来探讨养殖环境竞争程度的差别。在商业环境下，收获体重的变异系数在40%-59.8%，要大于本实验。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
