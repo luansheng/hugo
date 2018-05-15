@@ -11,6 +11,20 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>收获体重IGE与存活性状DGE之间的遗传相关</title>
+      <link>/post/i-am-happty-to-get-the-correlation-between-ige-of-body-weight-and-dge-of-survival/</link>
+      <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/i-am-happty-to-get-the-correlation-between-ige-of-body-weight-and-dge-of-survival/</guid>
+      <description>&lt;p&gt;收获体重IGE与存活性状DGE之间的遗传相关，模型较为复杂，成功调试出来，有相当难度的。具体时间应该是在2018年的3月份解决了该问题。是通过父母本模型解决的上述问题。&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/post/images/IGEandDGEcor.jpg&#34; alt=&#34;收获体重IGE与存活性状DGE之间的遗传相关&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;收获体重IGE与存活性状DGE之间的遗传相关&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Note for IGE on harvest body weight in Nile tilapia</title>
       <link>/post/note-for-ige-for-harvest-body-weight-in-nile-tilapia/</link>
       <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
@@ -1290,46 +1304,6 @@ m.run_timed(time_sp=3000, speed_sp=500)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;a href=&#34;http://www.ev3dev.org/docs/tutorials/&#34;&gt;EV3DEV教程中心&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://python-ev3dev.readthedocs.io/en/stable/rpyc.html&#34;&gt;Working with ev3dev remotely using RPyC&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>try od package</title>
-      <link>/post/try-od-package/</link>
-      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/try-od-package/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://asreml.org/optimal-design/&#34;&gt;od&lt;/a&gt;包是一个可以给出数量遗传学&lt;strong&gt;优化试验设计&lt;/strong&gt;的包。试着通过实例来理解背后的设计原理。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href=&#34;https://asreml.org/resources/od/od_0.75.zip&#34;&gt;windows&lt;/a&gt;包没有自带数据，从&lt;a href=&#34;https://asreml.org/resources/od/od_0.75_R_linux-intel64.tar.gz&#34;&gt;linux&lt;/a&gt;包中把数据提出来。&lt;/p&gt;
-&lt;p&gt;关于od包背后的设计原理，参考作者的博士论文：On The Optimal Design of Experiments Under the Linear Mixed Model。&lt;/p&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. 加载数据文件&lt;/h2&gt;
-&lt;p&gt;genex是一个作物遗传改良的实验数据，包括213个品种。实验设计为部分重复设计，包括2个Block,每个block内有48行×3列。部分品种有2次实验记录。 genex.Ainv 包括了213个品种间的加性遗传相关矩阵。注意od包要求genex.Ainv数据框包括一个属性rowNames,存储row列中整数对应的品种名。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(data.table)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: data.table&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;genex &amp;lt;- fread(file=&amp;quot;genex.csv&amp;quot;,stringsAsFactors = TRUE)
-genex[,&amp;quot;:=&amp;quot;(Row=as.factor(Row),Block=as.factor(Block),Column=as.factor(Column))]
-genex.Ainv &amp;lt;- fread(file=&amp;quot;genex.Ainv.csv&amp;quot;,stringsAsFactors = TRUE)
-genex.Ainv.rowNames &amp;lt;- fread(file=&amp;quot;genex.Ainv.rowNames.csv&amp;quot;,sep=&amp;quot;,&amp;quot;,stringsAsFactors = FALSE,header = FALSE)
-attr(genex.Ainv,which = &amp;quot;rowNames&amp;quot;) &amp;lt;- genex.Ainv.rowNames$V1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(od)
-genex.G &amp;lt;- od.init(`ped(Entry)` = 1, `ide(Entry)` = 0.1, Block = 0.1,Column = 0.4, Row = 0.2)
-genex.R &amp;lt;- od.init(`Column:Row|Column` = 0.2, `Column:Row|Row` = 0.5)
-genex.od &amp;lt;- od(random = ~ped(Entry) + ide(Entry) + Block + Column + Row, 
-               rcov = ~ar1(Column):ar1(Row), 
-               permute = ~ped(Entry) |ide(Entry),
-               swap = ~Block, Gstart = genex.G, 
-               Rstart = genex.R,
-               ginv = list(Entry = genex.Ainv), 
-               geneticEffects = &amp;quot;total&amp;quot;,
-               search = &amp;quot;tabu&amp;quot;, 
-               maxit = 5, 
-               data = genex)
-save.image()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;genex.od$design&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
     </item>

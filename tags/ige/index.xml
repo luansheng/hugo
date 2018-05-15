@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Sheng Luan</copyright>
-    <lastBuildDate>Wed, 25 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 11 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/ige/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>收获体重IGE与存活性状DGE之间的遗传相关</title>
+      <link>/post/i-am-happty-to-get-the-correlation-between-ige-of-body-weight-and-dge-of-survival/</link>
+      <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/i-am-happty-to-get-the-correlation-between-ige-of-body-weight-and-dge-of-survival/</guid>
+      <description>收获体重IGE与存活性状DGE之间的遗传相关，模型较为复杂，成功调试出来，有相当难度的。具体时间应该是在2018年的3月份解决了该问题。是通</description>
+    </item>
     
     <item>
       <title>Note for IGE on harvest body weight in Nile tilapia</title>
