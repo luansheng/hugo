@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/post/group-selection-and-kin-selection/</loc>
+      <lastmod>2018-06-05T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/i-am-happty-to-get-the-correlation-between-ige-of-body-weight-and-dge-of-survival/</loc>
       <lastmod>2018-05-11T00:00:00+00:00</lastmod>
     </url>
@@ -518,7 +527,7 @@
     
     <url>
     
-      <loc>/categories/data.table/</loc>
+      <loc>/tags/data.table/</loc>
       <lastmod>2017-09-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -528,7 +537,7 @@
     
     <url>
     
-      <loc>/tags/data.table/</loc>
+      <loc>/categories/data.table/</loc>
       <lastmod>2017-09-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -558,8 +567,8 @@
     
     <url>
     
-      <loc>/categories/ebv/</loc>
-      <lastmod>2017-11-11T00:00:00+00:00</lastmod>
+      <loc>/tags/ebv/</loc>
+      <lastmod>2017-07-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -568,8 +577,8 @@
     
     <url>
     
-      <loc>/tags/ebv/</loc>
-      <lastmod>2017-07-20T00:00:00+00:00</lastmod>
+      <loc>/categories/ebv/</loc>
+      <lastmod>2017-11-11T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -628,6 +637,16 @@
     
     <url>
     
+      <loc>/tags/group-selection/</loc>
+      <lastmod>2018-06-05T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/hugo/</loc>
       <lastmod>2017-09-03T00:00:00+08:00</lastmod>
       <priority>0</priority>
@@ -658,6 +677,16 @@
     
     <url>
     
+      <loc>/tags/kin-selection/</loc>
+      <lastmod>2018-06-05T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/least-squares-means/</loc>
       <lastmod>2017-06-10T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -668,8 +697,8 @@
     
     <url>
     
-      <loc>/categories/lmm/</loc>
-      <lastmod>2017-11-29T00:00:00+00:00</lastmod>
+      <loc>/tags/lmm/</loc>
+      <lastmod>2017-07-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -678,8 +707,8 @@
     
     <url>
     
-      <loc>/tags/lmm/</loc>
-      <lastmod>2017-07-20T00:00:00+00:00</lastmod>
+      <loc>/categories/lmm/</loc>
+      <lastmod>2017-11-29T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -811,16 +840,6 @@
     
     <url>
     
-      <loc>/categories/python/</loc>
-      <lastmod>2018-01-02T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/tags/python/</loc>
       <lastmod>2018-02-11T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -831,8 +850,8 @@
     
     <url>
     
-      <loc>/categories/r/</loc>
-      <lastmod>2017-12-31T00:00:00+00:00</lastmod>
+      <loc>/categories/python/</loc>
+      <lastmod>2018-01-02T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -843,6 +862,16 @@
     
       <loc>/tags/r/</loc>
       <lastmod>2018-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/r/</loc>
+      <lastmod>2017-12-31T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -924,7 +953,7 @@
     
     <url>
     
-      <loc>/categories/tex/</loc>
+      <loc>/tags/tex/</loc>
       <lastmod>2018-01-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -934,7 +963,7 @@
     
     <url>
     
-      <loc>/tags/tex/</loc>
+      <loc>/categories/tex/</loc>
       <lastmod>2018-01-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -1056,6 +1085,16 @@
     
       <loc>/tags/%E6%B7%B7%E5%90%88%E6%95%88%E5%BA%94/</loc>
       <lastmod>2017-11-19T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/%E6%BC%94%E5%8C%96/</loc>
+      <lastmod>2018-06-05T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

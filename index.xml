@@ -11,6 +11,46 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Group selection and kin selection</title>
+      <link>/post/group-selection-and-kin-selection/</link>
+      <pubDate>Tue, 05 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/group-selection-and-kin-selection/</guid>
+      <description>&lt;p&gt;正在做的虾类个体间的间接遗传效应。因此对于演化方面的内容特别感兴趣。目前演化生物学家，关于生物到底是如何进化的，观点并不一致。存在两大阵营：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;亲缘选择 &lt;a href=&#34;https://en.wikipedia.org/wiki/Kin_selection&#34;&gt;Kin selection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;组选择 &lt;a href=&#34;https://en.wikipedia.org/wiki/Group_selection&#34;&gt;Group selection&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目前吵得不可纷争。关于这两个理论，可以看上述百科链接。&lt;/p&gt;
+&lt;div id=&#34;kin-selection&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1. Kin Selection&lt;/h2&gt;
+&lt;p&gt;Kin selection的核心是内含适应性（&lt;a href=&#34;https://en.wikipedia.org/wiki/Inclusive_fitness&#34;&gt;inclusive fitness&lt;/a&gt;）。关于内含适应性（&lt;a href=&#34;http://www.psychspace.com/psych/viewnews-10879.html&#34;&gt;中文解释&lt;/a&gt;），可以简单理解为：“Hamilton认为&lt;strong&gt;经典适应性&lt;/strong&gt; ( classical fitness) ,指个体将基因遗传给后代的直接繁殖成功率，这一概念的含义太狭隘了，根本不足以描述自然选择的进化过程。他提出了这样的理论：&lt;strong&gt;自然选择将倾向于那些能促使有机体基因得以传播的特性，而不管有机体是否能直接繁殖出后代&lt;/strong&gt;。亲属身上携带着我们的基因拷贝， 所以我们才会对亲属给予照顾，而亲代投资（指对于女的投资）则得到了重新解释——它只不过是照顾亲属的种特例而已。有机体可以通过帮助他的兄弟姐妹、侄子、外甥等亲属的生存和繁殖来增加他的基因的繁殖成功率，因为上述亲属身上都可能携带着该有机体的基因。Hamilton的天才之处在于，他认识到经典适应性的定义太狭隘了，应该被拓展为内含适应性。”&lt;/p&gt;
+&lt;p&gt;内含适应性实际上跟经典的利用亲缘关系矩阵进行遗传评估的动物数量遗传学理论是不谋而合的，实际上都是根据个体间的亲缘关系，进行社会交互行为的评价。”从技术上讲， 内含适应性并不是指个体的某种特性，而是指其行为或影响( effect ) 的某种特性。因此，内含适应性可以被看作是个体自身的繁殖成功率(经典适应性)，加上个体行为对其遗传亲属的繁殖成功率的影响。对于这第二种成分，个体对亲属的影响可以通过他们之间的遗传相关度评定。比如说，个体和兄弟姐妹是0.50 ( 因为他们有50%的遗传相关度)；和祖父母和祖孙是0.25 ( 遗传相关度为25%) ；第一代堂表亲是0.125 ( 遗传相关度为12.5% )。“&lt;/p&gt;
+&lt;p&gt;基于内含适应性的亲缘选择理论，可以比较完美的解释蚂蚁、 蜜蜂等真社会&lt;a href=&#34;https://en.wikipedia.org/wiki/Eusociality&#34;&gt;eusociality&lt;/a&gt;昆虫的利他行为。真社会性的定义为：”the highest level of organization of animal sociality, is defined by the following characteristics: cooperative brood care (including care of offspring from other individuals), overlapping generations within a colony of adults, and a division of labor into reproductive and non-reproductive groups“。有三个典型的特征：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;合作培育后代&lt;/li&gt;
+&lt;li&gt;世代重叠 一个成体的栖息地至少包括2个重叠世代的个体&lt;/li&gt;
+&lt;li&gt;劳动力划分为可繁殖后代去和不可繁殖后代组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hamilton公式：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[r &amp;gt; \frac{c}{b}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Hamilton认为，如果利他者自身所付出的代价c，除以利他行为的受惠者所获得的收益b，小于受惠者携带利他者基因的概率值r，那么这样的利他基因就能够得以进化，即被保留下，并得以扩散。&lt;/p&gt;
+&lt;p&gt;举例如下：“这个公式表明，如果遗传相关度为0.50 的亲属（同胞兄妹）所获得的收益比利他者付出的代价高出2 倍;如果遗传相关度为0.25 的亲属（同父异母兄妹）所获得的收益比利他者付出的代价高出4 倍，如果遗传相关度为0.125 的亲属所获得利益比利他者付出的代价高8倍，依此类推；那么自然选挥将会支持利他者付出代价。举个例子来说，假设你经过一条河，碰巧看到你的亲属掉进间里，正在揣急的水中挣扎。你可以跳进水里去救他，但可能会搭上自己的性命。按照Hamilton 规则，自然选择所支持的决策规则是，如果你能够救出3 个兄弟(而不是1 个) ，你才应该跳进水里去冒险救人。你不可能为了救一个兄弟而赔上自己的性命，因为这将会违反Hamilton 规则。从Hamilton 规则的逻辑看来，进化形成的决策规则会让你牺牲自己的性命去挽救5个侄子或外甥，但是对于第一代堂兄弟而言，在你牺牲之前，你必须挽救9 个堂兄弟才能满足Hamilton 规则。”&lt;/p&gt;
+&lt;p&gt;在蜜蜂等真社会昆虫中，姐妹间的亲缘关系要比母女间的亲缘关系更近。因为雌蜂是由受精卵发育而来的，而雄峰是由未受精卵发育而来的。因此雌蜂间的亲缘关系是3/4，而母女间只有1/2。之所以雌蜂间是3/4，是因为所有雌蜂的其父本的基因都是完全相同的（为受精卵发育而成），因此有1/2是一样的，再加上母本1/4相同率，就是3/4。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;2. 组选择&lt;/h2&gt;
+&lt;p&gt;组选择的定义其实非常简单，指的是选择的单位是组，而不是个体。后续又发展出了多层次选择（组+个体）。&lt;/p&gt;
+&lt;p&gt;E. O. Wilson是当前支持Group selection的大牛。Wilson早期是支持亲缘选择的，而且在上世纪七十年代写了一本书《社会生物学：新的综合》，采用内含适应性理论，实际上是把人类的行为与基因联系在了一起。但是，他联合另外两位科学界，2010年在Nature上发表&lt;a href=&#34;http://faculty.washington.edu/beecher/Nowak%20etal%20-%20evolution%20of%20eusociality%20-%20Nature%202010.pdf&#34;&gt;文章&lt;/a&gt;“The evolution of eusociality”，否定了Kin selection是演化的动力，引起了学术界轩然大波，一百多名科学家发文反对。有一个中文帖子，对nature文章进行了较为详细的&lt;a href=&#34;http://headsalon.org/archives/919.html&#34;&gt;解读&lt;/a&gt;。果壳网有篇关于威尔逊的专访(&lt;a href=&#34;http://headsalon.org/archives/919.html&#34; class=&#34;uri&#34;&gt;http://headsalon.org/archives/919.html&lt;/a&gt;)，对于Nature文章的核心思想进行了解释，“这篇文章运用了大量的数学工具，结合演化博弈论与种群遗传学，论证：要解释&lt;strong&gt;真社会性&lt;/strong&gt;，并不需要用到雌蚁姐妹间亲缘关系很近这一事实；实际上后者根本就不是前者的原因。文章还指出，汉密尔顿不等式在绝大多数情况下根本就不成立。至于社会性和利他行为产生的真正原因，则是威尔逊过去一贯的主张&lt;strong&gt;巢穴&lt;/strong&gt;。许多个体同居一处并形成分工，这在很多情况下都有利；而这样的合作并不是因为个体间的亲缘程度而产生的。作为佐证，文章指出，自然界很多亲缘关系极近、甚至根本就是采用克隆生殖的物种，并没有产生真社会性；相反，一些在亲缘关系上并无特殊之处的物种却反而有高度发达的真社会性。”&lt;/p&gt;
+&lt;p&gt;关于汉密尔顿、威尔逊等相关理论，以及亲缘选择和组选择等历史，可以参考一下两个链接：&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zhihu.com/question/20541847/answer/15497385&#34;&gt;自私的基因理论是不是现在生物学界广泛接受的理论？ - 屈竟通的回答 - 知乎&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>收获体重IGE与存活性状DGE之间的遗传相关</title>
       <link>/post/i-am-happty-to-get-the-correlation-between-ige-of-body-weight-and-dge-of-survival/</link>
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
@@ -1219,91 +1259,6 @@ str_view(x, &amp;quot;^a&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;2.图片中中文设置&lt;/h2&gt;
 &lt;p&gt;主要是利用showtext包完成，具体参考&lt;a href=&#34;https://luansheng.netlify.com/post/using-other-system-chinese-fonts-in-r/&#34;&gt;此篇blog&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;点击下载&lt;a href=&#34;/post/RmdtoPDF.zip&#34;&gt;Rmd文档和生成的PDF文档&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>如何在EV3上安装ev3dev系统 </title>
-      <link>/post/how-to-install-ev3dev/</link>
-      <pubDate>Sat, 06 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/how-to-install-ev3dev/</guid>
-      <description>&lt;p&gt;EV3是乐高机器人，除了官方系统，有人进行逆向工程，建立了一个基于Debian的开源linux系统&lt;a href=&#34;http://www.ev3dev.org/&#34;&gt;EV3DEV&lt;/a&gt;。然后就可以利用python等编程语言，控制EV3机器人。本文记录基于Windows 10系统的安装过程。&lt;/p&gt;
-&lt;p&gt;详细的过程，可以参考官方网站&lt;a href=&#34;http://www.ev3dev.org/docs/getting-started/&#34;&gt;Getting Started with ev3dev&lt;/a&gt;。&lt;/p&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. 准备的硬件&lt;/h2&gt;
-&lt;p&gt;需要一个micro SD卡，我购买的是&lt;a href=&#34;https://item.jd.com/343546.html&#34;&gt;金士顿（Kingston）16GB Class4 TF(Micro SD)存储卡&lt;/a&gt;。看官网介绍，大于32G的卡，EV3读不出来。&lt;/p&gt;
-&lt;p&gt;另外需要一个读卡器，同样购买的&lt;a href=&#34;https://item.jd.com/343389.html&#34;&gt;金士顿（Kingston）USB 2.0 TF（Micro SD）读卡器（FCR-MRG2）&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;还需要一台计算机，最好是笔记本电脑，支持蓝牙或者wifi无线网络。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ev3dev&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2.制作EV3DEV启动盘&lt;/h2&gt;
-&lt;div id=&#34;ev3dev&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2.1 下载EV3DEV镜像文件。&lt;/h3&gt;
-&lt;p&gt;目前官网上的下载地址下载不了，通过其&lt;a href=&#34;https://github.com/ev3dev&#34;&gt;github&lt;/a&gt;找到了下载地址，在&lt;a href=&#34;https://github.com/ev3dev/ev3dev/releases&#34;&gt;这里&lt;/a&gt;，目前最新的是2017-09-14发布的镜像文件。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sd&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2.2 把镜像文件烧录到sd卡&lt;/h3&gt;
-&lt;p&gt;下载原文中推荐的img镜像烧录软件&lt;a href=&#34;https://etcher.io/&#34;&gt;etcher&lt;/a&gt;，这个软件使用简单，非常好用。&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ev3devev3&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3. 利用EV3DEV启动EV3&lt;/h2&gt;
-&lt;p&gt;把&lt;strong&gt;sd卡正面跟EV3正面一个方向&lt;/strong&gt;，插入卡槽中。然后从EV3主机上按启动键，会出现一个带有小企鹅的启动画面，启动需要等一段时间。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ev3&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;4. 通过蓝牙连接EV3主机与电脑&lt;/h2&gt;
-&lt;p&gt;为了控制EV3，必须要有另外一台电脑，与EV3建立连接，控制EV3。本文推荐蓝牙连接。因为如果想通过wifi连接，还需要再买一个EV3专用的无线网卡。&lt;/p&gt;
-&lt;p&gt;具体的连接方法，参考&lt;a href=&#34;http://www.ev3dev.org/docs/tutorials/connecting-to-the-internet-via-bluetooth/&#34;&gt;这里&lt;/a&gt;。请注意，文中给出了连接安卓、苹果和windows三个系统的蓝牙连接设置方法，win10的设置在网页最下边。务必要严格按照网页要求的步骤来设置。&lt;/p&gt;
-&lt;p&gt;但是，目前按照这个教程，设置EV3跟电脑蓝牙连接后，EV3并不能通过蓝牙连接电脑的无线网络上网。这是一个当前&lt;strong&gt;还没有解决的问题&lt;/strong&gt;。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;sshev3&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;5. 通过SSH协议登录并控制EV3主机&lt;/h2&gt;
-&lt;p&gt;如果是win10系统，下载一个&lt;a href=&#34;https://www.chiark.greenend.org.uk/~sgtatham/putty/&#34;&gt;putty软件&lt;/a&gt;，然后填入在EV3主机中显示的IP地址，譬如：169.254.26.0，然后点击open，会弹出一个黑色的命令行窗口，稍微等一会，根据提示输入用户名：&lt;strong&gt;robot&lt;/strong&gt;，回车后，根据提示输入密码：&lt;strong&gt;maker&lt;/strong&gt;，然后等一会，如果登陆成功，会显示如下画面：&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/post/images/puttyev3.png&#34; title=&#34;putty成功登陆EV3&#34; alt=&#34;putty成功登陆EV3&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;putty成功登陆EV3&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;pythonev3&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;6. 通过python控制EV3&lt;/h2&gt;
-&lt;p&gt;可以认为，python是EV3DEV系统支持的官方语言。想学习如何利用pyhton控制EV3，可以参考&lt;a href=&#34;http://python-ev3dev.readthedocs.io/en/stable/&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
-&lt;div id=&#34;ev3&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;6.1 控制EV3说话&lt;/h3&gt;
-&lt;p&gt;“hello,world”是编程学习时的经典输出语句。下边我们试着让EV3直接说出来：&lt;/p&gt;
-&lt;p&gt;首先在成功连接EV3的putty窗口中，输入&lt;strong&gt;python3&lt;/strong&gt;，启动python环境，成功后是这样：&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/post/images/puttyev3python.png&#34; title=&#34;EV3上启动python3&#34; alt=&#34;EV3上启动python3&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;EV3上启动python3&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;然后在python控制台下，输入下列命令：&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;#导入ev3dev.ev3模块
-import ev3dev.ev3 as ev3
-
-#调用ev3的声音模块发出声音
-ev3.Sound.speak(&amp;#39;hello,world&amp;#39;).wait()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;程序运行成功后的putty窗口：&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/post/images/puttyev3helloworld.png&#34; title=&#34;EV3说出hello, world&#34; alt=&#34;EV3说出hello, world&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;EV3说出hello, world&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;6.2 控制马达转动&lt;/h3&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;#控制连接到主机A端口的一个大型马达
-m = ev3.LargeMotor(&amp;#39;outA&amp;#39;)
-
-# speed_sp控制马达转速，这里的用的是ticks per second
-# time_sp控制马达的启动时间，表示的是毫秒
-m.run_timed(time_sp=3000, speed_sp=500)&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;todo&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;todo&lt;/h3&gt;
-&lt;p&gt;如何把电脑写好的python程序传输到EV3上并执行？&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.ev3dev.org/docs/tutorials/&#34;&gt;EV3DEV教程中心&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://python-ev3dev.readthedocs.io/en/stable/rpyc.html&#34;&gt;Working with ev3dev remotely using RPyC&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
