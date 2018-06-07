@@ -535,7 +535,7 @@
     
     <url>
     
-      <loc>/categories/data.table/</loc>
+      <loc>/tags/data.table/</loc>
       <lastmod>2017-09-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -545,7 +545,7 @@
     
     <url>
     
-      <loc>/tags/data.table/</loc>
+      <loc>/categories/data.table/</loc>
       <lastmod>2017-09-03T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -575,8 +575,8 @@
     
     <url>
     
-      <loc>/categories/ebv/</loc>
-      <lastmod>2017-11-11T00:00:00+00:00</lastmod>
+      <loc>/tags/ebv/</loc>
+      <lastmod>2017-07-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -585,8 +585,8 @@
     
     <url>
     
-      <loc>/tags/ebv/</loc>
-      <lastmod>2017-07-20T00:00:00+00:00</lastmod>
+      <loc>/categories/ebv/</loc>
+      <lastmod>2017-11-11T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -705,8 +705,8 @@
     
     <url>
     
-      <loc>/categories/lmm/</loc>
-      <lastmod>2017-11-29T00:00:00+00:00</lastmod>
+      <loc>/tags/lmm/</loc>
+      <lastmod>2017-07-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -715,8 +715,8 @@
     
     <url>
     
-      <loc>/tags/lmm/</loc>
-      <lastmod>2017-07-20T00:00:00+00:00</lastmod>
+      <loc>/categories/lmm/</loc>
+      <lastmod>2017-11-29T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -848,16 +848,6 @@
     
     <url>
     
-      <loc>/categories/python/</loc>
-      <lastmod>2018-01-02T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/tags/python/</loc>
       <lastmod>2018-02-11T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -868,8 +858,8 @@
     
     <url>
     
-      <loc>/categories/r/</loc>
-      <lastmod>2017-12-31T00:00:00+00:00</lastmod>
+      <loc>/categories/python/</loc>
+      <lastmod>2018-01-02T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -880,6 +870,16 @@
     
       <loc>/tags/r/</loc>
       <lastmod>2018-01-22T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/categories/r/</loc>
+      <lastmod>2017-12-31T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -961,7 +961,7 @@
     
     <url>
     
-      <loc>/categories/tex/</loc>
+      <loc>/tags/tex/</loc>
       <lastmod>2018-01-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -971,7 +971,7 @@
     
     <url>
     
-      <loc>/tags/tex/</loc>
+      <loc>/categories/tex/</loc>
       <lastmod>2018-01-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
