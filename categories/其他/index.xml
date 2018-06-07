@@ -13,12 +13,12 @@
     
     
     <item>
-      <title>How to add new article in Publicaiton</title>
-      <link>/post/how-to-add-new-article-in-publicaiton/</link>
+      <title>利用hugo展示新发表的论文</title>
+      <link>/post/how-to-add-new-paper-in-publication/</link>
       <pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/how-to-add-new-article-in-publicaiton/</guid>
-      <description>利用益辉的blogdown包，如何发post是很简单的。直接点击</description>
+      <guid>/post/how-to-add-new-paper-in-publication/</guid>
+      <description>利用益辉的blogdown包，发post是很简单的。直接点击Addins-&amp;gt;New post就可以了。但是如果要在Publication</description>
     </item>
     
   </channel>
