@@ -11,6 +11,41 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>how to judge a number is a prime</title>
+      <link>/post/how-to-judge-a-number-is-a-prime/</link>
+      <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-to-judge-a-number-is-a-prime/</guid>
+      <description>&lt;p&gt;栾佳硕的作业：&lt;/p&gt;
+&lt;p&gt;解密题目2：&lt;/p&gt;
+&lt;p&gt;编写一个程序，让它输出1-200之间的所有质数。（解密点50）&lt;/p&gt;
+&lt;p&gt;解密点（20/100）&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;#定义一个判断数字是否为质数的函数
+def is_prime(number):
+    if number == 1 :
+        return False
+    if number == 2 :
+        return True
+    if number &amp;gt;= 3 :
+        a = True
+        for i in range(2,number):
+            if number % i == 0 :
+                a = False
+                break
+        return a
+            
+list1 = []
+number =200
+for i in range(1,number+1) :
+    if is_prime(i) == True :
+        list1.append(i)
+#质数为：
+print(list1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199]&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>print your cv using python</title>
       <link>/post/print-your-cv-using-python/</link>
       <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
@@ -1037,106 +1072,6 @@ while i &amp;lt;= 5:
 &lt;p&gt;有一家&lt;a href=&#34;http://www.yu2le.com/index.html#&#34;&gt;鱼儿乐&lt;/a&gt;公司,一家物联网平台，实现了养殖水质数据在线监控。有一套手册，有时间再仔细看一下。&lt;/p&gt;
 &lt;p&gt;目前的最新系统是鱼儿乐X5技术：荧光法溶解氧传感器；寿命长，稳定性好，免维护。&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Rgraphviz 学习笔记</title>
-      <link>/post/rgraphviz-note1/</link>
-      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rgraphviz-note1/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.graphviz.org/&#34;&gt;graphviz&lt;/a&gt; (Graph Visualization Software)是贝尔实验室鼓捣出来的一个用来展示结构化信息的软件。有一个对应的Rgraphviz包，学习一下，这是一个用来画系谱图的好工具。&lt;/p&gt;
-&lt;p&gt;Rgraphviz包现在已经被收录到&lt;a href=&#34;http://www.bioconductor.org/&#34;&gt;Bioconductor&lt;/a&gt;平台，不在cran中，因此正常的安装包的流程无法获取该包。需要根据Bioconductor的&lt;a href=&#34;http://www.bioconductor.org/packages/release/bioc/html/Rgraphviz.html&#34;&gt;安装指令&lt;/a&gt;进行安装：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;source(&amp;quot;https://bioconductor.org/biocLite.R&amp;quot;)
-biocLite(&amp;quot;Rgraphviz&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;graphviz&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. Graphviz的简单说明&lt;/h2&gt;
-&lt;p&gt;这个软件包可以生成各种图像格式的文件，以及SVG文件，可以用于web网络展示；也可以生成PDF文件。&lt;/p&gt;
-&lt;p&gt;graphviz 中国包括了很多布局器：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;dot 默认的布局方式，主要是用于有向图。（画系谱，这应该是一个主要布局方式）&lt;/li&gt;
-&lt;li&gt;neato 基于spring-model（又称force-based）算法&lt;/li&gt;
-&lt;li&gt;twopi 径向布局&lt;/li&gt;
-&lt;li&gt;circo 圆环布局&lt;/li&gt;
-&lt;li&gt;fdp 无向图&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;graphviz默认使用一种dot语言来定义图形元素，然后选择上边的布局算法进行布局，最后生成结果。&lt;/p&gt;
-&lt;p&gt;大体步骤如下： 1. 利用dot脚本，定义一个图，然后向图中，添加节点和边。 2. 定义节点和边各自的属性，比如形状、颜色、填充模式、字体等。 2. 使用布局引擎，调用布局算法，绘制图形。&lt;/p&gt;
-&lt;p&gt;graphviz中三个基本的元素：图（graph）、节点（node）和边（edge） 参考一篇&lt;a href=&#34;http://icodeit.org/2015/11/using-graphviz-drawing/&#34;&gt;blog&lt;/a&gt;，关于graphviz的入门说明。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;graphviz&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2. 初窥Graphviz&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::opts_chunk$set(echo = TRUE,fig.align = &amp;quot;center&amp;quot;)
-suppressPackageStartupMessages(require(Rgraphviz))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
-v &amp;lt;- letters[1:10] #储存节点
-m &amp;lt;- 1:4 #
-g1 &amp;lt;- randomGraph(v,m,0.2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;不同的布局样式，默认是有向图。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(g1)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:dot&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/dot-1.png&#34; alt=&#34;默认的有向图(dot)&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: 默认的有向图(dot)
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;第二种布局：neato&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(g1, &amp;quot;neato&amp;quot; )&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:neato&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/neato-1.png&#34; alt=&#34;第二种布局(neato)&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 2: 第二种布局(neato)
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;第三种布局，twopi：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(g1, &amp;quot;twopi&amp;quot; )&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:twopi&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/twopi-1.png&#34; alt=&#34;第三种布局(twopi)&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 3: 第三种布局(twopi)
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;3. 从头开始画一个图&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#定义节点
-nodes &amp;lt;- c(&amp;quot;A&amp;quot;,&amp;quot;B&amp;quot;,&amp;quot;C&amp;quot;,&amp;quot;D&amp;quot;,&amp;quot;E&amp;quot;,&amp;quot;F&amp;quot;,&amp;quot;G&amp;quot;)
-#生成一个简单的系谱图
-rEG &amp;lt;- new(&amp;quot;graphNEL&amp;quot;,nodes=nodes,edgemode=&amp;quot;directed&amp;quot;)
-rEG &amp;lt;- addEdge(from=&amp;quot;A&amp;quot;,to = &amp;quot;B&amp;quot;,graph = rEG,weights = 1)
-rEG &amp;lt;- addEdge(from=&amp;quot;A&amp;quot;,to = &amp;quot;C&amp;quot;,graph = rEG,weights = 2)
-rEG &amp;lt;- addEdge(from=&amp;quot;B&amp;quot;,to = &amp;quot;D&amp;quot;,graph = rEG,weights = 3)
-rEG &amp;lt;- addEdge(from=&amp;quot;B&amp;quot;,to = &amp;quot;E&amp;quot;,graph = rEG,weights = 10)
-rEG &amp;lt;- addEdge(from=&amp;quot;C&amp;quot;,to = &amp;quot;F&amp;quot;,graph = rEG,weights = 3)
-rEG &amp;lt;- addEdge(from=&amp;quot;C&amp;quot;,to = &amp;quot;G&amp;quot;,graph = rEG,weights = 10)
-#从上望下画
-plot(rEG,attrs=list(graph=list(rankdir=&amp;quot;TB&amp;quot;)))  #TB from top to bottom&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;&lt;span id=&#34;fig:simple&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/simple-1.png&#34; alt=&#34;最简单的图&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 4: 最简单的图
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;从下往上画，更符合系谱图的惯例&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rEG,attrs=list(graph=list(rankdir=&amp;quot;BT&amp;quot;))) #BT from bottom to top&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/draworder-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;4. 调整节点的颜色&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rEG,attrs=list(node=list(color=&amp;quot;deepskyblue4&amp;quot;,fontcolor=&amp;quot;orange&amp;quot;,fillcolor=&amp;quot;deepskyblue4&amp;quot;),graph=list(rankdir=&amp;quot;BT&amp;quot;))) #BT from bottom to top&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/nodecolor-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;5. 调整节点的形状&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rEG,attrs=list(node=list(shape=&amp;quot;ellipse&amp;quot;,color=&amp;quot;deepskyblue4&amp;quot;,fontcolor=&amp;quot;orange&amp;quot;,fillcolor=&amp;quot;deepskyblue4&amp;quot;),graph=list(rankdir=&amp;quot;BT&amp;quot;))) #BT from bottom to top&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/nodeshape-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;6. 调整边的颜色&lt;/h2&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rEG,attrs=list(node=list(color=&amp;quot;deepskyblue4&amp;quot;,fontcolor=&amp;quot;orange&amp;quot;,fillcolor=&amp;quot;deepskyblue4&amp;quot;),edge=list(color=&amp;quot;deepskyblue4&amp;quot;),graph=list(rankdir=&amp;quot;BT&amp;quot;))) #BT from bottom to top&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/edge-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
