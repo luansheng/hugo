@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Sheng Luan</copyright>
-    <lastBuildDate>Sun, 11 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>print your cv using python</title>
+      <link>/post/print-your-cv-using-python/</link>
+      <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/print-your-cv-using-python/</guid>
+      <description>栾佳硕的作业： 解密题目一： 定义一个函数，让它输出你的名字，年龄，住址以及爱好，分四行打印出来。然后，调用这个函数。（解密点20） 目前解密点（</description>
+    </item>
     
     <item>
       <title>read a file by python</title>

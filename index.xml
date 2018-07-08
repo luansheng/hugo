@@ -11,6 +11,32 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>print your cv using python</title>
+      <link>/post/print-your-cv-using-python/</link>
+      <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/print-your-cv-using-python/</guid>
+      <description>&lt;p&gt;栾佳硕的作业：&lt;/p&gt;
+&lt;p&gt;解密题目一：&lt;/p&gt;
+&lt;p&gt;定义一个函数，让它输出你的名字，年龄，住址以及爱好，分四行打印出来。然后，调用这个函数。（解密点20）&lt;/p&gt;
+&lt;p&gt;目前解密点（0/100）&lt;/p&gt;
+&lt;p&gt;当解密点到达100时，我会告诉你密码。&lt;/p&gt;
+&lt;p&gt;先把第一题答案发过来，我就会告诉你下一道题。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def print_cv(name,age,address,hobby):
+    print(name)
+    print(age)
+    print(address)
+    print(hobby)
+    
+print_cv(&amp;quot;栾生&amp;quot;,&amp;quot;40&amp;quot;,&amp;quot;南京路106号&amp;quot;,&amp;quot;打羽毛球&amp;quot;)    &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 栾生
+## 40
+## 南京路106号
+## 打羽毛球&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>利用hugo展示新发表的论文</title>
       <link>/post/how-to-add-new-paper-in-publication/</link>
       <pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
@@ -1111,214 +1137,6 @@ Figure 4: 最简单的图
 &lt;h2&gt;6. 调整边的颜色&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rEG,attrs=list(node=list(color=&amp;quot;deepskyblue4&amp;quot;,fontcolor=&amp;quot;orange&amp;quot;,fillcolor=&amp;quot;deepskyblue4&amp;quot;),edge=list(color=&amp;quot;deepskyblue4&amp;quot;),graph=list(rankdir=&amp;quot;BT&amp;quot;))) #BT from bottom to top&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-01-22-rgraphviz-note1_files/figure-html/edge-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>字符串处理包stringr学习笔记-1</title>
-      <link>/post/stringr-note-1/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/stringr-note-1/</guid>
-      <description>&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/rmarkdown-libs/str_view/str_view.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;/rmarkdown-libs/str_view-binding/str_view.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages(require(stringr))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;R中的字符串处理函数，不但多，而且难记，参数调用方法也不一致。stringr包提供了统一名称的函数调用形式。&lt;/p&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;1. 基本处理&lt;/h2&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.1 计算字符串的长度&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_length(&amp;quot;abc&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 3&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_length(&amp;quot;你好&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_length(NA)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] NA&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_length(c(&amp;quot;abc&amp;quot;,&amp;quot;ad&amp;quot;,&amp;quot;co&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 3 2 2&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;str_length&lt;/code&gt;等同于R中自带的&lt;code&gt;nchar()&lt;/code&gt;函数可以正确的识别中文字的个数，赞一个。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.2 提取子字符串&lt;/h3&gt;
-&lt;p&gt;下述函数可以针对向量操作，提取子字符串&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;-  c(&amp;quot;abcdefgh&amp;quot;,&amp;quot;dljwowowjj&amp;quot;)
-str_sub(x,2,4) #从第2个位置到第四个位置&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;bcd&amp;quot; &amp;quot;ljw&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sub(x,2,-2) #第二个位置到倒数第二个位置&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;bcdefg&amp;quot;   &amp;quot;ljwowowj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.3 修改字符串中指定位置的内容&lt;/h3&gt;
-&lt;p&gt;修改字符串中某个位置的字符&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sub(x,3,5) &amp;lt;- &amp;quot;XYZ&amp;quot;
-x&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;abXYZfgh&amp;quot;   &amp;quot;dlXYZwowjj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.4 重复字符串的内容&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_dup(x,3) #表示每个字符串重复两次&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;abXYZfghabXYZfghabXYZfgh&amp;quot;       &amp;quot;dlXYZwowjjdlXYZwowjjdlXYZwowjj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_dup(x,c(2,3)) #表示第一个字符串重复2次，第二个字符串重复3次&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;abXYZfghabXYZfgh&amp;quot;               &amp;quot;dlXYZwowjjdlXYZwowjjdlXYZwowjj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.5 填补字符串至一定长度&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_pad(x,str_length(x[2])) #把第一个字符串用空格补充至跟第二字符串一样长&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;  abXYZfgh&amp;quot; &amp;quot;dlXYZwowjj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_pad(string = x,width = str_length(x[2]),side = &amp;quot;right&amp;quot;, pad = &amp;quot;?&amp;quot;) #一个标准写法，用？号补充，在填补在右边&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;abXYZfgh??&amp;quot; &amp;quot;dlXYZwowjj&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;缩写字符串&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_trunc(x,3)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;...&amp;quot; &amp;quot;...&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;默认的最小缩写字符串长度就是3（“…”），因此直接显示为“…”。&lt;/p&gt;
-&lt;p&gt;如果想缩写为2位，可以这样写：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_trunc(x,2,ellipsis = &amp;quot;.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;a.&amp;quot; &amp;quot;d.&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.6 剔除字符串中的空格&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(&amp;quot;  a   &amp;quot;, &amp;quot;b   &amp;quot;,  &amp;quot;   c&amp;quot;)
-str_trim(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;a&amp;quot; &amp;quot;b&amp;quot; &amp;quot;c&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.7 大小写转换+本地语言支持&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- &amp;quot;You are beautiful.&amp;quot;
-str_to_lower(x) #转换为小写&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;you are beautiful.&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_to_upper(x) #转换为大写&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;YOU ARE BEAUTIFUL.&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_to_title(x) #首字母大写&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;You Are Beautiful.&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- &amp;quot;i love you&amp;quot;
-str_to_upper(x,locale = &amp;quot;tr&amp;quot;) #土耳其语,i带点&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;&amp;lt;U+0130&amp;gt; LOVE YOU&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#stringi::stri_locale_list() #语言支持列表&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.8 排名和排序&lt;/h3&gt;
-&lt;p&gt;获得每个元素的排名&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(&amp;quot;a&amp;quot;,&amp;quot;y&amp;quot;,&amp;quot;i&amp;quot;,&amp;quot;o&amp;quot;)
-str_order(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 1 3 4 2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y &amp;lt;- c(&amp;quot;ac&amp;quot;,&amp;quot;oa&amp;quot;,&amp;quot;bp&amp;quot;,&amp;quot;oo&amp;quot;)
-str_order(y)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 1 3 2 4&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;对y中的元素进行排序&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sort(y)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;ac&amp;quot; &amp;quot;bp&amp;quot; &amp;quot;oa&amp;quot; &amp;quot;oo&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#另外一种实现方式
-y[str_order(y)]&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;ac&amp;quot; &amp;quot;bp&amp;quot; &amp;quot;oa&amp;quot; &amp;quot;oo&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;降序排列&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sort(x=y,decreasing = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;oo&amp;quot; &amp;quot;oa&amp;quot; &amp;quot;bp&amp;quot; &amp;quot;ac&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;字符类型的数字，支持按照数字大小排序&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- as.character(c(sample(1:100,5),1000))
-x&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;1&amp;quot;    &amp;quot;32&amp;quot;   &amp;quot;68&amp;quot;   &amp;quot;16&amp;quot;   &amp;quot;15&amp;quot;   &amp;quot;1000&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sort(x)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;1&amp;quot;    &amp;quot;1000&amp;quot; &amp;quot;15&amp;quot;   &amp;quot;16&amp;quot;   &amp;quot;32&amp;quot;   &amp;quot;68&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_sort(x,numeric =TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;1&amp;quot;    &amp;quot;15&amp;quot;   &amp;quot;16&amp;quot;   &amp;quot;32&amp;quot;   &amp;quot;68&amp;quot;   &amp;quot;1000&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;1.9 合并字符串&lt;/h3&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_c(&amp;quot;I&amp;quot;,&amp;quot;love&amp;quot;,&amp;quot;this&amp;quot;,&amp;quot;world!&amp;quot;,sep = &amp;quot; &amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;I love this world!&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_c(c(&amp;quot;2018&amp;quot;,&amp;quot;01&amp;quot;,&amp;quot;18&amp;quot;),collapse = &amp;quot;-&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;2018-01-18&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;2 模式匹配&lt;/h2&gt;
-&lt;div id=&#34;-regular-expression&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;2.1 正则表达 regular expression&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;str_view()&lt;/code&gt;和&lt;code&gt;str_view_all()&lt;/code&gt;用来展示正则表达式是如何匹配的，是学习正则表达式的好帮手。&lt;/p&gt;
-&lt;div class=&#34;section level4&#34;&gt;
-&lt;h4&gt;2.1.1 基础匹配&lt;/h4&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(&amp;quot;apple&amp;quot;, &amp;quot;banana&amp;quot;, &amp;quot;pear&amp;quot;)
-str_view(x, &amp;quot;an&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;apple&lt;\/li&gt;\n  &lt;li&gt;b&lt;span class=&#39;match&#39;&gt;an&lt;\/span&gt;ana&lt;\/li&gt;\n  &lt;li&gt;pear&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;接下来会稍微复杂一些，加入通配符&lt;code&gt;.&lt;/code&gt;，匹配任何字符：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(x,&amp;quot;.a.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;apple&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;ban&lt;\/span&gt;ana&lt;\/li&gt;\n  &lt;li&gt;p&lt;span class=&#39;match&#39;&gt;ear&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;但是如何匹配字符串中的&lt;code&gt;.&lt;/code&gt;呢？我们需要一个逃脱符，也就是反斜杠&lt;code&gt;\&lt;/code&gt;，英文是blackflash，&lt;code&gt;\.&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;但是这里有一个问题，那就是在普通字符串处理中，R也定义了&lt;code&gt;\&lt;/code&gt;是一个逃脱符，而正则表达式又是通过字符串表达出来的，因此，为了匹配&lt;code&gt;.&lt;/code&gt;，需要写为&lt;code&gt;\\.&lt;/code&gt;。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;writeLines(&amp;quot;\\.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## \.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(&amp;quot;b.a&amp;quot;,&amp;quot;\\.&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-3&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-3&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;b&lt;span class=&#39;match&#39;&gt;.&lt;\/span&gt;a&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;那么另外一个问题是，如何匹配文字&lt;code&gt;\&lt;/code&gt;。根据规则，应该是&lt;code&gt;\\&lt;/code&gt;。但是，要想在R中输出&lt;code&gt;\\&lt;/code&gt;字符串（两个反斜杠），我们每个前边都需要再加一个反斜杠，这就变成了四个反斜杠&lt;code&gt;\\\\&lt;/code&gt;。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;writeLines(&amp;quot;\\\\&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## \\&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(&amp;quot;a\\b&amp;quot;,&amp;quot;\\\\&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-4&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-4&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;a&lt;span class=&#39;match&#39;&gt;\\&lt;\/span&gt;b&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level4&#34;&gt;
-&lt;h4&gt;2.1.2 引导符&lt;/h4&gt;
-&lt;p&gt;如何匹配开头或者结尾字符。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;^&lt;/code&gt;用于匹配开头。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$&lt;/code&gt;用于匹配结尾。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- c(&amp;quot;apple&amp;quot;, &amp;quot;banana&amp;quot;, &amp;quot;pear&amp;quot;)
-str_view(x, &amp;quot;^a&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-5&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-5&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;pple&lt;\/li&gt;\n  &lt;li&gt;banana&lt;\/li&gt;\n  &lt;li&gt;pear&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(x,&amp;quot;a$&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-6&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-6&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;apple&lt;\/li&gt;\n  &lt;li&gt;banan&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;pear&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(x,&amp;quot;^pear$&amp;quot;) #匹配完整字符串&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;div id=&#34;htmlwidget-7&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-7&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;apple&lt;\/li&gt;\n  &lt;li&gt;banana&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;pear&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt; 如何匹配文字&lt;code&gt;$^$&lt;/code&gt;？&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(&amp;quot;$^$&amp;quot;,&amp;quot;\\$\\^\\$&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-8&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-8&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;$^$&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;一个小练习题，从&lt;code&gt;stringr::words&lt;/code&gt;900多个单词中找出首字母是y的所有单词：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;^y&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;div id=&#34;htmlwidget-9&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-9&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;ear&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;es&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;esterday&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;et&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;ou&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;y&lt;\/span&gt;oung&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt; 结尾是x的所有单词：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;x$&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-10&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-10&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;bo&lt;span class=&#39;match&#39;&gt;x&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;se&lt;span class=&#39;match&#39;&gt;x&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;si&lt;span class=&#39;match&#39;&gt;x&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;ta&lt;span class=&#39;match&#39;&gt;x&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;列出长度为11的所有单词：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;^.{11}$&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-11&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-11&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;appropriate&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;environment&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;opportunity&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;responsible&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;/div&gt;
-&lt;div class=&#34;section level4&#34;&gt;
-&lt;h4&gt;2.1.2 匹配不同类型的字符&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;.&lt;/code&gt;匹配任何字符，其他类型的字符包括： * &lt;code&gt;\d&lt;/code&gt;匹配任何数字 * &lt;code&gt;\s&lt;/code&gt;匹配空格、制表符、换行符 * &lt;code&gt;[abc]&lt;/code&gt;匹配abc中的任一个字符 * &lt;code&gt;[^abc]&lt;/code&gt; 匹配除了abc以外的任一个字符&lt;/p&gt;
-&lt;p&gt;小小练习题。&lt;/p&gt;
-&lt;p&gt;查找元音字母打头的单词&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;^[aeiou]&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-12&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-12&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ble&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;bout&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;bsolute&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ccept&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ccount&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;chieve&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;cross&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ct&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ctive&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ctual&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;dd&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ddress&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;dmit&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;dvertise&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ffect&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;fford&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;fter&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;fternoon&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;gain&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;gainst&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ge&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;gent&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;go&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;gree&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ir&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ll&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;llow&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lmost&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;long&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lready&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lright&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lso&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lthough&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;lways&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;merica&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;mount&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;nd&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;nother&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;nswer&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ny&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;part&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;pparent&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ppear&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;pply&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ppoint&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;pproach&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ppropriate&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;rea&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;rgue&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;rm&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;round&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;rrange&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;rt&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;s&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;sk&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ssociate&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ssume&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;t&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ttend&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;uthority&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;vailable&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;ware&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;way&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;a&lt;\/span&gt;wful&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ach&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;arly&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ast&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;asy&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;at&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;conomy&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ducate&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ffect&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;gg&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ight&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ither&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;lect&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;lectric&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;leven&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;lse&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;mploy&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ncourage&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;nd&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ngine&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;nglish&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;njoy&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;nough&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;nter&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;nvironment&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;qual&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;special&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;urope&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ven&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;vening&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ver&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;very&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;vidence&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xact&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xample&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xcept&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xcuse&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xercise&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xist&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xpect&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xpense&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xperience&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xplain&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xpress&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;xtra&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;e&lt;\/span&gt;ye&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;dea&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;dentify&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;f&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;magine&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;mportant&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;mprove&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;n&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nclude&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ncome&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ncrease&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ndeed&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ndividual&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ndustry&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nform&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nside&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nstead&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nsure&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nterest&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nto&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ntroduce&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nvest&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;nvolve&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;ssue&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;t&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;i&lt;\/span&gt;tem&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;bvious&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ccasion&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;dd&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;f&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ff&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ffer&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ffice&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ften&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;kay&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ld&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;n&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;nce&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ne&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;nly&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;pen&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;perate&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;pportunity&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ppose&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;r&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;rder&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;rganize&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;riginal&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ther&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;therwise&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ught&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ut&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;ver&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;o&lt;\/span&gt;wn&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nder&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nderstand&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nion&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nit&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nite&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;niversity&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;nless&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;ntil&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;p&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;pon&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;se&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;u&lt;\/span&gt;sual&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;那些单词结尾是“ed”但不是“eed”的单词：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;[^e]ed$&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-13&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-13&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;bed&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;hund&lt;span class=&#39;match&#39;&gt;red&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;red&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;筛选出结尾是ing或者ise的单词&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(stringr::words,&amp;quot;ing|ise$&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-14&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-14&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;advert&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;br&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;dur&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;even&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;exerc&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;k&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;mean&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;morn&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;otherw&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;pract&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;ra&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;real&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;r&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;r&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;s&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;s&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;le&lt;\/li&gt;\n  &lt;li&gt;surpr&lt;span class=&#39;match&#39;&gt;ise&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;th&lt;span class=&#39;match&#39;&gt;ing&lt;\/span&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;p&gt;验证字母q后边是否总是跟着字母u，也就是说查找那些q后边不是u的单词：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(words,&amp;quot;q[^u]&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;div id=&#34;htmlwidget-15&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-15&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt; 结果是没找到。&lt;/p&gt;
-&lt;p&gt;验证另外一个字母搭配规则，i在e前或者是在c后边。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str_view(words,&amp;quot;ie|ci&amp;quot;,match = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;div id=&#34;htmlwidget-16&#34; style=&#34;width:960px;height:auto;&#34; class=&#34;str_view html-widget&#34;&gt;&lt;/div&gt;
-&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-16&#34;&gt;{&#34;x&#34;:{&#34;html&#34;:&#34;&lt;ul&gt;\n  &lt;li&gt;ach&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;ve&lt;\/li&gt;\n  &lt;li&gt;asso&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;ate&lt;\/li&gt;\n  &lt;li&gt;bel&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;ve&lt;\/li&gt;\n  &lt;li&gt;br&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;f&lt;\/li&gt;\n  &lt;li&gt;&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;ty&lt;\/li&gt;\n  &lt;li&gt;cl&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;nt&lt;\/li&gt;\n  &lt;li&gt;coun&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;l&lt;\/li&gt;\n  &lt;li&gt;de&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;de&lt;\/li&gt;\n  &lt;li&gt;de&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;sion&lt;\/li&gt;\n  &lt;li&gt;d&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;espe&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;al&lt;\/li&gt;\n  &lt;li&gt;exer&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;se&lt;\/li&gt;\n  &lt;li&gt;exper&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;nce&lt;\/li&gt;\n  &lt;li&gt;f&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;ld&lt;\/li&gt;\n  &lt;li&gt;fr&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;nd&lt;\/li&gt;\n  &lt;li&gt;l&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;p&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;ce&lt;\/li&gt;\n  &lt;li&gt;qu&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;t&lt;\/li&gt;\n  &lt;li&gt;s&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;ence&lt;\/li&gt;\n  &lt;li&gt;so&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;al&lt;\/li&gt;\n  &lt;li&gt;so&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;ety&lt;\/li&gt;\n  &lt;li&gt;spe&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;al&lt;\/li&gt;\n  &lt;li&gt;spe&lt;span class=&#39;match&#39;&gt;ci&lt;\/span&gt;fic&lt;\/li&gt;\n  &lt;li&gt;t&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;&lt;\/li&gt;\n  &lt;li&gt;v&lt;span class=&#39;match&#39;&gt;ie&lt;\/span&gt;w&lt;\/li&gt;\n&lt;\/ul&gt;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
