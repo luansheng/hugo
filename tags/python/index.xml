@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Sheng Luan</copyright>
-    <lastBuildDate>Sun, 08 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>home work from jiashuo luan</title>
+      <link>/post/home-work-from-jiashuo-luan/</link>
+      <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/home-work-from-jiashuo-luan/</guid>
+      <description>##问题 编写一个程序，要求输入一个数，判断它是否能被3,5,7整除，是输出“yes”，不是输出“no”（解密点30） 当前解密点（70,100</description>
+    </item>
     
     <item>
       <title>how to judge a number is a prime</title>
