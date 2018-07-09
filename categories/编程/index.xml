@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>水仙花问题</title>
+      <link>/post/daffodil-question/</link>
+      <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/daffodil-question/</guid>
+      <description>传说，有一种数，叫“水仙花”数。它是一个三位数，并且每一位数的三次幂加起来等于他本身。比如153,1*3+5*3+3**3=153。 编写一个</description>
+    </item>
+    
+    <item>
       <title>how to judge a number is a prime</title>
       <link>/post/how-to-judge-a-number-is-a-prime/</link>
       <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
