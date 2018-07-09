@@ -16,8 +16,9 @@
       <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/home-work-from-jiashuo-luan/</guid>
-      <description>&lt;p&gt;##问题
-编写一个程序，要求输入一个数，判断它是否能被3,5,7整除，是输出“yes”，不是输出“no”（解密点30）
+      <description>&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;问题&lt;/h2&gt;
+&lt;p&gt;编写一个程序，要求输入一个数，判断它是否能被3,5,7整除，是输出“yes”，不是输出“no”（解密点30）
 当前解密点（70,100)&lt;/p&gt;
 &lt;p&gt;定义一个判断数字是否可以被3,5,7同时整除的函数&lt;/p&gt;
 &lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def is_divisibility(int_num):
@@ -36,6 +37,7 @@ for i in range(len(numbers)) :
 ## yes
 ## no
 ## yes&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
     </item>
     
