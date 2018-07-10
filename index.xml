@@ -44,10 +44,10 @@ print(max_number)&lt;/code&gt;&lt;/pre&gt;
     
 number = 11
 if remainder(number,2) == 0 :
-    print(&amp;quot;This is a odd number&amp;quot;)
+    print(&amp;quot;This is an odd number&amp;quot;)
 else:
-    print(&amp;quot;This is a even number&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## This is a even number&lt;/code&gt;&lt;/pre&gt;
+    print(&amp;quot;This is an even number&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## This is an even number&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
