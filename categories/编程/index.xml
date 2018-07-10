@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Sheng Luan</copyright>
-    <lastBuildDate>Mon, 09 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>three missions</title>
+      <link>/post/three-missions/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/three-missions/</guid>
+      <description>恭喜你，获得了第一条秘密信息！ print(“No, a time bomb is about to explode!”) 2.请编写一个程序，算出前十五个斐波那契数。 fibonacci = [] fibonacci.append(1) fibonacci.append(1) fibonacci_number =</description>
+    </item>
     
     <item>
       <title>home work from jiashuo luan</title>

@@ -11,6 +11,47 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>three missions</title>
+      <link>/post/three-missions/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/three-missions/</guid>
+      <description>&lt;p&gt;恭喜你，获得了第一条秘密信息！
+print(“No, a time bomb is about to explode!”)&lt;/p&gt;
+&lt;p&gt;2.请编写一个程序，算出前十五个斐波那契数。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;fibonacci = []
+fibonacci.append(1)
+fibonacci.append(1) 
+fibonacci_number = 15
+for i in range(2,fibonacci_number):
+    fibonacci.append(fibonacci[i-1] + fibonacci[i-2])
+    
+print(fibonacci)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3.编写一个程序，建立一个列表，找出其中最大的一个数，并输出。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;rand_numbers = [3,7,5,4,6,9,2]
+max_number = rand_numbers[0]
+for i in range(1,len(rand_numbers)):
+    if rand_numbers[i] &amp;gt; max_number :
+        max_number = rand_numbers[i]
+    
+print(max_number)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 9&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;4.建立一个模块，里面要有个函数，可以算出被除数和除数的余数。编写一个程序，建立一个变量（里面是数字），判断它是奇数还是偶数（要用到这个模块）。&lt;/p&gt;
+&lt;p&gt;由于在R中调用python模块，有些技术问题。因此直接定义remainder函数，算出被除数和除数的余数。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def remainder(dividend,divisor):
+    return(dividend % divisor)
+    
+number = 11
+if remainder(number,2) == 0 :
+    print(&amp;quot;This is a odd number&amp;quot;)
+else:
+    print(&amp;quot;This is a even number&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## This is a even number&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>home work from jiashuo luan</title>
       <link>/post/home-work-from-jiashuo-luan/</link>
       <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
@@ -907,30 +948,6 @@ while True:
 &lt;img src=&#34;/post/images/2018-02-07.png&#34; title=&#34;pygame生成的黑色窗口&#34; alt=&#34;pygame生成的黑色窗口&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;pygame生成的黑色窗口&lt;/p&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>python 定时器</title>
-      <link>/post/python-timer/</link>
-      <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/python-timer/</guid>
-      <description>&lt;p&gt;栾佳硕给出的作业，要求三秒钟打印出一个随机小数:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# -*- coding: utf-8 -*-
-import random
-import time
-seconds = 3
-counter = 1
-while counter &amp;lt;= 5:
-    print(&amp;quot;第%i个两位小数是%.2f&amp;quot; %(counter,random.uniform(0,1)))
-    counter += 1
-    time.sleep(seconds)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 第1个两位小数是0.83
-## 第2个两位小数是0.31
-## 第3个两位小数是0.18
-## 第4个两位小数是0.77
-## 第5个两位小数是0.64&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

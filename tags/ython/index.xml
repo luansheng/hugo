@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>;ython on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/ython/</link>
+    <description>Recent content in ;ython on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Tue, 10 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/ython/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>three missions</title>
+      <link>/post/three-missions/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/three-missions/</guid>
+      <description>恭喜你，获得了第一条秘密信息！ print(“No, a time bomb is about to explode!”) 2.请编写一个程序，算出前十五个斐波那契数。 fibonacci = [] fibonacci.append(1) fibonacci.append(1) fibonacci_number =</description>
+    </item>
+    
+  </channel>
+</rss>
