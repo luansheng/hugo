@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Sheng Luan</copyright>
-    <lastBuildDate>Tue, 10 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>a simple dictionary</title>
+      <link>/post/a-simple-dictionary/</link>
+      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/a-simple-dictionary/</guid>
+      <description>栾佳硕的任务： 1.建立一个字典，用来存储英语单词和释义的，要求：用户输入一个单词，他就会输出它的释义。 #建立简单的英汉词典 eng_cn_dict = {&amp;quot;</description>
+    </item>
     
     <item>
       <title>three missions</title>

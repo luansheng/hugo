@@ -11,6 +11,37 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>a simple dictionary</title>
+      <link>/post/a-simple-dictionary/</link>
+      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/a-simple-dictionary/</guid>
+      <description>&lt;p&gt;栾佳硕的任务：&lt;/p&gt;
+&lt;p&gt;1.建立一个字典，用来存储英语单词和释义的，要求：用户输入一个单词，他就会输出它的释义。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;#建立简单的英汉词典
+eng_cn_dict = {&amp;quot;love&amp;quot;:&amp;quot;爱&amp;quot;,
+              &amp;quot;China&amp;quot;:&amp;quot;中国；瓷器&amp;quot;,
+              &amp;quot;desk&amp;quot;:&amp;quot;桌子&amp;quot;,
+              &amp;quot;chair&amp;quot;:&amp;quot;椅子&amp;quot;,
+              &amp;quot;room&amp;quot;:&amp;quot;房间&amp;quot;,
+              &amp;quot;floor&amp;quot;:&amp;quot;地面;一楼&amp;quot;,
+              &amp;quot;light&amp;quot;:&amp;quot;光线；灯&amp;quot;,
+              &amp;quot;cup&amp;quot;:&amp;quot;水杯&amp;quot;}
+#定义一个查询单词的函数
+def lookup_word(word):
+    if word in eng_cn_dict :
+        print(word + &amp;quot;: &amp;quot; + eng_cn_dict.get(word))
+    else:
+        print(word + &amp;quot;还没有收录到词典中&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查询两个单词，一个已经收录在字典中，一个还没有收录在字典中。&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;lookup_word(&amp;quot;room&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## room: 房间&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;lookup_word(&amp;quot;boy&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## boy还没有收录到词典中&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>three missions</title>
       <link>/post/three-missions/</link>
       <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
@@ -914,40 +945,6 @@ c1 = 30
 f1 = convertC2F(c1)    
 print(&amp;quot;摄氏度%.2f等于华氏度%.2f&amp;quot; % (c1,f1))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 摄氏度30.00等于华氏度86.00&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>pygame 练习1</title>
-      <link>/post/pygame-exercise-1/</link>
-      <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/pygame-exercise-1/</guid>
-      <description>&lt;p&gt;栾佳硕给出的作业，用Pygame显示一个窗口（填充为黑色）:&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;# -*- coding: utf-8 -*-
-import pygame as pg
-from pygame.locals import *
-from sys import exit
-#初始化pygame
-pg.init()
-#设置屏幕分辨率640*480
-screen = pg.display.set_mode((640,480),0,32)
-#设置窗口的标题
-pg.display.set_caption(&amp;quot;黑色窗口&amp;quot;)
-#设置背景色
-bg_color = (0,0,0)
-while True:
-    for event in pg.event.get():
-        if event.type == QUIT:
-            #接收到退出事件后退出程序
-            exit()
-    screen.fill(bg_color)
-    &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;运行结果如下图所示：&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/post/images/2018-02-07.png&#34; title=&#34;pygame生成的黑色窗口&#34; alt=&#34;pygame生成的黑色窗口&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;pygame生成的黑色窗口&lt;/p&gt;
-&lt;/div&gt;
 </description>
     </item>
     

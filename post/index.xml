@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>a simple dictionary</title>
+      <link>/post/a-simple-dictionary/</link>
+      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/a-simple-dictionary/</guid>
+      <description>栾佳硕的任务： 1.建立一个字典，用来存储英语单词和释义的，要求：用户输入一个单词，他就会输出它的释义。 #建立简单的英汉词典 eng_cn_dict = {&amp;quot;</description>
+    </item>
+    
+    <item>
       <title>three missions</title>
       <link>/post/three-missions/</link>
       <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
