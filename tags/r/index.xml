@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Sheng Luan</copyright>
-    <lastBuildDate>Mon, 22 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Aug 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>plotting pedigree using DiagrammeR and visNetwork packages</title>
+      <link>/post/plot-pedigree-using-diagrammer-package/</link>
+      <pubDate>Wed, 08 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/plot-pedigree-using-diagrammer-package/</guid>
+      <description>DiagrammeR包提供了一个可以直接读取pedigree数据，画图的功能。这个包的问题是，没有一个使用指南，自己摸索起来很麻烦。 从实际测</description>
+    </item>
     
     <item>
       <title>Rgraphviz 学习笔记</title>
