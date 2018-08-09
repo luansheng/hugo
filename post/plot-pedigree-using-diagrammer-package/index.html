@@ -290,8 +290,9 @@ MathJax.Hub.Config({
 
 
 <p><a href="https://github.com/rich-iannone/DiagrammeR">DiagrammeR</a>包提供了一个可以直接读取pedigree数据，画图的功能。这个包的问题是，没有一个使用指南，自己摸索起来很麻烦。</p>
-<p>从实际测试结果来看，(visNetwork)[<a href="http://datastorm-open.github.io/visNetwork/" class="uri">http://datastorm-open.github.io/visNetwork/</a>]包更加有用，有详细的使用指南，可以跟shiny结合，能够在网页上点击，这是我比较感兴趣的。
-## 1.加载该包</p>
+<p>从实际测试结果来看，(visNetwork)[<a href="http://datastorm-open.github.io/visNetwork/" class="uri">http://datastorm-open.github.io/visNetwork/</a>]包更加有用，有详细的使用指南，可以跟shiny结合，能够在网页上点击，这是我比较感兴趣的。</p>
+<div class="section level2">
+<h2>1.加载该包</h2>
 <pre class="r"><code>rm(list = ls())
 require(DiagrammeR)</code></pre>
 <pre><code>## Loading required package: DiagrammeR</code></pre>
@@ -301,6 +302,8 @@ require(DiagrammeR)</code></pre>
 <pre><code>## Loading required package: data.table</code></pre>
 <pre class="r"><code>require(optiSel)</code></pre>
 <pre><code>## Loading required package: optiSel</code></pre>
+<pre class="r"><code>knitr::opts_knit$set(fig.height=12, fig.width=12)</code></pre>
+</div>
 <div class="section level2">
 <h2>2.读取系谱数据</h2>
 <pre class="r"><code>ped_1 &lt;-  fread(file=&quot;datasets/ped1.csv&quot;)

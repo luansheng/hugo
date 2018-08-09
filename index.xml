@@ -26,8 +26,9 @@
 
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/rich-iannone/DiagrammeR&#34;&gt;DiagrammeR&lt;/a&gt;包提供了一个可以直接读取pedigree数据，画图的功能。这个包的问题是，没有一个使用指南，自己摸索起来很麻烦。&lt;/p&gt;
-&lt;p&gt;从实际测试结果来看，(visNetwork)[&lt;a href=&#34;http://datastorm-open.github.io/visNetwork/&#34; class=&#34;uri&#34;&gt;http://datastorm-open.github.io/visNetwork/&lt;/a&gt;]包更加有用，有详细的使用指南，可以跟shiny结合，能够在网页上点击，这是我比较感兴趣的。
-## 1.加载该包&lt;/p&gt;
+&lt;p&gt;从实际测试结果来看，(visNetwork)[&lt;a href=&#34;http://datastorm-open.github.io/visNetwork/&#34; class=&#34;uri&#34;&gt;http://datastorm-open.github.io/visNetwork/&lt;/a&gt;]包更加有用，有详细的使用指南，可以跟shiny结合，能够在网页上点击，这是我比较感兴趣的。&lt;/p&gt;
+&lt;div class=&#34;section level2&#34;&gt;
+&lt;h2&gt;1.加载该包&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(list = ls())
 require(DiagrammeR)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Loading required package: DiagrammeR&lt;/code&gt;&lt;/pre&gt;
@@ -37,6 +38,8 @@ require(DiagrammeR)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Loading required package: data.table&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(optiSel)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Loading required package: optiSel&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::opts_knit$set(fig.height=12, fig.width=12)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;div class=&#34;section level2&#34;&gt;
 &lt;h2&gt;2.读取系谱数据&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ped_1 &amp;lt;-  fread(file=&amp;quot;datasets/ped1.csv&amp;quot;)
