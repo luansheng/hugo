@@ -39,15 +39,11 @@
 &lt;div id=&#34;diagrammerrvisnetwork&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;1.加载DiagrammerR和visNetwork包&lt;/h2&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rm(list = ls())
-require(DiagrammeR)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: DiagrammeR&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(visNetwork)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: visNetwork&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(data.table)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: data.table&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(optiSel)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: optiSel&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::opts_knit$set(fig.height=12, fig.width=12)&lt;/code&gt;&lt;/pre&gt;
+require(DiagrammeR)
+require(visNetwork)
+require(data.table)
+require(optiSel)
+knitr::opts_knit$set(fig.height=12, fig.width=12)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level2&#34;&gt;
 &lt;h2&gt;2.读取系谱数据&lt;/h2&gt;
