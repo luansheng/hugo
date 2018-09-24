@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VisPedigree on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/vispedigree/</link>
+    <description>Recent content in VisPedigree on 非淡泊无以明志，非宁静无以致远。</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Sheng Luan</copyright>
+    <lastBuildDate>Mon, 24 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/vispedigree/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The first package: visPedigree 0.1</title>
+      <link>/post/the-first-package-vispedigree-0-1/</link>
+      <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-first-package-vispedigree-0-1/</guid>
+      <description>今天对我来说，特别有意义，既是中秋节，也是我的第一个包visPedigree 0.1版本定型的日子。 数量遗传学基本上都是数字和公式，因此结果的</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>The first package: visPedigree 0.1</title>
+      <link>/post/the-first-package-vispedigree-0-1/</link>
+      <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-first-package-vispedigree-0-1/</guid>
+      <description>今天对我来说，特别有意义，既是中秋节，也是我的第一个包visPedigree 0.1版本定型的日子。 数量遗传学基本上都是数字和公式，因此结果的</description>
+    </item>
+    
+    <item>
       <title>plotting pedigree using DiagrammeR and visNetwork packages</title>
       <link>/post/plot-pedigree-using-diagrammer-package/</link>
       <pubDate>Wed, 08 Aug 2018 00:00:00 +0000</pubDate>
