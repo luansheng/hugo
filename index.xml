@@ -71,7 +71,7 @@ ped_2&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;将未包括在个体列的奠基者个体加入到系谱中，并将其双亲设置为丢失值NA；&lt;/li&gt;
 &lt;li&gt;将祖先个体排序在后裔个体前边，进行系谱个体重排序；&lt;/li&gt;
 &lt;li&gt;检查个体的性别，补充丢失的性别信息；&lt;/li&gt;
-&lt;li&gt;生成数字化系谱&lt;/li&gt;
+&lt;li&gt;生成数字化系谱；&lt;/li&gt;
 &lt;li&gt;提取指定个体、指定世代的祖先和后裔系谱；&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;visPedigree包中自带多个数据集。可以通过下行命令查看。&lt;/p&gt;
@@ -187,10 +187,13 @@ print(tidy_simple_ped_J5X804_ancestors_2)&lt;/code&gt;&lt;/pre&gt;
 ## 6: J4Y326 J3Y620 J3Y771   male FALSE   2      6       3      4
 ## 7: J5X804 J4Y326 J4E185 female  TRUE   3      7       6      5&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;上述代码将追溯个体J5X804两个世代。&lt;/p&gt;
-&lt;p&gt;如果对个体的后代感兴趣，可以通过设置trace参数为来实现。trace参数有三个选项：
-* “up”-追溯至祖先个体；
-* “down”-追溯至后裔个体；
-* “all”-同时追溯祖先和后裔个体。&lt;/p&gt;
+&lt;p&gt;如果对个体的后代感兴趣，可以通过设置trace参数为来实现。&lt;/p&gt;
+&lt;p&gt;trace参数有三个选项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“up”-追溯至祖先个体；&lt;/li&gt;
+&lt;li&gt;“down”-追溯至后裔个体；&lt;/li&gt;
+&lt;li&gt;“all”-同时追溯祖先和后裔个体。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tidy_simple_ped_J0Z990_offspring &amp;lt;- tidyped(ped=tidy_simple_ped_no_gen_num,can=&amp;quot;J0Z990&amp;quot;,trace=&amp;quot;down&amp;quot;)
 print(tidy_simple_ped_J0Z990_offspring)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##       Ind   Sire    Dam    Sex  Cand Gen IndNum SireNum DamNum
@@ -211,9 +214,17 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
 &lt;div class=&#34;section level2&#34;&gt;
 &lt;h2&gt;4. 绘制系谱&lt;/h2&gt;
 &lt;p&gt;利用visped函数，可以绘制多代系谱图。系谱图可以在R、Rstudio默认图形设备显示，并且可以保存在pdf文件中。保存在pdf文件中的系谱图是矢量图，更为清晰、可辨认，个体间不会发生重叠现象。当系谱中个体的数量多，个体的ID编号较长时，适合保存在pdf文件中。如果很多个体为全同胞个体，譬如水产动物的核心育种群体，可以对系谱进行简化显示，这样即使每代个体数量超过10000，也可以非常快的绘制出系谱图。如果每个世代包括的个体数量太多，且个体的ID太长，受限于pdf文件的宽度（最大为200英寸），无法绘制系谱图时，将不会不显示个体的ID号，只显示一个系谱的缩略图，用于帮助育种者快速浏览核心群体的构建过程，查看是否有外血引入。&lt;/p&gt;
-&lt;p&gt;在系谱图中，使用了两种形状和3种颜色。圆形代表个体，正方形代表简化后的全同胞个体。暗天蓝色表示雄性个体，暗金黄色表示雌性个体，暗橄榄绿表示个体性别未知。系谱图上端个体尾祖先个体，底部个体为后裔个体。&lt;/p&gt;
+&lt;p&gt;simple_ped系谱数据集中个体J5X804的2代祖先系谱：&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidy_simple_ped_J5X804_ancestors_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.7.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Please decrease the value of the paremter cex if the label&amp;#39;s width is longer than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Please increase the value of the paremter cex if the label&amp;#39;s width is shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## It is recommended that the pedigree graph is saved in the pdf file using the parameter file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The graph in the pdf file is a vector drawing: shapes, labels and lines are legible; shapes and labels isn&amp;#39;t overlapped.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/simplepedJ5x804-1.png&#34; width=&#34;864&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;在系谱图中，使用了两种形状和3种颜色。圆形代表个体，正方形代表简化后的全同胞个体。暗天蓝色表示雄性个体，暗金黄色表示雌性个体，暗橄榄绿表示个体性别未知。系谱图上端个体尾祖先个体，底部个体为后裔个体。亲本和子代之间，通过一个点进行连接，子代到中间节点的连线均为灰色，中间节点连接到父本和母本的线，与父母本各自的颜色相同。&lt;/p&gt;
 &lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;4.1 简单系谱&lt;/h3&gt;
+&lt;h3&gt;4.1 绘制简单系谱&lt;/h3&gt;
 &lt;p&gt;绘制整理后的simple_ped系谱图，在R或者Rstudio默认图形设备显示。整理系谱数据集时，需要将tidyped函数的addgen和addnum参数设置为TRUE。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidy_simple_ped)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.7.&lt;/code&gt;&lt;/pre&gt;
@@ -221,14 +232,13 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
 &lt;pre&gt;&lt;code&gt;## Please increase the value of the paremter cex if the label&amp;#39;s width is shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## It is recommended that the pedigree graph is saved in the pdf file using the parameter file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The graph in the pdf file is a vector drawing: shapes, labels and lines are legible; shapes and labels isn&amp;#39;t overlapped.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/vissimpleped-1.png&#34; width=&#34;1152&#34; /&gt;
-从图中，可以看到，亲本和子代之间，通过一个点进行连接，子代到中间节点的连线均为灰色，中间节点连接到父本和母本的线，与父母本各自的颜色相同。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/vissimpleped-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;通常在Rstudio的Plots面板上显示的图片，清晰度较差，如果个体数量多，相互间也会发生重叠。将系谱图存为pdf文件可以有效的避免上述问题，获得高质量的矢量图。设置showgraph = FALSE，将不在默认图形设备上输出图形。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressMessages(visped(tidy_simple_ped, showgraph = FALSE, file=&amp;quot;simpleped.pdf&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;打开&lt;a href=&#34;/post/doc/simpleped.pdf&#34;&gt;simpleped.pdf&lt;/a&gt;文件，会看到高清晰度的系谱。&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;4.2 绘制多代系谱&lt;/h3&gt;
+&lt;h3&gt;4.2 绘制简化系谱&lt;/h3&gt;
 &lt;p&gt;对包自带的deep_ped进行整理，然后绘制系谱图&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidyped(deep_ped))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;  Too many individuals (&amp;gt;=3362) in one generation!!! Two choices:
