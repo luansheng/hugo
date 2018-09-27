@@ -283,13 +283,13 @@ MathJax.Hub.Config({
         <p>在动物选择育种中，系谱的作用不言而喻。一方面利用系谱信息，可以提高育种值估计和选择的准确度；另外，可以控制近亲交配，避免性状衰退。因此，一个可靠准确的系谱记录对于选择育种是非常重要的。此外，系谱往往通过个体、父本和母本三列形式保存，很难直观的查看个体的祖先和后代信息。因此，系谱的可视化就变得非常重要。在windows平台下，The University of Minnesota杨达教授课题组开发了一个可用于显示个体系谱的<a href="https://animalgene.umn.edu/pedigraph">pedigraph</a>软件，可以显示很多个体的系谱，功能非常强大，但需要利用参数文件，配置使用。 The University of New England的Brian Kinghorn教授开发了<a href="https://bkinghor.une.edu.au/pedigree.htm">pedigree viewer</a>软件，可以整理、提纯系谱，并且可以在窗口中直观地显示个体的系谱，但如果个体的数量非常多，个体将重叠在一起，系谱显示还需要进一步优化。在R环境下，pedigree，nadiv，optiSel等包均有系谱整理的功能，kinship2, synbreed等包都可以画图，但是一旦系谱包括的个体数量多，画出来的系谱树，个体间重叠非常厉害。</p>
 <p>因此利用data.table和igraph两个包处理数据、绘图能力强的特点，开发了<a href="https://github.com/luansheng/visPedigree">visPedigree</a>包，进一步增强了系谱整理的功能，可以设置世代数，追溯提取任意个体的祖先和后代个体；并通过简化系谱和显示系谱缩略图等方法，自动优化系谱树布局、快速显示包括大量个体(每个世代个体数&gt;10000)的系谱。主要内容包括：</p>
 <ol style="list-style-type: decimal">
-<li>安装visPedigree包</li>
-<li>系谱格式说明</li>
-<li>检查和整理系谱</li>
-<li>绘制系谱</li>
+<li><a href="#1">安装visPedigree包</a></li>
+<li><a href="#2">系谱格式说明</a></li>
+<li><a href="#3">检查和整理系谱</a></li>
+<li><a href="#4">绘制系谱</a></li>
 </ol>
 <div id="vispedigree" class="section level2">
-<h2>1. 安装visPedigree包</h2>
+<h2><a id="1">1. 安装visPedigree包</a></h2>
 <p>目前visPedigree包还没有发布到cran，但利用devtools包，可以从github上进行安装。</p>
 <p>以Rstudio平台为例，如果没有安装devtools包，首先进行安装：</p>
 <pre class="r"><code>install.packages(&quot;devtools&quot;)</code></pre>
@@ -301,7 +301,7 @@ MathJax.Hub.Config({
 <pre class="r"><code>suppressPackageStartupMessages(require(visPedigree))</code></pre>
 </div>
 <div class="section level2">
-<h2>2. 系谱格式说明</h2>
+<h2><a id="2">2. 系谱格式说明</a></h2>
 <p>系谱数据的前三列顺序必须为个体、父本和母本ID，系谱文件中可以包括其他信息如性别、出生年月、世代等。</p>
 <p>个体丢失的亲本可以用0、*、“NA”等表示，推荐用0表示。空格和空值也可表示丢失亲本，但是不推荐使用。</p>
 <p>如果从文件中读取系谱信息，建议使用data.table包的fread函数。该函数功能非常强大，可以自动识别文本中各种分隔符。</p>
@@ -319,7 +319,7 @@ head(ped_2)</code></pre>
 ## 6: X0YX0400    0   0 Male    0</code></pre>
 </div>
 <div class="section level2">
-<h2>3. 检查和整理系谱</h2>
+<h2><a id="3">3. 检查和整理系谱</a></h2>
 <div class="section level3">
 <h3>3.1 概述</h3>
 <p>通过tidyped函数可以检查和整理系谱，主要包括：</p>
@@ -471,7 +471,7 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
 </div>
 </div>
 <div class="section level2">
-<h2>4. 绘制系谱</h2>
+<h2><a id="4">4. 绘制系谱</a></h2>
 <p>利用visped函数，可以绘制多代系谱图。系谱图可以在R、Rstudio默认图形设备显示，并且可以保存在pdf文件中。保存在pdf文件中的系谱图是矢量图，更为清晰、可辨认，个体间不会发生重叠现象。当系谱中个体的数量多，个体的ID编号较长时，适合保存在pdf文件中。如果很多个体为全同胞个体，譬如水产动物的核心育种群体，可以对系谱进行简化显示，这样即使每代个体数量超过10000，也可以非常快的绘制出系谱图。如果每个世代包括的个体数量太多，且个体的ID太长，受限于pdf文件的宽度（最大为200英寸），无法绘制系谱图时，将不显示个体的ID号，只显示一个系谱的缩略图，用于帮助育种者快速浏览核心群体的构建过程，查看是否有外血引入。</p>
 <p><strong>重要提示：</strong>强烈推荐在整理系谱时，指定cand参数。根据cand参数指定的个体提纯的系谱，个体所属世代的推断更加准确，个体在绘制出的系谱图中所在的位置将更为合理。</p>
 <p>绘制simple_ped系谱数据集中个体J5X804的2代祖先系谱图，高清矢量图见<a href="/post/doc/simplepedJ5x804.pdf">pdf文件</a>：</p>
