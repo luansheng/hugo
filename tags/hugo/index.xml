@@ -7,22 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Sheng Luan</copyright>
-    <lastBuildDate>Thu, 07 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>利用hugo展示新发表的论文</title>
-      <link>/post/how-to-add-new-paper-in-publication/</link>
-      <pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
+      <title>Getting started with the Academic framework for Hugo</title>
+      <link>/post/getting-started/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0800</pubDate>
       
-      <guid>/post/how-to-add-new-paper-in-publication/</guid>
-      <description>利用益辉的blogdown包，发post是很简单的。直接点击Addins-&amp;gt;New post就可以了。但是如果要在Publication</description>
-    </item>
-    
-  </channel>
-</rss>ns, talks, and projects Configurable widgets available for Biography, Publications, Projects, News/Blog, Talks, and Contact Need a different section? Just use the Custom widget! Write in Markdown for easy formatting and code highlighting, with LaTeX for mathematical expressions Social/academic network linking, Google Analytics, and Disqus comments Responsive and mobile friendly Simple and refreshing one page design Multilingual and easy to customize  Table of Contents    Installation Getting Started  Core parameters Introduce yourself Customize the homepage Add your content Remove unused widgets and pages Themes Customization &amp;amp; updating  Advanced customization  Navigation menu Website icon Analytics Third party and local scripts (JS) Language and translation Permalinks Advanced style customization (CSS)  Updating Feedback &amp;amp; Contributing License    Installation  Install Hugo and create a new website by typing the following commands in your Terminal or Command Prompt app:</description>
+      <guid>/post/getting-started/</guid>
+      <description>The Academic framework enables you to easily create a beautifully simple personal or academic website using the Hugo static site generator.
+Key features:
+ Easily manage your homepage, blog posts, publications, talks, and projects Configurable widgets available for Biography, Publications, Projects, News/Blog, Talks, and Contact Need a different section? Just use the Custom widget! Write in Markdown for easy formatting and code highlighting, with LaTeX for mathematical expressions Social/academic network linking, Google Analytics, and Disqus comments Responsive and mobile friendly Simple and refreshing one page design Multilingual and easy to customize  Table of Contents    Installation Getting Started  Core parameters Introduce yourself Customize the homepage Add your content Remove unused widgets and pages Themes Customization &amp;amp; updating  Advanced customization  Navigation menu Website icon Analytics Third party and local scripts (JS) Language and translation Permalinks Advanced style customization (CSS)  Updating Feedback &amp;amp; Contributing License    Installation  Install Hugo and create a new website by typing the following commands in your Terminal or Command Prompt app:</description>
     </item>
     
     <item>
