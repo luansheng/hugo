@@ -39,7 +39,8 @@
 &lt;div class=&#34;section level2&#34;&gt;
 &lt;h2&gt;&lt;a id=&#34;2&#34;&gt;2. 系谱格式说明&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;系谱数据的前三列顺序必须为个体、父本和母本ID，系谱文件中可以包括其他信息如性别、出生年月、世代等。&lt;/p&gt;
-&lt;p&gt;个体丢失的亲本可以用0、*、“NA”等表示，推荐用0表示。空格和空值也可表示丢失亲本，但是不推荐使用。&lt;/p&gt;
+&lt;p&gt;个体丢失的亲本可以用0、*、“NA”等表示，推荐用0表示。空格和空值也可表示丢失亲本，但是不推荐使用。个体列如果存在这些值，该行将直接被删除。
+其他列如性别中的丢失值，请直接用NA来表示。&lt;/p&gt;
 &lt;p&gt;如果从文件中读取系谱信息，建议使用data.table包的fread函数。该函数功能非常强大，可以自动识别文本中各种分隔符。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ped_2 &amp;lt;- data.table::fread(file=&amp;quot;datasets/ped2.csv&amp;quot;,
                            sep=&amp;quot;,&amp;quot;,
