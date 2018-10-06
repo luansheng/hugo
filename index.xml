@@ -18,14 +18,21 @@
       <guid>/post/the-first-package-vispedigree-0-1/</guid>
       <description>&lt;p&gt;在动物选择育种中，系谱的作用不言而喻。一方面利用系谱信息，可以提高育种值估计和选择的准确度；另外，可以控制近亲交配，避免性状衰退。因此，一个可靠准确的系谱记录对于选择育种是非常重要的。此外，系谱往往通过个体、父本和母本三列形式保存，很难直观的查看个体的祖先和后代信息。因此，系谱的可视化就变得非常重要。在windows平台下，The University of Minnesota杨达教授课题组开发了一个可用于显示个体系谱的&lt;a href=&#34;https://animalgene.umn.edu/pedigraph&#34;&gt;pedigraph&lt;/a&gt;软件，可以显示很多个体的系谱，功能非常强大，但需要利用参数文件，配置使用。 The University of New England的Brian Kinghorn教授开发了&lt;a href=&#34;https://bkinghor.une.edu.au/pedigree.htm&#34;&gt;pedigree viewer&lt;/a&gt;软件，可以整理、提纯系谱，并且可以在窗口中直观地显示个体的系谱，但如果个体的数量非常多，个体将重叠在一起，系谱显示还需要进一步优化。在R环境下，pedigree，nadiv，optiSel等包均有系谱整理的功能，kinship2, synbreed等包都可以画图，但是一旦系谱包括的个体数量多，画出来的系谱树，个体间重叠非常厉害。&lt;/p&gt;
 &lt;p&gt;因此利用data.table和igraph两个包处理数据、绘图能力强的特点，开发了&lt;a href=&#34;https://github.com/luansheng/visPedigree&#34;&gt;visPedigree&lt;/a&gt;包，进一步增强了系谱整理的功能，可以设置世代数，追溯提取任意个体的祖先和后代个体；并通过简化系谱和显示系谱缩略图等方法，自动优化系谱树布局、快速显示包括大量个体(每个世代个体数&amp;gt;10000)的系谱。主要内容包括：&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;a href=&#34;#1&#34;&gt;安装visPedigree包&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#2&#34;&gt;系谱格式说明&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#3&#34;&gt;检查和整理系谱&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#4&#34;&gt;绘制系谱&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1 &lt;a href=&#34;#1&#34;&gt;安装visPedigree包&lt;/a&gt;&lt;br /&gt;
+2 &lt;a href=&#34;#2&#34;&gt;系谱格式说明&lt;/a&gt;&lt;br /&gt;
+3 &lt;a href=&#34;#3&#34;&gt;检查和整理系谱&lt;/a&gt;&lt;br /&gt;
+3.1 &lt;a href=&#34;#3.1&#34;&gt;概述&lt;/a&gt;&lt;br /&gt;
+3.2 &lt;a href=&#34;#3.2&#34;&gt;提取指定个体的系谱&lt;/a&gt;&lt;br /&gt;
+3.3 &lt;a href=&#34;#3.3&#34;&gt;数字化系谱&lt;/a&gt;&lt;br /&gt;
+4 &lt;a href=&#34;#4&#34;&gt;绘制系谱&lt;/a&gt;&lt;br /&gt;
+4.1 &lt;a href=&#34;#4.1&#34;&gt;绘制简单系谱图&lt;/a&gt;&lt;br /&gt;
+4.2 &lt;a href=&#34;#4.2&#34;&gt;绘制简化系谱图&lt;/a&gt;&lt;br /&gt;
+4.3 &lt;a href=&#34;#4.3&#34;&gt;绘制系谱框架图&lt;/a&gt;&lt;br /&gt;
+4.4 &lt;a href=&#34;#4.4&#34;&gt;应用场景&lt;/a&gt;&lt;br /&gt;
+4.4.1 &lt;a href=&#34;#4.4.1&#34;&gt;追踪个体的奠基者组成情况&lt;/a&gt;&lt;br /&gt;
+4.4.2 &lt;a href=&#34;#4.4.2&#34;&gt;观察配种方案中不同家系的贡献情况&lt;/a&gt;&lt;/p&gt;
 &lt;div id=&#34;vispedigree&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;a id=&#34;1&#34;&gt;1. 安装visPedigree包&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a id=&#34;1&#34;&gt;1 安装visPedigree包&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;目前visPedigree包还没有发布到cran，但利用devtools包，可以从github上进行安装。&lt;/p&gt;
 &lt;p&gt;以Rstudio平台为例，如果没有安装devtools包，首先进行安装：&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;devtools&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
@@ -37,7 +44,7 @@
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages(require(visPedigree))&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;a id=&#34;2&#34;&gt;2. 系谱格式说明&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a id=&#34;2&#34;&gt;2 系谱格式说明&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;系谱数据的前三列顺序必须为个体、父本和母本ID，系谱文件中可以包括其他信息如性别、出生年月、世代等。&lt;/p&gt;
 &lt;p&gt;个体丢失的亲本可以用0、*、“NA”等表示，推荐用0表示。空格和空值也可表示丢失亲本，但是不推荐使用。个体列如果存在这些值，该行将直接被删除。
 其他列如性别中的丢失值，请直接用NA来表示。&lt;/p&gt;
@@ -56,9 +63,9 @@ head(ped_2)&lt;/code&gt;&lt;/pre&gt;
 ## 6: X0YX0400    0   0 Male    0&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;a id=&#34;3&#34;&gt;3. 检查和整理系谱&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a id=&#34;3&#34;&gt;3 检查和整理系谱&lt;/a&gt;&lt;/h2&gt;
 &lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;3.1 概述&lt;/h3&gt;
+&lt;h3&gt;&lt;a id=&#34;3.1&#34;&gt;3.1 概述&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;通过tidyped函数可以检查和整理系谱，主要包括：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;检查系谱是否存在重复个体编号；如果存在，删除重复个体，并给出提示；&lt;/li&gt;
@@ -155,7 +162,7 @@ data.table::fwrite(x=saved_ped,file = &amp;quot;tidysimpleped.csv&amp;quot;,sep=
 head(saved_ped)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;3.2 提取指定个体的系谱&lt;/h3&gt;
+&lt;h3&gt;&lt;a id=&#34;3.2&#34;&gt;3.2 提取指定个体的系谱&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;设置cand参数，可以追溯指定个体的系谱。并且会在返回的数据集中增加新的一列Cand。TRUE表示该个体为cand个体。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tidy_simple_ped_J5X804_ancestors &amp;lt;- tidyped(ped=tidy_simple_ped_no_gen_num,cand=&amp;quot;J5X804&amp;quot;)
 tail(tidy_simple_ped_J5X804_ancestors)&lt;/code&gt;&lt;/pre&gt;
@@ -197,13 +204,13 @@ print(tidy_simple_ped_J0Z990_offspring)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;追溯J0Z990的子代，可以发现共计有5个后裔个体。&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;3.3 数字化系谱&lt;/h3&gt;
+&lt;h3&gt;&lt;a id=&#34;3.3&#34;&gt;3.3 数字化系谱&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;一些程序，会要求提供数字系谱进行遗传评估。在计算加性遗传相关矩阵时，也要求个体连续编号。
 tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字系谱。如果不需要，可以设置&lt;code&gt;addnum=FALSE&lt;/code&gt;将该功能关闭。&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level2&#34;&gt;
-&lt;h2&gt;&lt;a id=&#34;4&#34;&gt;4. 绘制系谱&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a id=&#34;4&#34;&gt;4 绘制系谱&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;利用visped函数，可以绘制多代系谱图。系谱图可以在R、Rstudio默认图形设备显示，并且可以保存在pdf文件中。保存在pdf文件中的系谱图是矢量图，更为清晰、可辨认，个体间不会发生重叠现象。当系谱中个体的数量多，个体的ID编号较长时，适合保存在pdf文件中。如果很多个体为全同胞个体，譬如水产动物的核心育种群体，可以对系谱进行简化显示，这样即使每代个体数量超过10000，也可以非常快的绘制出系谱图。如果每个世代包括的个体数量太多，且个体的ID太长，受限于pdf文件的宽度（最大为200英寸），无法绘制系谱图时，将不显示个体的ID号，只显示一个系谱的缩略图，用于帮助育种者快速浏览核心群体的构建过程，查看是否有外血引入。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;重要提示：&lt;/strong&gt;强烈推荐在整理系谱时，指定cand参数。根据cand参数指定的个体提纯的系谱，个体所属世代的推断更加准确，个体在绘制出的系谱图中所在的位置将更为合理。&lt;/p&gt;
 &lt;p&gt;绘制simple_ped系谱数据集中个体J5X804的2代祖先系谱图，高清矢量图见&lt;a href=&#34;/post/doc/simplepedJ5x804.pdf&#34;&gt;pdf文件&lt;/a&gt;：&lt;/p&gt;
@@ -215,7 +222,7 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/simplepedJ5x804-1.png&#34; width=&#34;2700&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;在系谱图中，使用了2种形状和3种颜色来表示各种信息。圆形代表个体，正方形代表简化后的全同胞个体。暗天蓝色表示雄性，暗金黄色表示雌性，暗橄榄绿表示性别未知。系谱图上顶端为祖先个体，底部为后裔个体。亲本和子代之间，通过一个点进行连接，子代到中间节点的连线均为灰色，中间节点连接到父本和母本的线，与父母本各自的颜色相同。&lt;/p&gt;
 &lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;4.1 绘制简单系谱图&lt;/h3&gt;
+&lt;h3&gt;&lt;a id=&#34;4.1&#34;&gt;4.1 绘制简单系谱图&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;绘制整理后的simple_ped系谱图，在R或者Rstudio默认图形设备显示。整理系谱数据集时，需要将tidyped函数的addgen和addnum参数设置为TRUE。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidy_simple_ped)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.7.&lt;/code&gt;&lt;/pre&gt;
@@ -224,12 +231,12 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
 &lt;pre&gt;&lt;code&gt;## It is recommended that the pedigree graph is saved in the pdf file using the parameter file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The graph in the pdf file is a vector drawing: shapes, labels and lines are legible; shapes and labels isn&amp;#39;t overlapped.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/vissimpleped-1.png&#34; width=&#34;3600&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;通常在Rstudio的Plots面板上显示的图片，清晰度较差，如果个体数量多，相互间也会发生重叠。将系谱图存为pdf文件可以有效的避免上述问题，获得高质量的矢量图。设置showgraph = FALSE，将不在默认图形设备上输出图形。&lt;/p&gt;
+&lt;p&gt;通常在Rstudio的Plots面板上显示的图片，清晰度较差，如果个体数量多，受限于默认的图片显示尺寸，个体ID相互间也会发生重叠。将系谱图存为pdf文件可以有效的避免上述问题，获得高质量的矢量图。设置showgraph = FALSE，将不在默认图形设备上输出图形。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressMessages(visped(tidy_simple_ped, showgraph = FALSE, file=&amp;quot;doc/simpleped.pdf&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;打开&lt;a href=&#34;/post/doc/simpleped.pdf&#34;&gt;simpleped.pdf&lt;/a&gt;文件，会看到高清晰度的系谱。&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;4.2 绘制简化系谱图&lt;/h3&gt;
+&lt;h3&gt;&lt;a id=&#34;4.2&#34;&gt;4.2 绘制简化系谱图&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;对包自带的deep_ped进行整理，然后绘制系谱图&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidyped(deep_ped))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;  Too many individuals (&amp;gt;=3362) in one generation!!! Two choices:
@@ -237,7 +244,7 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
 2. Visualizing all nodes without labels using the parameter outline = TRUE.
 Rerun visped() function!&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;函数提示，某个世代包括的个体数量太多，无法绘制系谱图。建议利用compact或者outline参数来简化系谱图。&lt;/p&gt;
-&lt;p&gt;首先尝试一下compact参数，并且输出到deepped1.pdf文件中。在默认图形设备上输出的图片，由于个体数量太多，设置的图片尺寸不够大，因此重叠问题严重。&lt;/p&gt;
+&lt;p&gt;首先尝试一下compact参数，并且输出到deepped1.pdf文件中。在默认图形设备上输出的图片，由于个体数量太多，受限于默认设置的图片尺寸不够大，因此重叠问题严重。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidyped(deep_ped),compact = TRUE, showgraph=TRUE, file=&amp;quot;doc/deepped1.pdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): Blank, Zero, asterisk, or NA are read as
 ## a missing parent in the sire column of the pedigree.&lt;/code&gt;&lt;/pre&gt;
@@ -261,8 +268,8 @@ Rerun visped() function!&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;再打开&lt;a href=&#34;/post/doc/deepped2.pdf&#34;&gt;deepped2.pdf&lt;/a&gt;文件,查看高清的矢量系谱图，ID与图形的匹配度更高。如果感觉不合适，可以继续调整cex。&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;4.3 绘制系谱框架图&lt;/h3&gt;
-&lt;p&gt;设置&lt;code&gt;outline=TRUE&lt;/code&gt;绘制系谱的框架图，该图将不会显示系谱个体的ID号。&lt;/p&gt;
+&lt;h3&gt;&lt;a id=&#34;4.3&#34;&gt;4.3 绘制系谱框架图&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;设置&lt;code&gt;outline=TRUE&lt;/code&gt;绘制系谱的框架图，该图将不会显示系谱个体的ID号。当系谱包括的个体数量特别多时，框架图将非常有效。&lt;/p&gt;
 &lt;p&gt;通过这个图，可以更为清晰的发现在某些世代有外血群体引入。生成的pdf文件请点击&lt;a href=&#34;/post/doc/deepped3.pdf&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressMessages(visped(tidyped(deep_ped),compact = TRUE, outline=TRUE, showgraph = TRUE, file=&amp;quot;doc/deepped3.pdf&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): Blank, Zero, asterisk, or NA are read as
@@ -282,7 +289,18 @@ suppressMessages(visped(cand_2007_G8_tidy_ped,compact = TRUE, outline=TRUE, show
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/bigfullsibped-1.png&#34; width=&#34;3600&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
-&lt;h3&gt;4.4 观察配种方案中不同家系贡献个体情况&lt;/h3&gt;
+&lt;h3&gt;&lt;a id=&#34;4.4&#34;&gt;4.4 应用场景&lt;/a&gt;&lt;/h3&gt;
+&lt;div class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;a id=&#34;4.4.1&#34;&gt;4.4.1 追踪个体的奠基者情况&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;选择育种的过程，实际上就是将分散在多个奠基者个体中的有利基因，通过连续不断的多代交配设计，富集到后代个体中的一个过程。它背后的支持理论，就是大家熟知的微效多基因假说。&lt;/p&gt;
+&lt;p&gt;我们选择deep_ped数据集中的一尾个体“J110550G”，可视化它的系谱。pdf系谱图见&lt;a href=&#34;/post/doc/J110550Gped.pdf&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressWarnings(J110550G_ped &amp;lt;- tidyped(deep_ped,cand=&amp;quot;J110550G&amp;quot;))
+suppressMessages(visped(J110550G_ped,showgraph = TRUE,file=&amp;quot;doc/J110550Gped.pdf&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/pedofoneind-1.png&#34; width=&#34;6000&#34; /&gt;
+从上图中可以看出，J110550G个体的奠基者个体（没有亲本）数量为71个，这表示该个体富集了分散在上述奠基者个体的多个有利基因，因此育种目标性状才会表现更加优良。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;section level4&#34;&gt;
+&lt;h4&gt;&lt;a id=&#34;4.4.2&#34;&gt;4.4.2 观察配种方案中不同家系贡献个体情况&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;当利用最佳贡献理论进行优化配种时，每个家系贡献的个体数量是不一致，综合选择指数高的家系，贡献更多的个体。通过可视化系谱，可以直观地查看不同家系的贡献比例。&lt;/p&gt;
 &lt;p&gt;下边代码，将展示核心育种群2007年出生的106个家系的亲本组成情况。注意在tidyped函数中设置tracegen=2，只展示父母和祖父母两个世代。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;  suppressWarnings(
@@ -316,6 +334,7 @@ suppressMessages(visped(cand_2007_G8_tidy_ped,compact = TRUE, outline=TRUE, show
   )&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/optiMate-1.png&#34; width=&#34;3600&#34; /&gt;
 上图中，底部为核心群106个家系，中间为其父母本个体，顶部为祖父母个体。可以看出，父母本共计由80个父本、106个母本组成。从上图中可以看出，父母本来自54个全同胞家系，由于采用了最佳贡献理论配种，其中25个父母本来自两个全同胞家系，约占父母本总数的13.44%。&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
