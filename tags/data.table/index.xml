@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Sheng Luan</copyright>
-    <lastBuildDate>Sun, 03 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/data.table/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>visPedigree use guide</title>
+      <link>/post/vispedigree-use-guide/</link>
+      <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/vispedigree-use-guide/</guid>
+      <description>Pedigree plays an important role in animal selection and breeding. On the one hand, using pedigree information can improve the accuracy of breeding value estimation and selection. On the other hand, the use of pedigree information can also control inbreeding and avoid depression of traits.Therefore, the reliable and accurate pedigree records are very important for a selective breeding program. In addition, a pedigree is usually saved in the form of three columns: individual, sire, and dam, which makes it difficult to visually view individual ancestor and offspring individuals.</description>
+    </item>
     
     <item>
       <title>data.table学习笔记5</title>

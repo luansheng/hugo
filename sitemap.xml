@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/post/vispedigree-use-guide/</loc>
+      <lastmod>2018-11-09T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/the-first-package-vispedigree-0-1/</loc>
       <lastmod>2018-09-24T00:00:00+00:00</lastmod>
     </url>
@@ -644,7 +653,7 @@
     <url>
     
       <loc>/tags/data.table/</loc>
-      <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+      <lastmod>2018-11-09T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -764,7 +773,7 @@
     <url>
     
       <loc>/tags/hugo/</loc>
-      <lastmod>2017-09-03T00:00:00+08:00</lastmod>
+      <lastmod>2018-06-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -774,7 +783,7 @@
     <url>
     
       <loc>/tags/hugo/</loc>
-      <lastmod>2018-06-07T00:00:00+00:00</lastmod>
+      <lastmod>2017-09-03T00:00:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -785,6 +794,16 @@
     
       <loc>/tags/ige/</loc>
       <lastmod>2018-05-11T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/igraph/</loc>
+      <lastmod>2018-11-09T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -994,7 +1013,7 @@
     <url>
     
       <loc>/tags/r/</loc>
-      <lastmod>2018-08-08T00:00:00+00:00</lastmod>
+      <lastmod>2018-11-09T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -1144,7 +1163,7 @@
     <url>
     
       <loc>/categories/visualization/</loc>
-      <lastmod>2018-01-22T00:00:00+00:00</lastmod>
+      <lastmod>2018-11-09T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

@@ -69,7 +69,7 @@
     <item>
       <title>Data.table</title>
       <link>/tags/data.table/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/data.table/</guid>
       <description></description>
@@ -150,7 +150,7 @@
     <item>
       <title>Hugo</title>
       <link>/tags/hugo/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 +0800</pubDate>
+      <pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/hugo/</guid>
       <description></description>
@@ -159,7 +159,7 @@
     <item>
       <title>Hugo</title>
       <link>/tags/hugo/</link>
-      <pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0800</pubDate>
       
       <guid>/tags/hugo/</guid>
       <description></description>
@@ -171,6 +171,15 @@
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/ige/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Igraph</title>
+      <link>/tags/igraph/</link>
+      <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/igraph/</guid>
       <description></description>
     </item>
     
@@ -294,7 +303,7 @@
     <item>
       <title>R</title>
       <link>/tags/r/</link>
-      <pubDate>Wed, 08 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/r/</guid>
       <description></description>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Visualization on 非淡泊无以明志，非宁静无以致远。</title>
-    <link>/categories/visualization/</link>
-    <description>Recent content in Visualization on 非淡泊无以明志，非宁静无以致远。</description>
+    <title>Igraph on 非淡泊无以明志，非宁静无以致远。</title>
+    <link>/tags/igraph/</link>
+    <description>Recent content in Igraph on 非淡泊无以明志，非宁静无以致远。</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Sheng Luan</copyright>
     <lastBuildDate>Fri, 09 Nov 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/visualization/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/igraph/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>/post/vispedigree-use-guide/</guid>
       <description>Pedigree plays an important role in animal selection and breeding. On the one hand, using pedigree information can improve the accuracy of breeding value estimation and selection. On the other hand, the use of pedigree information can also control inbreeding and avoid depression of traits.Therefore, the reliable and accurate pedigree records are very important for a selective breeding program. In addition, a pedigree is usually saved in the form of three columns: individual, sire, and dam, which makes it difficult to visually view individual ancestor and offspring individuals.</description>
-    </item>
-    
-    <item>
-      <title>Rgraphviz 学习笔记</title>
-      <link>/post/rgraphviz-note1/</link>
-      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rgraphviz-note1/</guid>
-      <description>graphviz (Graph Visualization Software)是贝尔实验室鼓捣出来的一个用来展示结构化信息的软件。有一个对应的Rgraphviz包，学习一下，这是一个用来画系谱图</description>
     </item>
     
   </channel>

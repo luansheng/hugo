@@ -11,6 +11,31 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>visPedigree use guide</title>
+      <link>/post/vispedigree-use-guide/</link>
+      <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/vispedigree-use-guide/</guid>
+      <description>&lt;p&gt;Pedigree plays an important role in animal selection and breeding. On the one hand, using pedigree information can improve the accuracy of breeding value estimation and selection. On the other hand, the use of pedigree information can also control inbreeding and avoid depression of traits.
+Therefore, the reliable and accurate pedigree records are very important for a selective breeding program. In addition, a pedigree is usually saved in the form of three columns: individual, sire, and dam, which makes it difficult to visually view individual ancestor and offspring individuals. Therefore, it is very important to visualize the pedigree of individuals. In the Windows platform, Professor Yang Da’s team from the University of Minnesota developed a software &lt;a href=&#34;https://animalgene.umn.edu/pedigraph&#34;&gt;pedigraph&lt;/a&gt; that can be used to display individual pedigrees. It can display a pedigree included many individuals. It is very powerful, but it needs be configured by a parameter file. Professor Brian Kinghorn in the University of New England developed the software &lt;a href=&#34;https://bkinghor.une.edu.au/pedigree.htm&#34;&gt;pedigree viewer&lt;/a&gt;, which can trim and prune the pedigree, and visually display the individuals’ pedigrees in a windows. But if the number of individuals is very large, the individuals will overlap each other. So the function about pedigree display needs further to be optimized. Under the R environment, packages such as pedigree, nadiv, optiSel, etc. all have the function of pedigree preparation. We also can use packages like kinship2 and synbreed to draw a pedigree tree. However, the drawing pedigree tree will be overlapped greatly when the number of individuals is large.&lt;/p&gt;
+&lt;p&gt;Therefore, we developed the &lt;a href=&#34;https://github.com/luansheng/visPedigree&#34;&gt;visPedigree&lt;/a&gt; package based data.table and igraph packages with strong data clean and drawing social network, which further enhanced the function of tidying and visualizing pedigree. Using this package, we can trace and prune the ancestors and descendants of any individual before and after different generations. This package also can help us automatically optimize the layout of the pedigree tree and quickly display the pedigree including a large number of individuals (the number of individuals in each generation &amp;gt; 10000) by reducing the full-sib individuals in the pedigree and outlining the pedigree. The main contents of this article are as follows：&lt;/p&gt;
+&lt;p&gt;1 &lt;a href=&#34;#1&#34;&gt;Installation of the visPedigree package&lt;/a&gt;&lt;br /&gt;
+2 &lt;a href=&#34;#2&#34;&gt;The specification of pedigree format&lt;/a&gt;&lt;br /&gt;
+3 &lt;a href=&#34;#3&#34;&gt;Checking and tidying pedigree&lt;/a&gt;&lt;br /&gt;
+3.1 &lt;a href=&#34;#3.1&#34;&gt;Introduction&lt;/a&gt;&lt;br /&gt;
+3.2 &lt;a href=&#34;#3.2&#34;&gt;Tracing the pedigree of a specific individual&lt;/a&gt;&lt;br /&gt;
+3.3 &lt;a href=&#34;#3.3&#34;&gt;Creating a integer pedigree&lt;/a&gt;&lt;br /&gt;
+4 &lt;a href=&#34;#4&#34;&gt;Drawing the pedigree&lt;/a&gt;&lt;br /&gt;
+4.1 &lt;a href=&#34;#4.1&#34;&gt;A simple pedigree tree&lt;/a&gt;&lt;br /&gt;
+4.2 &lt;a href=&#34;#4.2&#34;&gt;A reduced pedigree tree&lt;/a&gt;&lt;br /&gt;
+4.3 &lt;a href=&#34;#4.3&#34;&gt;A outlined pedigree tree&lt;/a&gt;&lt;br /&gt;
+4.4 &lt;a href=&#34;#4.4&#34;&gt;How to use this package in a selective breeding program&lt;/a&gt;&lt;br /&gt;
+4.4.1 &lt;a href=&#34;#4.4.1&#34;&gt;Analysis of fouders for an individual&lt;/a&gt;&lt;br /&gt;
+4.4.2 &lt;a href=&#34;#4.4.2&#34;&gt;The contribution of different families in a selective breeding program&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>visPedigree使用指南</title>
       <link>/post/the-first-package-vispedigree-0-1/</link>
       <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
@@ -1266,29 +1291,6 @@ E(u)= (I-P)^{-1}P_{b}Q_{b}g = Qg
 &lt;p&gt;逻辑解释：如果双亲已知，那么育种值方差的一半（父母本各一半育种值，从方差角度，就是1/4+1/4=1/2）是可以被解释的，剩余的1/2，转换为倒数，就是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{2}^{-1}=2\)&lt;/span&gt;，加到A矩阵的逆矩阵相应系数上。&lt;/p&gt;
 &lt;p&gt;到此为止，没怎么看明白。&lt;/p&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>read a file by python</title>
-      <link>/post/read-a-file-by-python/</link>
-      <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/read-a-file-by-python/</guid>
-      <description>&lt;p&gt;栾佳硕的任务：&lt;/p&gt;
-&lt;p&gt;1.建立一个文件，在文件中写入以下内容：&lt;/p&gt;
-&lt;p&gt;Watch the cartoon.&lt;/p&gt;
-&lt;p&gt;go fishing.&lt;/p&gt;
-&lt;p&gt;(不会了话看编程书）&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;f = open(&amp;quot;lsj.txt&amp;quot;,&amp;quot;w&amp;quot;)
-f.writelines(&amp;quot;Watch the  cartoon.\ngo fishing&amp;quot;)
-f.close()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;2.把它读出来，并且用format方法显示出来。&lt;/p&gt;
-&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;with open(&amp;quot;lsj.txt&amp;quot;,&amp;quot;r&amp;quot;) as f:
-    for line in f.readlines():
-        print(line.strip())&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Watch the  cartoon.
-## go fishing&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
