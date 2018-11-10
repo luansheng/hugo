@@ -16,22 +16,202 @@
       <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/vispedigree-use-guide/</guid>
-      <description>&lt;p&gt;Pedigree plays an important role in animal selection and breeding. On the one hand, using pedigree information can improve the accuracy of breeding value estimation and selection. On the other hand, the use of pedigree information can also control inbreeding and avoid depression of traits.
+      <description>&lt;p&gt;Pedigree plays an important role in the animal selective breeding program. On the one hand, the accuracy of estimated breeding value can be improved by pedigree information. On the other hand, the use of pedigree information can also control inbreeding and avoid depression of traits.
 Therefore, the reliable and accurate pedigree records are very important for a selective breeding program. In addition, a pedigree is usually saved in the form of three columns: individual, sire, and dam, which makes it difficult to visually view individual ancestor and offspring individuals. Therefore, it is very important to visualize the pedigree of individuals. In the Windows platform, Professor Yang Da’s team from the University of Minnesota developed a software &lt;a href=&#34;https://animalgene.umn.edu/pedigraph&#34;&gt;pedigraph&lt;/a&gt; that can be used to display individual pedigrees. It can display a pedigree included many individuals. It is very powerful, but it needs be configured by a parameter file. Professor Brian Kinghorn in the University of New England developed the software &lt;a href=&#34;https://bkinghor.une.edu.au/pedigree.htm&#34;&gt;pedigree viewer&lt;/a&gt;, which can trim and prune the pedigree, and visually display the individuals’ pedigrees in a windows. But if the number of individuals is very large, the individuals will overlap each other. So the function about pedigree display needs further to be optimized. Under the R environment, packages such as pedigree, nadiv, optiSel, etc. all have the function of pedigree preparation. We also can use packages like kinship2 and synbreed to draw a pedigree tree. However, the drawing pedigree tree will be overlapped greatly when the number of individuals is large.&lt;/p&gt;
-&lt;p&gt;Therefore, we developed the &lt;a href=&#34;https://github.com/luansheng/visPedigree&#34;&gt;visPedigree&lt;/a&gt; package based data.table and igraph packages with strong data clean and drawing social network, which further enhanced the function of tidying and visualizing pedigree. Using this package, we can trace and prune the ancestors and descendants of any individual before and after different generations. This package also can help us automatically optimize the layout of the pedigree tree and quickly display the pedigree including a large number of individuals (the number of individuals in each generation &amp;gt; 10000) by reducing the full-sib individuals in the pedigree and outlining the pedigree. The main contents of this article are as follows：&lt;/p&gt;
-&lt;p&gt;1 &lt;a href=&#34;#1&#34;&gt;Installation of the visPedigree package&lt;/a&gt;&lt;br /&gt;
-2 &lt;a href=&#34;#2&#34;&gt;The specification of pedigree format&lt;/a&gt;&lt;br /&gt;
-3 &lt;a href=&#34;#3&#34;&gt;Checking and tidying pedigree&lt;/a&gt;&lt;br /&gt;
+&lt;p&gt;Therefore, we developed the &lt;a href=&#34;https://github.com/luansheng/visPedigree&#34;&gt;visPedigree&lt;/a&gt; package based data.table and igraph packages with strong data clean and drawing social network, which further enhanced the function of tidying and visualizing pedigree. Using this package, we can trace and prune the ancestors and descendants of any individual before and after different generations. This package also can help us automatically optimize the layout of the pedigree tree and quickly display the pedigree including a large number of individuals (the number of individuals in each generation &amp;gt; 10000) by reducing the full-sib individuals in the pedigree and outlining the pedigree. The main contents of this blog are as follows：&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;a href=&#34;#1&#34;&gt;Installation of the visPedigree package&lt;/a&gt;&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2&#34;&gt;The specification of pedigree format&lt;/a&gt;&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3&#34;&gt;Checking and tidying pedigree&lt;/a&gt;&lt;br /&gt;
 3.1 &lt;a href=&#34;#3.1&#34;&gt;Introduction&lt;/a&gt;&lt;br /&gt;
 3.2 &lt;a href=&#34;#3.2&#34;&gt;Tracing the pedigree of a specific individual&lt;/a&gt;&lt;br /&gt;
 3.3 &lt;a href=&#34;#3.3&#34;&gt;Creating a integer pedigree&lt;/a&gt;&lt;br /&gt;
-4 &lt;a href=&#34;#4&#34;&gt;Drawing the pedigree&lt;/a&gt;&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4&#34;&gt;Drawing the pedigree&lt;/a&gt;&lt;br /&gt;
 4.1 &lt;a href=&#34;#4.1&#34;&gt;A simple pedigree tree&lt;/a&gt;&lt;br /&gt;
 4.2 &lt;a href=&#34;#4.2&#34;&gt;A reduced pedigree tree&lt;/a&gt;&lt;br /&gt;
 4.3 &lt;a href=&#34;#4.3&#34;&gt;A outlined pedigree tree&lt;/a&gt;&lt;br /&gt;
 4.4 &lt;a href=&#34;#4.4&#34;&gt;How to use this package in a selective breeding program&lt;/a&gt;&lt;br /&gt;
 4.4.1 &lt;a href=&#34;#4.4.1&#34;&gt;Analysis of fouders for an individual&lt;/a&gt;&lt;br /&gt;
-4.4.2 &lt;a href=&#34;#4.4.2&#34;&gt;The contribution of different families in a selective breeding program&lt;/a&gt;&lt;/p&gt;
+4.4.2 &lt;a href=&#34;#4.4.2&#34;&gt;The contribution of different families in a selective breeding program&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;installation-of-the-vispedigree-package&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;a id=&#34;1&#34;&gt;1. Installation of the visPedigree package&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The visPedigree package has not been released in cran, but it can be installed from github(&lt;a href=&#34;https://github.com&#34; class=&#34;uri&#34;&gt;https://github.com&lt;/a&gt;) using the devtools package.&lt;/p&gt;
+&lt;p&gt;In this blog, all R scripts are runned in Rstudio. If the devtools package is not found in the library, please install it first, then load it.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages(is_installed &amp;lt;- require(devtools))
+if (!is_installed) {
+  install.packages(&amp;quot;devtools&amp;quot;)  
+  suppressPackageStartupMessages(require(devtools))  
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If the visPedigree package is not found in the library, please install it from github, then load it. The package is developed and depends on data.table and igraph packages. If these two packages are not installed, they will be installed together.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressPackageStartupMessages(is_installed &amp;lt;- require(visPedigree))
+if (!is_installed) {
+  install_github(&amp;quot;luansheng/visPedigree&amp;quot;)  
+  suppressPackageStartupMessages(require(visPedigree))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pedigree-format-specification&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;a id=&#34;2&#34;&gt;2 Pedigree format specification&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The first three columns of pedigree data must be in the order of individual, sire, and dam IDs. Names of the three columns can be assigend as you would like, but their orders must be not changded in the pedigree. Individual ID should not be coded as “”, &amp;quot; “,”0“, asterisk, and”NA“, otherwise these individuals will be deleted from the pedigree. Missing parents should be denoted by either”NA“,”0“, asterisk. Space and”&amp;quot; will also be recoded as missing parents, but not be recommended. More columns, such as sex, generation can be included in the pedigree file.&lt;/p&gt;
+&lt;p&gt;The fread function in the data.table package is used to read the pedigree information from a file. This function is very powerful and can automatically recognize various delimiters in text.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ped_2 &amp;lt;- data.table::fread(file=&amp;quot;datasets/ped2.csv&amp;quot;,
+                           sep=&amp;quot;,&amp;quot;,
+                           header = TRUE,
+                           stringsAsFactors = FALSE)
+head(ped_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##          ID Sire Dam  Sex Cand
+## 1: X0YY0500    0   0 Male    0
+## 2: X0YY0600    0   0 Male    0
+## 3: X0YY0700    0   0 Male    0
+## 4: X0YY1200    0   0 Male    0
+## 5: X0YX0300    0   0 Male    0
+## 6: X0YX0400    0   0 Male    0&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;checking-and-tidying-pedigree&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;a id=&#34;3&#34;&gt;3 Checking and tidying pedigree&lt;/a&gt;&lt;/h2&gt;
+&lt;div id=&#34;introduction&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;a id=&#34;3.1&#34;&gt;3.1 Introduction&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The pedigree can be checked and tidyed through the &lt;code&gt;tidyped()&lt;/code&gt; function.&lt;/p&gt;
+&lt;p&gt;This function takes a pedigree, checks duplicated, bisexual individuals, detects pedigree loop, adds missing founders, sorts the pedigree, and traces the pedigree of the candidates.&lt;/p&gt;
+&lt;p&gt;If the parameter &lt;strong&gt;cand&lt;/strong&gt; contains individuals’ IDs, then only these individuals and their ancestors or descendants will be kept in the pedigree.&lt;/p&gt;
+&lt;p&gt;The tracing direction and tracing generation number can be provided when the parameters &lt;strong&gt;trace&lt;/strong&gt; and &lt;strong&gt;tracegen&lt;/strong&gt; are not NULL.&lt;/p&gt;
+&lt;p&gt;Individual virtual generation will be infered and assigned when the parameter addgen is TRUE.&lt;/p&gt;
+&lt;p&gt;Numeric pedigree will be generated when the parameter addnum is TRUE.&lt;/p&gt;
+&lt;p&gt;All individuals’ sex will be inferred if there is not sexual information in the pedigee. If the pedigree includes the column Sex, then individuals’ sexes need to be recoded as “male”, “female”, or NA (unknown sex). Missing sexes will be identified from the pedigree structure and be added if possible.&lt;/p&gt;
+&lt;p&gt;The visPedigree package comes with multiple datasets. You can check through the following command.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data(package=&amp;quot;visPedigree&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The following code will show the &lt;strong&gt;simple_ped&lt;/strong&gt; dataset. It includes four columns, the first three are individual, sire and dam, and the last one is sex. Missing parents is written as “NA”, “0”, or asterisk. Moreover, the founder individuals were not added in the pedigree. And some parents were sorted after the offspring.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(simple_ped)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        ID   Sire    Dam    Sex
+## 1: J4Y326 J3Y620 J3Y771   male
+## 2: J1H419 J0Z938 J0Z167 female
+## 3: J2F588     NA J1Z417 female
+## 4: J1J576 J0Z938 J0Z843   male
+## 5: J1C802 J0Z333 J0C355   male
+## 6: J2Z411 J1X971 J1J134 female&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tail(simple_ped)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        ID   Sire    Dam    Sex
+## 1: J1E852 J0Z848 J0Z624 female
+## 2: J1H604 J0C583 J0Z380 female
+## 3: J5X804 J4Y326 J4E185 female
+## 4: J1I438 J0Z990 J0Z808   male
+## 5: J2C808 J1I975 J1F266   male
+## 6: J1K462 J0C317 J0C450 female&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# The number of individuals in the pedigree dataset
+nrow(simple_ped)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 31&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Individual records with missing parents
+simple_ped[Sire %in% c(&amp;quot;0&amp;quot;,&amp;quot;*&amp;quot;,&amp;quot;NA&amp;quot;,NA) | Dam %in% c(&amp;quot;0&amp;quot;,&amp;quot;*&amp;quot;,&amp;quot;NA&amp;quot;,NA)]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        ID   Sire    Dam    Sex
+## 1: J2F588     NA J1Z417 female
+## 2: J1J858 J0Z060      * female
+## 3: J3X697 J2Z903      0 female&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Small test: your try to set female J0Z167 as father of the J2F588. It will find this bisexual problem after running &lt;code&gt;tidyped()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x &amp;lt;- data.table::copy(simple_ped)
+x[ID == &amp;quot;J2F588&amp;quot;,Sire:=&amp;quot;J0Z167&amp;quot;]
+y &amp;lt;- tidyped(x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
+## asterisk, or character NA is recognized as a missing parent and is replaced
+## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): The following individuals are
+## simultaneously bisexual.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): J0Z167&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Moreover, the tidyped function will also sort the simple_ped pedigree, replace the missing parent with “NA”, put the parents behind the offspring, and add the missing founders’ pedigree.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tidy_simple_ped &amp;lt;- tidyped(simple_ped)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
+## asterisk, or character NA is recognized as a missing parent and is replaced
+## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tidy_simple_ped)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       Ind Sire  Dam    Sex Gen IndNum SireNum DamNum
+## 1: J0C032 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt; female   1      1       0      0
+## 2: J0C185 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt; female   1      2       0      0
+## 3: J0C231 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt; female   1      3       0      0
+## 4: J0C317 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt;   male   1      4       0      0
+## 5: J0C450 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt; female   1      5       0      0
+## 6: J0C561 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt;   male   1      6       0      0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tail(tidy_simple_ped)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       Ind   Sire    Dam    Sex Gen IndNum SireNum DamNum
+## 1: J1C802 J0Z333 J0C355   male   5     54      47     46
+## 2: J4E185 J3L886 J3X697 female   5     55      48     49
+## 3: J4Y326 J3Y620 J3Y771   male   5     56      50     51
+## 4: J1C929 J0Z511 J0Z444   male   6     57      53     52
+## 5: J2Y434 J1C802 J1H419 female   6     58      54     28
+## 6: J5X804 J4Y326 J4E185 female   6     59      56     55&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;nrow(tidy_simple_ped)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 59&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the prepared &lt;strong&gt;tidy_simple_ped&lt;/strong&gt;, the founders’ records including gender were added, the parents were sorted before the offspring. The number of individuals increases from 31 to 59. The column names of the animal, sire and dam are renamed to Ind, Sire, and Dam.The missing parents are uniformly replaced with “NA”, and there will be corresponding prompts after running tidyped() function. New columns including Gen, IndNum, SireNum and DamNum are added by default in the &lt;strong&gt;tidy_simple_ped&lt;/strong&gt;. These columns will be generated when setting the parameters addgen and addnum as FALSE.&lt;/p&gt;
+&lt;p&gt;If the &lt;strong&gt;simple_ped&lt;/strong&gt; dataset does not include the Sex column, it will be added in the &lt;strong&gt;tidy_simple_ped&lt;/strong&gt; dataset.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tidy_simple_ped_no_gen_num &amp;lt;- tidyped(simple_ped,addgen = FALSE,addnum = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
+## asterisk, or character NA is recognized as a missing parent and is replaced
+## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(tidy_simple_ped_no_gen_num)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       Ind Sire  Dam  Sex
+## 1: J0Z333 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt; male
+## 2: J0Z511 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt; male
+## 3: J0Z664 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt; male
+## 4: J0Z848 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt; male
+## 5: J0Z475 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt; male
+## 6: J0Z938 &amp;lt;NA&amp;gt; &amp;lt;NA&amp;gt; male&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After tidying the pedigree, you can use the &lt;strong&gt;fwrite&lt;/strong&gt; function of the data.table package to output it for the genetic evaluation software such as ASReml.&lt;/p&gt;
+&lt;p&gt;The missing parents should be replaced with 0 When saving a pedigree file.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;saved_ped &amp;lt;- data.table::copy(tidy_simple_ped)
+saved_ped[is.na(Sire),Sire:=&amp;quot;0&amp;quot;]
+saved_ped[is.na(Dam),Dam:=&amp;quot;0&amp;quot;]
+data.table::fwrite(x=saved_ped,file = &amp;quot;tidysimpleped.csv&amp;quot;,sep=&amp;quot;,&amp;quot;,quote = FALSE)
+head(saved_ped)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tracing-the-pedigree-of-a-specific-individual&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;a id=&#34;3.2&#34;&gt;3.2 Tracing the pedigree of a specific individual&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;You should set the cand parameter to trace the pedigree of a specific individual. A new column of &lt;strong&gt;Cand&lt;/strong&gt; will be added in the returned dataset. TRUE indicates that the individuals are the specific candidates. Only the candidates and their ancestors and offspring will be kept in the pedigree if this parameter is not NULL.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tidy_simple_ped_J5X804_ancestors &amp;lt;- tidyped(ped=tidy_simple_ped_no_gen_num,cand=&amp;quot;J5X804&amp;quot;)
+tail(tidy_simple_ped_J5X804_ancestors)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       Ind   Sire    Dam    Sex  Cand Gen IndNum SireNum DamNum
+## 1: J3X697 J2Z903   &amp;lt;NA&amp;gt; female FALSE   4     45      43      0
+## 2: J3Y620 J2C161 J2Z411   male FALSE   4     46      37     42
+## 3: J3Y771 J2G465 J2X544 female FALSE   4     47      40     41
+## 4: J4E185 J3L886 J3X697 female FALSE   5     48      44     45
+## 5: J4Y326 J3Y620 J3Y771   male FALSE   5     49      46     47
+## 6: J5X804 J4Y326 J4E185 female  TRUE   6     50      49     48&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;By default, only tracing candidates’ pedigree to ancestors. If you only want to trace back a specific generation number, you can set the tracegen parameter. This paramter can only be used when the trace parameter is not NULL. All generations of the candidates will be traced when the parameter tracegen is NULL.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tidy_simple_ped_J5X804_ancestors_2 &amp;lt;- tidyped(ped=tidy_simple_ped_no_gen_num,cand=&amp;quot;J5X804&amp;quot;,tracegen = 2)
+print(tidy_simple_ped_J5X804_ancestors_2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       Ind   Sire    Dam    Sex  Cand Gen IndNum SireNum DamNum
+## 1: J3L886   &amp;lt;NA&amp;gt;   &amp;lt;NA&amp;gt;   male FALSE   1      1       0      0
+## 2: J3X697   &amp;lt;NA&amp;gt;   &amp;lt;NA&amp;gt; female FALSE   1      2       0      0
+## 3: J3Y620   &amp;lt;NA&amp;gt;   &amp;lt;NA&amp;gt;   male FALSE   1      3       0      0
+## 4: J3Y771   &amp;lt;NA&amp;gt;   &amp;lt;NA&amp;gt; female FALSE   1      4       0      0
+## 5: J4E185 J3L886 J3X697 female FALSE   2      5       1      2
+## 6: J4Y326 J3Y620 J3Y771   male FALSE   2      6       3      4
+## 7: J5X804 J4Y326 J4E185 female  TRUE   3      7       6      5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above codes will trace the pedigree of the J5X804 to ancestors for two generations.&lt;/p&gt;
+&lt;p&gt;If you are interested for the descendants of an individual, you can get it up by setting the trace parameter as &lt;strong&gt;down&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;There are three options for the &lt;strong&gt;trace&lt;/strong&gt; parameter:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“up”-trace candidates’ pedigree to ancestors;&lt;/li&gt;
+&lt;li&gt;“down”-trace candidates’ pedigree to descendants;&lt;/li&gt;
+&lt;li&gt;“all”-trace candidaes’ pedigree to ancestors and descendants simultaneously.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tidy_simple_ped_J0Z990_offspring &amp;lt;- tidyped(ped=tidy_simple_ped_no_gen_num,can=&amp;quot;J0Z990&amp;quot;,trace=&amp;quot;down&amp;quot;)
+print(tidy_simple_ped_J0Z990_offspring)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       Ind   Sire    Dam    Sex  Cand Gen IndNum SireNum DamNum
+## 1: J0Z990   &amp;lt;NA&amp;gt;   &amp;lt;NA&amp;gt;   male  TRUE   1      1       0      0
+## 2: J1I438 J0Z990   &amp;lt;NA&amp;gt;   male FALSE   2      2       1      0
+## 3: J2G465 J1I438   &amp;lt;NA&amp;gt;   male FALSE   3      3       2      0
+## 4: J3Y771 J2G465   &amp;lt;NA&amp;gt; female FALSE   4      4       3      0
+## 5: J4Y326   &amp;lt;NA&amp;gt; J3Y771   male FALSE   5      5       0      4
+## 6: J5X804 J4Y326   &amp;lt;NA&amp;gt; female FALSE   6      6       5      0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Tracing down to the descendants of J0Z990, a total of 5 descendants can be found.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;creating-a-integer-pedigree&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;a id=&#34;3.3&#34;&gt;3.3 Creating a integer pedigree&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Some programs require an integer pedigree for genetic evaluation. Individuals will need to be numbered consecutively when calculating the additive genetic correlation matrix.&lt;/p&gt;
+&lt;p&gt;By default, the &lt;strong&gt;tidyped&lt;/strong&gt; function will add three columns (IndNum, SireNum, and DamNum) in the returned dataset. If you don’t need it, you can set &lt;code&gt;addnum=FALSE&lt;/code&gt; to turn it off.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
     </item>
     
