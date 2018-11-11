@@ -211,7 +211,7 @@ MathJax.Hub.Config({
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    10 min read
+    13 min read
   </span>
   
 
@@ -291,7 +291,7 @@ Therefore, the reliable and accurate pedigree records are very important for a s
 <li><a href="#3">Checking and tidying pedigree</a><br />
 3.1 <a href="#3.1">Introduction</a><br />
 3.2 <a href="#3.2">Tracing the pedigree of a specific individual</a><br />
-3.3 <a href="#3.3">Creating a integer pedigree</a><br />
+3.3 <a href="#3.3">Creating an integer pedigree</a><br />
 </li>
 <li><a href="#4">Drawing the pedigree</a><br />
 4.1 <a href="#4.1">A simple pedigree tree</a><br />
@@ -452,7 +452,7 @@ print(tidy_simple_ped_J5X804_ancestors_2)</code></pre>
 ## 6: J4Y326 J3Y620 J3Y771   male FALSE   2      6       3      4
 ## 7: J5X804 J4Y326 J4E185 female  TRUE   3      7       6      5</code></pre>
 <p>The above codes will trace the pedigree of the J5X804 to ancestors for two generations.</p>
-<p>If you are interested for the descendants of an individual, you can get it up by setting the trace parameter as <strong>down</strong>.</p>
+<p>If you are interested for the descendants of an individual, you can get it by setting the trace parameter as <strong>down</strong>.</p>
 <p>There are three options for the <strong>trace</strong> parameter:</p>
 <ul>
 <li>“up”-trace candidates’ pedigree to ancestors;</li>
@@ -470,10 +470,35 @@ print(tidy_simple_ped_J0Z990_offspring)</code></pre>
 ## 6: J5X804 J4Y326   &lt;NA&gt; female FALSE   6      6       5      0</code></pre>
 <p>Tracing down to the descendants of J0Z990, a total of 5 descendants can be found.</p>
 </div>
-<div id="creating-a-integer-pedigree" class="section level3">
-<h3><a id="3.3">3.3 Creating a integer pedigree</a></h3>
+<div id="creating-an-integer-pedigree" class="section level3">
+<h3><a id="3.3">3.3 Creating an integer pedigree</a></h3>
 <p>Some programs require an integer pedigree for genetic evaluation. Individuals will need to be numbered consecutively when calculating the additive genetic correlation matrix.</p>
 <p>By default, the <strong>tidyped</strong> function will add three columns (IndNum, SireNum, and DamNum) in the returned dataset. If you don’t need it, you can set <code>addnum=FALSE</code> to turn it off.</p>
+</div>
+</div>
+<div id="drawing-the-pedigree" class="section level2">
+<h2><a id="4">4 Drawing the pedigree</a></h2>
+<p><strong>visped</strong> function takes a pedigree tidied by the tidyped function, outputs a hierarchical graph for all individuals in the pedigree. The graph can be shown on the defaulted graphic device and be saved in a pdf file. The graph in the pdf file is a vector drawing, is legible and isn’t overlapped. It is especially useful when the number of individuals is big and the width of individual label is long in one generation. This function can draw the graph of a very large pedigree (&gt; 10,000 individuals per generation) by compacting the full-sib individuals. It is very effective for drawing the pedigree of aquatic animal, which usually including many full-sib families per generation in the nucleus breeding population. The outline of a pedigree without individuals’ label is still shown if the width of a pedigree graph is longer than the maximum width (200 inches) of the pdf file. It is useful to help breeders quickly browse the process of constructing nucleus breeding population to see if there is the introduction of blood.</p>
+<p><strong>Important hints：</strong>It is strongly recommended to set the <strong>cand</strong> parameters when tidying a pedigree. After the pedigree is pruned by setting the cand parameter to the specific individuals, the generation number the individuals belonged to is more accurately inferred, and the layout of the individuals in the drawing pedigree tree will be more reasonable.</p>
+<p>The pedigree graph of J5X804 with two generations traced to ancestor is drawn in the following figure. Legible vector figure is saved in a <a href="/post/doc/simplepedJ5x804.pdf">pdf file</a>.</p>
+<pre class="r"><code>visped(tidy_simple_ped_J5X804_ancestors_2, file=&quot;doc/simplepedJ5x804.pdf&quot;)</code></pre>
+<pre><code>## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/simplepedJ5x804.pdf file</code></pre>
+<pre><code>## The cex for individual label is 0.7.</code></pre>
+<pre><code>## Please decrease or increase the value of the paremter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
+<p><img src="/post/2018-11-09-vispedigree-use-guide_files/figure-html/simplepedJ5x804-1.png" width="2700" /></p>
+<p>In the above graph, two shapes and three colors are used. Circle is for individual, square is for family. Dark sky blue means male, dark golden rod means female, dark olive green means unknown sex. For example, one circle with dark sky blue means a male individual; One square with dark golden rod means all female individuals in a full-sib family when compact = TRUE. The ancestors are drawn at the top and descendants are drawn at the bottom in the pedigree graph. The parents and offspring are connected by a dummy node. The colors of lines from the offspring to the dummy nodes are dark grey, and the colors of lines from the dummy nodes to the sire and dam are same with the colors of parents.</p>
+<div id="a-simple-pedigree-graph" class="section level3">
+<h3><a id="4.1">4.1 A simple pedigree graph</a></h3>
+<p>The graph of the <strong>simple_ped</strong> pedigree trimmed is drawn and is displayed on the default graphics device of R or Rstudio. The <strong>addgen</strong> and <strong>addnum</strong> parameters need to be set to TRUE when tidying the pedigree using the <strong>tidyped</strong> function.</p>
+<pre class="r"><code>visped(tidy_simple_ped)</code></pre>
+<pre><code>## The cex for individual label is 0.7.</code></pre>
+<pre><code>## Please decrease or increase the value of the paremter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
+<pre><code>## It is recommended that the pedigree graph is saved in the pdf file using the parameter file</code></pre>
+<pre><code>## The graph in the pdf file is a vector drawing: shapes, labels and lines are legible; shapes and labels isn&#39;t overlapped.</code></pre>
+<p><img src="/post/2018-11-09-vispedigree-use-guide_files/figure-html/vissimpleped-1.png" width="3600" /></p>
+<p>Usually, the figure displayed on the Plots panel of Rstudio has poor definition. The individual IDs will overlap with each other due to the restricted size of the pedigree graph if the number of individuals is large. This problem will be resolved by saving the pedigree graph as vectorgraph in a pdf file. <strong>visped</strong> function will not output pedigree graph on the default graphics device by setting <strong>showgraph = FALSE</strong>.</p>
+<pre class="r"><code>suppressMessages(visped(tidy_simple_ped, showgraph = FALSE, file=&quot;doc/simpleped.pdf&quot;))</code></pre>
+<p>After opening the <a href="/post/doc/simpleped.PDF">simpleped.PDF</a> file and you’ll see a high definition pedigree graph.</p>
 </div>
 </div>
 
