@@ -29,10 +29,10 @@ Therefore, the reliable and accurate pedigree records are very important for a s
 3.2 &lt;a href=&#34;#3.2&#34;&gt;Tracing the pedigree of a specific individual&lt;/a&gt;&lt;br /&gt;
 3.3 &lt;a href=&#34;#3.3&#34;&gt;Creating an integer pedigree&lt;/a&gt;&lt;br /&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#4&#34;&gt;Drawing the pedigree&lt;/a&gt;&lt;br /&gt;
-4.1 &lt;a href=&#34;#4.1&#34;&gt;A simple pedigree tree&lt;/a&gt;&lt;br /&gt;
-4.2 &lt;a href=&#34;#4.2&#34;&gt;A reduced pedigree tree&lt;/a&gt;&lt;br /&gt;
-4.3 &lt;a href=&#34;#4.3&#34;&gt;A outlined pedigree tree&lt;/a&gt;&lt;br /&gt;
+&lt;li&gt;&lt;a href=&#34;#4&#34;&gt;Drawing the pedigree graph&lt;/a&gt;&lt;br /&gt;
+4.1 &lt;a href=&#34;#4.1&#34;&gt;A simple pedigree graph&lt;/a&gt;&lt;br /&gt;
+4.2 &lt;a href=&#34;#4.2&#34;&gt;A reduced pedigree graph&lt;/a&gt;&lt;br /&gt;
+4.3 &lt;a href=&#34;#4.3&#34;&gt;A outlined pedigree graph&lt;/a&gt;&lt;br /&gt;
 4.4 &lt;a href=&#34;#4.4&#34;&gt;How to use this package in a selective breeding program&lt;/a&gt;&lt;br /&gt;
 4.4.1 &lt;a href=&#34;#4.4.1&#34;&gt;Analysis of fouders for an individual&lt;/a&gt;&lt;br /&gt;
 4.4.2 &lt;a href=&#34;#4.4.2&#34;&gt;The contribution of different families in a selective breeding program&lt;/a&gt;&lt;/li&gt;
@@ -235,6 +235,34 @@ print(tidy_simple_ped_J0Z990_offspring)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Usually, the figure displayed on the Plots panel of Rstudio has poor definition. The individual IDs will overlap with each other due to the restricted size of the pedigree graph if the number of individuals is large. This problem will be resolved by saving the pedigree graph as vectorgraph in a pdf file. &lt;strong&gt;visped&lt;/strong&gt; function will not output pedigree graph on the default graphics device by setting &lt;strong&gt;showgraph = FALSE&lt;/strong&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressMessages(visped(tidy_simple_ped, showgraph = FALSE, file=&amp;quot;doc/simpleped.pdf&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;After opening the &lt;a href=&#34;/post/doc/simpleped.PDF&#34;&gt;simpleped.PDF&lt;/a&gt; file and you’ll see a high definition pedigree graph.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-reduced-pedigree-graph&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;a id=&#34;4.2&#34;&gt;4.2 A reduced pedigree graph&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Warning messages will be shown when you try to draw the pedigree graph of the deep_ped dataset.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidyped(deep_ped))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;  Too many individuals (&amp;gt;=3362) in one generation!!! Two choices:
+1. Removing full-sib individuals using the parameter compact = TRUE; or, 
+2. Visualizing all nodes without labels using the parameter outline = TRUE.
+Rerun visped() function!&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The function indicates that too many individuals in one generation to draw a pedigree graph. It is recommended to use the &lt;strong&gt;compact&lt;/strong&gt; or &lt;strong&gt;outline&lt;/strong&gt; parameters to simplify the pedigree.&lt;/p&gt;
+&lt;p&gt;First, let’s try the compact parameter and output it in the deepped1.pdf file. The figure on the default graphic device has serious overlapping problems due to the large number of individuals and the limited plot size.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidyped(deep_ped),compact = TRUE, showgraph=TRUE, file=&amp;quot;doc/deepped1.pdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
+## asterisk, or character NA is recognized as a missing parent and is replaced
+## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.595.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the paremter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-11-09-vispedigree-use-guide_files/figure-html/reduceped1-1.png&#34; width=&#34;3600&#34; /&gt;
+Let’s open the &lt;a href=&#34;/post/doc/deepped1.pdf&#34;&gt;deepped1.pdf&lt;/a&gt; file and view the high-definition pedigree vectorgraph. Most of shapes are square at bottom, and the internal numbers are the total number of male or female individuals for each family. The individual label is shorter than square or circle, and it is not matched. The individual label can be magnified by increasing the cex parameter. Cex is used to control the size of the individual label (ID) in the graph. The bigger the cex is, the longer the individual label is, and vice versa. The range of cex is generally 0 to 1, can be greater than 1, with 0.1 as a break for each adjustment. The visped function will output warning messages including the cex value which was used for drawing the pedigreed graph.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidyped(deep_ped),compact = TRUE, cex=0.83, showgraph = FALSE, file=&amp;quot;doc/deepped2.pdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
+## asterisk, or character NA is recognized as a missing parent and is replaced
+## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.83.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the paremter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s open the &lt;a href=&#34;/post/doc/deepped2.pdf&#34;&gt;deepped2.pdf&lt;/a&gt; file to view the high-definition pedigree vectorgraph. There is higher matching degree between individual labels and shapes compared to deepped1.pdf. If it doesn’t feel right, you can continue to adjust the cex.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
