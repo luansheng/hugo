@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.39" />
+  <meta name="generator" content="Hugo 0.41" />
   <meta name="author" content="Sheng Luan">
   <meta name="description" content="Professor of YSFRI ">
 
@@ -211,7 +211,7 @@ MathJax.Hub.Config({
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    16 min read
+    18 min read
   </span>
   
 
@@ -296,9 +296,9 @@ Therefore, the reliable and accurate pedigree records are very important for a s
 <li><a href="#4">Drawing the pedigree graph</a><br />
 4.1 <a href="#4.1">A simple pedigree graph</a><br />
 4.2 <a href="#4.2">A reduced pedigree graph</a><br />
-4.3 <a href="#4.3">A outlined pedigree graph</a><br />
+4.3 <a href="#4.3">An outlined pedigree graph</a><br />
 4.4 <a href="#4.4">How to use this package in a selective breeding program</a><br />
-4.4.1 <a href="#4.4.1">Analysis of fouders for an individual</a><br />
+4.4.1 <a href="#4.4.1">Analysis of founders for an individual</a><br />
 4.4.2 <a href="#4.4.2">The contribution of different families in a selective breeding program</a></li>
 </ol>
 <div id="installation-of-the-vispedigree-package" class="section level2">
@@ -459,7 +459,7 @@ print(tidy_simple_ped_J5X804_ancestors_2)</code></pre>
 <li>“down”-trace candidates’ pedigree to descendants;</li>
 <li>“all”-trace candidaes’ pedigree to ancestors and descendants simultaneously.</li>
 </ul>
-<pre class="r"><code>tidy_simple_ped_J0Z990_offspring &lt;- tidyped(ped=tidy_simple_ped_no_gen_num,can=&quot;J0Z990&quot;,trace=&quot;down&quot;)
+<pre class="r"><code>tidy_simple_ped_J0Z990_offspring &lt;- tidyped(ped=tidy_simple_ped_no_gen_num,cand=&quot;J0Z990&quot;,trace=&quot;down&quot;)
 print(tidy_simple_ped_J0Z990_offspring)</code></pre>
 <pre><code>##       Ind   Sire    Dam    Sex  Cand Gen IndNum SireNum DamNum
 ## 1: J0Z990   &lt;NA&gt;   &lt;NA&gt;   male  TRUE   1      1       0      0
@@ -482,7 +482,7 @@ print(tidy_simple_ped_J0Z990_offspring)</code></pre>
 <p><strong>Important hints：</strong>It is strongly recommended to set the <strong>cand</strong> parameters when tidying a pedigree. After the pedigree is pruned by setting the cand parameter to the specific individuals, the generation number the individuals belonged to is more accurately inferred, and the layout of the individuals in the drawing pedigree tree will be more reasonable.</p>
 <p>The pedigree graph of J5X804 with two generations traced to ancestor is drawn in the following figure. Legible vector figure is saved in a <a href="/post/doc/simplepedJ5x804.pdf">pdf file</a>.</p>
 <pre class="r"><code>visped(tidy_simple_ped_J5X804_ancestors_2, file=&quot;doc/simplepedJ5x804.pdf&quot;)</code></pre>
-<pre><code>## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/simplepedJ5x804.pdf file</code></pre>
+<pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/simplepedJ5x804.pdf file</code></pre>
 <pre><code>## The cex for individual label is 0.7.</code></pre>
 <pre><code>## Please decrease or increase the value of the paremter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <p><img src="/post/2018-11-09-vispedigree-use-guide_files/figure-html/simplepedJ5x804-1.png" width="2700" /></p>
@@ -514,7 +514,7 @@ Rerun visped() function!</code></pre>
 <pre><code>## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.</code></pre>
-<pre><code>## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file</code></pre>
+<pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file</code></pre>
 <pre><code>## The cex for individual label is 0.595.</code></pre>
 <pre><code>## Please decrease or increase the value of the paremter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <p><img src="/post/2018-11-09-vispedigree-use-guide_files/figure-html/reduceped1-1.png" width="3600" />
@@ -523,10 +523,77 @@ Let’s open the <a href="/post/doc/deepped1.pdf">deepped1.pdf</a> file and view
 <pre><code>## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.</code></pre>
-<pre><code>## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file</code></pre>
+<pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file</code></pre>
 <pre><code>## The cex for individual label is 0.83.</code></pre>
 <pre><code>## Please decrease or increase the value of the paremter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
-<p>Let’s open the <a href="/post/doc/deepped2.pdf">deepped2.pdf</a> file to view the high-definition pedigree vectorgraph. There is higher matching degree between individual labels and shapes compared to deepped1.pdf. If it doesn’t feel right, you can continue to adjust the cex.</p>
+<p>Let’s open the <a href="/post/doc/deepped2.pdf">deepped2.pdf</a> file to view the high-definition pedigree vectorgraph. There is higher matching degree between individual labels and shapes compared to deepped1.pdf. If it doesn’t feel right, you can continue to modify the cex.</p>
+</div>
+<div id="an-outlined-pedigree-graph" class="section level3">
+<h3><a id="4.3">4.3 An outlined pedigree graph</a></h3>
+<p>An outlined pedigree graph will be drawn by setting <code>outline=TRUE</code>. Individual labels will not be shown in the graph. It is very effective for the large pedigree including many individuals.</p>
+<p>In this graph, you can directly observe that there are external individuals introduced in some generations. Please click <a href="/post/doc/deepped3.pdf">here</a> to view the pdf file.</p>
+<pre class="r"><code>suppressMessages(visped(tidyped(deep_ped),compact = TRUE, outline=TRUE, showgraph = TRUE, file=&quot;doc/deepped3.pdf&quot;))</code></pre>
+<pre><code>## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
+## asterisk, or character NA is recognized as a missing parent and is replaced
+## with the missing value NA.</code></pre>
+<p><img src="/post/2018-11-09-vispedigree-use-guide_files/figure-html/reduceped3-1.png" width="3600" /></p>
+<p>The pdf pedigree is <a href="/post/doc/bigfullsibped.pdf">here</a>.</p>
+<pre class="r"><code>cand_2007_G8_labels &lt;- big_family_size_ped[(Year == 2007) &amp; (substr(Ind,1,2) == &quot;G8&quot;),Ind]
+cand_2007_G8_tidy_ped &lt;- tidyped(big_family_size_ped,cand=cand_2007_G8_labels)</code></pre>
+<pre><code>## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
+## asterisk, or character NA is recognized as a missing parent and is replaced
+## with the missing value NA.</code></pre>
+<pre class="r"><code># Use suppressMessages to disable output prompts.
+suppressMessages(visped(cand_2007_G8_tidy_ped,compact = TRUE, outline=TRUE, showgraph = TRUE, file=&quot;doc/bigfullsibped.pdf&quot;))</code></pre>
+<p><img src="/post/2018-11-09-vispedigree-use-guide_files/figure-html/bigfullsibped-1.png" width="3600" /></p>
+</div>
+<div id="how-to-use-this-package-in-a-selective-breeding-program" class="section level3">
+<h3><a id="4.4">4.4 How to use this package in a selective breeding program</a></h3>
+<div id="an-analysis-of-founders-for-an-individual" class="section level4">
+<h4><a id="4.4.1">4.4.1 An analysis of founders for an individual</a></h4>
+<p>Selective breeding is actually a process of enrichment of the desirable minor genes dispersed among multiple founders through successive mating for multiple generations. The support theory behind it is the well-known minor polygene hypothesis.</p>
+<p>We select the individual “J110550G” in the deep_ped dataset to visualize its pedigree. The pdf pedigree is <a href="/post/doc/J110550Gped.pdf">here</a>。</p>
+<pre class="r"><code>suppressWarnings(J110550G_ped &lt;- tidyped(deep_ped,cand=&quot;J110550G&quot;))
+suppressMessages(visped(J110550G_ped,showgraph = TRUE,file=&quot;doc/J110550Gped.pdf&quot;))</code></pre>
+<p><img src="/post/2018-11-09-vispedigree-use-guide_files/figure-html/pedofoneind-1.png" width="6000" />
+As you can see from the figure above, the number of founder individuals (without parents) of the J110550G individual is71.This means that this individual has accumulated a number of favorable genes from the founders, so that the breeding object trait will be improved with great genetic gain.</p>
+</div>
+<div id="the-contribution-of-different-families-in-a-selective-breeding-program" class="section level4">
+<h4><a id="4.4.2">4.4.2 The contribution of different families in a selective breeding program</a></h4>
+<p>When using the optimum contribution theory to optimize mating design, the number of individuals contributed by each family is not same, and the family with a high integrated selection index contributes more individuals. By visualizing pedigree, we can directly see the contribution ratio of different families.</p>
+<p>The below codes will show the composition of the parents of 106 families born in the nucleus breeding population in 2007. Only two generations including parents and grandparents are drawn in the graph by setting the tracegen=2.</p>
+<pre class="r"><code>  suppressWarnings(
+    cand_2007_G8_tidy_ped_ancestor_2 &lt;-
+    tidyped(
+    big_family_size_ped,
+    cand = cand_2007_G8_labels,
+    trace = &quot;up&quot;,
+    tracegen = 2)
+  )
+  sire_label &lt;-
+  unique(cand_2007_G8_tidy_ped_ancestor_2[Ind %in% cand_2007_G8_labels,
+                                          Sire])
+  dam_label &lt;-
+  unique(cand_2007_G8_tidy_ped_ancestor_2[Ind %in% cand_2007_G8_labels,
+                                          Dam])
+  sire_dam_label &lt;- unique(c(sire_label, dam_label))
+  sire_dam_label &lt;- sire_dam_label[!is.na(sire_dam_label)]
+  sire_dam_ped &lt;-
+  cand_2007_G8_tidy_ped_ancestor_2[Ind %in% sire_dam_label]
+  sire_dam_ped &lt;- sire_dam_ped[, FamilyID := paste(Sire, Dam, sep = &quot;&quot;)]
+  family_size &lt;- sire_dam_ped[, .N, by = c(&quot;FamilyID&quot;)]
+  fullsib_family_label &lt;- unique(sire_dam_ped$FamilyID)
+  suppressMessages(
+    visped(
+    cand_2007_G8_tidy_ped_ancestor_2,
+    compact = TRUE,
+    outline = TRUE,
+    showgraph = TRUE
+    )
+  )</code></pre>
+<p><img src="/post/2018-11-09-vispedigree-use-guide_files/figure-html/optiMate-1.png" width="3600" />
+In the above figure, 106 families are shown at bottom, the parents are shown in middle, and the grandparents are shown at top. It can be seen that the parents are composed of 80 sires and 106 dams. The parents are from 54 full-sib families in the generation of grandparent. About 25 parents are from two full-sib families because the optimum contribution theory was used, and account for 13.44% of the total number of parents.</p>
+</div>
 </div>
 </div>
 
