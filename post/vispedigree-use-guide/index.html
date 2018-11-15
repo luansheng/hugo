@@ -282,7 +282,7 @@ MathJax.Hub.Config({
       <div class="article-style" itemprop="articleBody">
         <p>Pedigree plays an important role in the animal selective breeding program. On the one hand, the accuracy of estimated breeding value can be improved by pedigree information. On the other hand, the use of pedigree information can also control inbreeding and avoid depression of traits.
 Therefore, the reliable and accurate pedigree records are very important for a selective breeding program. In addition, a pedigree is usually saved in the form of three columns: individual, sire, and dam, which makes it difficult to visually view individual ancestor and offspring individuals. Therefore, it is very important to visualize the pedigree of individuals. In the Windows platform, Professor Yang Da’s team from the University of Minnesota developed a software <a href="https://animalgene.umn.edu/pedigraph">pedigraph</a> that can be used to display individual pedigrees. It can display a pedigree included many individuals. It is very powerful, but it needs be configured by a parameter file. Professor Brian Kinghorn in the University of New England developed the software <a href="https://bkinghor.une.edu.au/pedigree.htm">pedigree viewer</a>, which can trim and prune the pedigree, and visually display the individuals’ pedigrees in a window. But if the number of individuals is very large, the individuals will overlap each other. So the function about pedigree display needs to be further optimized. Under the R environment, packages such as pedigree, nadiv, optiSel, etc. all have the function of pedigree preparation. We also can use packages like kinship2 and synbreed to draw a pedigree tree. However, the drawing pedigree tree will be overlapped greatly when the number of individuals is large.</p>
-<p>Therefore, we developed the <a href="https://github.com/luansheng/visPedigree">visPedigree</a> package based data.table and igraph packages with strong data clean and drawing social network, which further enhanced the function of tidying and visualizing pedigree. Using this package, we can trace and prune the ancestors and descendants of any individual before and after different generations. This package also can help us automatically optimize the layout of the pedigree tree and quickly display the pedigree including a large number of individuals (the number of individuals in each generation &gt; 10000) by reducing the full-sib individuals in the pedigree and outlining the pedigree. The main contents of this blog are as follows：</p>
+<p>Therefore, we developed the <a href="https://github.com/luansheng/visPedigree">visPedigree</a> package based data.table and igraph packages with strong data clean and drawing social network, which further enhanced the function of tidying and visualizing pedigree. Using this package, we can trace and prune the ancestors and descendants of any individual before and after different generations. This package also can help us automatically optimize the layout of the pedigree tree and quickly display the pedigree including a large number of individuals (the number of individuals in each generation &gt; 10000) by reducing the full-sib individuals in the pedigree and outlining the pedigree. The main contents are as follows：</p>
 <ol style="list-style-type: decimal">
 <li><a href="#1">Installation of the visPedigree package</a><br />
 </li>
@@ -485,7 +485,7 @@ print(tidy_simple_ped_J0Z990_offspring)</code></pre>
   tidyped(ped = small_ped,
   cand = c(&quot;Y&quot;,&quot;Z1&quot;,&quot;Z2&quot;))
 visped(tidy_small_ped, compact = TRUE, file=&quot;doc/smallped.pdf&quot;)</code></pre>
-<pre><code>## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file</code></pre>
+<pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file</code></pre>
 <pre><code>## The cex for individual label is 0.7.</code></pre>
 <pre><code>## Please decrease or increase the value of the parameter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <p><img src="/post/2018-11-09-vispedigree-use-guide_files/figure-html/smallped-1.png" width="1800" />
@@ -517,7 +517,7 @@ Rerun visped() function!</code></pre>
 <pre><code>## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.</code></pre>
-<pre><code>## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file</code></pre>
+<pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file</code></pre>
 <pre><code>## The cex for individual label is 0.595.</code></pre>
 <pre><code>## Please decrease or increase the value of the parameter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <p><img src="/post/2018-11-09-vispedigree-use-guide_files/figure-html/reduceped1-1.png" width="3600" />
@@ -526,7 +526,7 @@ Let’s open the <a href="/post/doc/deepped1.pdf">deepped1.pdf</a> file and view
 <pre><code>## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.</code></pre>
-<pre><code>## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file</code></pre>
+<pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file</code></pre>
 <pre><code>## The cex for individual label is 0.83.</code></pre>
 <pre><code>## Please decrease or increase the value of the parameter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <p>Let’s open the <a href="/post/doc/deepped2.pdf">deepped2.pdf</a> file to view the high-definition pedigree vectorgraph. There is higher matching degree between individual labels and shapes compared to deepped1.pdf. If it doesn’t feel right, you can continue to modify the cex.</p>

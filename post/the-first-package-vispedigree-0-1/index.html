@@ -485,14 +485,11 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
 <p>绘制一个小系谱图，高清矢量图见<a href="/post/doc/smallped.pdf">pdf文件</a>：</p>
 <pre class="r"><code>tidy_small_ped &lt;-
   tidyped(ped = small_ped,
-  cand = c(&quot;Y&quot;,&quot;Z1&quot;,&quot;Z2&quot;))</code></pre>
-<pre><code>## Warning in checkped(ped, addgen): The following individuals are
-## simultaneously bisexual.</code></pre>
-<pre><code>## Warning in checkped(ped, addgen): J</code></pre>
-<pre class="r"><code>visped(tidy_small_ped, compact = TRUE, file=&quot;doc/smallped.pdf&quot;)</code></pre>
+  cand = c(&quot;Y&quot;,&quot;Z1&quot;,&quot;Z2&quot;))
+visped(tidy_small_ped, compact = TRUE, file=&quot;doc/smallped.pdf&quot;)</code></pre>
 <pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file</code></pre>
 <pre><code>## The cex for individual label is 0.7.</code></pre>
-<pre><code>## Please decrease or increase the value of the paremter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
+<pre><code>## Please decrease or increase the value of the parameter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <p><img src="/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/smallped-1.png" width="1800" /></p>
 <p>在系谱图中，使用了2种形状和3种颜色来表示各种信息。圆形代表个体；正方形代表简化后的全同胞个体,内部数字为全同胞个体数。暗天蓝色表示雄性，暗金黄色表示雌性，暗橄榄绿表示性别未知。暗天蓝色圆形，内部为字母R，表示雄性个体；暗金黄色圆形，内部为字母W，表示雌性个体；暗橄榄绿色圆形，内部为字母Y，表示性别未知个体；暗橄榄绿色方形，内部为数字2，表示2个全同胞个体，性别未知；个体系谱图上顶端为祖先个体，底部为后裔个体。亲本和子代之间，通过一个点进行连接，子代到中间节点的连线均为深灰色，中间节点连接到父本和母本的线，与父母本各自的颜色相同。</p>
 <div class="section level3">
@@ -500,7 +497,7 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
 <p>绘制整理后的simple_ped系谱图，在R或者Rstudio默认图形设备显示。整理系谱数据集时，需要将tidyped函数的addgen和addnum参数设置为TRUE。</p>
 <pre class="r"><code>visped(tidy_simple_ped)</code></pre>
 <pre><code>## The cex for individual label is 0.7.</code></pre>
-<pre><code>## Please decrease or increase the value of the paremter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
+<pre><code>## Please decrease or increase the value of the parameter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <pre><code>## It is recommended that the pedigree graph is saved in the pdf file using the parameter file</code></pre>
 <pre><code>## The graph in the pdf file is a vector drawing: shapes, labels and lines are legible; shapes and labels isn&#39;t overlapped.</code></pre>
 <p><img src="/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/vissimpleped-1.png" width="3600" /></p>
@@ -524,7 +521,7 @@ Rerun visped() function!</code></pre>
 ## with the missing value NA.</code></pre>
 <pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file</code></pre>
 <pre><code>## The cex for individual label is 0.595.</code></pre>
-<pre><code>## Please decrease or increase the value of the paremter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
+<pre><code>## Please decrease or increase the value of the parameter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <p><img src="/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/reduceped1-1.png" width="3600" />
 打开<a href="/post/doc/deepped1.pdf">deepped1.pdf</a>文件,查看高清的矢量系谱图。最低端个体大部分为正方形，内部的数字是简化后不同家系的全同胞雄性和雌性个体数。如果感觉个体的ID长度小于方形或者圆形，不是很匹配，可以将visped函数给出的cex参数值，进一步变大。cex用来控制图中个体label(ID)的大小，cex越大，个体ID越大，反之亦然。cex取值范围一般为0-1，也可以大于1，每次调整，以0.1作为一个单位。</p>
 <pre class="r"><code>visped(tidyped(deep_ped),compact = TRUE, cex=0.83, showgraph = FALSE, file=&quot;doc/deepped2.pdf&quot;)</code></pre>
@@ -533,7 +530,7 @@ Rerun visped() function!</code></pre>
 ## with the missing value NA.</code></pre>
 <pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file</code></pre>
 <pre><code>## The cex for individual label is 0.83.</code></pre>
-<pre><code>## Please decrease or increase the value of the paremter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
+<pre><code>## Please decrease or increase the value of the parameter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <p>再打开<a href="/post/doc/deepped2.pdf">deepped2.pdf</a>文件,查看高清的矢量系谱图，ID与图形的匹配度更高。如果感觉不合适，可以继续调整cex。</p>
 </div>
 <div class="section level3">
