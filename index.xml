@@ -224,7 +224,7 @@ visped(tidy_small_ped, compact = TRUE, file=&amp;quot;doc/smallped.pdf&amp;quot;
 &lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.7.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-11-09-vispedigree-use-guide_files/figure-html/simplepedJ5x804-1.png&#34; width=&#34;1800&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-11-09-vispedigree-use-guide_files/figure-html/smallped-1.png&#34; width=&#34;1800&#34; /&gt;
 In the above graph, two shapes and three colors are used. Circle is for individual, and square is for family. Dark sky blue means male, dark golden rod means female, and dark olive green means unknown sex. For example, one circle with dark sky blue means a male individual; one square with dark golden rod means all female individuals in a full-sib family when compact = TRUE. The ancestors are drawn at the top and descendants are drawn at the bottom in the pedigree graph. The parents and offspring are connected by a dummy node. The colors of lines from the offspring to the dummy nodes are dark grey, and the colors of lines from the dummy nodes to the sire and dam are the same with the colors of parents.&lt;/p&gt;
 &lt;div id=&#34;a-simple-pedigree-graph&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;a id=&#34;4.1&#34;&gt;4.1 A simple pedigree graph&lt;/a&gt;&lt;/h3&gt;
@@ -364,14 +364,14 @@ In the above figure, 106 families are shown at the bottom, the parents are shown
 &lt;p&gt;目前visPedigree包还没有发布到cran，但利用devtools包，可以从github上进行安装。&lt;/p&gt;
 &lt;p&gt;以Rstudio平台为例，如果没有安装devtools包，首先安装，然后加载devtools。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is_installed &amp;lt;- require(devtools)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: devtools&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：devtools&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;if (!is_installed) {
   install.packages(&amp;quot;devtools&amp;quot;)  
   suppressPackageStartupMessages(require(devtools))  
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;从github上安装visPedigree，然后加载visPedigree包。该包基于data.table和igraph包开发，如果这两个包没有安装，也会一并安装。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is_installed &amp;lt;- require(visPedigree)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: visPedigree&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：visPedigree&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;if (!is_installed) {
   install_github(&amp;quot;luansheng/visPedigree&amp;quot;)  
   suppressPackageStartupMessages(require(visPedigree))
@@ -388,7 +388,7 @@ In the above figure, 106 families are shown at the bottom, the parents are shown
                            header = TRUE,
                            stringsAsFactors = FALSE)
 head(ped_2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##          ID Sire DYm  Sex Cand
+&lt;pre&gt;&lt;code&gt;##          ID Sire Dam  Sex Cand
 ## 1: X0YY0500    0   0 Male    0
 ## 2: X0YY0600    0   0 Male    0
 ## 3: X0YY0700    0   0 Male    0
@@ -546,19 +546,22 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
 &lt;h2&gt;&lt;a id=&#34;4&#34;&gt;4 绘制系谱&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;利用visped函数，可以绘制多代系谱图。系谱图可以在R、Rstudio默认图形设备显示，并且可以保存在pdf文件中。保存在pdf文件中的系谱图是矢量图，更为清晰、可辨认，个体间不会发生重叠现象。当系谱中个体的数量多，个体的ID编号较长时，适合保存在pdf文件中。如果很多个体为全同胞个体，譬如水产动物的核心育种群体，可以对系谱进行简化显示，这样即使每代个体数量超过10000，也可以非常快的绘制出系谱图。如果每个世代包括的个体数量太多，且个体的ID太长，受限于pdf文件的宽度（最大为200英寸），无法绘制系谱图时，将不显示个体的ID号，只显示一个系谱的缩略图，用于帮助育种者快速浏览核心群体的构建过程，查看是否有外血引入。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;重要提示：&lt;/strong&gt;强烈推荐在整理系谱时，指定cand参数。根据cand参数指定的个体提纯的系谱，个体所属世代的推断更加准确，个体在绘制出的系谱图中所在的位置将更为合理。&lt;/p&gt;
-&lt;p&gt;绘制simple_ped系谱数据集中个体J5X804的2代祖先系谱图，高清矢量图见&lt;a href=&#34;/post/doc/simplepedJ5x804.pdf&#34;&gt;pdf文件&lt;/a&gt;：&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidy_simple_ped_J5X804_ancestors_2, file=&amp;quot;doc/simplepedJ5x804.pdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/simplepedJ5x804.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;绘制一个小系谱图，高清矢量图见&lt;a href=&#34;/post/doc/smallped.pdf&#34;&gt;pdf文件&lt;/a&gt;：&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tidy_small_ped &amp;lt;-
+  tidyped(ped = small_ped,
+  cand = c(&amp;quot;Y&amp;quot;,&amp;quot;Z1&amp;quot;,&amp;quot;Z2&amp;quot;))
+visped(tidy_small_ped, compact = TRUE, file=&amp;quot;doc/smallped.pdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.7.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the paremter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/simplepedJ5x804-1.png&#34; width=&#34;2700&#34; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/smallped-1.png&#34; width=&#34;1800&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;在系谱图中，使用了2种形状和3种颜色来表示各种信息。圆形代表个体，正方形代表简化后的全同胞个体。暗天蓝色表示雄性，暗金黄色表示雌性，暗橄榄绿表示性别未知。系谱图上顶端为祖先个体，底部为后裔个体。亲本和子代之间，通过一个点进行连接，子代到中间节点的连线均为灰色，中间节点连接到父本和母本的线，与父母本各自的颜色相同。&lt;/p&gt;
 &lt;div class=&#34;section level3&#34;&gt;
 &lt;h3&gt;&lt;a id=&#34;4.1&#34;&gt;4.1 绘制简单系谱图&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;绘制整理后的simple_ped系谱图，在R或者Rstudio默认图形设备显示。整理系谱数据集时，需要将tidyped函数的addgen和addnum参数设置为TRUE。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidy_simple_ped)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.7.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the paremter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## It is recommended that the pedigree graph is saved in the pdf file using the parameter file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The graph in the pdf file is a vector drawing: shapes, labels and lines are legible; shapes and labels isn&amp;#39;t overlapped.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/vissimpleped-1.png&#34; width=&#34;3600&#34; /&gt;&lt;/p&gt;
@@ -580,18 +583,18 @@ Rerun visped() function!&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.595.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the paremter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/reduceped1-1.png&#34; width=&#34;3600&#34; /&gt;
 打开&lt;a href=&#34;/post/doc/deepped1.pdf&#34;&gt;deepped1.pdf&lt;/a&gt;文件,查看高清的矢量系谱图。最低端个体大部分为正方形，内部的数字是简化后不同家系的全同胞雄性和雌性个体数。如果感觉个体的ID长度小于方形或者圆形，不是很匹配，可以将visped函数给出的cex参数值0.63，进一步变大。cex用来控制图中个体label(ID)的大小，cex越大，个体ID越大，反之亦然。cex取值范围一般为0-1，也可以大于1，每次调整，以0.1作为一个单位。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;visped(tidyped(deep_ped),compact = TRUE, cex=0.83, showgraph = FALSE, file=&amp;quot;doc/deepped2.pdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.83.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the paremter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;再打开&lt;a href=&#34;/post/doc/deepped2.pdf&#34;&gt;deepped2.pdf&lt;/a&gt;文件,查看高清的矢量系谱图，ID与图形的匹配度更高。如果感觉不合适，可以继续调整cex。&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level3&#34;&gt;
