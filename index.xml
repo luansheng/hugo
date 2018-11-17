@@ -221,7 +221,7 @@ print(tidy_simple_ped_J0Z990_offspring)&lt;/code&gt;&lt;/pre&gt;
   tidyped(ped = small_ped,
   cand = c(&amp;quot;Y&amp;quot;,&amp;quot;Z1&amp;quot;,&amp;quot;Z2&amp;quot;))
 visped(tidy_small_ped, compact = TRUE, file=&amp;quot;doc/smallped.pdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.7.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-11-09-vispedigree-use-guide_files/figure-html/smallped-1.png&#34; width=&#34;1800&#34; /&gt;
@@ -253,7 +253,7 @@ Rerun visped() function!&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.595.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-11-09-vispedigree-use-guide_files/figure-html/reduceped1-1.png&#34; width=&#34;3600&#34; /&gt;
@@ -262,7 +262,7 @@ Let’s open the &lt;a href=&#34;/post/doc/deepped1.pdf&#34;&gt;deepped1.pdf&lt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.83.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Let’s open the &lt;a href=&#34;/post/doc/deepped2.pdf&#34;&gt;deepped2.pdf&lt;/a&gt; file to view the high-definition pedigree vectorgraph. There is higher matching degree between individual labels and shapes compared to deepped1.pdf. If it doesn’t feel right, you can continue to modify the cex.&lt;/p&gt;
@@ -364,14 +364,14 @@ In the above figure, 106 families are shown at the bottom, the parents are shown
 &lt;p&gt;目前visPedigree包还没有发布到cran，但利用devtools包，可以从github上进行安装。&lt;/p&gt;
 &lt;p&gt;以Rstudio平台为例，如果没有安装devtools包，首先安装，然后加载devtools。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is_installed &amp;lt;- require(devtools)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: devtools&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：devtools&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;if (!is_installed) {
   install.packages(&amp;quot;devtools&amp;quot;)  
   suppressPackageStartupMessages(require(devtools))  
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;从github上安装visPedigree，然后加载visPedigree包。该包基于data.table和igraph包开发，如果这两个包没有安装，也会一并安装。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is_installed &amp;lt;- require(visPedigree)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: visPedigree&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：visPedigree&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;if (!is_installed) {
   install_github(&amp;quot;luansheng/visPedigree&amp;quot;)  
   suppressPackageStartupMessages(require(visPedigree))
@@ -551,7 +551,7 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
   tidyped(ped = small_ped,
   cand = c(&amp;quot;Y&amp;quot;,&amp;quot;Z1&amp;quot;,&amp;quot;Z2&amp;quot;))
 visped(tidy_small_ped, compact = TRUE, file=&amp;quot;doc/smallped.pdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.7.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/smallped-1.png&#34; width=&#34;1800&#34; /&gt;&lt;/p&gt;
@@ -583,7 +583,7 @@ Rerun visped() function!&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.595.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/reduceped1-1.png&#34; width=&#34;3600&#34; /&gt;
@@ -592,7 +592,7 @@ Rerun visped() function!&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.83.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;再打开&lt;a href=&#34;/post/doc/deepped2.pdf&#34;&gt;deepped2.pdf&lt;/a&gt;文件,查看高清的矢量系谱图，ID与图形的匹配度更高。如果感觉不合适，可以继续调整cex。&lt;/p&gt;
