@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.39" />
+  <meta name="generator" content="Hugo 0.41" />
   <meta name="author" content="Sheng Luan">
   <meta name="description" content="Professor of YSFRI ">
 
@@ -300,14 +300,14 @@ MathJax.Hub.Config({
 <p>目前visPedigree包还没有发布到cran，但利用devtools包，可以从github上进行安装。</p>
 <p>以Rstudio平台为例，如果没有安装devtools包，首先安装，然后加载devtools。</p>
 <pre class="r"><code>is_installed &lt;- require(devtools)</code></pre>
-<pre><code>## 载入需要的程辑包：devtools</code></pre>
+<pre><code>## Loading required package: devtools</code></pre>
 <pre class="r"><code>if (!is_installed) {
   install.packages(&quot;devtools&quot;)  
   suppressPackageStartupMessages(require(devtools))  
 }</code></pre>
 <p>从github上安装visPedigree，然后加载visPedigree包。该包基于data.table和igraph包开发，如果这两个包没有安装，也会一并安装。</p>
 <pre class="r"><code>is_installed &lt;- require(visPedigree)</code></pre>
-<pre><code>## 载入需要的程辑包：visPedigree</code></pre>
+<pre><code>## Loading required package: visPedigree</code></pre>
 <pre class="r"><code>if (!is_installed) {
   install_github(&quot;luansheng/visPedigree&quot;)  
   suppressPackageStartupMessages(require(visPedigree))
@@ -487,7 +487,7 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
   tidyped(ped = small_ped,
   cand = c(&quot;Y&quot;,&quot;Z1&quot;,&quot;Z2&quot;))
 visped(tidy_small_ped, compact = TRUE, file=&quot;doc/smallped.pdf&quot;)</code></pre>
-<pre><code>## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file</code></pre>
+<pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file</code></pre>
 <pre><code>## The cex for individual label is 0.7.</code></pre>
 <pre><code>## Please decrease or increase the value of the parameter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <p><img src="/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/smallped-1.png" width="1800" /></p>
@@ -519,8 +519,10 @@ Rerun visped() function!</code></pre>
 <pre><code>## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.</code></pre>
-<pre><code>## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file</code></pre>
-<pre><code>## The cex for individual label is 0.595.</code></pre>
+<pre><code>## Warning in checkped(ped, addgen): Blank and NA are recoded as a missing sex
+## in the Sex column of the pedigree.</code></pre>
+<pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file</code></pre>
+<pre><code>## The cex for individual label is 0.525.</code></pre>
 <pre><code>## Please decrease or increase the value of the parameter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <p><img src="/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/reduceped1-1.png" width="3600" />
 打开<a href="/post/doc/deepped1.pdf">deepped1.pdf</a>文件,查看高清的矢量系谱图。最低端个体大部分为正方形，内部的数字是简化后不同家系的全同胞雄性和雌性个体数。如果感觉个体的ID长度小于方形或者圆形，不是很匹配，可以将visped函数给出的cex参数值，进一步变大。cex用来控制图中个体label(ID)的大小，cex越大，个体ID越大，反之亦然。cex取值范围一般为0-1，也可以大于1，每次调整，以0.1作为一个单位。</p>
@@ -528,7 +530,9 @@ Rerun visped() function!</code></pre>
 <pre><code>## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.</code></pre>
-<pre><code>## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file</code></pre>
+<pre><code>## Warning in checkped(ped, addgen): Blank and NA are recoded as a missing sex
+## in the Sex column of the pedigree.</code></pre>
+<pre><code>## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file</code></pre>
 <pre><code>## The cex for individual label is 0.83.</code></pre>
 <pre><code>## Please decrease or increase the value of the parameter cex if the label&#39;s width is longer or shorter than that of the circle or square in the graph.</code></pre>
 <p>再打开<a href="/post/doc/deepped2.pdf">deepped2.pdf</a>文件,查看高清的矢量系谱图，ID与图形的匹配度更高。如果感觉不合适，可以继续调整cex。</p>
@@ -541,6 +545,8 @@ Rerun visped() function!</code></pre>
 <pre><code>## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.</code></pre>
+<pre><code>## Warning in checkped(ped, addgen): Blank and NA are recoded as a missing sex
+## in the Sex column of the pedigree.</code></pre>
 <p><img src="/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/reduceped3-1.png" width="3600" /></p>
 <p>绘制包中另外一个系谱数据集，其中包括了大量的全同胞个体，只提取2007年出生个体及其祖先的系谱。pdf系谱图见<a href="/post/doc/bigfullsibped.pdf">这里</a>。</p>
 <pre class="r"><code>cand_2007_G8_labels &lt;- big_family_size_ped[(Year == 2007) &amp; (substr(Ind,1,2) == &quot;G8&quot;),Ind]
@@ -557,11 +563,11 @@ suppressMessages(visped(cand_2007_G8_tidy_ped,compact = TRUE, outline=TRUE, show
 <div class="section level4">
 <h4><a id="4.4.1">4.4.1 追踪个体的奠基者情况</a></h4>
 <p>选择育种的过程，实际上就是将分散在多个奠基者个体中的有利基因，通过连续不断的多代交配设计，富集到后代个体中的一个过程。它背后的支持理论，就是大家熟知的微效多基因假说。</p>
-<p>我们选择deep_ped数据集中的一尾个体“J110550G”，可视化它的系谱。pdf系谱图见<a href="/post/doc/J110550Gped.pdf">这里</a>。</p>
-<pre class="r"><code>suppressWarnings(J110550G_ped &lt;- tidyped(deep_ped,cand=&quot;J110550G&quot;))
-suppressMessages(visped(J110550G_ped,showgraph = TRUE,file=&quot;doc/J110550Gped.pdf&quot;))</code></pre>
+<p>我们选择deep_ped数据集中的一尾个体“K110550H”，可视化它的系谱。pdf系谱图见<a href="/post/doc/K110550Hped.pdf">这里</a>。</p>
+<pre class="r"><code>suppressWarnings(K110550H_ped &lt;- tidyped(deep_ped,cand=&quot;K110550H&quot;))
+suppressMessages(visped(K110550H_ped,showgraph = TRUE,file=&quot;doc/K110550Hped.pdf&quot;))</code></pre>
 <p><img src="/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/pedofoneind-1.png" width="6000" />
-从上图中可以看出，J110550G个体的奠基者个体（没有亲本）数量为71个，这表示该个体富集了分散在上述奠基者个体的多个有利基因，因此育种目标性状才会表现更加优良。</p>
+从上图中可以看出，K110550H个体的奠基者个体（没有亲本）数量为71个，这表示该个体富集了分散在上述奠基者个体的多个有利基因，因此育种目标性状才会表现更加优良。</p>
 </div>
 <div class="section level4">
 <h4><a id="4.4.2">4.4.2 观察配种方案中不同家系贡献个体情况</a></h4>

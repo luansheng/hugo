@@ -18,7 +18,7 @@
       <guid>/post/vispedigree-use-guide/</guid>
       <description>&lt;p&gt;Pedigree plays an important role in the animal selective breeding program. On the one hand, the accuracy of estimated breeding value can be improved by pedigree information. On the other hand, the use of pedigree information can also control inbreeding and avoid depression of traits.
 Therefore, the reliable and accurate pedigree records are very important for a selective breeding program. In addition, a pedigree is usually saved in the form of three columns: individual, sire, and dam, which makes it difficult to visually view individual ancestor and offspring individuals. Therefore, it is very important to visualize the pedigree of individuals. In the Windows platform, Professor Yang Da’s team from the University of Minnesota developed a software &lt;a href=&#34;https://animalgene.umn.edu/pedigraph&#34;&gt;pedigraph&lt;/a&gt; that can be used to display individual pedigrees. It can display a pedigree included many individuals. It is very powerful, but it needs be configured by a parameter file. Professor Brian Kinghorn in the University of New England developed the software &lt;a href=&#34;https://bkinghor.une.edu.au/pedigree.htm&#34;&gt;pedigree viewer&lt;/a&gt;, which can trim and prune the pedigree, and visually display the individuals’ pedigrees in a window. But if the number of individuals is very large, the individuals will overlap each other. So the function about pedigree display needs to be further optimized. Under the R environment, packages such as pedigree, nadiv, optiSel, etc. all have the function of pedigree preparation. We also can use packages like kinship2 and synbreed to draw a pedigree tree. However, the drawing pedigree tree will be overlapped greatly when the number of individuals is large.&lt;/p&gt;
-&lt;p&gt;Therefore, we developed the &lt;a href=&#34;https://github.com/luansheng/visPedigree&#34;&gt;visPedigree&lt;/a&gt; package based data.table and igraph packages with strong data clean and drawing social network, which further enhanced the function of tidying and visualizing pedigree. Using this package, we can trace and prune the ancestors and descendants of any individual before and after different generations. This package also can help us automatically optimize the layout of the pedigree tree and quickly display the pedigree including a large number of individuals (the number of individuals in each generation &amp;gt; 10000) by reducing the full-sib individuals in the pedigree and outlining the pedigree. The main contents are as follows：&lt;/p&gt;
+&lt;p&gt;Therefore, we developed the &lt;a href=&#34;https://github.com/luansheng/visPedigree&#34;&gt;visPedigree&lt;/a&gt; package based on data.table with strong data cleaning and igraph with excellent drawing of social network, which further enhanced the function of tidying and visualizing pedigree. Using this package, we can trace and prune the ancestors and descendants of any individual before and after different generations. This package also can help us automatically optimize the layout of the pedigree tree and quickly display the pedigree including a large number of individuals (the number of individuals in each generation &amp;gt; 10000) by reducing the full-sib individuals in the pedigree and outlining the pedigree. The main contents are as follows：&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;a href=&#34;#1&#34;&gt;Installation of the visPedigree package&lt;/a&gt;&lt;br /&gt;
 &lt;/li&gt;
@@ -221,7 +221,7 @@ print(tidy_simple_ped_J0Z990_offspring)&lt;/code&gt;&lt;/pre&gt;
   tidyped(ped = small_ped,
   cand = c(&amp;quot;Y&amp;quot;,&amp;quot;Z1&amp;quot;,&amp;quot;Z2&amp;quot;))
 visped(tidy_small_ped, compact = TRUE, file=&amp;quot;doc/smallped.pdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.7.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-11-09-vispedigree-use-guide_files/figure-html/smallped-1.png&#34; width=&#34;1800&#34; /&gt;
@@ -253,8 +253,10 @@ Rerun visped() function!&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.595.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): Blank and NA are recoded as a missing sex
+## in the Sex column of the pedigree.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.525.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-11-09-vispedigree-use-guide_files/figure-html/reduceped1-1.png&#34; width=&#34;3600&#34; /&gt;
 Let’s open the &lt;a href=&#34;/post/doc/deepped1.pdf&#34;&gt;deepped1.pdf&lt;/a&gt; file and view the high-definition pedigree vectorgraph. Most of shapes are square at the bottom, and the internal numbers are the total number of male or female individuals for each family. The individual label is shorter than square or circle, and it is not matched. The individual label can be magnified by increasing the cex parameter. Cex is used to control the size of the individual label (ID) in the graph. The bigger the cex is, the longer the individual label is, and vice versa. The range of cex is generally 0 to 1, can be greater than 1, with 0.1 as a break for each adjustment. The visped function will output warning messages including the cex value which was used for drawing the pedigreed graph.&lt;/p&gt;
@@ -262,7 +264,9 @@ Let’s open the &lt;a href=&#34;/post/doc/deepped1.pdf&#34;&gt;deepped1.pdf&lt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): Blank and NA are recoded as a missing sex
+## in the Sex column of the pedigree.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.83.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Let’s open the &lt;a href=&#34;/post/doc/deepped2.pdf&#34;&gt;deepped2.pdf&lt;/a&gt; file to view the high-definition pedigree vectorgraph. There is higher matching degree between individual labels and shapes compared to deepped1.pdf. If it doesn’t feel right, you can continue to modify the cex.&lt;/p&gt;
@@ -275,6 +279,8 @@ Let’s open the &lt;a href=&#34;/post/doc/deepped1.pdf&#34;&gt;deepped1.pdf&lt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): Blank and NA are recoded as a missing sex
+## in the Sex column of the pedigree.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-11-09-vispedigree-use-guide_files/figure-html/reduceped3-1.png&#34; width=&#34;3600&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Let’s try to draw another pedigree with big family size. The graph is saved in &lt;a href=&#34;/post/doc/bigfullsibped.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cand_2007_G8_labels &amp;lt;- big_family_size_ped[(Year == 2007) &amp;amp; (substr(Ind,1,2) == &amp;quot;G8&amp;quot;),Ind]
@@ -291,11 +297,11 @@ suppressMessages(visped(cand_2007_G8_tidy_ped,compact = TRUE, outline=TRUE, show
 &lt;div id=&#34;an-analysis-of-founders-for-an-individual&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;&lt;a id=&#34;4.4.1&#34;&gt;4.4.1 An analysis of founders for an individual&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;Selective breeding is actually a process of enrichment of the desirable minor genes dispersed among multiple founders through successive mating for multiple generations. The support theory behind it is the well-known minor polygene hypothesis.&lt;/p&gt;
-&lt;p&gt;We select the individual “J110550G” in the deep_ped dataset to visualize its pedigree. The pdf pedigree is &lt;a href=&#34;/post/doc/J110550Gped.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressWarnings(J110550G_ped &amp;lt;- tidyped(deep_ped,cand=&amp;quot;J110550G&amp;quot;))
-suppressMessages(visped(J110550G_ped,showgraph = TRUE,file=&amp;quot;doc/J110550Gped.pdf&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We select the individual “K110550H” in the deep_ped dataset to visualize its pedigree. The pdf pedigree is &lt;a href=&#34;/post/doc/K110550Hped.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressWarnings(K110550H_ped &amp;lt;- tidyped(deep_ped,cand=&amp;quot;K110550H&amp;quot;))
+suppressMessages(visped(K110550H_ped,showgraph = TRUE,file=&amp;quot;doc/K110550Hped.pdf&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-11-09-vispedigree-use-guide_files/figure-html/pedofoneind-1.png&#34; width=&#34;6000&#34; /&gt;
-As you can see from the figure above, the number of founder individuals (without parents) of the J110550G individual is71.This means that this individual has accumulated a number of favorable genes from the founders, so that the breeding object trait will be improved with great genetic gain.&lt;/p&gt;
+As you can see from the figure above, the number of founder individuals (without parents) of the K110550H individual is71.This means that this individual has accumulated a number of favorable genes from the founders, so that the breeding object trait will be improved with great genetic gain.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-contribution-of-different-families-in-a-selective-breeding-program&#34; class=&#34;section level4&#34;&gt;
 &lt;h4&gt;&lt;a id=&#34;4.4.2&#34;&gt;4.4.2 The contribution of different families in a selective breeding program&lt;/a&gt;&lt;/h4&gt;
@@ -364,14 +370,14 @@ In the above figure, 106 families are shown at the bottom, the parents are shown
 &lt;p&gt;目前visPedigree包还没有发布到cran，但利用devtools包，可以从github上进行安装。&lt;/p&gt;
 &lt;p&gt;以Rstudio平台为例，如果没有安装devtools包，首先安装，然后加载devtools。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is_installed &amp;lt;- require(devtools)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：devtools&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: devtools&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;if (!is_installed) {
   install.packages(&amp;quot;devtools&amp;quot;)  
   suppressPackageStartupMessages(require(devtools))  
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;从github上安装visPedigree，然后加载visPedigree包。该包基于data.table和igraph包开发，如果这两个包没有安装，也会一并安装。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;is_installed &amp;lt;- require(visPedigree)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 载入需要的程辑包：visPedigree&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: visPedigree&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;if (!is_installed) {
   install_github(&amp;quot;luansheng/visPedigree&amp;quot;)  
   suppressPackageStartupMessages(require(visPedigree))
@@ -551,7 +557,7 @@ tidyped函数默认会增加一个三列（IndNum、SireNum和DamNum）的数字
   tidyped(ped = small_ped,
   cand = c(&amp;quot;Y&amp;quot;,&amp;quot;Z1&amp;quot;,&amp;quot;Z2&amp;quot;))
 visped(tidy_small_ped, compact = TRUE, file=&amp;quot;doc/smallped.pdf&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/smallped.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.7.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/smallped-1.png&#34; width=&#34;1800&#34; /&gt;&lt;/p&gt;
@@ -583,8 +589,10 @@ Rerun visped() function!&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.595.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): Blank and NA are recoded as a missing sex
+## in the Sex column of the pedigree.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped1.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.525.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/reduceped1-1.png&#34; width=&#34;3600&#34; /&gt;
 打开&lt;a href=&#34;/post/doc/deepped1.pdf&#34;&gt;deepped1.pdf&lt;/a&gt;文件,查看高清的矢量系谱图。最低端个体大部分为正方形，内部的数字是简化后不同家系的全同胞雄性和雌性个体数。如果感觉个体的ID长度小于方形或者圆形，不是很匹配，可以将visped函数给出的cex参数值，进一步变大。cex用来控制图中个体label(ID)的大小，cex越大，个体ID越大，反之亦然。cex取值范围一般为0-1，也可以大于1，每次调整，以0.1作为一个单位。&lt;/p&gt;
@@ -592,7 +600,9 @@ Rerun visped() function!&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the C:/Users/luan_/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): Blank and NA are recoded as a missing sex
+## in the Sex column of the pedigree.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The vector drawing of the pedigree is saved in the D:/luansheng/Documents/OneDrive/hugo/luansheng/content/post/doc/deepped2.pdf file&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## The cex for individual label is 0.83.&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Please decrease or increase the value of the parameter cex if the label&amp;#39;s width is longer or shorter than that of the circle or square in the graph.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;再打开&lt;a href=&#34;/post/doc/deepped2.pdf&#34;&gt;deepped2.pdf&lt;/a&gt;文件,查看高清的矢量系谱图，ID与图形的匹配度更高。如果感觉不合适，可以继续调整cex。&lt;/p&gt;
@@ -605,6 +615,8 @@ Rerun visped() function!&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): In the sire or dam column, Blank, Zero,
 ## asterisk, or character NA is recognized as a missing parent and is replaced
 ## with the missing value NA.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning in checkped(ped, addgen): Blank and NA are recoded as a missing sex
+## in the Sex column of the pedigree.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/reduceped3-1.png&#34; width=&#34;3600&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;绘制包中另外一个系谱数据集，其中包括了大量的全同胞个体，只提取2007年出生个体及其祖先的系谱。pdf系谱图见&lt;a href=&#34;/post/doc/bigfullsibped.pdf&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cand_2007_G8_labels &amp;lt;- big_family_size_ped[(Year == 2007) &amp;amp; (substr(Ind,1,2) == &amp;quot;G8&amp;quot;),Ind]
@@ -621,11 +633,11 @@ suppressMessages(visped(cand_2007_G8_tidy_ped,compact = TRUE, outline=TRUE, show
 &lt;div class=&#34;section level4&#34;&gt;
 &lt;h4&gt;&lt;a id=&#34;4.4.1&#34;&gt;4.4.1 追踪个体的奠基者情况&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;选择育种的过程，实际上就是将分散在多个奠基者个体中的有利基因，通过连续不断的多代交配设计，富集到后代个体中的一个过程。它背后的支持理论，就是大家熟知的微效多基因假说。&lt;/p&gt;
-&lt;p&gt;我们选择deep_ped数据集中的一尾个体“J110550G”，可视化它的系谱。pdf系谱图见&lt;a href=&#34;/post/doc/J110550Gped.pdf&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressWarnings(J110550G_ped &amp;lt;- tidyped(deep_ped,cand=&amp;quot;J110550G&amp;quot;))
-suppressMessages(visped(J110550G_ped,showgraph = TRUE,file=&amp;quot;doc/J110550Gped.pdf&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们选择deep_ped数据集中的一尾个体“K110550H”，可视化它的系谱。pdf系谱图见&lt;a href=&#34;/post/doc/K110550Hped.pdf&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressWarnings(K110550H_ped &amp;lt;- tidyped(deep_ped,cand=&amp;quot;K110550H&amp;quot;))
+suppressMessages(visped(K110550H_ped,showgraph = TRUE,file=&amp;quot;doc/K110550Hped.pdf&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-24-the-first-package-vispedigree-0-1_files/figure-html/pedofoneind-1.png&#34; width=&#34;6000&#34; /&gt;
-从上图中可以看出，J110550G个体的奠基者个体（没有亲本）数量为71个，这表示该个体富集了分散在上述奠基者个体的多个有利基因，因此育种目标性状才会表现更加优良。&lt;/p&gt;
+从上图中可以看出，K110550H个体的奠基者个体（没有亲本）数量为71个，这表示该个体富集了分散在上述奠基者个体的多个有利基因，因此育种目标性状才会表现更加优良。&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&#34;section level4&#34;&gt;
 &lt;h4&gt;&lt;a id=&#34;4.4.2&#34;&gt;4.4.2 观察配种方案中不同家系贡献个体情况&lt;/a&gt;&lt;/h4&gt;
