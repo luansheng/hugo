@@ -211,7 +211,7 @@ MathJax.Hub.Config({
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    13 min read
+    14 min read
   </span>
   
 
@@ -280,12 +280,22 @@ MathJax.Hub.Config({
 
 
       <div class="article-style" itemprop="articleBody">
-        <p>学习线性混合效应模型（Linear Mixed Effects Model，LMM）最好的方法，是一边学习理论，一边动手实践，这样印象最为深刻。 本文参考了Bodo Winter博士的教程Linear models and linear mixed effects models in R<a href="http://www.bodowinter.com/tutorial/bw_LME_tutorial1.pdf">教程1</a><a href="http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf">教程2</a>的结构。</p>
+        <p>学习线性混合效应模型（Linear Mixed Effects Model，LMM）最好的方法，是一边学习理论，一边动手实践，这样印象最为深刻。
+本文参考了Bodo Winter博士的教程Linear models and linear mixed effects models in R<a href="http://www.bodowinter.com/tutorial/bw_LME_tutorial1.pdf">教程1</a><a href="http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf">教程2</a>的结构。</p>
 <p>本文中，为了便于理解，使用的数据集是来自csv文件<a href="https://luansheng.netlify.com/post/shrimp.csv">shrimp</a>中的对虾育种数据（对原始数据已经进行了变换）。</p>
 <p>推荐使用<a href="https://www.rstudio.com/products/RStudio/">Rstudio</a>来运行<a href="https://www.r-project.org/">R</a>。</p>
-<p>本文代码使用了四个包，请提前加载。</p>
 <ul>
-<li>data.table1</li>
+<li>下载R：Windows版本下载地址点击<a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/">这里</a>。</li>
+<li>下载Rstudio：Windows版本下载地址点击<a href="https://www.rstudio.com/products/rstudio/download/#download">这里</a>。</li>
+<li>下载后安装方法，以及下边用到的四个R包的安装方法，可以参考<a href="https://jingyan.baidu.com/article/e75aca853788b4142edac6b5.html">百度经验</a>。</li>
+</ul>
+<p>安装Rstudio成功后，请先配置Rstudio，再安装下边四个包。配置方法：<br />
+* 打开Rstudio，从菜单栏上点击Tools -&gt; Global Options。
+* 在弹出的Options窗口中，点击左边列表中的Code，在右边的面板中，选择Saving面板，修改Default text encoding选项：点击Change…，选择UTF-8，点击ok确定。
+* 在弹出的Options窗口中，点击左边列表中的Packages，在右边的面板中，修改CRAN mirror地址：点击Change…，选择中国的镜像地址，如China (Beijing)[https]-TUNA Team, Tsinghua University。这样后边安装包时，速度会快很多。</p>
+<p>本文代码使用了四个包，请提前安装和加载。</p>
+<ul>
+<li>data.table</li>
 <li>ggplot2</li>
 <li>lme4</li>
 <li>sjPlot</li>
@@ -589,7 +599,8 @@ print(shrimp.lm.sex.tank.m1bw.sum)</code></pre>
 ## Multiple R-squared:  0.3805, Adjusted R-squared:  0.3799 
 ## F-statistic: 650.4 on 4 and 4236 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>从Adjusted R-squared参数（0.3798813 vs 0.2701994可以看出，模型6 对数据的解释能力，相比模型1，已经提高了。也就是说根据模型6预测体重，准确性比模型1要高。</p>
-<p>什么是交互效应？Interaction effects represent the combined effects of factors on the dependent measure. When an interaction effect is present, the impact of one factor depends on the level of the other factor。两个效应间相互影响，促进或者制约的关系。</p>
+<p>什么是交互效应？Interaction effects represent the combined effects of factors on the dependent measure. When an
+interaction effect is present, the impact of one factor depends on the level of the other factor。两个效应间相互影响，促进或者制约的关系。</p>
 <p>譬如，我们数据中有Sex和Tank两个固定效应，那么我们可能会想 雌虾会不会在特别偏爱某种环境，譬如在T1池中长得比T2池中大，但是雄虾可能会在T2池中长的比T1池大？因此我们可以在模型中试着加入交互效应。</p>
 <p><a id="7">模型7</a></p>
 <p><span class="math display">\[M2BW = Sex + Tank + Sex:Tank + Sex:M1BW\]</span></p>
