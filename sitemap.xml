@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>/publication/gbye-for-fcr-in-indvsgroup/</loc>
+      <lastmod>2018-11-21T12:39:51+08:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/post/vispedigree-use-guide/</loc>
       <lastmod>2018-11-09T00:00:00+00:00</lastmod>
     </url>
@@ -573,7 +582,7 @@
     <url>
     
       <loc>/publication_types/2/</loc>
-      <lastmod>2018-08-09T15:27:47+08:00</lastmod>
+      <lastmod>2018-11-21T12:39:51+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -732,8 +741,28 @@
     
     <url>
     
+      <loc>/tags/fcr/</loc>
+      <lastmod>2018-11-21T12:39:51+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/tags/font/</loc>
       <lastmod>2017-12-31T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/genotype-by-environment/</loc>
+      <lastmod>2018-11-21T12:39:51+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -773,7 +802,7 @@
     <url>
     
       <loc>/tags/hugo/</loc>
-      <lastmod>2018-06-07T00:00:00+00:00</lastmod>
+      <lastmod>2017-09-03T00:00:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -783,7 +812,7 @@
     <url>
     
       <loc>/tags/hugo/</loc>
-      <lastmod>2017-09-03T00:00:00+08:00</lastmod>
+      <lastmod>2018-06-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -834,6 +863,16 @@
     
       <loc>/tags/least-squares-means/</loc>
       <lastmod>2017-06-10T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/litopenaeus-vannamei/</loc>
+      <lastmod>2018-11-21T12:39:51+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -953,7 +992,7 @@
     <url>
     
       <loc>/publication_types/</loc>
-      <lastmod>2018-08-09T15:27:47+08:00</lastmod>
+      <lastmod>2018-11-21T12:39:51+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -963,7 +1002,7 @@
     <url>
     
       <loc>/publication/</loc>
-      <lastmod>2018-08-09T15:27:47+08:00</lastmod>
+      <lastmod>2018-11-21T12:39:51+08:00</lastmod>
       <priority>0</priority>
     </url>
     
